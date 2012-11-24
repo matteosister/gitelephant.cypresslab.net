@@ -1,0 +1,3 @@
+[submodule "subs/Cypress/GitElephantBundle"]
+	path = subs/Cypress/GitElephantBundle
+	url = git@github.com:matteosister/GitElephantBundle.git

@@ -1,2 +1,8 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
 
+{% block body %}
+    <h1>Git Repositories</h1>
+    {% for repository in repositories %}
+        {{ repository.git.path }}
+    {% endfor %}
+{% endblock %}

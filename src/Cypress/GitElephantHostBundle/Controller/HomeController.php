@@ -2,18 +2,23 @@
 
 namespace Cypress\GitElephantHostBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
+     * homepage
+     *
      * @Route("/")
      * @Template()
+     *
+     * @return array
      */
     public function indexAction()
     {
-        return array();
+        $repositories = $this->getRepositoryRepo()->findAll();
+
+        return compact('repositories');
     }
 }
