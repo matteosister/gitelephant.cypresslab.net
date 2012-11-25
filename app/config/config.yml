@@ -1,7 +1,8 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: mongo.yml }
+    - { resource: bundles/mongo.yml }
+    - { resource: bundles/doctrine_ext.yml }
 
 framework:
     #esi:             ~

@@ -3,6 +3,7 @@
 namespace Cypress\GitElephantHostBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Cypress\GitElephantHostBundle\Entity\Repository
@@ -28,6 +29,13 @@ class Repository
      * @MongoDB\String
      */
     private $path;
+
+    /**
+     * @var string
+     * @MongoDB\String
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
 
     /**
      * @var \GitElephant\Repository
@@ -96,6 +104,26 @@ class Repository
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set Slug
+     *
+     * @param string $slug the slug variable
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get Slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
