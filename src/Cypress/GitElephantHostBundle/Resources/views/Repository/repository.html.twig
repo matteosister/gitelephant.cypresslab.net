@@ -1,5 +1,18 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
 
 {% block body %}
-    {{ git.path }}
+    <div class="repository row-fluid">
+    {%- for treeObject in git.tree %}
+        <div class="{{ treeObject.type }}">
+            <a href="#">
+                {% if 'tree' == treeObject.type -%}
+                    <i class="icon-folder-close"></i>
+                {%- elseif 'blob' == treeObject.type -%}
+                    <i class="icon-file"></i>
+                {%- endif -%}
+                {{- treeObject }}
+            </a>
+        </div>
+    {% endfor -%}
+    </div>
 {% endblock %}

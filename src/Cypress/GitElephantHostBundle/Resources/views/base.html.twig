@@ -1,8 +1,20 @@
-{% extends "::base.html.twig" %}
-
-{% block stylesheets %}
-    {% stylesheets output="css/compiled/main.css"
-        "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css" %}
-        <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
-    {% endstylesheets %}
-{% endblock %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}GitElephant Host{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets output="css/compiled/main.css"
+                "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css"
+                "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/responsive.css" %}
+                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div class="container">{% block body %}{% endblock %}</div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
