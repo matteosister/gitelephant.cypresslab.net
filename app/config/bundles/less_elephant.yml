@@ -1,0 +1,8 @@
+cypress_less_elephant:
+    #less_binary_path: "/usr/local/bin/lessc"
+    less_projects:
+        bootstrap:
+            source_folder: %kernel.root_dir%/../subs/bootstrap/less
+            source_file: bootstrap.less
+            destination_css: %kernel.root_dir%/../src/Cypress/GitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css
+    force_compile: false

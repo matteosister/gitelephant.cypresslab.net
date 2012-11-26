@@ -1,5 +1,5 @@
 {
-    "hash": "9e1a5f6e854ac6c24f5827ee0d353033",
+    "hash": "4c13400c8276f8b21ac53daf737c766a",
     "packages": [
         {
             "name": "cypresslab/gitelephant",
@@ -89,6 +89,97 @@
             "homepage": "http://matteosister.github.com/GitElephant",
             "keywords": [
                 "git"
+            ]
+        },
+        {
+            "name": "cypresslab/less-elephant",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matteosister/LessElephant",
+                "reference": "v0.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/matteosister/LessElephant/zipball/v0.2.2",
+                "reference": "v0.2.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/process": "<2.2.0",
+                "symfony/finder": "<2.2.0"
+            },
+            "time": "2012-09-08 15:40:19",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "LessElephant": "src/"
+                }
+            },
+            "license": [
+                "GPL3"
+            ],
+            "authors": [
+                {
+                    "name": "Matteo Giachino",
+                    "email": "matteog@gmail.com",
+                    "homepage": "https://github.com/matteosister/CypressTreeBundle/tree/develop",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A library to manage a less project with PHP",
+            "homepage": "http://matteosister.github.com/LessElephant",
+            "keywords": [
+                "css",
+                "less"
+            ]
+        },
+        {
+            "name": "cypresslab/less-elephant-bundle",
+            "version": "dev-master",
+            "target-dir": "Cypress/LessElephantBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matteosister/LessElephantBundle.git",
+                "reference": "d2d6327da45a4beb55dc9cf8fd37eb3d03098552"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/matteosister/LessElephantBundle/archive/d2d6327da45a4beb55dc9cf8fd37eb3d03098552.zip",
+                "reference": "d2d6327da45a4beb55dc9cf8fd37eb3d03098552",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "cypresslab/less-elephant": "<=1.0.0"
+            },
+            "time": "2012-09-09 20:14:27",
+            "type": "symfony-bundle",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Cypress\\LessElephantBundle": ""
+                }
+            },
+            "license": [
+                "GPL3"
+            ],
+            "authors": [
+                {
+                    "name": "Matteo Giachino",
+                    "email": "matteog@gmail.com",
+                    "homepage": "https://github.com/matteosister/CypressTreeBundle/tree/develop",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integrates LessElephant into Symfony2",
+            "homepage": "https://github.com/matteosister/LessElephantBundle",
+            "keywords": [
+                "assets",
+                "css",
+                "less"
             ]
         },
         {
@@ -1753,6 +1844,7 @@
         "doctrine/doctrine-fixtures-bundle": 20,
         "cypresslab/gitelephant-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
+        "cypresslab/less-elephant-bundle": 20,
         "liip/functional-test-bundle": 20
     }
 }

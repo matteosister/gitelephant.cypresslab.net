@@ -1,3 +1,6 @@
 [submodule "subs/Cypress/GitElephantBundle"]
 	path = subs/Cypress/GitElephantBundle
 	url = git@github.com:matteosister/GitElephantBundle.git
+[submodule "subs/bootstrap"]
+	path = subs/bootstrap
+	url = git://github.com/twitter/bootstrap.git

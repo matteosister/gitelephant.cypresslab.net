@@ -23,7 +23,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Cypress\GitElephantBundle\CypressGitElephantBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle()
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Cypress\LessElephantBundle\CypressLessElephantBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
