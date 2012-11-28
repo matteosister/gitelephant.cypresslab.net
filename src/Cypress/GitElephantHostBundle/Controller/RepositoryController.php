@@ -40,8 +40,14 @@ class RepositoryController extends BaseController
     /**
      * Tree Object
      *
+     * @param string $slug repo slug
+     * @param string $ref  actual reference
+     * @param string $path actual path
+     *
      * @Route("/repo/{slug}/tree/{ref}/{path}", name="tree_object", requirements={"path" = ".+"})
-     * @Template("CypressGitElephantHostBundle:Repository:repository.html.twig");
+     * @Template("CypressGitElephantHostBundle:Repository:repository.html.twig")
+     *
+     * @return array
      */
     public function treeObjectAction($slug, $ref, $path)
     {
