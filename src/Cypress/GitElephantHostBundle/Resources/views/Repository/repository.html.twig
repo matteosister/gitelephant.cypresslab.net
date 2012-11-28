@@ -2,9 +2,9 @@
 
 {% block body %}
     <div class="repository row-fluid">
-    {%- for treeObject in git.tree %}
+    {%- for treeObject in git.tree(ref, path) %}
         <div class="{{ treeObject.type }}">
-            <a href="#">
+            <a href="{{ treeObject|link_tree_object }}">
                 {% if 'tree' == treeObject.type -%}
                     <i class="icon-folder-close"></i>
                 {%- elseif 'blob' == treeObject.type -%}

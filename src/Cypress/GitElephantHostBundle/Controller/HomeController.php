@@ -4,6 +4,7 @@ namespace Cypress\GitElephantHostBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
 
 /**
  * Home Controller

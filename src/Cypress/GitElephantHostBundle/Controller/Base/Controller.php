@@ -7,12 +7,12 @@
  * Just for fun...
  */
 
-namespace Cypress\GitElephantHostBundle\Controller;
+namespace Cypress\GitElephantHostBundle\Controller\Base;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Doctrine\ODM\MongoDB\DocumentManager;
 
-class BaseController extends Controller
+class Controller extends BaseController
 {
     /**
      * @return DocumentManager
