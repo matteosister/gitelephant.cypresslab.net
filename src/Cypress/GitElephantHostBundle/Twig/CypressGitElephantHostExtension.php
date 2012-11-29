@@ -11,6 +11,7 @@ namespace Cypress\GitElephantHostBundle\Twig;
 
 use GitElephant\Objects\TreeObject;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use GitElephant\Repository;
 
 class CypressGitElephantHostExtension extends \Twig_Extension
 {
@@ -31,6 +32,21 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         );
     }
 
+    public function getFunctions()
+    {
+        return array(
+            'link_parent' => new \Twig_Function_Method($this, 'linkParent')
+        );
+    }
+
+
+    /**
+     * Generates an url from a treeObject
+     *
+     * @param \GitElephant\Objects\TreeObject $treeObject
+     *
+     * @return mixed
+     */
     public function linkTreeObject(TreeObject $treeObject)
     {
         return $this->container->get('router')->generate('tree_object', array(
@@ -38,6 +54,23 @@ class CypressGitElephantHostExtension extends \Twig_Extension
             'ref' => 'master',
             'path' => $treeObject->getFullPath()
         ));
+    }
+
+    public function linkParent(Repository $git, $path)
+    {
+        $newPath = substr($path, 0, strrpos($path, '/'));
+        $params = array(
+            'slug' => 'first-repository'
+        );
+        if ('' == $newPath) {
+            $route = 'repository';
+        } else {
+            $route = 'tree_object';
+            $params['ref'] = 'master';
+            $params['path'] = substr($path, 0, strrpos($path, '/'));
+        }
+        
+        return $this->container->get('router')->generate($route, $params);
     }
 
     /**

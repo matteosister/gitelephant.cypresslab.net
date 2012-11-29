@@ -2,17 +2,25 @@
 
 {% block body %}
     <div class="repository row-fluid">
-    {%- for treeObject in git.tree(ref, path) %}
-        <div class="{{ treeObject.type }}">
-            <a href="{{ treeObject|link_tree_object }}">
-                {% if 'tree' == treeObject.type -%}
-                    <i class="icon-folder-close"></i>
-                {%- elseif 'blob' == treeObject.type -%}
-                    <i class="icon-file"></i>
-                {%- endif -%}
-                {{- treeObject }}
+    {% if path != '' %}
+        <div class="tree back">
+            <i class="icon-arrow-left"></i>
+            <a href="{{ link_parent(git, path) }}">
+                &hellip;
             </a>
         </div>
-    {% endfor -%}
+    {% endif %}
+    {% for treeObject in git.tree(ref, path) %}
+        <div class="{{ treeObject.type }}">
+            {% if 'tree' == treeObject.type %}
+                <i class="icon-folder-close"></i>
+            {% elseif 'blob' == treeObject.type %}
+                <i class="icon-file"></i>
+            {% endif %}
+            <a href="{{ treeObject|link_tree_object }}">
+                {{ treeObject }}
+            </a>
+        </div>
+    {% endfor %}
     </div>
 {% endblock %}
