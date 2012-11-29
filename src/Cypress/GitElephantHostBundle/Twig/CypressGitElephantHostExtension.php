@@ -20,6 +20,11 @@ class CypressGitElephantHostExtension extends \Twig_Extension
      */
     private $container;
 
+    /**
+     * class constructor
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container container
+     */
     function __construct(ContainerInterface $container)
     {
         $this->container = $container;
@@ -35,7 +40,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'link_parent' => new \Twig_Function_Method($this, 'linkParent')
+            'link_parent' => new \Twig_Function_Method($this, 'linkParent'),
+            'output_content' => new \Twig_Function_Method($this, 'outputContent')
         );
     }
 
@@ -56,21 +62,14 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         ));
     }
 
-    public function linkParent(Repository $git, $path)
+    public function linkParent()
     {
-        $newPath = substr($path, 0, strrpos($path, '/'));
-        $params = array(
-            'slug' => 'first-repository'
-        );
-        if ('' == $newPath) {
-            $route = 'repository';
-        } else {
-            $route = 'tree_object';
-            $params['ref'] = 'master';
-            $params['path'] = substr($path, 0, strrpos($path, '/'));
-        }
-        
-        return $this->container->get('router')->generate($route, $params);
+        return $this->container->get('cypress.git_elephant_host.git_router')->parentUrl();
+    }
+
+    public function outputContent($path)
+    {
+        return $this->container->get('cypress.git_elephant_host.git_content')->outputContent($path);
     }
 
     /**
