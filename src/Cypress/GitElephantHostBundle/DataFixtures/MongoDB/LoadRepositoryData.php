@@ -22,10 +22,16 @@ class LoadRepositoryData extends BaseFixture
      */
     function load(ObjectManager $manager)
     {
-        $repo = new Repository();
-        $repo->setName('first repository');
-        $repo->setPath('/home/matteo/libraries/GitElephant');
-        $manager->persist($repo);
+        $ge = new Repository();
+        $ge->setName('first repository');
+        $ge->setPath('/home/matteo/libraries/GitElephant');
+        $manager->persist($ge);
+
+        $sf = new Repository();
+        $sf->setName('symfony');
+        $sf->setPath('/home/matteo/libraries/symfony');
+        $manager->persist($sf);
+
         $manager->flush();
     }
 

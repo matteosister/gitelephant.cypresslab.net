@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}GitElephant Host{% endblock %}</title>
-        {% block stylesheets %}
-            {% stylesheets output="css/compiled/main.css"
-                "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css"
-                "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/responsive.css" %}
-                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
-            {% endstylesheets %}
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        <div class="container">
-            <div class="well">
-                <h1>pippo</h1>
-            </div>
-            {% block body %}{% endblock %}
-        </div>
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
+{% extends "OryzoneBoilerplateBundle::html5.html.twig" %}
+
+{% block head_css %}
+    {{ parent() }}
+    {% stylesheets output="css/compiled/all.css"
+        "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css"
+        "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/responsive.css" %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body_container_header %}
+    {% render "CypressGitElephantHostBundle:Home:header" with { standalone: true } %}
+{% endblock %}
+
+{% block body_js %}
+    {{ parent() }}
+    {% javascripts output="js/compiled/all.js"
+        "@CypressGitElephantHostBundle/Resources/public/bootstrap/js/bootstrap-dropdown.js" %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

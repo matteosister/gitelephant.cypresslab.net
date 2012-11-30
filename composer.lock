@@ -1,5 +1,5 @@
 {
-    "hash": "4c13400c8276f8b21ac53daf737c766a",
+    "hash": "b7cc0055cfd502384e9a719351f356e0",
     "packages": [
         {
             "name": "cypresslab/gitelephant",
@@ -143,19 +143,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/matteosister/LessElephantBundle.git",
-                "reference": "d2d6327da45a4beb55dc9cf8fd37eb3d03098552"
+                "reference": "59117ba453481ae463935cd37f022cee3a02b9f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/matteosister/LessElephantBundle/archive/d2d6327da45a4beb55dc9cf8fd37eb3d03098552.zip",
-                "reference": "d2d6327da45a4beb55dc9cf8fd37eb3d03098552",
+                "url": "https://github.com/matteosister/LessElephantBundle/archive/59117ba453481ae463935cd37f022cee3a02b9f2.zip",
+                "reference": "59117ba453481ae463935cd37f022cee3a02b9f2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "cypresslab/less-elephant": "<=1.0.0"
             },
-            "time": "2012-09-09 20:14:27",
+            "time": "2012-11-27 10:19:47",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -672,12 +672,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/doctrine2.git",
-                "reference": "a3fea32e0e655a1c3e6bd56d3d2147d2c7d27cbd"
+                "reference": "287b29aeaada588923a47e677d6974b023f88fd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/doctrine2/archive/a3fea32e0e655a1c3e6bd56d3d2147d2c7d27cbd.zip",
-                "reference": "a3fea32e0e655a1c3e6bd56d3d2147d2c7d27cbd",
+                "url": "https://github.com/doctrine/doctrine2/archive/287b29aeaada588923a47e677d6974b023f88fd4.zip",
+                "reference": "287b29aeaada588923a47e677d6974b023f88fd4",
                 "shasum": ""
             },
             "require": {
@@ -689,7 +689,7 @@
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "time": "2012-11-25 19:16:21",
+            "time": "2012-11-27 21:26:17",
             "bin": [
                 "bin/doctrine",
                 "bin/doctrine.php"
@@ -742,12 +742,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "f3a7af78896f5b3947557635bd73fa8256a0beca"
+                "reference": "b62943d0629acda07e4faca7b0b3f6d6b1870807"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/l3pp4rd/DoctrineExtensions/archive/f3a7af78896f5b3947557635bd73fa8256a0beca.zip",
-                "reference": "f3a7af78896f5b3947557635bd73fa8256a0beca",
+                "url": "https://github.com/l3pp4rd/DoctrineExtensions/archive/b62943d0629acda07e4faca7b0b3f6d6b1870807.zip",
+                "reference": "b62943d0629acda07e4faca7b0b3f6d6b1870807",
                 "shasum": ""
             },
             "require": {
@@ -758,7 +758,7 @@
                 "doctrine/orm": ">=2.1",
                 "doctrine/mongodb-odm": "*"
             },
-            "time": "2012-11-25 17:31:56",
+            "time": "2012-11-29 19:40:27",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1104,12 +1104,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/kriswallsmith/assetic.git",
-                "reference": "d6203098559cf9fc90e2890c10533d0adad33bd0"
+                "reference": "deed96bb7ba009d8e05aaeeb1b73c1d67a8f3719"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kriswallsmith/assetic/archive/d6203098559cf9fc90e2890c10533d0adad33bd0.zip",
-                "reference": "d6203098559cf9fc90e2890c10533d0adad33bd0",
+                "url": "https://github.com/kriswallsmith/assetic/archive/deed96bb7ba009d8e05aaeeb1b73c1d67a8f3719.zip",
+                "reference": "deed96bb7ba009d8e05aaeeb1b73c1d67a8f3719",
                 "shasum": ""
             },
             "require": {
@@ -1130,7 +1130,7 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
             },
-            "time": "2012-11-07 10:47:32",
+            "time": "2012-11-27 13:27:38",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1221,18 +1221,72 @@
             ]
         },
         {
+            "name": "oryzone/boilerplate-bundle",
+            "version": "4.0.0",
+            "target-dir": "Oryzone/Bundle/BoilerplateBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Oryzone/OryzoneBoilerplateBundle",
+                "reference": "4.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/Oryzone/OryzoneBoilerplateBundle/zipball/4.0.0",
+                "reference": "4.0.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": ">=2.0,<2.2-dev"
+            },
+            "time": "2012-09-03 02:23:13",
+            "type": "symfony-bundle",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Oryzone\\Bundle\\BoilerplateBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luciano Mammino",
+                    "email": "lmammino@oryzone.com",
+                    "homepage": "http://oryzone.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andrea Mangano",
+                    "email": "amangano@oryzone.com",
+                    "homepage": "http://oryzone.com",
+                    "role": "Designer"
+                }
+            ],
+            "description": "Integrates HTML5 boilerplate in symfony2 with twig",
+            "homepage": "https://github.com/Oryzone/OryzoneBoilerplateBundle",
+            "keywords": [
+                "twig",
+                "boilerplate",
+                "HTML5",
+                "html",
+                "h5b"
+            ]
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "2.1.x-dev",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioDistributionBundle",
-                "reference": "25dcc74a7f31eaacf53a407f024183345c6c4804"
+                "reference": "v2.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioDistributionBundle/archive/25dcc74a7f31eaacf53a407f024183345c6c4804.zip",
-                "reference": "25dcc74a7f31eaacf53a407f024183345c6c4804",
+                "url": "https://github.com/sensio/SensioDistributionBundle/archive/v2.1.4.zip",
+                "reference": "v2.1.4",
                 "shasum": ""
             },
             "require": {
@@ -1273,12 +1327,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioFrameworkExtraBundle",
-                "reference": "v2.1.3"
+                "reference": "v2.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioFrameworkExtraBundle/zipball/v2.1.3",
-                "reference": "v2.1.3",
+                "url": "https://github.com/sensio/SensioFrameworkExtraBundle/archive/v2.1.4.zip",
+                "reference": "v2.1.4",
                 "shasum": ""
             },
             "require": {
@@ -1320,12 +1374,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle",
-                "reference": "7efe50d35818a2ba72a7a05e40155b4789e5c3d9"
+                "reference": "v2.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/7efe50d35818a2ba72a7a05e40155b4789e5c3d9.zip",
-                "reference": "7efe50d35818a2ba72a7a05e40155b4789e5c3d9",
+                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/v2.1.4.zip",
+                "reference": "v2.1.4",
                 "shasum": ""
             },
             "require": {
@@ -1651,12 +1705,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "2adb781b238e8dfc9536babdaa03f538c47ddc34"
+                "reference": "v2.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/2adb781b238e8dfc9536babdaa03f538c47ddc34.zip",
-                "reference": "2adb781b238e8dfc9536babdaa03f538c47ddc34",
+                "url": "https://github.com/symfony/symfony/archive/v2.1.4.zip",
+                "reference": "v2.1.4",
                 "shasum": ""
             },
             "require": {
@@ -1705,7 +1759,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-11-25 11:00:36",
+            "time": "2012-11-29 11:56:19",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1791,18 +1845,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "b4743dcfaf48132203b467c5f5993e18f4f8f4c1"
+                "reference": "1894f18c68e5f26e213f3e6a8b9bc9fc39736457"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/b4743dcfaf48132203b467c5f5993e18f4f8f4c1.zip",
-                "reference": "b4743dcfaf48132203b467c5f5993e18f4f8f4c1",
+                "url": "https://github.com/fabpot/Twig/archive/1894f18c68e5f26e213f3e6a8b9bc9fc39736457.zip",
+                "reference": "1894f18c68e5f26e213f3e6a8b9bc9fc39736457",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-11-25 12:44:18",
+            "time": "2012-11-30 19:22:31",
             "type": "library",
             "extra": {
                 "branch-alias": {

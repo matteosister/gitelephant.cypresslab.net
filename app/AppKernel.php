@@ -24,7 +24,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Cypress\GitElephantBundle\CypressGitElephantBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Cypress\LessElephantBundle\CypressLessElephantBundle()
+            new Cypress\LessElephantBundle\CypressLessElephantBundle(),
+            new Oryzone\Bundle\BoilerplateBundle\OryzoneBoilerplateBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

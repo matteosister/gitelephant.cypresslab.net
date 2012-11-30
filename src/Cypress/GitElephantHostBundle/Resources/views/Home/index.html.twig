@@ -1,10 +1,10 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
 
-{% block body %}
+{% block body_container_main %}
     <h1>Git Repositories</h1>
     <ul>
         {% for repository in repositories %}
-            <li><a href="{{ path('repository', { slug: repository.slug }) }}">{{ repository.git.path }}</a></li>
+            <li><a href="{{ path('repository', { slug: repository.slug }) }}">{{ repository }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

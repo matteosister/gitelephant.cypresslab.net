@@ -25,7 +25,7 @@ class Service
     protected $documentManager;
 
     /**
-     * @return DocumentRepository
+     * @return \Cypress\GitElephantHostBundle\Document\Repository
      */
     protected function getRepository()
     {

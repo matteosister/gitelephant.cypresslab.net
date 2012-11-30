@@ -14,12 +14,24 @@ class HomeController extends BaseController
     /**
      * homepage
      *
-     * @Route("/")
+     * @Route("/", name="homepage")
      * @Template()
      *
      * @return array
      */
     public function indexAction()
+    {
+        $repositories = $this->getRepositoryRepo()->findAll();
+
+        return compact('repositories');
+    }
+
+    /**
+     * @Template()
+     *
+     * @return array
+     */
+    public function headerAction()
     {
         $repositories = $this->getRepositoryRepo()->findAll();
 

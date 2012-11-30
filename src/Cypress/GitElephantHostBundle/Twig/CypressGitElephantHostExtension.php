@@ -45,7 +45,6 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         );
     }
 
-
     /**
      * Generates an url from a treeObject
      *
@@ -55,11 +54,7 @@ class CypressGitElephantHostExtension extends \Twig_Extension
      */
     public function linkTreeObject(TreeObject $treeObject)
     {
-        return $this->container->get('router')->generate('tree_object', array(
-            'slug' => 'first-repository',
-            'ref' => 'master',
-            'path' => $treeObject->getFullPath()
-        ));
+        return $this->container->get('cypress.git_elephant_host.git_router')->treeObjectUrl($treeObject);
     }
 
     public function linkParent()

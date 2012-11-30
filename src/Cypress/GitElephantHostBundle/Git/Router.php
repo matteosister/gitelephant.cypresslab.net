@@ -9,13 +9,11 @@
 
 namespace Cypress\GitElephantHostBundle\Git;
 
-use Cypress\GitElephantBundle\Collection\GitElephantRepositoryCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ODM\MongoDB\DocumentManager;
-use Doctrine\ODM\MongoDB\DocumentRepository;
 use Symfony\Component\Routing\RouterInterface;
-use GitElephant\Repository;
 use Cypress\GitElephantHostBundle\Git\Base\Service;
+use GitElephant\Objects\TreeObject;
 
 class Router extends Service
 {
@@ -47,7 +45,7 @@ class Router extends Service
         $path = $this->request->attributes->get('path');
         $newPath = substr($path, 0, strrpos($path, '/'));
         $params = array(
-            'slug' => 'first-repository'
+            'slug' => $this->getRepository()->getSlug()
         );
         if ('' == $newPath) {
             $route = 'repository';
@@ -58,5 +56,14 @@ class Router extends Service
         }
 
         return $this->router->generate($route, $params);
+    }
+
+    public function treeObjectUrl(TreeObject $treeObject)
+    {
+        return $this->router->generate('tree_object', array(
+            'slug' => $this->getRepository()->getSlug(),
+            'ref' => 'master',
+            'path' => $treeObject->getFullPath()
+        ));
     }
 }
