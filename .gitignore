@@ -7,3 +7,4 @@ vendor
 composer.phar
 web/css
 web/js
+web/assetic
