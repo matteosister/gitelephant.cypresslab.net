@@ -1,6 +1,100 @@
 {
-    "hash": "b7cc0055cfd502384e9a719351f356e0",
+    "hash": "77f3e4ee1cad491674f2d81c0d0dab9c",
     "packages": [
+        {
+            "name": "cypresslab/compass-elephant",
+            "version": "0.2.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matteosister/CompassElephant",
+                "reference": "0.2.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/matteosister/CompassElephant/zipball/0.2.8",
+                "reference": "0.2.8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/process": "2.1.*",
+                "symfony/finder": "2.1.*"
+            },
+            "time": "2012-10-20 12:51:41",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "CompassElephant": "src/"
+                }
+            },
+            "license": [
+                "GPL3"
+            ],
+            "authors": [
+                {
+                    "name": "Matteo Giachino",
+                    "email": "matteog@gmail.com",
+                    "homepage": "https://github.com/matteosister/CypressTreeBundle/tree/develop",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A library to manage a compass project with PHP",
+            "homepage": "http://matteosister.github.com/CompassElephant",
+            "keywords": [
+                "css",
+                "compass",
+                "sass"
+            ]
+        },
+        {
+            "name": "cypresslab/compass-elephant-bundle",
+            "version": "dev-master",
+            "target-dir": "Cypress/CompassElephantBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matteosister/CompassElephantBundle",
+                "reference": "896c37abc008010c3564e142d09c6000c2cce1ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/matteosister/CompassElephantBundle/archive/896c37abc008010c3564e142d09c6000c2cce1ad.zip",
+                "reference": "896c37abc008010c3564e142d09c6000c2cce1ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "cypresslab/compass-elephant": "0.2.*"
+            },
+            "time": "2012-10-22 11:36:17",
+            "type": "symfony-bundle",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Cypress\\CompassElephantBundle": ""
+                }
+            },
+            "license": [
+                "GPL3"
+            ],
+            "authors": [
+                {
+                    "name": "Matteo Giachino",
+                    "email": "matteog@gmail.com",
+                    "homepage": "https://github.com/matteosister/CypressTreeBundle/tree/develop",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integrates CompassElephant into Symfony2",
+            "homepage": "https://github.com/matteosister/CompassElephantBundle",
+            "keywords": [
+                "assets",
+                "css",
+                "compass",
+                "sass",
+                "scss"
+            ]
+        },
         {
             "name": "cypresslab/gitelephant",
             "version": "0.9.3",
@@ -1899,6 +1993,7 @@
         "cypresslab/gitelephant-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
         "cypresslab/less-elephant-bundle": 20,
+        "cypresslab/compass-elephant-bundle": 20,
         "liip/functional-test-bundle": 20
     }
 }

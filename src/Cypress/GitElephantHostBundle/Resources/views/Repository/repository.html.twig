@@ -1,6 +1,7 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
-{% set tree = git.tree(ref, path) %}
+
 {% block body_container_main %}
+    {% set tree = git.tree(ref, path) %}
     <div class="repository row-fluid">
     {% if path != '' %}
         <div class="tree back">
@@ -27,4 +28,11 @@
         {% endfor %}
     {% endif %}
     </div>
+{% endblock %}
+
+{% block body_js %}
+    {{ parent() }}
+    {% javascripts '@main_js' '@repository_js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

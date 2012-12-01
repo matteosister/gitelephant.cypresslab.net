@@ -26,7 +26,8 @@
         "cypresslab/gitelephant-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
         "cypresslab/less-elephant-bundle": "dev-master",
-        "oryzone/boilerplate-bundle": "4.0.0"
+        "oryzone/boilerplate-bundle": "4.0.0",
+        "cypresslab/compass-elephant-bundle": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.9",
