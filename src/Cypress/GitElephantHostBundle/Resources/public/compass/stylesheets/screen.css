@@ -1,5 +1,10 @@
-/* line 1, ../sass/screen.scss */
+/* line 3, ../sass/screen.scss */
 #container {
   width: 80%;
   margin: 1em auto;
+}
+
+/* line 8, ../sass/screen.scss */
+.repository.loading a.tree-object {
+  color: #cccccc;
 }

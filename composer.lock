@@ -1,5 +1,5 @@
 {
-    "hash": "77f3e4ee1cad491674f2d81c0d0dab9c",
+    "hash": "11f37b950a2da8f65c730518df865a0d",
     "packages": [
         {
             "name": "cypresslab/compass-elephant",
@@ -828,6 +828,60 @@
             "keywords": [
                 "database",
                 "orm"
+            ]
+        },
+        {
+            "name": "friendsofsymfony/jsrouting-bundle",
+            "version": "dev-master",
+            "target-dir": "FOS/JsRoutingBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle",
+                "reference": "6fb571fc2a487074ba436a668bce2e1d16023f31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/archive/6fb571fc2a487074ba436a668bce2e1d16023f31.zip",
+                "reference": "6fb571fc2a487074ba436a668bce2e1d16023f31",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": ">=2.0,<2.3-dev",
+                "symfony/serializer": ">=2.0,<2.3-dev",
+                "symfony/console": ">=2.0,<2.3-dev"
+            },
+            "time": "2012-11-28 22:00:49",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "FOS\\JsRoutingBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com",
+                    "homepage": "http://www.willdurand.fr"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSJsRoutingBundle/contributors"
+                }
+            ],
+            "description": "Symfony FOSJsRoutingBundle",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "Js Routing"
             ]
         },
         {
@@ -1799,12 +1853,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "v2.1.4"
+                "reference": "7b234db668b9d81e9779485431a12928a3f80320"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/v2.1.4.zip",
-                "reference": "v2.1.4",
+                "url": "https://github.com/symfony/symfony/archive/7b234db668b9d81e9779485431a12928a3f80320.zip",
+                "reference": "7b234db668b9d81e9779485431a12928a3f80320",
                 "shasum": ""
             },
             "require": {
@@ -1853,7 +1907,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-11-29 11:56:19",
+            "time": "2012-11-30 12:53:14",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1939,18 +1993,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "1894f18c68e5f26e213f3e6a8b9bc9fc39736457"
+                "reference": "6d40dbdf8b3036014e3e279f82af0c1d1a7faacb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/1894f18c68e5f26e213f3e6a8b9bc9fc39736457.zip",
-                "reference": "1894f18c68e5f26e213f3e6a8b9bc9fc39736457",
+                "url": "https://github.com/fabpot/Twig/archive/6d40dbdf8b3036014e3e279f82af0c1d1a7faacb.zip",
+                "reference": "6d40dbdf8b3036014e3e279f82af0c1d1a7faacb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-11-30 19:22:31",
+            "time": "2012-12-01 07:00:48",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1994,6 +2048,7 @@
         "stof/doctrine-extensions-bundle": 20,
         "cypresslab/less-elephant-bundle": 20,
         "cypresslab/compass-elephant-bundle": 20,
+        "friendsofsymfony/jsrouting-bundle": 20,
         "liip/functional-test-bundle": 20
     }
 }

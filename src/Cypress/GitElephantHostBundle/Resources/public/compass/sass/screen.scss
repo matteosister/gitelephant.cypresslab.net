@@ -1,4 +1,10 @@
+$disabled: #CCC;
+
 #container {
     width: 80%;
     margin: 1em auto;
+}
+
+.repository.loading a.tree-object {
+    color: $disabled;
 }

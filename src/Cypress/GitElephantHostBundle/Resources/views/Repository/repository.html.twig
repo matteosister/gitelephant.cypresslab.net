@@ -1,32 +1,8 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
 
 {% block body_container_main %}
-    {% set tree = git.tree(ref, path) %}
     <div class="repository row-fluid">
-    {% if path != '' %}
-        <div class="tree back">
-            <i class="icon-arrow-left"></i>
-            <a href="{{ link_parent() }}">
-                &hellip;
-            </a>
-        </div>
-    {% endif %}
-    {% if tree.blob %}
-        <pre><code>{{ output_content(tree.path ~ '/' ~ tree.blob) }}</code></pre>
-    {% else %}
-        {% for treeObject in tree %}
-            <div class="{{ treeObject.type }}">
-                {% if 'tree' == treeObject.type %}
-                    <i class="icon-folder-close"></i>
-                {% elseif 'blob' == treeObject.type %}
-                    <i class="icon-file"></i>
-                {% endif %}
-                <a href="{{ treeObject|link_tree_object }}">
-                    {{ treeObject }}
-                </a>
-            </div>
-        {% endfor %}
-    {% endif %}
+        {% render "CypressGitElephantHostBundle:Repository:tree" with {slug: slug, ref: ref, path: path} %}
     </div>
 {% endblock %}
 

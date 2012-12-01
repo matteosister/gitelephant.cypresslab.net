@@ -34,7 +34,7 @@ class RepositoryController extends BaseController
         $ref = 'master';
         $path = '';
 
-        return compact('git', 'ref', 'path');
+        return compact('slug', 'git', 'ref', 'path');
     }
 
     /**
@@ -50,6 +50,25 @@ class RepositoryController extends BaseController
      * @return array
      */
     public function treeObjectAction($slug, $ref, $path)
+    {
+        return compact('slug', 'ref', 'path');
+    }
+
+    /**
+     * @param string $slug repository slug
+     * @param string $ref  reference
+     * @param string $path path
+     *
+     * @Template("CypressGitElephantHostBundle:Repository:tree.html.twig")
+     * @Route("/repo/{slug}/ajax/{ref}/{path}", name="ajax_tree_object",
+     *   requirements={"path" = ".+"},
+     *   options={"expose"=true},
+     *   defaults={"ref"="master", "path"=""}
+     * )
+     *
+     * @return array
+     */
+    public function treeAction($slug, $ref, $path)
     {
         $git = $this->getRepositoryRepo()->findOneBySlug($slug)->getGit();
 

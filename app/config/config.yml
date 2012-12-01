@@ -41,6 +41,7 @@ assetic:
     assets:
         main_js:
             inputs:
+                - @CypressGitElephantHostBundle/Resources/public/components/jquery/jquery.js
                 - @CypressGitElephantHostBundle/Resources/public/bootstrap/js/bootstrap-dropdown.js
             filters: [?uglifyjs]
         repository_js:

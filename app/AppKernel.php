@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Cypress\GitElephantBundle\CypressGitElephantBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Oryzone\Bundle\BoilerplateBundle\OryzoneBoilerplateBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
