@@ -8,3 +8,4 @@ composer.phar
 web/css
 web/js
 web/assetic
+src/Cypress/GitElephantHostBundle/Resources/public/components
