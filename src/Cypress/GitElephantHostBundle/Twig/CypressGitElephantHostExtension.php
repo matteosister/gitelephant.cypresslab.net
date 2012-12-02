@@ -62,9 +62,9 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         return $this->container->get('cypress.git_elephant_host.git_router')->parentUrl();
     }
 
-    public function outputContent($path)
+    public function outputContent(TreeObject $treeObject)
     {
-        return $this->container->get('cypress.git_elephant_host.git_content')->outputContent($path);
+        return $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject);
     }
 
     /**

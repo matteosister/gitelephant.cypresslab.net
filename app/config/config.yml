@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: bundles/mongo.yml }
     - { resource: bundles/doctrine_ext.yml }
+    - { resource: @HighlightBundle/Resources/config/config.yml }
 
 framework:
     #esi:             ~
@@ -28,7 +29,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ CypressGitElephantHostBundle, OryzoneBoilerplateBundle ]
+    bundles:        [ CypressGitElephantHostBundle, OryzoneBoilerplateBundle, HighlightBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

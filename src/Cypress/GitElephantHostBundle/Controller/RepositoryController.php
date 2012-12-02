@@ -73,6 +73,6 @@ class RepositoryController extends BaseController
         $git = $this->getRepositoryRepo()->findOneBySlug($slug)->getGit();
         $tree = $git->getTree($ref, $path);
 
-        return compact('git', 'tree', 'path');
+        return compact('git', 'tree', 'ref', 'path');
     }
 }

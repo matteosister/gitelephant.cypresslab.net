@@ -1,5 +1,5 @@
 {
-    "hash": "e07624db7c596bf48a4048af6f1f0b4c",
+    "hash": "18062e9ebf36a7ac140d9b9330b34dc5",
     "packages": [
         {
             "name": "cypresslab/compass-elephant",
@@ -837,12 +837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle",
-                "reference": "6fb571fc2a487074ba436a668bce2e1d16023f31"
+                "reference": "481f24ec727ecd47409e36fd18739b44bac78b15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/archive/6fb571fc2a487074ba436a668bce2e1d16023f31.zip",
-                "reference": "6fb571fc2a487074ba436a668bce2e1d16023f31",
+                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/archive/481f24ec727ecd47409e36fd18739b44bac78b15.zip",
+                "reference": "481f24ec727ecd47409e36fd18739b44bac78b15",
                 "shasum": ""
             },
             "require": {
@@ -851,7 +851,7 @@
                 "symfony/serializer": ">=2.0,<2.3-dev",
                 "symfony/console": ">=2.0,<2.3-dev"
             },
-            "time": "2012-11-28 22:00:49",
+            "time": "2012-12-02 21:57:33",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1366,6 +1366,52 @@
             "keywords": [
                 "log",
                 "logging"
+            ]
+        },
+        {
+            "name": "nicodmf/highlight-bundle",
+            "version": "2.1.x-dev",
+            "target-dir": "Highlight",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/nicodmf/HighlightBundle.git",
+                "reference": "0a0cf6c3052a0afa1da68331c6075be981cc3ae8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/nicodmf/HighlightBundle/archive/0a0cf6c3052a0afa1da68331c6075be981cc3ae8.zip",
+                "reference": "0a0cf6c3052a0afa1da68331c6075be981cc3ae8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/symfony": "2.1.*",
+                "twig/extensions": "*",
+                "symfony/assetic-bundle": "2.1.*"
+            },
+            "time": "2012-10-21 05:48:06",
+            "type": "symfony-bundle",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Highlight": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "nicodmf"
+                }
+            ],
+            "description": "This bundle transforms a part of text representing a source code in html formated text, providing 5 highlighter: pygment, geshi, highlight, http request to appspot, http request to hiliteme",
+            "keywords": [
+                "code",
+                "highlight",
+                "geshi",
+                "highligh",
+                "pygment"
             ]
         },
         {
@@ -2049,6 +2095,7 @@
         "cypresslab/less-elephant-bundle": 20,
         "cypresslab/compass-elephant-bundle": 20,
         "friendsofsymfony/jsrouting-bundle": 20,
+        "nicodmf/highlight-bundle": 20,
         "liip/functional-test-bundle": 20
     }
 }

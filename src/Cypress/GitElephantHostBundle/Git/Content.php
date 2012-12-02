@@ -13,6 +13,7 @@ use Cypress\GitElephantHostBundle\Git\Base\Service;
 use Cypress\GitElephantBundle\Collection\GitElephantRepositoryCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ODM\MongoDB\DocumentManager;
+use GitElephant\Objects\TreeObject;
 
 class Content extends Service
 {
@@ -28,8 +29,8 @@ class Content extends Service
         $this->documentManager = $documentManager;
     }
 
-    public function outputContent($path)
+    public function outputContent(TreeObject $treeObject)
     {
-        return file_get_contents($this->getGit()->getPath().'/'.$path);
+        return implode("\n", $this->getGit()->outputContent($treeObject, 'HEAD'));
     }
 }

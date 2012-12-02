@@ -10,7 +10,7 @@
         </tr>
     {% endif %}
     {% if tree.blob %}
-        <tr><td colspan="2"><pre><code>{{ output_content(tree.blob.fullPath) }}</code></pre></td></tr>
+        <tr><td colspan="2">{{ output_content(tree.blob)|highlight('php') }}</td></tr>
     {% else %}
         {% for treeObject in tree %}
             <tr class="{{ treeObject.type }}">
