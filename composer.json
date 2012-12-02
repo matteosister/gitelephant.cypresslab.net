@@ -4,7 +4,8 @@
     "autoload": {
         "psr-0": {
             "": "src/",
-            "Cypress\\GitElephantBundle": "subs/"
+            "Cypress\\GitElephantBundle": "subs/",
+            "GitElephant": "subs/GitElephant/src"
         }
     },
     "require": {

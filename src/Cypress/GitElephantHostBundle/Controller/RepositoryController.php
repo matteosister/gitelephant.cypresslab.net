@@ -34,7 +34,7 @@ class RepositoryController extends BaseController
         $ref = 'master';
         $path = '';
 
-        return compact('slug', 'git', 'ref', 'path');
+        return compact('slug', 'ref', 'path');
     }
 
     /**
@@ -71,7 +71,8 @@ class RepositoryController extends BaseController
     public function treeAction($slug, $ref, $path)
     {
         $git = $this->getRepositoryRepo()->findOneBySlug($slug)->getGit();
+        $tree = $git->getTree($ref, $path);
 
-        return compact('git', 'ref', 'path');
+        return compact('git', 'tree', 'path');
     }
 }
