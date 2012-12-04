@@ -70,6 +70,7 @@ class RepositoryController extends BaseController
      */
     public function treeAction($slug, $ref, $path)
     {
+        //sleep(2);
         $git = $this->getRepositoryRepo()->findOneBySlug($slug)->getGit();
         $tree = $git->getTree($ref, $path);
 

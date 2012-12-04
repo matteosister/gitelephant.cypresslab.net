@@ -48,6 +48,8 @@ assetic:
             inputs:
                 - bundles/cypressgitelephanthost/components/underscore/underscore.js
                 - bundles/cypressgitelephanthost/components/backbone/backbone.js
+                - bundles/cypressgitelephanthost/components/spin.js/spin.js
+                - bundles/cypressgitelephanthost/js/spin.jquery.js
                 - bundles/cypressgitelephanthost/js/repository-router.js
             filters: [?uglifyjs]
 
