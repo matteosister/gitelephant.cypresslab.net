@@ -2,10 +2,10 @@
 
 {% block head_css %}
     {{ parent() }}
-    {% stylesheets filter="?uglifycss" output="css/compiled/all.css"
-        "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css"
-        "@CypressGitElephantHostBundle/Resources/public/css/bootstrap/responsive.css"
-        "@CypressGitElephantHostBundle/Resources/public/compass/stylesheets/screen.css" %}
+    {% stylesheets filter="cssrewrite,?uglifycss" output="css/compiled/all.css"
+        "bundles/cypressgitelephanthost/css/bootstrap/bootstrap.css"
+        "bundles/cypressgitelephanthost/css/bootstrap/responsive.css"
+        "bundles/cypressgitelephanthost/compass/stylesheets/screen.css" %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
     {% endstylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ path('pygments_bundle_style') }}" />

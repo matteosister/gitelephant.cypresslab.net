@@ -41,14 +41,14 @@ assetic:
     assets:
         main_js:
             inputs:
-                - @CypressGitElephantHostBundle/Resources/public/components/jquery/jquery.js
-                - @CypressGitElephantHostBundle/Resources/public/bootstrap/js/bootstrap-dropdown.js
+                - bundles/cypressgitelephanthost/components/jquery/jquery.js
+                - bundles/cypressgitelephanthost/bootstrap/js/bootstrap-dropdown.js
             filters: [?uglifyjs]
         repository_js:
             inputs:
-                - @CypressGitElephantHostBundle/Resources/public/components/underscore/underscore.js
-                - @CypressGitElephantHostBundle/Resources/public/components/backbone/backbone.js
-                - @CypressGitElephantHostBundle/Resources/public/js/repository-router.js
+                - bundles/cypressgitelephanthost/components/underscore/underscore.js
+                - bundles/cypressgitelephanthost/components/backbone/backbone.js
+                - bundles/cypressgitelephanthost/js/repository-router.js
             filters: [?uglifyjs]
 
 # Doctrine Configuration
