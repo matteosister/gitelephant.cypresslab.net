@@ -26,7 +26,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Oryzone\Bundle\BoilerplateBundle\OryzoneBoilerplateBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Highlight\Bundle\HighlightBundle()
+            new Cypress\PygmentsBundle\CypressPygmentsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

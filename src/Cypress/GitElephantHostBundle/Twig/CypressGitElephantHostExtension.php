@@ -41,7 +41,7 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     {
         return array(
             'link_parent' => new \Twig_Function_Method($this, 'linkParent'),
-            'output_content' => new \Twig_Function_Method($this, 'outputContent')
+            'output_content' => new \Twig_Function_Method($this, 'outputContent', array('is_safe' => array('html')))
         );
     }
 

@@ -1,5 +1,5 @@
 {
-    "hash": "18062e9ebf36a7ac140d9b9330b34dc5",
+    "hash": "c9e2cef6a55a5fbfd01b2967cbf3ee6c",
     "packages": [
         {
             "name": "cypresslab/compass-elephant",
@@ -350,18 +350,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "a28b6bde290b0a908d32938e3393244086c2d89d"
+                "reference": "84cd1ca060e06bf5eb7066adb334adea4bf29fe7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/data-fixtures/archive/a28b6bde290b0a908d32938e3393244086c2d89d.zip",
-                "reference": "a28b6bde290b0a908d32938e3393244086c2d89d",
+                "url": "https://github.com/doctrine/data-fixtures/archive/84cd1ca060e06bf5eb7066adb334adea4bf29fe7.zip",
+                "reference": "84cd1ca060e06bf5eb7066adb334adea4bf29fe7",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": ">=5.3.2",
+                "doctrine/common": ">=2.2,<2.5-dev"
             },
-            "time": "2012-11-22 04:04:25",
+            "require-dev": {
+                "doctrine/orm": ">=2.2,<2.5-dev"
+            },
+            "suggest": {
+                "doctrine/orm": "For loading ORM fixtures",
+                "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
+                "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
+            },
+            "time": "2012-12-03 09:46:47",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -576,12 +585,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb",
-                "reference": "807f9ccb692fcf082e9a10d72b9303e374873405"
+                "reference": "9ac0ba4f96ea50d20de940b9147ee68b308ea356"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/mongodb/archive/807f9ccb692fcf082e9a10d72b9303e374873405.zip",
-                "reference": "807f9ccb692fcf082e9a10d72b9303e374873405",
+                "url": "https://github.com/doctrine/mongodb/archive/9ac0ba4f96ea50d20de940b9147ee68b308ea356.zip",
+                "reference": "9ac0ba4f96ea50d20de940b9147ee68b308ea356",
                 "shasum": ""
             },
             "require": {
@@ -591,7 +600,7 @@
                 "symfony/yaml": ">=2.0,<2.3-dev",
                 "symfony/console": ">=2.0,<2.3-dev"
             },
-            "time": "2012-11-12 06:54:01",
+            "time": "2012-12-02 23:00:57",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -614,7 +623,7 @@
                     "homepage": "http://avalanche123.com"
                 },
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/"
                 },
@@ -637,12 +646,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "75eee822369b8f8bd73aaa98490981f54950504a"
+                "reference": "205de81707fea1e6e7d4ed735ffd7a93d454949b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/mongodb-odm/archive/75eee822369b8f8bd73aaa98490981f54950504a.zip",
-                "reference": "75eee822369b8f8bd73aaa98490981f54950504a",
+                "url": "https://github.com/doctrine/mongodb-odm/archive/205de81707fea1e6e7d4ed735ffd7a93d454949b.zip",
+                "reference": "205de81707fea1e6e7d4ed735ffd7a93d454949b",
                 "shasum": ""
             },
             "require": {
@@ -652,7 +661,7 @@
                 "symfony/yaml": ">=2.0-dev,<2.3-dev",
                 "symfony/console": ">=2.0-dev,<2.3-dev"
             },
-            "time": "2012-11-08 04:15:47",
+            "time": "2012-12-03 18:13:49",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -675,7 +684,7 @@
                     "homepage": "http://avalanche123.com"
                 },
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/"
                 },
@@ -890,12 +899,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "b62943d0629acda07e4faca7b0b3f6d6b1870807"
+                "reference": "1384813b39df29465a5d30762fc5bc665aa94db0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/l3pp4rd/DoctrineExtensions/archive/b62943d0629acda07e4faca7b0b3f6d6b1870807.zip",
-                "reference": "b62943d0629acda07e4faca7b0b3f6d6b1870807",
+                "url": "https://github.com/l3pp4rd/DoctrineExtensions/archive/1384813b39df29465a5d30762fc5bc665aa94db0.zip",
+                "reference": "1384813b39df29465a5d30762fc5bc665aa94db0",
                 "shasum": ""
             },
             "require": {
@@ -906,7 +915,7 @@
                 "doctrine/orm": ">=2.1",
                 "doctrine/mongodb-odm": "*"
             },
-            "time": "2012-11-29 19:40:27",
+            "time": "2012-12-03 06:13:24",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1366,52 +1375,6 @@
             "keywords": [
                 "log",
                 "logging"
-            ]
-        },
-        {
-            "name": "nicodmf/highlight-bundle",
-            "version": "2.1.x-dev",
-            "target-dir": "Highlight",
-            "source": {
-                "type": "git",
-                "url": "git://github.com/nicodmf/HighlightBundle.git",
-                "reference": "0a0cf6c3052a0afa1da68331c6075be981cc3ae8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/nicodmf/HighlightBundle/archive/0a0cf6c3052a0afa1da68331c6075be981cc3ae8.zip",
-                "reference": "0a0cf6c3052a0afa1da68331c6075be981cc3ae8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/symfony": "2.1.*",
-                "twig/extensions": "*",
-                "symfony/assetic-bundle": "2.1.*"
-            },
-            "time": "2012-10-21 05:48:06",
-            "type": "symfony-bundle",
-            "installation-source": "source",
-            "autoload": {
-                "psr-0": {
-                    "Highlight": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "nicodmf"
-                }
-            ],
-            "description": "This bundle transforms a part of text representing a source code in html formated text, providing 5 highlighter: pygment, geshi, highlight, http request to appspot, http request to hiliteme",
-            "keywords": [
-                "code",
-                "highlight",
-                "geshi",
-                "highligh",
-                "pygment"
             ]
         },
         {
@@ -1899,12 +1862,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "a82f3ed134405361381fba79de65791b0d15f3b8"
+                "reference": "d6acb552ddda2c76bac691d2dcf82725c4635056"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/a82f3ed134405361381fba79de65791b0d15f3b8.zip",
-                "reference": "a82f3ed134405361381fba79de65791b0d15f3b8",
+                "url": "https://github.com/symfony/symfony/archive/d6acb552ddda2c76bac691d2dcf82725c4635056.zip",
+                "reference": "d6acb552ddda2c76bac691d2dcf82725c4635056",
                 "shasum": ""
             },
             "require": {
@@ -1953,7 +1916,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-12-02 18:01:07",
+            "time": "2012-12-03 22:02:45",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2095,7 +2058,6 @@
         "cypresslab/less-elephant-bundle": 20,
         "cypresslab/compass-elephant-bundle": 20,
         "friendsofsymfony/jsrouting-bundle": 20,
-        "nicodmf/highlight-bundle": 20,
         "liip/functional-test-bundle": 20
     }
 }

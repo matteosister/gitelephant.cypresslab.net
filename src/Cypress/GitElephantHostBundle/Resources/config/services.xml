@@ -23,6 +23,7 @@
         <service id="cypress.git_elephant_host.git_content" class="Cypress\GitElephantHostBundle\Git\Content" scope="request">
             <argument type="service" id="request" />
             <argument type="service" id="doctrine_mongodb.odm.document_manager" />
+            <argument type="service" id="pygments_elephant.pygmentize" />
         </service>
     </services>
 </container>

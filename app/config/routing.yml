@@ -6,7 +6,13 @@ cypress_git_elephant_host:
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
+CypressPygmentsBundle:
+    resource: .
+    type: pygments_bundle
+
 # Internal routing configuration to handle ESI
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #    prefix:   /_internal
+
+

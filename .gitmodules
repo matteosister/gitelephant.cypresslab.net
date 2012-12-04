@@ -4,3 +4,6 @@
 [submodule "subs/bootstrap"]
 	path = subs/bootstrap
 	url = git://github.com/twitter/bootstrap.git
+[submodule "subs/PygmentsElephant"]
+	path = subs/PygmentsElephant
+	url = cypressgit:PygmentsElephant
