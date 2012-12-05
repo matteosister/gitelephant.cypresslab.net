@@ -39,6 +39,12 @@ var RepositoryView = Backbone.View.extend({
         this.$el
             .css('overflow', 'hidden')
             .css('position', 'relative');
+        this.$el
+            .children('table')
+            .addClass('actual')
+            .css('position', 'absolute');
+
+        this.adjustHeight();
     },
     events: {
         "click a.tree-object": "loadRoute"
@@ -50,12 +56,12 @@ var RepositoryView = Backbone.View.extend({
         return false;
     },
     loadContent: function(url, path) {
+        console.log(path);
         // new table
         var newTable = this.tableExists(path);
         var from = this.isForward ? '100%' : '-100%';
         var to = '0';
         if (typeof newTable != 'undefined') {
-            console.log('si');
             $(newTable).removeClass('remove').addClass('actual');
             this.$el.children('table.actual')
                 .css('position', 'absolute')
