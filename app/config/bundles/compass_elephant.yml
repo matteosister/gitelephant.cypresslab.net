@@ -1,5 +1,5 @@
 cypress_compass_elephant:
-    #compass_binary_path: "/usr/local/bin/compass"
+    #compass_binary_path: "/usr/local/rvm/gems/ruby-1.9.3-p327/bin/compass"
     compass_projects:
         main:
             path: %kernel.root_dir%/../src/Cypress/GitElephantHostBundle/Resources/public/compass

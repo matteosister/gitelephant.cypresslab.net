@@ -8,3 +8,12 @@
 .repository.loading a.tree-object {
   color: #cccccc;
 }
+
+/* line 12, ../sass/screen.scss */
+pre {
+  white-space: nowrap;
+  word-break: keep-all;
+  word-wrap: normal;
+  white-space: nowrap;
+  background-color: #000;
+}
