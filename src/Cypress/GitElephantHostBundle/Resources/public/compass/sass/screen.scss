@@ -8,3 +8,12 @@ $disabled: #CCC;
 .repository.loading a.tree-object {
     color: $disabled;
 }
+
+pre {
+    white-space: nowrap;
+    word-break: keep-all;
+    word-wrap: normal;
+    white-space: nowrap;
+    background-color: #000;
+}
+
