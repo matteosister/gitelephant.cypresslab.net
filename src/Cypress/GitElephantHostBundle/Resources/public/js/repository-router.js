@@ -22,6 +22,11 @@ var RepositoryView = Backbone.View.extend({
             .css('overflow', 'hidden')
             .css('position', 'relative')
             .addClass('actual');
+        	.children('table')
+            .addClass('actual')
+            .css('position', 'absolute');
+
+        this.adjustHeight();
     },
     events: {
         "click a.tree-object": "loadRoute"
@@ -32,25 +37,13 @@ var RepositoryView = Backbone.View.extend({
         app_router.navigate($(evt.target).attr('href'), true);
         return false;
     },
-    loading: function() {
-        // old table
-        var from = '0';
-        var to = this.isForward ? '-100%' : '100%';
-        this.$el.children('table:not(.remove)')
-            .addClass('remove')
-            .removeClass('actual')
-            .css('left', from)
-            .css('position', 'absolute')
-            .animate({
-                'left': to
-            }, 400, $.proxy(this.resetView, this));
-    },
     loadContent: function(url, path) {
         // new table
         var newTable = this.tableExists(path);
         var from = this.isForward ? '100%' : '-100%';
         var to = '0';
         if (typeof newTable != 'undefined') {
+            console.log('si');
             $(newTable).removeClass('remove').addClass('actual');
             this.$el.children('table.actual')
                 .css('position', 'absolute')
@@ -59,7 +52,6 @@ var RepositoryView = Backbone.View.extend({
                 .animate({
                     'left': to
                 }, 400);
-            this.adjustHeight();
         } else {
             $.ajax({
                 url: url,
@@ -91,6 +83,19 @@ var RepositoryView = Backbone.View.extend({
             return false;
         }, this);
         return table;
+    },
+    loading: function() {
+        // old table
+        var from = '0';
+        var to = this.isForward ? '-100%' : '100%';
+        this.$el.children('table:not(.remove)')
+            .addClass('remove')
+            .removeClass('actual')
+            .css('position', 'absolute')
+            .css('left', from)
+            .animate({
+                'left': to
+            }, 400, $.proxy(this.resetView, this));
     },
     resetView: function() {
         this.removeTable();
