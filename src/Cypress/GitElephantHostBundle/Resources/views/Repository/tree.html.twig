@@ -10,7 +10,7 @@
         </tr>
     {% endif %}
     {% if tree.blob %}
-        <tr><td colspan="2">{{ output_content(tree.blob) }}</td></tr>
+        <tr class="blob"><td colspan="2">{{ output_content(tree.blob) }}</td></tr>
     {% else %}
         {% for treeObject in tree %}
             <tr class="{{ treeObject.type }}" id="{{ treeObject.sha }}">

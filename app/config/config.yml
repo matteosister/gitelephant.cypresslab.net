@@ -51,7 +51,9 @@ assetic:
                 - bundles/cypressgitelephanthost/components/spin.js/spin.js
                 - bundles/cypressgitelephanthost/js/spinner_options.js
                 - bundles/cypressgitelephanthost/js/spin.jquery.js
-                - bundles/cypressgitelephanthost/js/repository-router.js
+                - bundles/cypressgitelephanthost/js/bb/Router.js
+                - bundles/cypressgitelephanthost/js/bb/RepositoryView.js
+                - bundles/cypressgitelephanthost/js/bb/BreadcrumbView.js
             filters: [?uglifyjs]
 
 # Doctrine Configuration

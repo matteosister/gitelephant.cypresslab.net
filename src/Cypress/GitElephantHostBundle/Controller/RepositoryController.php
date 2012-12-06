@@ -23,18 +23,18 @@ class RepositoryController extends BaseController
      *
      * @param string $slug slug
      *
-     * @Route("/repo/{slug}", name="repository")
+     * @Route("/{slug}", name="repository")
      * @Template()
      *
      * @return array
      */
     public function repositoryAction($slug)
     {
-        $git = $this->getRepositoryRepo()->findOneBySlug($slug)->getGit();
+        $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
         $ref = 'master';
         $path = '';
 
-        return compact('slug', 'ref', 'path');
+        return compact('repository', 'slug', 'ref', 'path');
     }
 
     /**
@@ -44,14 +44,16 @@ class RepositoryController extends BaseController
      * @param string $ref  actual reference
      * @param string $path actual path
      *
-     * @Route("/repo/{slug}/tree/{ref}/{path}", name="tree_object", requirements={"path" = ".+"})
+     * @Route("/{slug}/tree/{ref}/{path}", name="tree_object", requirements={"path" = ".+"})
      * @Template("CypressGitElephantHostBundle:Repository:repository.html.twig")
      *
      * @return array
      */
     public function treeObjectAction($slug, $ref, $path)
     {
-        return compact('slug', 'ref', 'path');
+        $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+
+        return compact('repository', 'slug', 'ref', 'path');
     }
 
     /**
@@ -60,7 +62,7 @@ class RepositoryController extends BaseController
      * @param string $path path
      *
      * @Template("CypressGitElephantHostBundle:Repository:tree.html.twig")
-     * @Route("/repo/{slug}/ajax/{ref}/{path}", name="ajax_tree_object",
+     * @Route("/{slug}/ajax/tree/{ref}/{path}", name="ajax_tree_object",
      *   requirements={"path" = ".+"},
      *   options={"expose"=true},
      *   defaults={"ref"="master", "path"=""}
@@ -75,5 +77,26 @@ class RepositoryController extends BaseController
         $tree = $git->getTree($ref, $path);
 
         return compact('git', 'tree', 'ref', 'path');
+    }
+
+    /**
+     * @param string $slug repository slug
+     * @param string $ref  reference
+     * @param string $path path
+     *
+     * @Template("CypressGitElephantHostBundle:Repository:breadcrumb.html.twig")
+     * @Route("/{slug}/ajax/breadcrumb/{ref}/{path}", name="ajax_breadcrumb",
+     *   requirements={"path" = ".+"},
+     *   options={"expose"=true},
+     *   defaults={"ref"="master", "path"=""}
+     * )
+     *
+     * @return array
+     */
+    public function breadcrumbAction($slug, $ref, $path)
+    {
+        $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+
+        return compact('repository', 'ref', 'path');
     }
 }

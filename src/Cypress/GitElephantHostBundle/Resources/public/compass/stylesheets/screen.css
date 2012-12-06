@@ -14,6 +14,31 @@ pre {
   white-space: nowrap;
   word-break: keep-all;
   word-wrap: normal;
-  white-space: nowrap;
-  background-color: #000;
+  white-space: pre-wrap;
+}
+
+/* line 19, ../sass/screen.scss */
+table.highlighttable {
+  width: 100%;
+}
+/* line 21, ../sass/screen.scss */
+table.highlighttable .linenodiv {
+  text-align: right;
+}
+
+/* line 27, ../sass/screen.scss */
+td.linenos {
+  background-color: #FFF !important;
+  border: none !important;
+  width: 4%;
+}
+/* line 32, ../sass/screen.scss */
+td.code {
+  background-color: #FFF !important;
+  border: none !important;
+}
+
+/* line 38, ../sass/screen.scss */
+tr.blob td:hover {
+  background-color: #FFF !important;
 }

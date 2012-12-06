@@ -1,6 +1,9 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
 
 {% block body_container_main %}
+    <div class="bc">
+        {% render "CypressGitElephantHostBundle:Repository:breadcrumb" with {slug: slug, ref: ref, path: path} %}
+    </div>
     <div class="repository row-fluid">
         {% render "CypressGitElephantHostBundle:Repository:tree" with {slug: slug, ref: ref, path: path} %}
     </div>

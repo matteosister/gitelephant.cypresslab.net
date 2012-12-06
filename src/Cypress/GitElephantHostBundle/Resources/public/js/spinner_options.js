@@ -6,7 +6,7 @@
  * Just for fun...
  */
 
-var spinnerOpts = {
+spinnerOpts = {
   lines: 13, // The number of lines to draw
   length: 7, // The length of each line
   width: 4, // The line thickness

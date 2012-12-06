@@ -32,6 +32,11 @@ class LoadRepositoryData extends BaseFixture
         $sf->setPath('/home/matteo/libraries/symfony');
         $manager->persist($sf);
 
+        $rb = new Repository();
+        $rb->setName('Ruby sample app');
+        $rb->setPath('/home/matteo/internet/ruby/tutorial/sample_app');
+        $manager->persist($rb);
+
         $manager->flush();
     }
 

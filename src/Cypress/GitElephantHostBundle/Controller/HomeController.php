@@ -21,10 +21,6 @@ class HomeController extends BaseController
      */
     public function indexAction()
     {
-        $pygm = $this->get('pygments_elephant.pygmentize');
-        //var_dump($pygm->generateCss());
-
-
         $repositories = $this->getRepositoryRepo()->findAll();
 
         return compact('repositories');

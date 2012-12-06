@@ -1,0 +1,17 @@
+<ul class="breadcrumb">
+    {% if path == '' %}
+        <li class="active">{{ repository }}</li>
+    {% else %}
+        <li><a  class="bc" href="{{ path('repository', {slug: repository.slug}) }}">{{ repository }}</a>{% if path|breadcrumb|length > 0 %} <span class="divider">/</span>{% endif %}</li>
+    {% endif %}
+    {% for slice in path|breadcrumb %}
+        {% if loop.last %}
+            <li class="active">{{ slice.label }}</li>
+        {% else %}
+            <li><a class="bc" href="{{ path('tree_object', {
+                slug: repository.slug,
+                ref: 'master',
+                path: slice.path }) }}">{{ slice.label }}</a> <span class="divider">/</span></li>
+        {% endif %}
+    {% endfor %}
+</ul>

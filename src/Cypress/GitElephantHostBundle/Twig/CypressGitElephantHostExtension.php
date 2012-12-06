@@ -33,7 +33,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'link_tree_object' => new \Twig_Filter_Method($this, 'linkTreeObject')
+            'link_tree_object' => new \Twig_Filter_Method($this, 'linkTreeObject'),
+            'breadcrumb'       => new \Twig_Filter_Method($this, 'breadcrumb')
         );
     }
 
@@ -57,14 +58,50 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         return $this->container->get('cypress.git_elephant_host.git_router')->treeObjectUrl($treeObject);
     }
 
+    /**
+     * link to the parent
+     *
+     * @return mixed
+     */
     public function linkParent()
     {
         return $this->container->get('cypress.git_elephant_host.git_router')->parentUrl();
     }
 
+    /**
+     * output a tree object content
+     *
+     * @param \GitElephant\Objects\TreeObject $treeObject tree object
+     *
+     * @return mixed
+     */
     public function outputContent(TreeObject $treeObject)
     {
         return $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject);
+    }
+
+    /**
+     * generates an array of paths from a single path
+     *
+     * @param string $path path
+     *
+     * @return array
+     */
+    public function breadcrumb($path)
+    {
+        if ('' === $path) {
+            return array();
+        }
+        $pathParts = explode('/', $path);
+        $output = '';
+        $arrOutput = array();
+        foreach ($pathParts as $i => $folder) {
+            $output .= $folder.'/';
+            $arrOutput[$i]['path'] = rtrim($output, '/');
+            $arrOutput[$i]['label'] = $folder;
+        }
+
+        return $arrOutput;
     }
 
     /**

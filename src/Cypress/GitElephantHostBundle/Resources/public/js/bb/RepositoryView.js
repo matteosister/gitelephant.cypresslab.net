@@ -6,23 +6,13 @@
  * Just for fun...
  */
 
-var AppRouter = Backbone.Router.extend({
-    routes: {
-        ":controller/repo/:slug/tree/:ref/*path": "treeObject",
-        ":controller/repo/:slug": "main"
-    }
-});
-
-var app_router = new AppRouter;
-Backbone.history.start({pushState: true});
-
 var RepositoryView = Backbone.View.extend({
     initialize: function() {
         this.$el
             .css('overflow', 'hidden')
             .css('position', 'relative')
-            .addClass('actual');
-        	.children('table')
+            .addClass('actual')
+            .children('table')
             .addClass('actual')
             .css('position', 'absolute');
 
@@ -31,8 +21,12 @@ var RepositoryView = Backbone.View.extend({
     events: {
         "click a.tree-object": "loadRoute"
     },
-    loadRoute: function(evt) {
-        this.isForward = !$(evt.target).hasClass('back');
+    loadRoute: function(evt, forward) {
+        if (typeof forward == 'undefined') {
+            this.isForward = !$(evt.target).hasClass('back');
+        } else {
+            this.isForward = forward
+        }
         this.loading();
         app_router.navigate($(evt.target).attr('href'), true);
         return false;
@@ -43,7 +37,6 @@ var RepositoryView = Backbone.View.extend({
         var from = this.isForward ? '100%' : '-100%';
         var to = '0';
         if (typeof newTable != 'undefined') {
-            console.log('si');
             $(newTable).removeClass('remove').addClass('actual');
             this.$el.children('table.actual')
                 .css('position', 'absolute')
@@ -52,6 +45,7 @@ var RepositoryView = Backbone.View.extend({
                 .animate({
                     'left': to
                 }, 400);
+            this.adjustHeight();
         } else {
             $.ajax({
                 url: url,
@@ -123,16 +117,3 @@ var RepositoryView = Backbone.View.extend({
 
 var repository_view = new RepositoryView({ el: $('.repository') });
 
-app_router.on('route:treeObject', function (controller, slug, ref, path) {
-    repository_view.loadContent(Routing.generate('ajax_tree_object', {
-        slug: slug,
-        ref: ref,
-        path: path
-    }), path);
-});
-
-app_router.on('route:main', function (controller, slug) {
-    repository_view.loadContent(Routing.generate('ajax_tree_object', {
-        slug: slug
-    }));
-});
