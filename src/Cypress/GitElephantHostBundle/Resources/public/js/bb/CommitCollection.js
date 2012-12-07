@@ -38,7 +38,12 @@ var CommitCollection = Backbone.Collection.extend({
             url: url,
             dataType: 'json',
             data: commits,
-            type: 'get'
+            type: 'POST',
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                  x.overrideMimeType("application/j-son;charset=UTF-8");
+                }
+            }
         });
     }
 });

@@ -30,7 +30,7 @@ class CommitController extends BaseController
      * @internal param string $slug slug
      *
      * @Route("/{slug}/ajax/commits.{_format}", name="commits_info",
-     *   requirements={"_method"="get"},
+     *   requirements={"_method"="post"},
      *   options={"expose"=true},
      *   defaults={"ref"="master", "_format"="json"}
      * )
@@ -41,8 +41,8 @@ class CommitController extends BaseController
     {
         $output = array();
         $git = $this->getGit($slug);
-        foreach ($request->query->get('commits') as $commitId) {
-            $output[$commitId]['message'] = $git->getCommit($commitId);
+        foreach ($request->get('commits') as $commitId) {
+            $output[$commitId]['message'] = $git->getLog($commitId);
         }
         $r = new Response(json_encode($output));
 

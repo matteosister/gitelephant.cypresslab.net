@@ -7,3 +7,6 @@
 [submodule "subs/bootstrap"]
 	path = subs/bootstrap
 	url = git://github.com/twitter/bootstrap.git
+[submodule "subs/GitElephant"]
+	path = subs/GitElephant
+	url = git@github.com:matteosister/GitElephant.git

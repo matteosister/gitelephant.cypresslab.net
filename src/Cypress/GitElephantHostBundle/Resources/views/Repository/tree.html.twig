@@ -10,10 +10,10 @@
         </tr>
     {% endif %}
     {% if tree.blob %}
-        <tr class="blob"><td colspan="2">{{ output_content(tree.blob)|raw }}</td></tr>
+        <tr class="blob" data-commitid="{{ tree.blob.sha }}" data-path="{{ tree.blob.fullPath }}"><td colspan="2">{{ output_content(tree.blob)|raw }}</td></tr>
     {% else %}
         {% for treeObject in tree %}
-            <tr class="{{ treeObject.type }}" data-commitid="{{ treeObject.sha }}">
+            <tr class="{{ treeObject.type }}" data-commitid="{{ treeObject.sha }}" data-path="{{ treeObject.fullPath }}">
                 <td>
                     {% if 'tree' == treeObject.type %}
                         <i class="icon-folder-close"></i>
