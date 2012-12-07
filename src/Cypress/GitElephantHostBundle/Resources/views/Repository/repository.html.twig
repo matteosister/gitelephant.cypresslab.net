@@ -4,7 +4,7 @@
     <div class="bc">
         {% render "CypressGitElephantHostBundle:Repository:breadcrumb" with {slug: slug, ref: ref, path: path} %}
     </div>
-    <div class="repository row-fluid">
+    <div class="repository row-fluid" data-slug="{{ repository.slug }}">
         {% render "CypressGitElephantHostBundle:Repository:tree" with {slug: slug, ref: ref, path: path} %}
     </div>
 {% endblock %}

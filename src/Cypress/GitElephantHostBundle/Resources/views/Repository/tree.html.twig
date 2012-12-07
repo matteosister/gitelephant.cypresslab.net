@@ -1,6 +1,6 @@
 <table class="table table-striped table-bordered table-hover table-condensed">
     {% if path != '' %}
-        <tr class="tree">
+        <tr class="tree back">
             <td colspan="2">
                 <i class="icon-arrow-left"></i>
                 <a class="tree-object back" href="{{ link_parent() }}">
@@ -13,7 +13,7 @@
         <tr class="blob"><td colspan="2">{{ output_content(tree.blob)|raw }}</td></tr>
     {% else %}
         {% for treeObject in tree %}
-            <tr class="{{ treeObject.type }}" id="{{ treeObject.sha }}">
+            <tr class="{{ treeObject.type }}" data-commitid="{{ treeObject.sha }}">
                 <td>
                     {% if 'tree' == treeObject.type %}
                         <i class="icon-folder-close"></i>

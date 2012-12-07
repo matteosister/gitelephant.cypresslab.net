@@ -52,6 +52,8 @@ assetic:
                 - bundles/cypressgitelephanthost/js/spinner_options.js
                 - bundles/cypressgitelephanthost/js/spin.jquery.js
                 - bundles/cypressgitelephanthost/js/bb/Router.js
+                - bundles/cypressgitelephanthost/js/bb/CommitModel.js
+                - bundles/cypressgitelephanthost/js/bb/CommitCollection.js
                 - bundles/cypressgitelephanthost/js/bb/RepositoryView.js
                 - bundles/cypressgitelephanthost/js/bb/BreadcrumbView.js
             filters: [?uglifyjs]

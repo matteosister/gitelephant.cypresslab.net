@@ -15,8 +15,8 @@ var RepositoryView = Backbone.View.extend({
             .children('table')
             .addClass('actual')
             .css('position', 'absolute');
-
         this.adjustHeight();
+        this.loadCommits();
     },
     events: {
         "click a.tree-object": "loadRoute"
@@ -46,6 +46,7 @@ var RepositoryView = Backbone.View.extend({
                     'left': to
                 }, 400);
             this.adjustHeight();
+            this.loadCommits();
         } else {
             $.ajax({
                 url: url,
@@ -64,6 +65,7 @@ var RepositoryView = Backbone.View.extend({
                         .animate({
                             'left': to
                         }, 200);
+                    this.loadCommits();
                 }
             });
         }
@@ -96,6 +98,13 @@ var RepositoryView = Backbone.View.extend({
         if (this.$el.find('table:not(.remove)').length == 0) {
             this.addSpinner();
         }
+    },
+    loadCommits: function() {
+        var commits = [];
+        this.$el.find('table.actual').find('tbody tr:not(.back)').each(function() {
+            commits.push($(this).data());
+        });
+        commit_collection.addCommits(commits);
     },
     addSpinner: function() {
         this.$el.css('height', '200px');
