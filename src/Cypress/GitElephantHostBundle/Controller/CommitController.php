@@ -41,9 +41,10 @@ class CommitController extends BaseController
     {
         $output = array();
         $git = $this->getGit($slug);
-        foreach ($request->get('commits') as $commitId) {
-            $output[$commitId]['message'] = $git->getLog($commitId);
-        }
+        var_dump($request->getContent());
+//        foreach (json_decode($request->getContent()) as $commit) {
+//            $output[$commit['commitid']]['message'] = $git->getLog('master', $commit['path']);
+//        }
         $r = new Response(json_encode($output));
 
         return $r;
