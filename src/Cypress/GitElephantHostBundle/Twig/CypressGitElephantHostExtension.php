@@ -25,11 +25,16 @@ class CypressGitElephantHostExtension extends \Twig_Extension
      *
      * @param \Symfony\Component\DependencyInjection\ContainerInterface $container container
      */
-    function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
 
+    /**
+     * twig filters
+     *
+     * @return array
+     */
     public function getFilters()
     {
         return array(
@@ -38,6 +43,11 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * twig functions
+     *
+     * @return array
+     */
     public function getFunctions()
     {
         return array(

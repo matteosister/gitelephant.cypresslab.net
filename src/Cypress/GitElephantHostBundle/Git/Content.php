@@ -17,6 +17,9 @@ use GitElephant\Objects\TreeObject;
 use PygmentsElephant\Pygmentize;
 use Symfony\Component\Filesystem\Filesystem;
 
+/**
+ * Git Content
+ */
 class Content extends Service
 {
     /**
@@ -38,6 +41,13 @@ class Content extends Service
         $this->pygmentize = $pygmentize;
     }
 
+    /**
+     * output git treeobject content
+     *
+     * @param \GitElephant\Objects\TreeObject $treeObject
+     *
+     * @return string
+     */
     public function outputContent(TreeObject $treeObject)
     {
         $rawContent = implode("\n", $this->getGit()->outputContent($treeObject, 'HEAD'));

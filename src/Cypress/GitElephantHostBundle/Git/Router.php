@@ -15,6 +15,9 @@ use Symfony\Component\Routing\RouterInterface;
 use Cypress\GitElephantHostBundle\Git\Base\Service;
 use GitElephant\Objects\TreeObject;
 
+/**
+ * Git route generator
+ */
 class Router extends Service
 {
 
@@ -58,6 +61,13 @@ class Router extends Service
         return $this->router->generate($route, $params);
     }
 
+    /**
+     * tree object url
+     *
+     * @param \GitElephant\Objects\TreeObject $treeObject
+     *
+     * @return string
+     */
     public function treeObjectUrl(TreeObject $treeObject)
     {
         return $this->router->generate('tree_object', array(
