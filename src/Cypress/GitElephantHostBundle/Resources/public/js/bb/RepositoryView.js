@@ -8,6 +8,8 @@
 
 var RepositoryView = Backbone.View.extend({
     initialize: function() {
+        this.commitCollection = new CommitCollection();
+        this.commitCollection.bind('commitsLoaded', this.commitsLoaded, this);
         this.$el
             .css('overflow', 'hidden')
             .css('position', 'relative')
@@ -20,6 +22,12 @@ var RepositoryView = Backbone.View.extend({
     },
     events: {
         "click a.tree-object": "loadRoute"
+    },
+    commitsLoaded: function() {
+        this.getSpinnerCommitsDomObject().spin(false);
+        _.each(this.$el.find('table.actual').find('tr:not(.back)'), function(elm) {
+            $(elm).find('td:nth(1)').html(this.commitCollection.getCommit($(elm).data().path).get('message'));
+        }, this);
     },
     loadRoute: function(evt, forward) {
         if (typeof forward == 'undefined') {
@@ -104,7 +112,15 @@ var RepositoryView = Backbone.View.extend({
         this.$el.find('table.actual').find('tbody tr:not(.back)').each(function() {
             commits.push($(this).data());
         });
-        commit_collection.addCommits(commits);
+        var url = Routing.generate('commits_info', { slug: this.$el.data().slug });
+        if (this.commitCollection.addCommits(url, commits)) {
+            this.getSpinnerCommitsDomObject().spin(spinnerOptsSmall);
+        } else {
+            this.commitsLoaded();
+        }
+    },
+    getSpinnerCommitsDomObject: function() {
+        return this.$el.find('table.actual').find('tbody tr:not(.back):not(.blob)').first().find('td:nth(1)');
     },
     addSpinner: function() {
         this.$el.css('height', '200px');

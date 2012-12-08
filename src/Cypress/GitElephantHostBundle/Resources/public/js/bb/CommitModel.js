@@ -6,8 +6,4 @@
  * Just for fun...
  */
 
-var CommitModel = Backbone.Model.extend({
-    initialize: function(id) {
-        this.commitId = id;
-    }
-});
+var CommitModel = Backbone.Model.extend({});

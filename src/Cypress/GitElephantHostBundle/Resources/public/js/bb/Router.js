@@ -13,8 +13,6 @@ var AppRouter = Backbone.Router.extend({
     }
 });
 
-var commit_collection;
-
 var app_router = new AppRouter;
 Backbone.history.start({pushState: true});
 

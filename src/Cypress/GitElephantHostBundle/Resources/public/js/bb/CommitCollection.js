@@ -6,46 +6,52 @@
  * Just for fun...
  */
 
-
-var slug = $('.repository').data().slug;
-
 var CommitCollection = Backbone.Collection.extend({
     model: CommitModel,
     initialize: function(repositorySlug) {
         this.repositorySlug = repositorySlug;
     },
-    addCommits: function(commits) {
-        var newCommits = {};
+    addCommits: function(url, commits) {
+        var newCommits = [];
         _.each(commits, function(obj, index) {
-            if (!this.hasCommit(obj.commitid)) {
+            if (!this.hasCommit(obj.path)) {
                 newCommits[index] = obj;
             }
         }, this);
-        this.loadCommits(newCommits);
+        if (newCommits.length > 0) {
+            this.loadCommits(url, newCommits);
+            return true;
+        } else {
+            return false;
+        }
     },
-    hasCommit: function(commitId) {
-        var list = _.map(this.models, function(obj) {
-            return obj.commitId;
+    hasCommit: function(path) {
+        var paths = [];
+        this.each(function(model) {
+            paths.push(model.get('path'));
         });
-        return _.contains(list, commitId);
+        return _.contains(paths, path);
     },
-    loadCommits: function(commits) {
-        var url = Routing.generate('commits_info', {
-            slug: this.repositorySlug
-        });
-        console.log(commits);
+    getCommit: function(path) {
+        return _.find(this.models, function(model) {
+            return path == model.get('path');
+        }, this);
+    },
+    loadCommits: function(url, commitsObjects) {
         $.ajax({
+            context: this,
             url: url,
             dataType: 'json',
-            data: commits,
             type: 'POST',
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                  x.overrideMimeType("application/j-son;charset=UTF-8");
-                }
+            data : JSON.stringify(commitsObjects),
+            contentType : 'application/json',
+            success: function(commits) {
+                _.each(commits, function(commit) {
+                    var commitModel = new CommitModel(commit);
+                    this.add(commitModel);
+                }, this);
+                this.trigger('commitsLoaded');
             }
         });
     }
 });
-
-commit_collection = new CommitCollection(slug);

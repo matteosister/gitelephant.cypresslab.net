@@ -39,12 +39,16 @@ class CommitController extends BaseController
      */
     public function commitInfoAction(Request $request, $slug)
     {
+        //sleep(10);
         $output = array();
         $git = $this->getGit($slug);
-        var_dump($request->getContent());
-//        foreach (json_decode($request->getContent()) as $commit) {
-//            $output[$commit['commitid']]['message'] = $git->getLog('master', $commit['path']);
-//        }
+        $data = json_decode($request->getContent());
+        foreach ($data as $i => $commit) {
+            $log = $git->getLog('master', $commit->path, 1);
+            $lastCommit = $log[0];
+            $output[$i]['path'] = $commit->path;
+            $output[$i]['message'] = $lastCommit->getMessage()->toString();
+        }
         $r = new Response(json_encode($output));
 
         return $r;

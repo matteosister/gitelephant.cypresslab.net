@@ -12,11 +12,6 @@ var BreadcrumbView = Backbone.View.extend({
     },
     loadRoute: function(evt) {
         repository_view.loadRoute(evt, false);
-        console.log(Routing.generate('ajax_breadcrumb', {
-            slug: '',
-            ref: 'master',
-            path: ''
-        }));
         return false;
     },
     loadContent: function(url) {
