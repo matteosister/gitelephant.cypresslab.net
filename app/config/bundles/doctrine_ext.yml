@@ -1,5 +1,9 @@
 stof_doctrine_extensions:
-    mongodb:
+#    mongodb:
+#        default:
+#            sluggable: true
+#            timestampable: true
+    orm:
         default:
             sluggable: true
             timestampable: true

@@ -14,6 +14,7 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Component\Routing\RouterInterface;
 use Cypress\GitElephantHostBundle\Git\Base\Service;
 use GitElephant\Objects\TreeObject;
+use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * Git route generator
@@ -29,14 +30,14 @@ class Router extends Service
     /**
      * Class constructor
      *
-     * @param \Symfony\Component\HttpFoundation\Request  $request         request
-     * @param \Doctrine\ODM\MongoDB\DocumentManager      $documentManager document manager
-     * @param \Symfony\Component\Routing\RouterInterface $router          router
+     * @param \Symfony\Component\HttpFoundation\Request  $request       request
+     * @param \Doctrine\Common\Persistence\ObjectManager $objectManager document manager
+     * @param \Symfony\Component\Routing\RouterInterface $router        router
      */
-    public function __construct(Request $request, DocumentManager $documentManager, RouterInterface $router)
+    public function __construct(Request $request, ObjectManager $objectManager, RouterInterface $router)
     {
         $this->request = $request;
-        $this->documentManager = $documentManager;
+        $this->objectManager = $objectManager;
         $this->router = $router;
     }
 

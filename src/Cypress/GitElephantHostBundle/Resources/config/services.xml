@@ -5,15 +5,6 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="cypress.git_elephant_host.repository_binder.listener" class="Cypress\GitElephantHostBundle\Listener\RepositoryBinderListener">
-            <tag name="doctrine_mongodb.odm.event_listener" event="postLoad" />
-        </service>
-        <service id="cypress.git_elephant_host.repository_cloner.listener" class="Cypress\GitElephantHostBundle\Listener\RepositoryClonerListener">
-            <argument>%kernel.root_dir%</argument>
-            <argument type="service" id="cypress_git_elephant.git_binary" />
-            <tag name="doctrine_mongodb.odm.event_listener" event="prePersist" />
-        </service>
-
         <service id="cypress.git_elephant_host.twig_extension" class="Cypress\GitElephantHostBundle\Twig\CypressGitElephantHostExtension">
             <tag name="twig.extension" />
             <argument type="service" id="service_container" />
@@ -21,13 +12,15 @@
 
         <service id="cypress.git_elephant_host.git_router" class="Cypress\GitElephantHostBundle\Git\Router" scope="request">
             <argument type="service" id="request" />
-            <argument type="service" id="doctrine_mongodb.odm.document_manager" />
+            <!--<argument type="service" id="doctrine_mongodb.odm.document_manager" />-->
+            <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="router" />
         </service>
 
         <service id="cypress.git_elephant_host.git_content" class="Cypress\GitElephantHostBundle\Git\Content" scope="request">
             <argument type="service" id="request" />
-            <argument type="service" id="doctrine_mongodb.odm.document_manager" />
+            <!--<argument type="service" id="doctrine_mongodb.odm.document_manager" />-->
+            <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="pygments_elephant.pygmentize" />
         </service>
     </services>

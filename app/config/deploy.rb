@@ -18,8 +18,8 @@ role :web,        domain                         # Your HTTP server, Apache/etc
 role :app,        domain                         # This may be the same as your `Web` server
 role :db,         domain, :primary => true       # This is where Symfony2 migrations will run
 
+set  :use_sudo,      false
 set  :keep_releases,  3
-
 
 set  :dump_assetic_assets, true
 
@@ -30,11 +30,19 @@ set :use_composer, true
 
 after "deploy", "deploy:cleanup"
 after "deploy", "cypress:permissions"
+before "symfony:assets:install", "cypress:bower"
 
 namespace :cypress do
   desc "permissions sul server"
   task :permissions do
     run "cd #{latest_release} && chmod 777 app/cache -R"
+  end
+end
+
+namespace :cypress do
+  desc "bower sul server"
+  task :bower do
+    run "cd #{latest_release} && bower install"
   end
 end
 

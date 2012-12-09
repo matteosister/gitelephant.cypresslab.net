@@ -7,11 +7,11 @@
  * Just for fun...
  */
 
-namespace Cypress\GitElephantHostBundle\DataFixtures\MongoDB;
+namespace Cypress\GitElephantHostBundle\DataFixtures\ORM;
 
 use Cypress\GitElephantHostBundle\DataFixtures\BaseFixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Cypress\GitElephantHostBundle\Document\Repository;
+use Cypress\GitElephantHostBundle\Entity\Repository;
 
 /**
  * repository data
@@ -39,6 +39,11 @@ class LoadRepositoryData extends BaseFixture
         $rb->setName('Ruby sample app');
         $rb->setPath('/home/matteo/internet/ruby/tutorial/sample_app');
         $manager->persist($rb);
+
+        $bower = new Repository();
+        $bower->setName('Bower');
+        $bower->setGitUrl('git://github.com/twitter/bower.git');
+        $manager->persist($bower);
 
         $manager->flush();
     }

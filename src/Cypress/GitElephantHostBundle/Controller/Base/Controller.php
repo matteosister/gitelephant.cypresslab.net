@@ -12,6 +12,7 @@ namespace Cypress\GitElephantHostBundle\Controller\Base;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use GitElephant\Repository;
+use Doctrine\ORM\EntityManager;
 
 
 /**
@@ -32,7 +33,15 @@ class Controller extends BaseController
      */
     public function getRepositoryRepo()
     {
-        return $this->getDM()->getRepository('CypressGitElephantHostBundle:Repository');
+        return $this->getEM()->getRepository('CypressGitElephantHostBundle:Repository');
+    }
+
+    /**
+     * @return EntityManager
+     */
+    public function getEM()
+    {
+        return $this->get('doctrine.orm.entity_manager');
     }
 
     /**

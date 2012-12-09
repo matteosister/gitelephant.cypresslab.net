@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
 use Cypress\GitElephantHostBundle\Form\RepositoryType;
-use Cypress\GitElephantHostBundle\Document\Repository;
+use Cypress\GitElephantHostBundle\Entity\Repository;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -39,8 +39,8 @@ class RepositoryController extends BaseController
             $form->bind($request);
             if ($form->isValid()) {
                 $repository = $form->getData();
-                $this->getDM()->persist($repository);
-                $this->getDM()->flush();
+                $this->getEM()->persist($repository);
+                $this->getEM()->flush();
             }
         }
 

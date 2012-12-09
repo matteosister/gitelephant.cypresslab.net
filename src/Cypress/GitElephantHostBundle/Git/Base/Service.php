@@ -11,6 +11,8 @@ namespace Cypress\GitElephantHostBundle\Git\Base;
  
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use GitElephant\Repository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class Service
 {
@@ -20,18 +22,20 @@ class Service
     protected $request;
 
     /**
-     * @var \Doctrine\ODM\MongoDB\DocumentManager
+     * @var ObjectManager
      */
-    protected $documentManager;
+    protected $objectManager;
 
     /**
      * @return \Cypress\GitElephantHostBundle\Document\Repository
      */
     protected function getRepository()
     {
-        return $this->documentManager
+        return $this->objectManager
             ->getRepository('CypressGitElephantHostBundle:Repository')
-            ->findOneBySlug($this->request->attributes->get('slug'));
+            ->findOneBy(array(
+                'slug' => $this->request->attributes->get('slug')
+            ));
     }
 
     /**

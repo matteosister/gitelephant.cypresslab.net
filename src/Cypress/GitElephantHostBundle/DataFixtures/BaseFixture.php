@@ -7,7 +7,7 @@
  * Just for fun...
  */
 
-namespace Cypress\GitElephantHostBundle\DataFixtures\MongoDB;
+namespace Cypress\GitElephantHostBundle\DataFixtures;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;

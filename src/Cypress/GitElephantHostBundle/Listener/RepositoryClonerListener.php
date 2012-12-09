@@ -10,15 +10,27 @@
 
 namespace Cypress\GitElephantHostBundle\Listener;
 
-use Doctrine\ODM\MongoDB\Event\LifecycleEventArgs;
-use Cypress\GitElephantHostBundle\Document\Repository;
+//use Doctrine\ODM\MongoDB\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+//use Cypress\GitElephantHostBundle\Document\Repository;
+use Cypress\GitElephantHostBundle\Entity\Repository;
 use GitElephant\Repository as Repo;
 use Symfony\Component\Filesystem\Filesystem;
 use GitElephant\Repository as Git;
 use GitElephant\GitBinary;
+use JMS\DiExtraBundle\Annotation\DoctrineListener;
+use JMS\DiExtraBundle\Annotation\InjectParams;
+use JMS\DiExtraBundle\Annotation\Inject;
 
 /**
  * doctrine listener to clone the repository
+ *
+ * @DoctrineListener(
+ *     events = {"prePersist"},
+ *     connection = "default",
+ *     lazy = true,
+ *     priority = 10000
+ * )
  */
 class RepositoryClonerListener
 {
@@ -37,6 +49,11 @@ class RepositoryClonerListener
      *
      * @param string                 $kernelRootDir root dir
      * @param \GitElephant\GitBinary $binary        binary
+     *
+     * @InjectParams({
+     *     "kernelRootDir" = @Inject("%kernel.root_dir%"),
+     *     "binary" = @Inject("cypress_git_elephant.git_binary")
+     * })
      */
     public function __construct($kernelRootDir, GitBinary $binary)
     {
@@ -47,14 +64,14 @@ class RepositoryClonerListener
     /**
      * prePersist event
      *
-     * @param \Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $args
+     * @param \Doctrine\ORM\Event\LifecycleEventArgs $args args
      */
     public function prePersist(LifecycleEventArgs $args)
     {
-        $document = $args->getDocument();
-        if ($document instanceof Repository) {
-            if (null !== $document->getGitUrl() && null === $document->getPath()) {
-                $this->initRepository($document);
+        $entity = $args->getEntity();
+        if ($entity instanceof Repository) {
+            if (null !== $entity->getGitUrl() && null === $entity->getPath()) {
+                $this->initRepository($entity);
             }
         }
     }
@@ -72,7 +89,7 @@ class RepositoryClonerListener
     /**
      * clone the repo from the git url and set the path
      *
-     * @param \Cypress\GitElephantHostBundle\Document\Repository $repository repository document
+     * @param \Cypress\GitElephantHostBundle\Entity\Repository $repository repository document
      */
     private function initRepository(Repository $repository)
     {
