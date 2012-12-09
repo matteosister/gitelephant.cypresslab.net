@@ -12,12 +12,30 @@ namespace Cypress\GitElephantHostBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
+use Cypress\GitElephantHostBundle\Form\RepositoryType;
+use Cypress\GitElephantHostBundle\Document\Repository;
 
 /**
  * Repository controller
  */
 class RepositoryController extends BaseController
 {
+    /**
+     * New Repository
+     *
+     * @Route("/new", name="new_repository")
+     * @Template()
+     *
+     * @return array
+     */
+    public function newAction()
+    {
+        $form = $this->createForm('repository', new Repository());
+        $formView = $form->createView();
+
+        return compact('formView');
+    }
+
     /**
      * Repository home
      *

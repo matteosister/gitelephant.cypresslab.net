@@ -33,6 +33,12 @@ class Repository
     /**
      * @var string
      * @MongoDB\String
+     */
+    private $gitUrl;
+
+    /**
+     * @var string
+     * @MongoDB\String
      * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
@@ -104,6 +110,26 @@ class Repository
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set GitUrl
+     *
+     * @param string $gitUrl the gitUrl variable
+     */
+    public function setGitUrl($gitUrl)
+    {
+        $this->gitUrl = $gitUrl;
+    }
+
+    /**
+     * Get GitUrl
+     *
+     * @return string
+     */
+    public function getGitUrl()
+    {
+        return $this->gitUrl;
     }
 
     /**

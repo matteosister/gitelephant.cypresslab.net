@@ -1,6 +1,6 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <a class="brand" href="{{ path('homepage') }}">GitElephant Hosting</a>
+        <a class="brand" href="{{ path('homepage') }}">GitElephant</a>
         <ul class="nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Repositories<b class="caret"></b></a>
@@ -10,7 +10,7 @@
                     {% endfor %}
                 </ul>
             </li>
-            <li><a href="#">Issues</a></li>
+            <li><a href="{{ path('new_repository') }}">New repository</a></li>
         </ul>
     </div>
 </div>
