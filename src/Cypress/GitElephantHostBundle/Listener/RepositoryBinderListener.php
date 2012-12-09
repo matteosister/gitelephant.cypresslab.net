@@ -12,15 +12,35 @@ namespace Cypress\GitElephantHostBundle\Listener;
 use Doctrine\ODM\MongoDB\Event\LifecycleEventArgs;
 use Cypress\GitElephantHostBundle\Document\Repository;
 use GitElephant\Repository as Repo;
+use Symfony\Component\Filesystem\Filesystem;
+use GitElephant\Repository as Git;
 
+/**
+ * doctrine listener to bind the gitelephant repository class to the document
+ *
+ * @DoctrineListener(
+ *     events = {"postLoad"},
+ *     connection = "default",
+ *     lazy = true,
+ *     priority = 0
+ * )
+ */
 class RepositoryBinderListener
 {
+    /**
+     * postLoad event
+     *
+     * @param \Doctrine\ODM\MongoDB\Event\LifecycleEventArgs $args args
+     */
     public function postLoad(LifecycleEventArgs $args)
     {
         $document = $args->getDocument();
-        $documentManager = $args->getDocumentManager();
         if ($document instanceof Repository) {
-            $document->setGit(new Repo($document->getPath()));
+            if (null !== $document->getPath()) {
+                $document->setGit(new Repo($document->getPath()));
+            }
         }
     }
+
+
 }

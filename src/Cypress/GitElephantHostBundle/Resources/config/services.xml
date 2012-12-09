@@ -5,8 +5,13 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="cypress.git_elephant_host.repository.listener" class="Cypress\GitElephantHostBundle\Listener\RepositoryBinderListener">
+        <service id="cypress.git_elephant_host.repository_binder.listener" class="Cypress\GitElephantHostBundle\Listener\RepositoryBinderListener">
             <tag name="doctrine_mongodb.odm.event_listener" event="postLoad" />
+        </service>
+        <service id="cypress.git_elephant_host.repository_cloner.listener" class="Cypress\GitElephantHostBundle\Listener\RepositoryClonerListener">
+            <argument>%kernel.root_dir%</argument>
+            <argument type="service" id="cypress_git_elephant.git_binary" />
+            <tag name="doctrine_mongodb.odm.event_listener" event="prePersist" />
         </service>
 
         <service id="cypress.git_elephant_host.twig_extension" class="Cypress\GitElephantHostBundle\Twig\CypressGitElephantHostExtension">

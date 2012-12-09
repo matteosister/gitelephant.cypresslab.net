@@ -24,7 +24,7 @@ class Controller extends BaseController
      */
     public function getDM()
     {
-        return $this->get('doctrine_mongodb');
+        return $this->get('doctrine.odm.mongodb.document_manager');
     }
 
     /**

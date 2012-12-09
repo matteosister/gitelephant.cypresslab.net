@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
 use Cypress\GitElephantHostBundle\Form\RepositoryType;
 use Cypress\GitElephantHostBundle\Document\Repository;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Repository controller
@@ -23,15 +24,25 @@ class RepositoryController extends BaseController
     /**
      * New Repository
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request request
+     *
      * @Route("/new", name="new_repository")
      * @Template()
      *
      * @return array
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $form = $this->createForm('repository', new Repository());
         $formView = $form->createView();
+        if ($request->isMethod('post')) {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $repository = $form->getData();
+                $this->getDM()->persist($repository);
+                $this->getDM()->flush();
+            }
+        }
 
         return compact('formView');
     }
