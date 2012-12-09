@@ -13,3 +13,4 @@ src/Cypress/GitElephantHostBundle/Resources/public/components
 .sass-cache
 src/Cypress/GitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css
 repositories/*
+.rsync_cache
