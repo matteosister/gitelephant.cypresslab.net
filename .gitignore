@@ -12,3 +12,4 @@ src/Cypress/GitElephantHostBundle/Resources/public/components
 .idea
 .sass-cache
 src/Cypress/GitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css
+repositories/*
