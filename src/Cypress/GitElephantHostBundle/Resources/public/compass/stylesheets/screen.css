@@ -14,7 +14,7 @@ pre {
   white-space: nowrap;
   word-break: keep-all;
   word-wrap: normal;
-  white-space: pre-wrap;
+  white-space: pre;
 }
 
 /* line 19, ../sass/screen.scss */
@@ -41,4 +41,11 @@ td.code {
 /* line 38, ../sass/screen.scss */
 tr.blob td:hover {
   background-color: #FFF !important;
+}
+
+/* line 43, ../sass/screen.scss */
+.highlight .lineno {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }

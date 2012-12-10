@@ -13,7 +13,7 @@ pre {
     white-space: nowrap;
     word-break: keep-all;
     word-wrap: normal;
-    white-space: pre-wrap;
+    white-space: pre;
 }
 
 table.highlighttable {
@@ -37,4 +37,12 @@ td {
 
 tr.blob td:hover {
     background-color: #FFF !important;
+}
+
+.highlight {
+    .lineno {
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+    }
 }

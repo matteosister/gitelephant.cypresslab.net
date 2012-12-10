@@ -109,9 +109,15 @@ var RepositoryView = Backbone.View.extend({
     },
     loadCommits: function() {
         var commits = [];
-        this.$el.find('table.actual').find('tbody tr:not(.back)').each(function() {
-            commits.push($(this).data());
+        this.$el.find('table.actual tr.git').each(function() {
+            var data = $(this).data();
+            if ('content' != data.type) {
+                commits.push(data);
+            }
         });
+        if (0 == commits.length) {
+            return;
+        }
         var url = Routing.generate('commits_info', { slug: this.$el.data().slug });
         if (this.commitCollection.addCommits(url, commits)) {
             this.getSpinnerCommitsDomObject().spin(spinnerOptsSmall);
