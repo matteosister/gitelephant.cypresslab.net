@@ -48,9 +48,15 @@ tr.blob td:hover {
 }
 
 .repository {
+    section {
+        width: 100%;
+    }
     header {
-        padding: 1em;
-        background-color: #CCC;
+        padding: 0.5em 1em;
+        background-color: #DDD;
         font-weight: bold;
+    }
+    .content {
+        overflow: auto;
     }
 }

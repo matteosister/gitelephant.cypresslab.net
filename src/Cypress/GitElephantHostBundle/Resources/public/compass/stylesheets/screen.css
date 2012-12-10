@@ -49,3 +49,18 @@ tr.blob td:hover {
   -khtml-user-select: none;
   user-select: none;
 }
+
+/* line 51, ../sass/screen.scss */
+.repository section {
+  width: 100%;
+}
+/* line 54, ../sass/screen.scss */
+.repository header {
+  padding: 0.5em 1em;
+  background-color: #DDD;
+  font-weight: bold;
+}
+/* line 59, ../sass/screen.scss */
+.repository .content {
+  overflow: auto;
+}

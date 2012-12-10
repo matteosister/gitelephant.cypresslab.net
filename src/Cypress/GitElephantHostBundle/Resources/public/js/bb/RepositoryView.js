@@ -14,7 +14,7 @@ var RepositoryView = Backbone.View.extend({
             .css('overflow', 'hidden')
             .css('position', 'relative')
             .addClass('actual')
-            .children('table')
+            .children('section')
             .addClass('actual')
             .css('position', 'absolute');
         this.adjustHeight();
@@ -25,7 +25,7 @@ var RepositoryView = Backbone.View.extend({
     },
     commitsLoaded: function() {
         this.getSpinnerCommitsDomObject().spin(false);
-        _.each(this.$el.find('table.actual').find('tr:not(.back)'), function(elm) {
+        _.each(this.$el.find('section.actual').find('tr:not(.back)'), function(elm) {
             $(elm).find('td:nth(1)').html(this.commitCollection.getCommit($(elm).data().path).get('message'));
         }, this);
     },
@@ -40,13 +40,13 @@ var RepositoryView = Backbone.View.extend({
         return false;
     },
     loadContent: function(url, path) {
-        // new table
-        var newTable = this.tableExists(path);
+        // new section
+        var newTable = this.sectionExists(path);
         var from = this.isForward ? '100%' : '-100%';
         var to = '0';
         if (typeof newTable != 'undefined') {
             $(newTable).removeClass('remove').addClass('actual');
-            this.$el.children('table.actual')
+            this.$el.children('section.actual')
                 .css('position', 'absolute')
                 .css('left', from)
                 .show()
@@ -62,12 +62,12 @@ var RepositoryView = Backbone.View.extend({
                 success: function(data) {
                     this.removeSpinner();
                     this.$el.append(data);
-                    this.$el.children('table:not(.remove)')
+                    this.$el.children('section:not(.remove)')
                         .addClass('actual');
-                    //jQuery.data(this.$el.find('table.actual'), 'path', {path: path});
-                    this.$el.find('table.actual').data('path', {path: path});
+                    //jQuery.data(this.$el.find('section.actual'), 'path', {path: path});
+                    this.$el.find('section.actual').data('path', {path: path});
                     this.finishLoading();
-                    this.$el.children('table.actual')
+                    this.$el.children('section.actual')
                         .css('position', 'absolute')
                         .css('left', from)
                         .animate({
@@ -78,21 +78,21 @@ var RepositoryView = Backbone.View.extend({
             });
         }
     },
-    tableExists: function(path) {
-        var table = _.find(this.$el.find('table.remove'), function(table) {
-            var data = $(table).data('path');
+    sectionExists: function(path) {
+        var section = _.find(this.$el.find('section.remove'), function(section) {
+            var data = $(section).data('path');
             if (null != data) {
                 return data.path == path;
             }
             return false;
         }, this);
-        return table;
+        return section;
     },
     loading: function() {
-        // old table
+        // old section
         var from = '0';
         var to = this.isForward ? '-100%' : '100%';
-        this.$el.children('table:not(.remove)')
+        this.$el.children('section:not(.remove)')
             .addClass('remove')
             .removeClass('actual')
             .css('position', 'absolute')
@@ -103,13 +103,13 @@ var RepositoryView = Backbone.View.extend({
     },
     resetView: function() {
         this.removeTable();
-        if (this.$el.find('table:not(.remove)').length == 0) {
+        if (this.$el.find('section:not(.remove)').length == 0) {
             this.addSpinner();
         }
     },
     loadCommits: function() {
         var commits = [];
-        this.$el.find('table.actual tr.git').each(function() {
+        this.$el.find('section.actual tr.git').each(function() {
             var data = $(this).data();
             if ('content' != data.type) {
                 commits.push(data);
@@ -126,7 +126,7 @@ var RepositoryView = Backbone.View.extend({
         }
     },
     getSpinnerCommitsDomObject: function() {
-        return this.$el.find('table.actual').find('tbody tr:not(.back):not(.blob)').first().find('td:nth(1)');
+        return this.$el.find('section.actual').find('tbody tr:not(.back):not(.blob)').first().find('td:nth(1)');
     },
     addSpinner: function() {
         this.$el.css('height', '200px');
@@ -136,10 +136,10 @@ var RepositoryView = Backbone.View.extend({
         this.$el.spin(false);
     },
     removeTable: function() {
-        this.$el.find('table.remove').hide();
+        this.$el.find('section.remove').hide();
     },
     adjustHeight: function() {
-        this.$el.css('height', this.$el.find('table.actual').outerHeight());
+        this.$el.css('height', this.$el.find('section.actual').outerHeight());
     },
     finishLoading: function() {
         this.adjustHeight();
