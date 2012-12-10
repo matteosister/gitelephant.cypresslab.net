@@ -24,7 +24,7 @@ set  :keep_releases,  3
 set  :dump_assetic_assets, true
 
 set :shared_files,      ["app/config/parameters.yml"]
-set :shared_children,   [app_path + "/logs", web_path + "/uploads", "vendor"]
+set :shared_children,   [app_path + "/logs", web_path + "/uploads", "vendor", "repositories"]
 set :update_vendors,    true
 set :use_composer, true
 
