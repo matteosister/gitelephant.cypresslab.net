@@ -1,14 +1,7 @@
+<header>
+    commit header
+</header>
 <table class="table table-striped table-bordered table-hover table-condensed">
-    {% if path != '' %}
-        <tr class="back">
-            <td colspan="2">
-                <i class="icon-arrow-left"></i>
-                <a class="tree-object back" href="{{ link_parent() }}">
-                    &hellip;
-                </a>
-            </td>
-        </tr>
-    {% endif %}
     {% if tree.blob %}
         <tr class="content" data-commitid="{{ tree.blob.sha }}" data-path="{{ tree.blob.fullPath }}" data-type="content"><td colspan="2">{{ output_content(tree.blob)|raw }}</td></tr>
     {% else %}
