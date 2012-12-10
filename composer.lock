@@ -899,12 +899,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "1384813b39df29465a5d30762fc5bc665aa94db0"
+                "reference": "935223ab4d30d34ddc0df3d0ab5753fe971e0847"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/l3pp4rd/DoctrineExtensions/archive/1384813b39df29465a5d30762fc5bc665aa94db0.zip",
-                "reference": "1384813b39df29465a5d30762fc5bc665aa94db0",
+                "url": "https://github.com/l3pp4rd/DoctrineExtensions/archive/935223ab4d30d34ddc0df3d0ab5753fe971e0847.zip",
+                "reference": "935223ab4d30d34ddc0df3d0ab5753fe971e0847",
                 "shasum": ""
             },
             "require": {
@@ -915,7 +915,7 @@
                 "doctrine/orm": ">=2.1",
                 "doctrine/mongodb-odm": "*"
             },
-            "time": "2012-12-03 06:13:24",
+            "time": "2012-12-08 16:34:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1915,12 +1915,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "74c8b0150a66ff092b294ca6d29f285ccdba72e4"
+                "reference": "a1734ddf72d9bd85df7bf334fdb1126f9e24b19e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/74c8b0150a66ff092b294ca6d29f285ccdba72e4.zip",
-                "reference": "74c8b0150a66ff092b294ca6d29f285ccdba72e4",
+                "url": "https://github.com/symfony/symfony/archive/a1734ddf72d9bd85df7bf334fdb1126f9e24b19e.zip",
+                "reference": "a1734ddf72d9bd85df7bf334fdb1126f9e24b19e",
                 "shasum": ""
             },
             "require": {
@@ -1969,7 +1969,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-12-07 13:34:54",
+            "time": "2012-12-10 12:46:54",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -2050,18 +2050,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "3ca17acb4aaf6add233390741d3ac5198a98d602"
+                "reference": "4b359deec003c9dfcf4d1e5fd06097b582583e7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/3ca17acb4aaf6add233390741d3ac5198a98d602.zip",
-                "reference": "3ca17acb4aaf6add233390741d3ac5198a98d602",
+                "url": "https://github.com/fabpot/Twig/archive/4b359deec003c9dfcf4d1e5fd06097b582583e7a.zip",
+                "reference": "4b359deec003c9dfcf4d1e5fd06097b582583e7a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-07 15:14:24",
+            "time": "2012-12-10 20:14:37",
             "type": "library",
             "extra": {
                 "branch-alias": {
