@@ -22,6 +22,30 @@ use GitElephant\Objects\TreeObject;
 class CommitController extends BaseController
 {
     /**
+     * commits
+     *
+     * @param string $slug slug
+     *
+     * @internal param string $slug slug
+     *
+     * @Route("/{slug}/commits.{_format}", name="commits",
+     *   requirements={"_method"="get"},
+     *   options={"expose"=false},
+     *   defaults={"ref"="master", "_format"="html"}
+     * )
+     * @Template
+     *
+     * @return array
+     */
+    public function commitsAction($slug)
+    {
+        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+        $commits = $repository->getGit()->getLog();
+
+        return compact('commits');
+    }
+
+    /**
      * commits info
      *
      * @param \Symfony\Component\HttpFoundation\Request $request request
@@ -46,6 +70,7 @@ class CommitController extends BaseController
         foreach ($data as $i => $commit) {
             $log = $git->getLog('master', $commit->path, 1);
             $lastCommit = $log[0];
+            $output[$i]['sha'] = $lastCommit->getSha();
             $output[$i]['path'] = $commit->path;
             $output[$i]['message'] = $lastCommit->getMessage()->toString();
         }

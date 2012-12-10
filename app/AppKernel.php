@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Oryzone\Bundle\BoilerplateBundle\OryzoneBoilerplateBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Cypress\PygmentsBundle\CypressPygmentsBundle(),
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

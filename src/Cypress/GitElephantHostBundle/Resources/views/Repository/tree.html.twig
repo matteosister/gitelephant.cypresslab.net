@@ -1,9 +1,7 @@
 <section>
-    <header>
-        commit header
-    </header>
+    <header><img src="{{ gravatar(tree.getLastCommitAuthor.email) }}" title="{{ tree.getLastCommitAuthor.name }}" /> {{ tree.getLastCommitMessage }}</header>
     <div class="content">
-        <table class="table table-striped table-hover table-condensed">
+        <table class="table table-hover table-condensed {{ tree.blob ? 'content' : 'table-striped tree' }}">
             {% if tree.blob %}
                 <tr class="content" data-commitid="{{ tree.blob.sha }}" data-path="{{ tree.blob.fullPath }}" data-type="content"><td colspan="2">{{ output_content(tree.blob)|raw }}</td></tr>
             {% else %}

@@ -1,5 +1,5 @@
 {
-    "hash": "c9e2cef6a55a5fbfd01b2967cbf3ee6c",
+    "hash": "0c10809dc57d9e2fa061d4f3e1c5128a",
     "packages": [
         {
             "name": "cypresslab/compass-elephant",
@@ -1378,6 +1378,59 @@
             ]
         },
         {
+            "name": "ornicar/gravatar-bundle",
+            "version": "dev-master",
+            "target-dir": "Ornicar/GravatarBundle",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/ornicar/GravatarBundle.git",
+                "reference": "994424a846f30f64e324e1b95a21c9f3b4ad237a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/ornicar/GravatarBundle/archive/994424a846f30f64e324e1b95a21c9f3b4ad237a.zip",
+                "reference": "994424a846f30f64e324e1b95a21c9f3b4ad237a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/framework-bundle": ">=2.0"
+            },
+            "suggest": {
+                "twig/twig": ">=1.3.0"
+            },
+            "time": "2012-09-07 08:20:02",
+            "type": "symfony-bundle",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Ornicar\\GravatarBundle\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com",
+                    "homepage": "http://ornicar.github.com"
+                },
+                {
+                    "name": "Henrik Bjørnskov",
+                    "email": "henrik@bjrnskov.dk",
+                    "homepage": "http://henrik.bjrnskov.dk"
+                }
+            ],
+            "description": "This bundles provides a Gravatar API various utilities to work with it in templates",
+            "keywords": [
+                "templating",
+                "gravatar",
+                "twig",
+                "Symfony2"
+            ]
+        },
+        {
             "name": "oryzone/boilerplate-bundle",
             "version": "4.0.0",
             "target-dir": "Oryzone/Bundle/BoilerplateBundle",
@@ -2053,6 +2106,7 @@
         "cypresslab/less-elephant-bundle": 20,
         "cypresslab/compass-elephant-bundle": 20,
         "friendsofsymfony/jsrouting-bundle": 20,
+        "ornicar/gravatar-bundle": 20,
         "liip/functional-test-bundle": 20
     }
 }

@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: bundles/mongo.yml }
     - { resource: bundles/doctrine_ext.yml }
+    - { resource: bundles/ornicar_gravatar.yml }
 
 framework:
     #esi:             ~
