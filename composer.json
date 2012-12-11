@@ -6,7 +6,9 @@
             "": "src/",
             "Cypress\\GitElephantBundle": "subs/",
             "GitElephant": "subs/GitElephant/src",
-            "PygmentsElephant": "subs/PygmentsElephant/src"
+            "PygmentsElephant": "subs/PygmentsElephant/src",
+            "Cypress\\CompassElephantBundle": "subs/",
+            "CompassElephant": "subs/CompassElephant/src"
         }
     },
     "require": {

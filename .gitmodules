@@ -10,3 +10,9 @@
 [submodule "subs/GitElephant"]
 	path = subs/GitElephant
 	url = git@github.com:matteosister/GitElephant.git
+[submodule "subs/Cypress/CompassElephantBundle"]
+	path = subs/Cypress/CompassElephantBundle
+	url = git@github.com:matteosister/CompassElephantBundle.git
+[submodule "subs/CompassElephant"]
+	path = subs/CompassElephant
+	url = git@github.com:matteosister/CompassElephant.git
