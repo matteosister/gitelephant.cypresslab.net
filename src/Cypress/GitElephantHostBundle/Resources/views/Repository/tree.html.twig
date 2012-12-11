@@ -3,7 +3,9 @@
     <div class="content">
         <table class="table table-hover table-condensed {{ tree.blob ? 'content' : 'table-striped tree' }}">
             {% if tree.blob %}
-                <tr class="content" data-commitid="{{ tree.blob.sha }}" data-path="{{ tree.blob.fullPath }}" data-type="content"><td colspan="2">{{ output_content(tree.blob)|raw }}</td></tr>
+                <tr class="content" data-commitid="{{ tree.blob.sha }}" data-path="{{ tree.blob.fullPath }}" data-type="content">
+                    <td colspan="2">{{ output_content(tree.blob)|raw }}</td>
+                </tr>
             {% else %}
                 {% for treeObject in tree %}
                     <tr class="git {{ treeObject.type }}" data-commitid="{{ treeObject.sha }}" data-path="{{ treeObject.fullPath }}" data-type="{{ treeObject.type }}">

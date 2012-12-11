@@ -15,6 +15,7 @@ use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
 use Cypress\GitElephantHostBundle\Form\RepositoryType;
 use Cypress\GitElephantHostBundle\Entity\Repository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Repository controller
@@ -86,9 +87,10 @@ class RepositoryController extends BaseController
     }
 
     /**
-     * @param string $slug repository slug
-     * @param string $ref  reference
-     * @param string $path path
+     * @param \Symfony\Component\HttpFoundation\Request $request request
+     * @param string                                    $slug    repository slug
+     * @param string                                    $ref     reference
+     * @param string                                    $path    path
      *
      * @Template("CypressGitElephantHostBundle:Repository:tree.html.twig")
      * @Route("/{slug}/ajax/tree/{ref}/{path}", name="ajax_tree_object",
@@ -99,14 +101,23 @@ class RepositoryController extends BaseController
      *
      * @return array
      */
-    public function treeAction($slug, $ref, $path)
+    public function treeAction(Request $request, $slug, $ref, $path)
     {
-        //sleep(2);
-        $git = $this->getRepositoryRepo()->findOneBySlug($slug)->getGit();
+        $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
         $tree = $git->getTree($ref, $path);
 
-        return compact('git', 'tree', 'ref', 'path');
+        return compact('git', 'tree', 'ref', 'path', 'slug');
     }
+
+//    public function rawContentAction(Request $request, $slug, $ref, $path)
+//    {
+//        $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
+//        $tree = $git->getTree($ref, $path);
+//        $response = new Response($tree->getBinaryData());
+//        $response->headers->set('content-type', 'image/png');
+//
+//        return $response;
+//    }
 
     /**
      * @param string $slug repository slug

@@ -22,6 +22,10 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class Content extends Service
 {
+    const JPG = '\xFF\xD8\xFF';
+    const GIF  = 'GIF';
+    const PNG  = '\x89\x50\x4e\x47\x0d\x0a\x1a\x0a';
+
     /**
      * @var Pygmentize
      */
