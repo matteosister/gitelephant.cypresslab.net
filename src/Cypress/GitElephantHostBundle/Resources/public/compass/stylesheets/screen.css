@@ -1,63 +1,86 @@
-/*
-Syntax error: Invalid CSS after "        pippo:": expected expression (e.g. 1px, bold), was "}"
-        on line 67 of /home/matteo/personale/gitelephant_host/src/Cypress/GitElephantHostBundle/Resources/public/compass/sass/screen.scss
+/* line 4, ../sass/screen.scss */
+#container {
+  width: 80%;
+  margin: 1em auto;
+}
 
-Backtrace:
-/home/matteo/personale/gitelephant_host/src/Cypress/GitElephantHostBundle/Resources/public/compass/sass/screen.scss:67
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:1134:in `expected'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/script/lexer.rb:199:in `expected!'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/script/parser.rb:471:in `assert_expr'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/script/parser.rb:49:in `parse'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:1008:in `send'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:1008:in `sass_script'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:868:in `value!'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:845:in `declaration'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:568:in `declaration_or_ruleset'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:1108:in `call'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:1108:in `rethrow'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:578:in `declaration_or_ruleset'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:540:in `block_child'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:532:in `block_contents'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:521:in `block'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:515:in `ruleset'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:577:in `declaration_or_ruleset'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:1108:in `call'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:1108:in `rethrow'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:578:in `declaration_or_ruleset'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:540:in `block_child'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:532:in `block_contents'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:521:in `block'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:515:in `ruleset'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:539:in `block_child'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:532:in `block_contents'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:70:in `stylesheet'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/scss/parser.rb:27:in `parse'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/engine.rb:342:in `_to_tree'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/engine.rb:315:in `_render'
-/var/lib/gems/1.8/gems/sass-3.2.3/lib/sass/../sass/engine.rb:262:in `render'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `compile'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `compile'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `run'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `run'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/commands/update_project.rb:45:in `perform'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/var/lib/gems/1.8/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/var/lib/gems/1.8/gems/compass-0.12.2/bin/compass:30
-/var/lib/gems/1.8/gems/compass-0.12.2/bin/compass:44:in `call'
-/var/lib/gems/1.8/gems/compass-0.12.2/bin/compass:44
-/usr/local/bin/compass:19:in `load'
-/usr/local/bin/compass:19
-*/
-body:before {
+/* line 9, ../sass/screen.scss */
+.repository.loading a.tree-object {
+  color: #cccccc;
+}
+
+/* line 13, ../sass/screen.scss */
+pre {
+  white-space: nowrap;
+  word-break: keep-all;
+  word-wrap: normal;
   white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"        pippo:\": expected expression (e.g. 1px, bold), was \"}\"\A         on line 67 of /home/matteo/personale/gitelephant_host/src/Cypress/GitElephantHostBundle/Resources/public/compass/sass/screen.scss"; }
+  background: none !important;
+  border: none !important;
+  margin: 0;
+  border-radius: 0 !important;
+}
+
+/* line 24, ../sass/screen.scss */
+table.highlighttable {
+  width: 100%;
+}
+/* line 26, ../sass/screen.scss */
+table.highlighttable .linenodiv {
+  text-align: right;
+}
+
+/* line 32, ../sass/screen.scss */
+td.linenos {
+  background-color: #FFF !important;
+  border: none !important;
+  width: 4%;
+}
+/* line 37, ../sass/screen.scss */
+td.code {
+  background-color: #FFF !important;
+  border: none !important;
+}
+
+/* line 43, ../sass/screen.scss */
+tr.blob td:hover {
+  background-color: #FFF !important;
+}
+
+/* line 48, ../sass/screen.scss */
+.highlight .lineno {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+/* line 55, ../sass/screen.scss */
+.repository {
+  border: 1px solid #DDD;
+}
+/* line 57, ../sass/screen.scss */
+.repository section {
+  width: 100%;
+}
+/* line 60, ../sass/screen.scss */
+.repository header {
+  padding: 0.5em;
+  background-color: #EFEFEF;
+}
+/* line 64, ../sass/screen.scss */
+.repository .content {
+  overflow: auto;
+}
+
+/* line 70, ../sass/screen.scss */
+table.tree {
+  margin-bottom: 0;
+}
+/* line 73, ../sass/screen.scss */
+table.content {
+  margin-bottom: 0;
+}
+/* line 75, ../sass/screen.scss */
+table.content td {
+  padding: 0;
+}
