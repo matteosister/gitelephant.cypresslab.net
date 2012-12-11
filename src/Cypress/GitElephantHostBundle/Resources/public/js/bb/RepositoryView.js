@@ -27,7 +27,7 @@ var RepositoryView = Backbone.View.extend({
         this.getSpinnerCommitsDomObject().spin(false);
         _.each(this.$el.find('section.actual').find('tr:not(.back)'), function(elm) {
             var commit = this.commitCollection.getCommit($(elm).data().path);
-            $(elm).find('td:nth(1)').html(commit.get('message') + ' (' + commit.get('sha') + ')');
+            $(elm).find('td:nth(1)').html(commit.get('message'));
         }, this);
     },
     loadRoute: function(evt, forward) {
