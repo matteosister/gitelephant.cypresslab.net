@@ -8,10 +8,3 @@
         {% endfor %}
     </ul>
 {% endblock %}
-
-{% block body_js %}
-    {{ parent() }}
-    {% javascripts '@main_js' %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}

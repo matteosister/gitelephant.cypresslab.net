@@ -11,7 +11,7 @@
 
 {% block body_js %}
     {{ parent() }}
-    {% javascripts '@main_js' '@repository_js' %}
+    {% javascripts '@repository_js' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
