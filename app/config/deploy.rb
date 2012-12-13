@@ -31,7 +31,7 @@ set :use_composer, true
 after "deploy", "deploy:cleanup"
 after "deploy", "cypress:permissions"
 before "symfony:assets:install", "cypress:bower"
-after "cypress:bower", "cypress:compass-compile"
+after "cypress:bower", "cypress:compass_compile"
 
 namespace :cypress do
   desc "permissions sul server"
@@ -50,7 +50,7 @@ namespace :cypress do
   end
 
   desc "compass compile"
-  task :compass-compile do
+  task :compass_compile do
     capifony_pretty_print "--> Compiling compass"
     run "cd #{latest_release} && #{php_bin} #{symfony_console} cypress:compass:compile"
 

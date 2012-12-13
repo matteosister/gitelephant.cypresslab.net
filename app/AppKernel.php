@@ -27,7 +27,9 @@ class AppKernel extends Kernel
             new Oryzone\Bundle\BoilerplateBundle\OryzoneBoilerplateBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Cypress\PygmentsBundle\CypressPygmentsBundle(),
-            new Ornicar\GravatarBundle\OrnicarGravatarBundle()
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new Cypress\CompassElephantBundle\CypressCompassElephantBundle(),
+            new Cypress\LessElephantBundle\CypressLessElephantBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -35,8 +37,6 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
-            $bundles[] = new Cypress\CompassElephantBundle\CypressCompassElephantBundle();
-            $bundles[] = new Cypress\LessElephantBundle\CypressLessElephantBundle();
         }
 
         return $bundles;

@@ -1,7 +1,5 @@
 imports:
     - { resource: config.yml }
-    - { resource: bundles/less_elephant.yml }
-    - { resource: bundles/compass_elephant.yml }
 
 framework:
     router:   { resource: "%kernel.root_dir%/config/routing_dev.yml" }
