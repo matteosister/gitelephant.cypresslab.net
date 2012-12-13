@@ -10,26 +10,47 @@
 var repository_view = new RepositoryView({ el: $('.repository') });
 var breadcrumb_view = new BreadcrumbView({ el: $('div.bc') });
 
+var loadTreeObject = function() {
+    var data = manageArguments(arguments);
+    repository_view.loadContent(Routing.generate('ajax_tree_object', data), data.path);
+    breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
+};
+var loadMain = function() {
+    var data = manageArguments(arguments);
+    repository_view.loadContent(Routing.generate('ajax_tree_object', data));
+    breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
+};
+
+var manageArguments = function(args) {
+    var i = 0;
+    if (args.length == 4) {
+        i = 1;
+    }
+    if (args.length == 1) {
+        return {
+            slug: args[0]
+        };
+    }
+    if (args.length == 2) {
+        return {
+            slug: args[1]
+        };
+    }
+    return {
+        slug: args[i],
+        ref: args[i+1],
+        path: args[i+2]
+    };
+}
+
 var app_router = new AppRouter;
-app_router.on('route:treeObject', function (slug, ref, path) {
-    repository_view.loadContent(Routing.generate('ajax_tree_object', {
-        slug: slug,
-        ref: ref,
-        path: path
-    }), path);
-    breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', {
-        slug: slug,
-        ref: ref,
-        path: path
-    }));
+app_router.on('route:treeObject', loadTreeObject);
+app_router.on('route:treeObjectController', loadTreeObject);
+app_router.on('route:main', function(slug) {
+    loadMain(slug);
 });
-app_router.on('route:main', function (slug) {
-    repository_view.loadContent(Routing.generate('ajax_tree_object', {
-        slug: slug
-    }));
-    breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', {
-        slug: slug
-    }));
+app_router.on('route:mainController', function(controller, slug) {
+    loadMain(slug);
 });
 
 Backbone.history.start({

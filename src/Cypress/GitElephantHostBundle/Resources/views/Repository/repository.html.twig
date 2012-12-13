@@ -9,6 +9,14 @@
     </div>
 {% endblock %}
 
+{% block branches %}
+    <ul class="dropdown-menu">
+        {% for branch in repository.branches %}
+            <li><a href="{{ path('repository', { slug: repository.slug }) }}">{{ repository }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
 {% block body_js %}
     {{ parent() }}
     {% javascripts '@repository_js' %}

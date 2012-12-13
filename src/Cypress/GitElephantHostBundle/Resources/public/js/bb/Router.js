@@ -9,7 +9,9 @@
 var AppRouter = Backbone.Router.extend({
     routes: {
         ":slug/tree/:ref/*path": "treeObject",
-        ":slug": "main"
+        ":controller/:slug/tree/:ref/*path": "treeObjectController",
+        ":slug": "main",
+        ":controller/:slug": "mainController"
     }
 });
 

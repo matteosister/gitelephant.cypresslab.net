@@ -73,7 +73,7 @@ var RepositoryView = Backbone.View.extend({
                         .css('left', from)
                         .animate({
                             'left': to
-                        }, 200);
+                        }, 0);
                     this.loadCommits();
                 }
             });
