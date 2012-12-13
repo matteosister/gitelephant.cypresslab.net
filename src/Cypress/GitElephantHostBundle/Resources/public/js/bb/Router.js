@@ -39,4 +39,5 @@ app_router.on('route:main', function (controller, slug) {
     }));
 });
 
-Backbone.history.start({pushState: true});
+//Backbone.history.start({pushState: true});
+Backbone.history.start({});
