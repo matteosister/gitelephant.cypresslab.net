@@ -46,7 +46,7 @@ assetic:
             inputs:
                 - bundles/cypressgitelephanthost/components/jquery/jquery.js
                 - bundles/cypressgitelephanthost/bootstrap/js/bootstrap-dropdown.js
-            filters: [?uglifyjs]
+            #filters: [?uglifyjs]
         repository_js:
             inputs:
                 - bundles/cypressgitelephanthost/components/underscore/underscore.js
@@ -59,7 +59,7 @@ assetic:
                 - bundles/cypressgitelephanthost/js/bb/CommitCollection.js
                 - bundles/cypressgitelephanthost/js/bb/RepositoryView.js
                 - bundles/cypressgitelephanthost/js/bb/BreadcrumbView.js
-            filters: [?uglifyjs]
+            #filters: [?uglifyjs]
 
 # Doctrine Configuration
 doctrine:
