@@ -3,16 +3,16 @@
     "packages": [
         {
             "name": "cypresslab/compass-elephant",
-            "version": "0.2.8",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matteosister/CompassElephant",
-                "reference": "0.2.8"
+                "reference": "v0.2.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/matteosister/CompassElephant/zipball/0.2.8",
-                "reference": "0.2.8",
+                "url": "https://github.com/matteosister/CompassElephant/archive/v0.2.10.zip",
+                "reference": "v0.2.10",
                 "shasum": ""
             },
             "require": {
@@ -20,7 +20,7 @@
                 "symfony/process": "2.1.*",
                 "symfony/finder": "2.1.*"
             },
-            "time": "2012-10-20 12:51:41",
+            "time": "2012-12-11 14:11:27",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -55,19 +55,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/matteosister/CompassElephantBundle",
-                "reference": "896c37abc008010c3564e142d09c6000c2cce1ad"
+                "reference": "7a1318b04261c1147f064bc23e21450de8c1775a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/matteosister/CompassElephantBundle/archive/896c37abc008010c3564e142d09c6000c2cce1ad.zip",
-                "reference": "896c37abc008010c3564e142d09c6000c2cce1ad",
+                "url": "https://github.com/matteosister/CompassElephantBundle/archive/7a1318b04261c1147f064bc23e21450de8c1775a.zip",
+                "reference": "7a1318b04261c1147f064bc23e21450de8c1775a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "cypresslab/compass-elephant": "0.2.*"
             },
-            "time": "2012-10-22 11:36:17",
+            "time": "2012-12-11 16:00:14",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -75,6 +75,7 @@
                     "Cypress\\CompassElephantBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL3"
             ],
@@ -709,12 +710,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMongoDBBundle.git",
-                "reference": "273eec99d3176a0673f63f4c5268b677c207efe6"
+                "reference": "268ed89e6b5f1b9e12fb576da3acc5a9ef124fe8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/DoctrineMongoDBBundle/archive/273eec99d3176a0673f63f4c5268b677c207efe6.zip",
-                "reference": "273eec99d3176a0673f63f4c5268b677c207efe6",
+                "url": "https://github.com/doctrine/DoctrineMongoDBBundle/archive/268ed89e6b5f1b9e12fb576da3acc5a9ef124fe8.zip",
+                "reference": "268ed89e6b5f1b9e12fb576da3acc5a9ef124fe8",
                 "shasum": ""
             },
             "require": {
@@ -731,7 +732,7 @@
             "suggest": {
                 "doctrine/data-fixtures": "Load data fixtures"
             },
-            "time": "2012-11-06 21:14:36",
+            "time": "2012-12-12 20:58:02",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -744,6 +745,7 @@
                     "Doctrine\\Bundle\\MongoDBBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1263,12 +1265,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/kriswallsmith/assetic.git",
-                "reference": "deed96bb7ba009d8e05aaeeb1b73c1d67a8f3719"
+                "reference": "cec1723d54ea9961274cb72e8b53e9b482002c8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kriswallsmith/assetic/archive/deed96bb7ba009d8e05aaeeb1b73c1d67a8f3719.zip",
-                "reference": "deed96bb7ba009d8e05aaeeb1b73c1d67a8f3719",
+                "url": "https://github.com/kriswallsmith/assetic/archive/cec1723d54ea9961274cb72e8b53e9b482002c8a.zip",
+                "reference": "cec1723d54ea9961274cb72e8b53e9b482002c8a",
                 "shasum": ""
             },
             "require": {
@@ -1289,7 +1291,7 @@
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
             },
-            "time": "2012-11-27 13:27:38",
+            "time": "2012-12-12 17:18:34",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1305,6 +1307,7 @@
                     "src/functions.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1745,12 +1748,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle",
-                "reference": "30d3841dc9643d352503a72f3cdf93d193c439d2"
+                "reference": "06c0f4f4d68dc26a020cb22cdba282c493d65429"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/AsseticBundle/archive/30d3841dc9643d352503a72f3cdf93d193c439d2.zip",
-                "reference": "30d3841dc9643d352503a72f3cdf93d193c439d2",
+                "url": "https://github.com/symfony/AsseticBundle/archive/06c0f4f4d68dc26a020cb22cdba282c493d65429.zip",
+                "reference": "06c0f4f4d68dc26a020cb22cdba282c493d65429",
                 "shasum": ""
             },
             "require": {
@@ -1770,7 +1773,7 @@
             "suggest": {
                 "symfony/twig-bundle": ">=2.1.0,<2.3-dev"
             },
-            "time": "2012-11-07 10:47:48",
+            "time": "2012-12-12 17:56:09",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1783,6 +1786,7 @@
                     "Symfony\\Bundle\\AsseticBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1917,12 +1921,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "7f3be5c49d11ddc226c070b2507a4302ed544237"
+                "reference": "e0cefd7f7e8457a99850f3b62a612d1918be3c08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/7f3be5c49d11ddc226c070b2507a4302ed544237.zip",
-                "reference": "7f3be5c49d11ddc226c070b2507a4302ed544237",
+                "url": "https://github.com/symfony/symfony/archive/e0cefd7f7e8457a99850f3b62a612d1918be3c08.zip",
+                "reference": "e0cefd7f7e8457a99850f3b62a612d1918be3c08",
                 "shasum": ""
             },
             "require": {
@@ -1971,7 +1975,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-12-11 10:40:22",
+            "time": "2012-12-12 17:17:17",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -2053,18 +2057,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "b22c076fc2eee4ba641b7ec20d3f3023da290ef0"
+                "reference": "2757f482c679aa00bb8c7fdfcb337f2bb922fa5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/b22c076fc2eee4ba641b7ec20d3f3023da290ef0.zip",
-                "reference": "b22c076fc2eee4ba641b7ec20d3f3023da290ef0",
+                "url": "https://github.com/fabpot/Twig/archive/2757f482c679aa00bb8c7fdfcb337f2bb922fa5a.zip",
+                "reference": "2757f482c679aa00bb8c7fdfcb337f2bb922fa5a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-11 11:12:31",
+            "time": "2012-12-11 14:30:16",
             "type": "library",
             "extra": {
                 "branch-alias": {
