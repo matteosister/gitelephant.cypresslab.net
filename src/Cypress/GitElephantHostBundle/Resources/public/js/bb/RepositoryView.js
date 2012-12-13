@@ -57,7 +57,6 @@ var RepositoryView = Backbone.View.extend({
             this.adjustHeight();
             this.loadCommits();
         } else {
-            console.log('siii');
             $.ajax({
                 url: url,
                 context: this,
@@ -147,6 +146,4 @@ var RepositoryView = Backbone.View.extend({
         this.adjustHeight();
     }
 });
-
-var repository_view = new RepositoryView({ el: $('.repository') });
 

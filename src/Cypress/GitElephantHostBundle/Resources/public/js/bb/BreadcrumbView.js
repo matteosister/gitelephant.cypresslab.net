@@ -24,5 +24,3 @@ var BreadcrumbView = Backbone.View.extend({
         });
     }
 });
-
-var breadcrumb_view = new BreadcrumbView({ el: $('div.bc') });
