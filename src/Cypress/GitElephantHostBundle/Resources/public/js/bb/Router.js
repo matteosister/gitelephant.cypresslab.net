@@ -27,6 +27,7 @@ app_router.on('route:treeObject', function (controller, slug, ref, path) {
         ref: ref,
         path: path
     }));
+    console.log('router on');
 });
 
 app_router.on('route:main', function (controller, slug) {
