@@ -1,5 +1,5 @@
 set :application, "GitElephantHost"
-set :domain,      "cypress"
+set :domain,      "root@cypress"
 set :deploy_to,   "/var/www/ge"
 set :app_path,    "app"
 
@@ -10,6 +10,8 @@ set :git_enable_submodules, 1
 set :deploy_via,  :rsync_with_remote_cache
 
 #ssh_options[:port] = "22123"
+ssh_options[:forward_agent] = true
+set :user, "www-data"
 
 set :model_manager, "doctrine"
 # Or: `propel`
