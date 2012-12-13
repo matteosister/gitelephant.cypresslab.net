@@ -52,7 +52,7 @@ namespace :cypress do
   desc "compass compile"
   task :compass_compile do
     capifony_pretty_print "--> Compiling compass"
-    run "cd #{latest_release} && #{php_bin} #{symfony_console} cypress:compass:compile"
+    run "cd #{latest_release} && #{php_bin} #{symfony_console} --env=#{symfony_env_prod} cypress:compass:compile"
 
     capifony_puts_ok
   end
