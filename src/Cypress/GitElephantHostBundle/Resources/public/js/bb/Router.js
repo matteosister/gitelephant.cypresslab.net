@@ -14,9 +14,9 @@ var AppRouter = Backbone.Router.extend({
 });
 
 var app_router = new AppRouter;
-Backbone.history.start({pushState: true});
 
 app_router.on('route:treeObject', function (controller, slug, ref, path) {
+    alert('route: treeObject');
     repository_view.loadContent(Routing.generate('ajax_tree_object', {
         slug: slug,
         ref: ref,
@@ -27,10 +27,10 @@ app_router.on('route:treeObject', function (controller, slug, ref, path) {
         ref: ref,
         path: path
     }));
-    console.log('router on');
 });
 
 app_router.on('route:main', function (controller, slug) {
+    alert('route: main');
     repository_view.loadContent(Routing.generate('ajax_tree_object', {
         slug: slug
     }));
@@ -38,3 +38,5 @@ app_router.on('route:main', function (controller, slug) {
         slug: slug
     }));
 });
+
+Backbone.history.start({pushState: true});
