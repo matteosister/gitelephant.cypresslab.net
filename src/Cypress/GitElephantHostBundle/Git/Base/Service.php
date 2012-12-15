@@ -27,15 +27,24 @@ class Service
     protected $objectManager;
 
     /**
-     * @return \Cypress\GitElephantHostBundle\Document\Repository
+     * @var \Cypress\GitElephantHostBundle\Entity\Repository
+     */
+    private $repository;
+
+    /**
+     * @return \Cypress\GitElephantHostBundle\Entity\Repository
      */
     protected function getRepository()
     {
-        return $this->objectManager
-            ->getRepository('CypressGitElephantHostBundle:Repository')
-            ->findOneBy(array(
-                'slug' => $this->request->attributes->get('slug')
-            ));
+        if (null === $this->repository) {
+            $this->repository = $this->objectManager
+                ->getRepository('CypressGitElephantHostBundle:Repository')
+                ->findOneBy(array(
+                    'slug' => $this->request->attributes->get('slug')
+                ));
+        }
+
+        return $this->repository;
     }
 
     /**

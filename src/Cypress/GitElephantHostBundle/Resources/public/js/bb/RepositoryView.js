@@ -119,7 +119,10 @@ var RepositoryView = Backbone.View.extend({
         if (0 == commits.length) {
             return;
         }
-        var url = Routing.generate('commits_info', { slug: this.$el.data().slug });
+        var url = Routing.generate('commits_info', {
+            slug: this.$el.data().slug,
+            ref: this.$el.data().ref
+        });
         if (this.commitCollection.addCommits(url, commits)) {
             this.getSpinnerCommitsDomObject().spin(spinnerOptsSmall);
         } else {

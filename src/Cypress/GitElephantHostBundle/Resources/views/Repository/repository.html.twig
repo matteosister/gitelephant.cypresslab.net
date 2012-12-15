@@ -1,10 +1,34 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
 
 {% block body_container_main %}
+    <div class="row-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active branches">
+                <div class="btn-group">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="icon icon-leaf"></i> {{ ref }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for branch in repository.git.branches %}
+                            {% if 'master' == branch.name %}
+                                <li><a href="{{ path('repository', { slug: slug }) }}">{{ branch.name }}</a></li>
+                            {% else %}
+                                <li><a href="{{ path('tree_object', { slug: slug, ref: branch.name }) }}">{{ branch.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            <li class="active">
+                <a href="{{ path('repository', { slug: slug }) }}">Code</a>
+            </li>
+        </ul>
+    </div>
     <div class="bc">
         {% render "CypressGitElephantHostBundle:Repository:breadcrumb" with {slug: slug, ref: ref, path: path} %}
     </div>
-    <div class="repository row-fluid" data-slug="{{ repository.slug }}">
+    <div class="repository row-fluid" data-slug="{{ repository.slug }}" data-ref="{{ ref }}">
         {% render "CypressGitElephantHostBundle:Repository:tree" with {slug: slug, ref: ref, path: path} %}
     </div>
 {% endblock %}

@@ -74,7 +74,8 @@ class RepositoryController extends BaseController
      * @param string $ref  actual reference
      * @param string $path actual path
      *
-     * @Route("/{slug}/tree/{ref}/{path}", name="tree_object", requirements={"path" = ".+"})
+     * @Route("/{slug}/tree/{ref}/{path}", name="tree_object",
+     *   requirements={"ref" = ".+", "path" = ".+"}, defaults={"path" = ""})
      * @Template("CypressGitElephantHostBundle:Repository:repository.html.twig")
      *
      * @return array
@@ -82,42 +83,39 @@ class RepositoryController extends BaseController
     public function treeObjectAction($slug, $ref, $path)
     {
         $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+        $parts = $this->get('ref_path.splitter')->split($repository->getGit(), $ref, $path);
+        $ref = $parts[0];
+        $path = $parts[1];
 
         return compact('repository', 'slug', 'ref', 'path');
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request request
-     * @param string                                    $slug    repository slug
-     * @param string                                    $ref     reference
-     * @param string                                    $path    path
+     * tree action
+     *
+     * @param string $slug repository slug
+     * @param string $ref  reference
+     * @param string $path path
      *
      * @Template("CypressGitElephantHostBundle:Repository:tree.html.twig")
      * @Route("/{slug}/ajax/tree/{ref}/{path}", name="ajax_tree_object",
-     *   requirements={"path" = ".+"},
+     *   requirements={"ref" = ".+", "path" = ".+"},
      *   options={"expose"=true},
      *   defaults={"ref"="master", "path"=""}
      * )
      *
      * @return array
      */
-    public function treeAction(Request $request, $slug, $ref, $path)
+    public function treeAction($slug, $ref, $path)
     {
         $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
+        $parts = $this->get('ref_path.splitter')->split($git, $ref, $path);
+        $ref = $parts[0];
+        $path = $parts[1];
         $tree = $git->getTree($ref, $path);
 
         return compact('git', 'tree', 'ref', 'path', 'slug');
     }
-
-//    public function rawContentAction(Request $request, $slug, $ref, $path)
-//    {
-//        $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
-//        $tree = $git->getTree($ref, $path);
-//        $response = new Response($tree->getBinaryData());
-//        $response->headers->set('content-type', 'image/png');
-//
-//        return $response;
-//    }
 
     /**
      * @param string $slug repository slug
@@ -126,7 +124,7 @@ class RepositoryController extends BaseController
      *
      * @Template("CypressGitElephantHostBundle:Repository:breadcrumb.html.twig")
      * @Route("/{slug}/ajax/breadcrumb/{ref}/{path}", name="ajax_breadcrumb",
-     *   requirements={"path" = ".+"},
+     *   requirements={"ref" = ".+", "path" = ".+"},
      *   options={"expose"=true},
      *   defaults={"ref"="master", "path"=""}
      * )
@@ -136,6 +134,9 @@ class RepositoryController extends BaseController
     public function breadcrumbAction($slug, $ref, $path)
     {
         $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+        $parts = $this->get('ref_path.splitter')->split($repository->getGit(), $ref, $path);
+        $ref = $parts[0];
+        $path = $parts[1];
 
         return compact('repository', 'ref', 'path');
     }

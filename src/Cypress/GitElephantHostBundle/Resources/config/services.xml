@@ -15,6 +15,7 @@
             <!--<argument type="service" id="doctrine_mongodb.odm.document_manager" />-->
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="router" />
+            <argument type="service" id="ref_path.splitter" />
         </service>
 
         <service id="cypress.git_elephant_host.git_content" class="Cypress\GitElephantHostBundle\Git\Content" scope="request">

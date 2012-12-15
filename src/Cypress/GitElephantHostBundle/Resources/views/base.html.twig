@@ -11,8 +11,11 @@
     <link rel="stylesheet" type="text/css" href="{{ path('pygments_bundle_style') }}" />
 {% endblock %}
 
-{% block body_container_header %}
-    {% render "CypressGitElephantHostBundle:Home:header" with { standalone: true } %}
+{% block body_container %}
+    <div class="container-fluid">
+        {% render "CypressGitElephantHostBundle:Home:header" with { standalone: true } %}
+        {% block body_container_main %}{% endblock %}
+    </div>
 {% endblock %}
 
 {% block body_js_jquery %}{% endblock %}

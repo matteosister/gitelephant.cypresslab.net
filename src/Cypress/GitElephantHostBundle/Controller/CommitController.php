@@ -50,25 +50,26 @@ class CommitController extends BaseController
      *
      * @param \Symfony\Component\HttpFoundation\Request $request request
      * @param string                                    $slug    repository slug
+     * @param string                                    $ref     reference
      *
      * @internal param string $slug slug
      *
-     * @Route("/{slug}/ajax/commits.{_format}", name="commits_info",
-     *   requirements={"_method"="post"},
+     * @Route("/{slug}/ajax/{ref}/commits.{_format}", name="commits_info",
+     *   requirements={"_method"="post", "ref" = ".+"},
      *   options={"expose"=true},
      *   defaults={"ref"="master", "_format"="json"}
      * )
      *
      * @return array
      */
-    public function commitInfoAction(Request $request, $slug)
+    public function commitInfoAction(Request $request, $slug, $ref)
     {
         //sleep(10);
         $output = array();
         $git = $this->getGit($slug);
         $data = json_decode($request->getContent());
         foreach ($data as $i => $commit) {
-            $log = $git->getLog('master', $commit->path, 1);
+            $log = $git->getLog($ref, $commit->path, 1);
             $lastCommit = $log[0];
             $output[$i]['sha'] = $lastCommit->getSha();
             $output[$i]['path'] = $commit->path;
