@@ -1,5 +1,7 @@
 {% extends "OryzoneBoilerplateBundle::html5.html.twig" %}
 
+{% block head_title %}GitElephant{% endblock %}
+
 {% block head_css %}
     {{ parent() }}
     {% stylesheets filter="cssrewrite,?uglifycss" output="css/compiled/all.css"

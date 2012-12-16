@@ -12,6 +12,7 @@ namespace Cypress\GitElephantHostBundle\Twig;
 use GitElephant\Objects\TreeObject;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use GitElephant\Repository;
+use GitElephant\Objects\TreeishInterface;
 
 class CypressGitElephantHostExtension extends \Twig_Extension
 {
@@ -52,7 +53,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     {
         return array(
             'link_parent' => new \Twig_Function_Method($this, 'linkParent'),
-            'output_content' => new \Twig_Function_Method($this, 'outputContent', array('is_safe' => array('html')))
+            'output_content' => new \Twig_Function_Method($this, 'outputContent', array('is_safe' => array('html'))),
+            'icon_for' => new \Twig_Function_Method($this, 'iconFor', array('is_safe' => array('html')))
         );
     }
 
@@ -88,6 +90,25 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     public function outputContent(TreeObject $treeObject)
     {
         return $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject);
+    }
+
+    /**
+     * html for an icon (branch or tag)
+     *
+     * @param TreeishInterface $obj object
+     *
+     * @return string
+     */
+    public function iconFor($obj)
+    {
+        if (is_a($obj, 'GitElephant\Objects\TreeBranch')) {
+            return '<i class="icon icon-leaf"></i>';
+        }
+        if (is_a($obj, 'GitElephant\Objects\TreeTag')) {
+            return '<i class="icon icon-tag"></i>';
+        }
+
+        return '';
     }
 
     /**

@@ -16,6 +16,7 @@ use Cypress\GitElephantHostBundle\Form\RepositoryType;
 use Cypress\GitElephantHostBundle\Entity\Repository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Repository controller
@@ -62,6 +63,11 @@ class RepositoryController extends BaseController
     {
         $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
         $ref = 'master';
+        if (null === $repository->getGit()->getBranchOrTag($ref)) {
+            $ref = $repository->getGit()->getMainBranch()->getName();
+
+            return new RedirectResponse($this->generateUrl('tree_object', array('slug' => $slug, 'ref' => $ref)));
+        }
         $path = '';
 
         return compact('repository', 'slug', 'ref', 'path');
