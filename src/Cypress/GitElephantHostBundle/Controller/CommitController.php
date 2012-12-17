@@ -22,6 +22,28 @@ use GitElephant\Objects\TreeObject;
 class CommitController extends BaseController
 {
     /**
+     * single commit
+     *
+     * @param string $slug slug
+     * @param string $sha  commit sha
+     *
+     * @return array
+     *
+     * @Route("/{slug}/commit/{sha}", name="commit")
+     * @Template
+     *
+     * @return array
+     */
+    public function commitAction($slug, $sha)
+    {
+        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+        $git = $repository->getGit($slug);
+        $commit = $git->getCommit($sha);
+
+        return compact('slug', 'repository', 'git', 'commit');
+    }
+
+    /**
      * commits
      *
      * @param string $slug slug
@@ -39,10 +61,10 @@ class CommitController extends BaseController
      */
     public function commitsAction($slug)
     {
-        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
-        $commits = $repository->getGit()->getLog();
+        $repository = $this->getGit($slug);
+        $commits = $repository->getLog();
 
-        return compact('commits');
+        return compact('slug', 'commits');
     }
 
     /**
@@ -74,6 +96,7 @@ class CommitController extends BaseController
             $output[$i]['sha'] = $lastCommit->getSha();
             $output[$i]['path'] = $commit->path;
             $output[$i]['message'] = $lastCommit->getMessage()->toString();
+            $output[$i]['url'] = $this->generateUrl('commit', array('slug' => $slug, 'sha' => $lastCommit->getSha()));
         }
         $r = new Response(json_encode($output));
 

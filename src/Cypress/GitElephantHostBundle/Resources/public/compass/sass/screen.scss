@@ -19,6 +19,9 @@ pre {
     border: none !important;
     margin: 0;
     border-radius: 0 !important;
+    &.line {
+        padding: 0 0 0 1em;
+    }
 }
 
 table.highlighttable {

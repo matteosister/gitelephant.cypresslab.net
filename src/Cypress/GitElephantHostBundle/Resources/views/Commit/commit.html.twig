@@ -1,0 +1,32 @@
+{% extends "CypressGitElephantHostBundle::base.html.twig" %}
+
+{% block head_title %}{{ commit.message }} - {{ commit.sha(true) }} - {{ parent() }}{% endblock %}
+
+{% block body_container_main %}
+    <div class="row-fluid">
+        {% include "CypressGitElephantHostBundle:Repository:tabs.html.twig" with { branch_tag_selector: false, selected: 'commits' } %}
+    </div>
+    {#<div class="repository row-fluid" data-slug="{{ repository.slug }}" data-ref="{{ ref }}">#}
+        {#{% render "CypressGitElephantHostBundle:Repository:tree" with {slug: slug, ref: ref, path: path} %}#}
+    {#</div>#}
+    <div class="repository row-fluid">
+        {% for diffObject in git.diff(commit) %}
+            <header>{{ diffObject }}</header>
+            <table>
+            {% for diffChunk in diffObject %}
+                {% set content = output_chunk(diffChunk) %}
+                {% for diffChunkLine in diffChunk %}
+                    <tr>
+                        <td>{{ diffChunkLine.originNumber }}</td>
+                        <td>{{ diffChunkLine.destNumber }}</td>
+                        <td><pre class="line">{{ diffChunkLine }}</pre></td>
+                        {#{% if loop.first %}#}
+                            {#<td rowspan="{{ diffChunk|length }}"><pre>{{ output_chunk(diffChunk) }}</pre></td>#}
+                        {#{% endif %}#}
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </table>
+        {% endfor %}
+    </div>
+{% endblock %}

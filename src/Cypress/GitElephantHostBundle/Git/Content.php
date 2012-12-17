@@ -16,6 +16,8 @@ use GitElephant\Objects\TreeObject;
 use PygmentsElephant\Pygmentize;
 use Symfony\Component\Filesystem\Filesystem;
 use Doctrine\Common\Persistence\ObjectManager;
+use GitElephant\Objects\Diff\DiffChunkLine;
+use GitElephant\Objects\Diff\DiffChunk;
 
 /**
  * Git Content
@@ -57,5 +59,18 @@ class Content extends Service
         $rawContent = implode("\n", $this->getGit()->outputContent($treeObject, 'HEAD'));
 
         return $this->pygmentize->format($rawContent, $treeObject->getName());
+    }
+
+    /**
+     * output git DiffChunkLine content
+     *
+     * @param \GitElephant\Objects\Diff\DiffChunk $diffChunk
+     *
+     * @return string
+     */
+    public function outputChunk(DiffChunk $diffChunk)
+    {
+        //var_dump($diffChunkLine);
+        return implode($diffChunk->getLines(), "\n");
     }
 }

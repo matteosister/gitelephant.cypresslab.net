@@ -4,7 +4,7 @@
 
 {% block body_container_main %}
     <div class="row-fluid">
-        {% include "CypressGitElephantHostBundle:Repository:tabs.html.twig" %}
+        {% include "CypressGitElephantHostBundle:Repository:tabs.html.twig" with { selected: 'code' } %}
     </div>
     <div class="bc">
         {% render "CypressGitElephantHostBundle:Repository:breadcrumb" with {slug: slug, ref: ref, path: path} %}

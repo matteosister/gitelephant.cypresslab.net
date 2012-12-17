@@ -13,6 +13,8 @@ use GitElephant\Objects\TreeObject;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use GitElephant\Repository;
 use GitElephant\Objects\TreeishInterface;
+use GitElephant\Objects\Diff\DiffChunkLine;
+use GitElephant\Objects\Diff\DiffChunk;
 
 class CypressGitElephantHostExtension extends \Twig_Extension
 {
@@ -54,6 +56,7 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         return array(
             'link_parent' => new \Twig_Function_Method($this, 'linkParent'),
             'output_content' => new \Twig_Function_Method($this, 'outputContent', array('is_safe' => array('html'))),
+            'output_chunk' => new \Twig_Function_Method($this, 'outputChunk', array('is_safe' => array('html'))),
             'icon_for' => new \Twig_Function_Method($this, 'iconFor', array('is_safe' => array('html')))
         );
     }
@@ -90,6 +93,18 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     public function outputContent(TreeObject $treeObject)
     {
         return $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject);
+    }
+
+    /**
+     * output a line
+     *
+     * @param \GitElephant\Objects\Diff\DiffChunk $diffChunk diff chunk
+     *
+     * @return mixed
+     */
+    public function outputChunk(DiffChunk $diffChunk)
+    {
+        return $this->container->get('cypress.git_elephant_host.git_content')->outputChunk($diffChunk);
     }
 
     /**
