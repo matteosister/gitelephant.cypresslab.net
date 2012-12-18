@@ -3,7 +3,7 @@
         <a href="{{ path('commit', { slug: slug, sha: tree.getLastCommit(ref).sha }) }}">{{ tree.getLastCommitMessage(ref) }}</a>
     </header>
     <div class="content">
-        <table class="table table-hover table-condensed {{ tree.blob ? 'content' : 'table-striped tree' }}">
+        <table class="table table-condensed {{ tree.blob ? 'content' : 'table-striped tree' }}">
             {% if tree.blob %}
                 <tr class="content" data-commitid="{{ tree.blob.sha }}" data-path="{{ tree.blob.fullPath }}" data-type="content">
                     <td colspan="2">{{ output_content(tree.blob)|raw }}</td>
@@ -12,14 +12,18 @@
                 {% for treeObject in tree %}
                     <tr class="git {{ treeObject.type }}" data-commitid="{{ treeObject.sha }}" data-path="{{ treeObject.fullPath }}" data-type="{{ treeObject.type }}">
                         <td>
-                            {% if 'tree' == treeObject.type %}
-                                <i class="icon-folder-close"></i>
-                            {% elseif 'blob' == treeObject.type %}
-                                <i class="icon-file"></i>
-                            {% endif %}
-                            <a class="tree-object" href="{{ treeObject|link_tree_object }}">{{ treeObject }}</a>
+                            {% spaceless %}
+                            <a class="tree-object" href="{{ treeObject|link_tree_object }}">
+                                {%- if 'tree' == treeObject.type -%}
+                                    <i class="icon-folder-close"></i>
+                                {%- elseif 'blob' == treeObject.type -%}
+                                    <i class="icon-file"></i>
+                                {%- endif -%}
+                                {{- treeObject -}}
+                            </a>
+                            {% endspaceless %}
                         </td>
-                        <td></td>
+                        <td class="commit"></td>
                     </tr>
                 {% endfor %}
             {% endif %}

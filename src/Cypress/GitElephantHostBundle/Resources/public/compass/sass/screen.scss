@@ -4,6 +4,8 @@ $unchanged: #F5F5F5;
 $deleted: #FFDDDD;
 $added: #DDFFDD;
 $header: #EAF2F5;
+$links: #a8681b;
+$linksHover: #e38f21;
 
 @import "compass/css3/border-radius";
 @import "compass/css3/images";
@@ -19,6 +21,12 @@ $header: #EAF2F5;
 
 .repository.loading a.tree-object {
     color: $disabled;
+}
+
+a.tree-object {
+    i {
+        padding-right: 2px;
+    }
 }
 
 pre {
@@ -78,6 +86,12 @@ tr.blob td:hover {
     }
     .content {
         overflow: auto;
+    }
+    td.commit {
+        width: 80%;
+        a {
+            color: #999;
+        }
     }
 }
 
@@ -156,7 +170,7 @@ table {
     }
 }
 
-.commit {
+.commit-box {
     margin-bottom: 1em;
     background-color: $header;
     @include border-radius(5px);

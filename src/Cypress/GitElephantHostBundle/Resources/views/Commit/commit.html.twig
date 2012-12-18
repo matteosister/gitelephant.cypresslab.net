@@ -7,7 +7,7 @@
         {% include "CypressGitElephantHostBundle:Repository:tabs.html.twig" with { branch_tag_selector: false, selected: 'commits' } %}
     </div>
     <div class="row-fluid">
-        <div class="commit">
+        <div class="commit-box">
             <img src="{{ gravatar(commit.author.email) }}" title="{{ commit.author.name }}" />
             {{ commit.message }}
         </div>
