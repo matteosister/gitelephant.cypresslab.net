@@ -6,27 +6,43 @@
     <div class="row-fluid">
         {% include "CypressGitElephantHostBundle:Repository:tabs.html.twig" with { branch_tag_selector: false, selected: 'commits' } %}
     </div>
-    {#<div class="repository row-fluid" data-slug="{{ repository.slug }}" data-ref="{{ ref }}">#}
-        {#{% render "CypressGitElephantHostBundle:Repository:tree" with {slug: slug, ref: ref, path: path} %}#}
-    {#</div>#}
+    <div class="row-fluid">
+        <div class="commit">
+            <img src="{{ gravatar(commit.author.email) }}" title="{{ commit.author.name }}" />
+            {{ commit.message }}
+        </div>
+    </div>
     <div class="repository row-fluid">
         {% for diffObject in git.diff(commit) %}
-            <header>{{ diffObject }}</header>
-            <table>
-            {% for diffChunk in diffObject %}
-                {% set content = output_chunk(diffChunk) %}
-                {% for diffChunkLine in diffChunk %}
-                    <tr>
-                        <td>{{ diffChunkLine.originNumber }}</td>
-                        <td>{{ diffChunkLine.destNumber }}</td>
-                        <td><pre class="line">{{ diffChunkLine }}</pre></td>
-                        {#{% if loop.first %}#}
-                            {#<td rowspan="{{ diffChunk|length }}"><pre>{{ output_chunk(diffChunk) }}</pre></td>#}
-                        {#{% endif %}#}
-                    </tr>
+        <div class="content">
+            <table class="diff">
+                <tr>
+                    <th class="diff-file {{ loop.first ? 'first' : '' }}" colspan="3">{{ diffObject }}</th>
+                </tr>
+                {% for diffChunk in diffObject %}
+                    {% set content = output_chunk(diffChunk) %}
+                    {% for diffChunkLine in diffChunk %}
+                        {% if loop.first %}
+                            <tr>
+                                <td class="ln">...</td>
+                                <td class="ln dest">...</td>
+                                <td class="header">{{ diffChunk.getHeaderLine }}</td>
+                            </tr>
+                        {% endif %}
+                        <tr>
+                            <td class="ln">{{ diffChunkLine.originNumber }}</td>
+                            <td class="ln dest">{{ diffChunkLine.destNumber }}</td>
+                            <td class="code {{ diffChunkLine.type }}">
+                                <pre class="line">{{ diffChunkLine }}</pre>
+                            </td>
+                            {#{% if loop.first %}#}
+                                {#<td rowspan="{{ diffChunk|length }}"><pre>{{ output_chunk(diffChunk) }}</pre></td>#}
+                            {#{% endif %}#}
+                        </tr>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
             </table>
+        </div>
         {% endfor %}
     </div>
 {% endblock %}

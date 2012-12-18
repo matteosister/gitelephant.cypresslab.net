@@ -6,7 +6,7 @@
     </div>
     <ul>
     {% for commit in commits %}
-        <li>{{ commit.message }} ({{ commit.sha }})</li>
+        <li><a href="{{ path('commit', { slug: slug, sha: commit.sha }) }}">{{ commit.message }}</a></li>
     {% endfor %}
     </ul>
 {% endblock %}

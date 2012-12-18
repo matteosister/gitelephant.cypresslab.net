@@ -1,5 +1,16 @@
 $disabled: #CCC;
 $green: #46a546;
+$unchanged: #F5F5F5;
+$deleted: #FFDDDD;
+$added: #DDFFDD;
+$header: #EAF2F5;
+
+@import "compass/css3/border-radius";
+@import "compass/css3/images";
+
+@mixin code {
+    font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+}
 
 #container {
     width: 80%;
@@ -80,6 +91,76 @@ table {
             padding: 0;
         }
     }
+    &.diff {
+        width: 100%;
+        td {
+            &.code {
+                width: 100%;
+            }
+            &.ln {
+                padding: 0 6px;
+                background-color: #EEE;
+                color: #333;
+                font-size: 0.85em;
+                text-align: center;
+                @include code;
+                &.dest {
+                    border-left: 1px solid #DDD;
+                    border-right: 1px solid #DDD;
+                }
+            }
+            &.header {
+                padding: 0 0 0 1em;
+                color: #999;
+                background-color: $header;
+            }
+        }
+        .code {
+            &.unchanged {
+                background-color: $unchanged !important;
+            }
+            &.deleted {
+                pre {
+                    position: relative;
+                    &:before {
+                        content: '-';
+                        position: absolute;
+                        left: 2px;
+                    }
+                }
+                background-color: $deleted !important;
+            }
+            &.added {
+                pre {
+                    position: relative;
+                    &:before {
+                        content: '+';
+                        position: absolute;
+                        left: 2px;
+                    }
+                }
+                background-color: $added !important;
+            }
+        }
+    }
+    th.diff-file {
+        text-align: left;
+        //background-color: #EEEEEE;
+        @include background(linear-gradient(top, #FEFEFE 5%, #EEE 50%, #FEFEFE 95%));
+        padding: 0.5em 1em;
+        border-bottom: 1px solid #DDD;
+        border-top: 1px solid #DDD;
+        &.first {
+            border-top: none;
+        }
+    }
+}
+
+.commit {
+    margin-bottom: 1em;
+    background-color: $header;
+    @include border-radius(5px);
+    padding: 5px;
 }
 
 .breadcrumb {

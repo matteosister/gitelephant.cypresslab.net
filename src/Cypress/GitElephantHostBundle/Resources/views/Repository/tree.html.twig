@@ -1,5 +1,7 @@
 <section data-path="{{ path }}">
-    <header><img src="{{ gravatar(tree.getLastCommitAuthor(ref).email) }}" title="{{ tree.getLastCommitAuthor(ref).name }}" /> {{ tree.getLastCommitMessage(ref) }}</header>
+    <header><img src="{{ gravatar(tree.getLastCommitAuthor(ref).email) }}" title="{{ tree.getLastCommitAuthor(ref).name }}" />
+        <a href="{{ path('commit', { slug: slug, sha: tree.getLastCommit(ref).sha }) }}">{{ tree.getLastCommitMessage(ref) }}</a>
+    </header>
     <div class="content">
         <table class="table table-hover table-condensed {{ tree.blob ? 'content' : 'table-striped tree' }}">
             {% if tree.blob %}
