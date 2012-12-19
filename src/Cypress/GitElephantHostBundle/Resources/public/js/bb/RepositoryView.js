@@ -12,8 +12,7 @@ var RepositoryView = Backbone.View.extend({
         this.commitCollection = new CommitCollection();
         this.commitCollection.bind('commitsLoaded', this.commitsLoaded, this);
         this.$el
-            .css('overflow', 'hidden')
-            .css('position', 'relative')
+            //.css('overflow', 'auto')
             .addClass('actual')
             .children('section')
             .addClass('actual')
@@ -85,8 +84,8 @@ var RepositoryView = Backbone.View.extend({
         }
     },
     sectionExists: function(path) {
-        var section = _.find(this.$el.find('section.remove'), function(section) {
-            var data = $(section).data('path');
+        var section = _.find(this.$el.find('section'), function(section) {
+            var data = $(section).data();
             if (null != data) {
                 return data.path == path;
             }
@@ -148,7 +147,11 @@ var RepositoryView = Backbone.View.extend({
         this.$el.find('section.remove').hide();
     },
     adjustHeight: function() {
-        this.$el.css('height', this.$el.find('section.actual').innerHeight());
+        if (this.$el.find('section.actual').find('img.binary-content').length > 0) {
+            //this.$el.css('height', this.$el.find('section.actual').find('img.binary-content').height());
+        } else {
+            //this.$el.css('height', this.$el.find('section.actual').innerHeight());
+        }
     },
     finishLoading: function() {
         this.adjustHeight();

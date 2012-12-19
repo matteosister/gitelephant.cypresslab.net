@@ -124,6 +124,37 @@ class RepositoryController extends BaseController
     }
 
     /**
+     * binary tree action
+     *
+     * @param string $slug repository slug
+     * @param string $ref  reference
+     * @param string $path path
+     *
+     * @Template("CypressGitElephantHostBundle:Repository:tree.html.twig")
+     * @Route("/{slug}/ajax/binary-tree/{ref}/{path}", name="ajax_binary_tree_object",
+     *   requirements={"ref" = ".+", "path" = ".+"},
+     *   options={"expose"=true},
+     *   defaults={"ref"="master", "path"=""}
+     * )
+     *
+     * @return Response
+     */
+    public function binaryTreeAction($slug, $ref, $path)
+    {
+        $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
+        $parts = $this->get('ref_path.splitter')->split($git, $ref, $path);
+        $ref = $parts[0];
+        $path = $parts[1];
+        $tree = $git->getTree($ref, $path);
+        $response = new Response();
+        $response->setContent($tree->getBinaryData());
+
+        return $response;
+    }
+
+    /**
+     * breadcrumb render
+     *
      * @param string $slug repository slug
      * @param string $ref  reference
      * @param string $path path

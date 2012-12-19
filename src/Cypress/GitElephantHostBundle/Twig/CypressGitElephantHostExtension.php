@@ -15,6 +15,7 @@ use GitElephant\Repository;
 use GitElephant\Objects\TreeishInterface;
 use GitElephant\Objects\Diff\DiffChunkLine;
 use GitElephant\Objects\Diff\DiffChunk;
+use GitElephant\Objects\Tree;
 
 class CypressGitElephantHostExtension extends \Twig_Extension
 {
@@ -57,7 +58,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
             'link_parent' => new \Twig_Function_Method($this, 'linkParent'),
             'output_content' => new \Twig_Function_Method($this, 'outputContent', array('is_safe' => array('html'))),
             'output_chunk' => new \Twig_Function_Method($this, 'outputChunk', array('is_safe' => array('html'))),
-            'icon_for' => new \Twig_Function_Method($this, 'iconFor', array('is_safe' => array('html')))
+            'icon_for' => new \Twig_Function_Method($this, 'iconFor', array('is_safe' => array('html'))),
+            'is_image' => new \Twig_Function_Method($this, 'isImage', array('is_safe' => array('html')))
         );
     }
 
@@ -124,6 +126,24 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         }
 
         return '';
+    }
+
+    /**
+     * is an image
+     *
+     * @param \GitElephant\Objects\Tree $tree tree
+     */
+    public function isImage(Tree $tree)
+    {
+        if (!$tree->isBinary()) {
+            return false;
+        }
+        $pathInfo = pathinfo($tree->getPath()->getName());
+        if (!isset($pathInfo['extension'])) {
+            return false;
+        }
+
+        return in_array($pathInfo['extension'], array('jpg', 'jpeg', 'png', 'gif'));
     }
 
     /**

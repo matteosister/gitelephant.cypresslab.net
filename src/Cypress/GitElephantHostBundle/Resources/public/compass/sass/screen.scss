@@ -14,6 +14,10 @@ $linksHover: #e38f21;
     font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 }
 
+body {
+    margin-bottom: 2em;
+}
+
 #container {
     width: 80%;
     margin: 1em auto;
@@ -75,9 +79,14 @@ tr.blob td:hover {
 }
 
 .repository {
-    border: 1px solid #DDD;
+    position: relative;
+    //&:after {
+    //    content: "";
+    //    clear: both;
+    //}
     section {
         width: 100%;
+        border: 1px solid #DDD;
     }
     header {
         padding: 0.5em;

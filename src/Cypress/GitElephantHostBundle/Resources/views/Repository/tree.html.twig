@@ -3,30 +3,34 @@
         <a href="{{ path('commit', { slug: slug, sha: tree.getLastCommit(ref).sha }) }}">{{ tree.getLastCommitMessage(ref) }}</a>
     </header>
     <div class="content">
-        <table class="table table-condensed {{ tree.blob ? 'content' : 'table-striped tree' }}">
-            {% if tree.blob %}
-                <tr class="content" data-commitid="{{ tree.blob.sha }}" data-path="{{ tree.blob.fullPath }}" data-type="content">
-                    <td colspan="2">{{ output_content(tree.blob)|raw }}</td>
-                </tr>
-            {% else %}
-                {% for treeObject in tree %}
-                    <tr class="git {{ treeObject.type }}" data-commitid="{{ treeObject.sha }}" data-path="{{ treeObject.fullPath }}" data-type="{{ treeObject.type }}">
-                        <td>
-                            {% spaceless %}
-                            <a class="tree-object" href="{{ treeObject|link_tree_object }}">
-                                {%- if 'tree' == treeObject.type -%}
-                                    <i class="icon-folder-close"></i>
-                                {%- elseif 'blob' == treeObject.type -%}
-                                    <i class="icon-file"></i>
-                                {%- endif -%}
-                                {{- treeObject -}}
-                            </a>
-                            {% endspaceless %}
-                        </td>
-                        <td class="commit"></td>
+        {% if tree.binary and is_image(tree) %}
+            <img class="binary-content" src="{{ path('ajax_binary_tree_object', { slug: slug, ref: ref, path: path }) }}" />
+        {% else %}
+            <table class="table table-condensed {{ tree.blob ? 'content' : 'table-striped tree' }}">
+                {% if tree.blob %}
+                    <tr class="content" data-commitid="{{ tree.blob.sha }}" data-path="{{ tree.blob.fullPath }}" data-type="content">
+                        <td colspan="2">{{ output_content(tree.blob)|raw }}</td>
                     </tr>
-                {% endfor %}
-            {% endif %}
-        </table>
+                {% else %}
+                    {% for treeObject in tree %}
+                        <tr class="git {{ treeObject.type }}" data-commitid="{{ treeObject.sha }}" data-path="{{ treeObject.fullPath }}" data-type="{{ treeObject.type }}">
+                            <td>
+                                {% spaceless %}
+                                <a class="tree-object" href="{{ treeObject|link_tree_object }}">
+                                    {%- if 'tree' == treeObject.type -%}
+                                        <i class="icon-folder-close"></i>
+                                    {%- elseif 'blob' == treeObject.type -%}
+                                        <i class="icon-file"></i>
+                                    {%- endif -%}
+                                    {{- treeObject -}}
+                                </a>
+                                {% endspaceless %}
+                            </td>
+                            <td class="commit"></td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </table>
+        {% endif %}
     </div>
 </section>
