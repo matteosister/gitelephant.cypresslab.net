@@ -8,6 +8,7 @@
 
 var RepositoryView = Backbone.View.extend({
     initialize: function() {
+        this.breadcrumbView = new BreadcrumbView({ el: $('div.bc') });
         this.commitCollection = new CommitCollection();
         this.commitCollection.bind('commitsLoaded', this.commitsLoaded, this);
         this.$el
@@ -40,7 +41,9 @@ var RepositoryView = Backbone.View.extend({
         app_router.navigate($(evt.target).attr('href'), true);
         return false;
     },
-    loadContent: function(url, path) {
+    loadContent: function(routeData) {
+        var url = Routing.generate('ajax_tree_object', routeData);
+        var path = routeData.path;
         // new section
         var newTable = this.sectionExists(path);
         var from = this.isForward ? '100%' : '-100%';
@@ -56,6 +59,7 @@ var RepositoryView = Backbone.View.extend({
                 }, 400);
             this.adjustHeight();
             this.loadCommits();
+            this.breadcrumbView.loadContent(routeData);
         } else {
             $.ajax({
                 url: url,
@@ -75,6 +79,7 @@ var RepositoryView = Backbone.View.extend({
                             'left': to
                         }, 0);
                     this.loadCommits();
+                    this.breadcrumbView.loadContent(routeData);
                 }
             });
         }

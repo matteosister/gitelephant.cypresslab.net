@@ -14,9 +14,9 @@ var BreadcrumbView = Backbone.View.extend({
         repository_view.loadRoute(evt, false);
         return false;
     },
-    loadContent: function(url) {
+    loadContent: function(routeData) {
         $.ajax({
-            url: url,
+            url: Routing.generate('ajax_breadcrumb', routeData),
             context: this,
             success: function(data) {
                 this.$el.html(data);

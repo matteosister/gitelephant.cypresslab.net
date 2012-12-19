@@ -8,7 +8,7 @@
 
 
 var repository_view = new RepositoryView({ el: $('.repository') });
-var breadcrumb_view = new BreadcrumbView({ el: $('div.bc') });
+//var breadcrumb_view = new BreadcrumbView({ el: $('div.bc') });
 
 var manageArguments = function(args) {
     var i = 0;
@@ -33,15 +33,14 @@ var manageArguments = function(args) {
 };
 
 var loadTreeObject = function() {
-    console.log(arguments);
     var data = manageArguments(arguments);
-    repository_view.loadContent(Routing.generate('ajax_tree_object', data), data.path);
-    breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
+    repository_view.loadContent(data);
+    //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 var loadMain = function() {
     var data = manageArguments(arguments);
-    repository_view.loadContent(Routing.generate('ajax_tree_object', data));
-    breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
+    repository_view.loadContent(data);
+    //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 var loadTreeObjectMain = function() {
     i = 0;
@@ -51,8 +50,8 @@ var loadTreeObjectMain = function() {
     var data = {};
     data.slug = arguments[i];
     data.ref = arguments[i+1];
-    repository_view.loadContent(Routing.generate('ajax_tree_object', data));
-    breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
+    repository_view.loadContent(data);
+    //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 
 var app_router = new AppRouter;
