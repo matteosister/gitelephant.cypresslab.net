@@ -42,9 +42,8 @@ var RepositoryView = Backbone.View.extend({
     },
     loadContent: function(routeData) {
         var url = Routing.generate('ajax_tree_object', routeData);
-        var path = typeof routeData.path == 'undefined' ? '' : routeData.path;
         // new section
-        var newTable = this.sectionExists(path);
+        var newTable = this.sectionExists(routeData.path);
         var from = this.isForward ? '100%' : '-100%';
         var to = '0';
         if (newTable.length > 0) {
@@ -69,7 +68,7 @@ var RepositoryView = Backbone.View.extend({
                     this.$el.children('section:not(.remove)')
                         .addClass('actual');
                     //jQuery.data(this.$el.find('section.actual'), 'path', {path: path});
-                    this.$el.find('section.actual').data('path', {path: path});
+                    this.$el.find('section.actual').data('path', {path: routeData.path});
                     this.finishLoading();
                     this.$el.children('section.actual')
                         .css('position', 'absolute')

@@ -39,6 +39,7 @@ var loadTreeObject = function() {
 };
 var loadMain = function() {
     var data = manageArguments(arguments);
+    data.path = '';
     repository_view.loadContent(data);
     //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
@@ -50,6 +51,7 @@ var loadTreeObjectMain = function() {
     var data = {};
     data.slug = arguments[i];
     data.ref = arguments[i+1];
+    data.path = '';
     repository_view.loadContent(data);
     //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };

@@ -7,6 +7,11 @@
  */
 
 var BreadcrumbView = Backbone.View.extend({
+    initialize: function() {
+        this.$el
+            .find('ul.breadcrumb')
+            .addClass('actual');
+    },
     events: {
         "click a.bc": "loadRoute"
     },
@@ -15,12 +20,36 @@ var BreadcrumbView = Backbone.View.extend({
         return false;
     },
     loadContent: function(routeData) {
+        var existentBreadcrumb = this.findByPath(routeData.path);
+        if (existentBreadcrumb.length == 0) {
+            this.ajaxRequest(routeData);
+        } else {
+            this.hideActual();
+            existentBreadcrumb
+                .removeClass('remove')
+                .addClass('actual')
+                .show();
+        }
+
+    },
+    hideActual: function() {
+        this.$el.find('ul.breadcrumb.actual')
+            .removeClass('actual')
+            .addClass('remove')
+            .hide();
+    },
+    ajaxRequest: function(routeData) {
         $.ajax({
             url: Routing.generate('ajax_breadcrumb', routeData),
             context: this,
             success: function(data) {
-                this.$el.html(data);
+                this.hideActual();
+                this.$el.append(data);
+                this.$el.find('ul:not(.remove)').addClass('actual');
             }
         });
+    },
+    findByPath: function(path) {
+        return this.$el.find('ul[data-path="' + path + '"]');
     }
 });
