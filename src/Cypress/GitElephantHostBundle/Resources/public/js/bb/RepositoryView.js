@@ -42,13 +42,13 @@ var RepositoryView = Backbone.View.extend({
     },
     loadContent: function(routeData) {
         var url = Routing.generate('ajax_tree_object', routeData);
-        var path = routeData.path;
+        var path = typeof routeData.path == 'undefined' ? '' : routeData.path;
         // new section
         var newTable = this.sectionExists(path);
         var from = this.isForward ? '100%' : '-100%';
         var to = '0';
-        if (typeof newTable != 'undefined') {
-            $(newTable).removeClass('remove').addClass('actual');
+        if (newTable.length > 0) {
+            newTable.removeClass('remove').addClass('actual');
             this.$el.children('section.actual')
                 .css('position', 'absolute')
                 .css('left', from)
@@ -84,14 +84,7 @@ var RepositoryView = Backbone.View.extend({
         }
     },
     sectionExists: function(path) {
-        var section = _.find(this.$el.find('section'), function(section) {
-            var data = $(section).data();
-            if (null != data) {
-                return data.path == path;
-            }
-            return false;
-        }, this);
-        return section;
+        return this.$el.find('section[data-path="' + path + '"]');
     },
     loading: function() {
         // old section
