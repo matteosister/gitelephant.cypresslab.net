@@ -27,9 +27,14 @@ body {
     color: $disabled;
 }
 
-a.tree-object {
-    i {
-        padding-right: 2px;
+a {
+    &.tree-object-link {
+        white-space: nowrap;
+    }
+    &.tree-object {
+        i {
+            padding-right: 2px;
+        }
     }
 }
 
@@ -125,6 +130,7 @@ table {
                 background-color: #EEE;
                 color: #333;
                 font-size: 0.85em;
+                font-weight: bold;
                 text-align: center;
                 @include code;
                 &.dest {
@@ -168,8 +174,8 @@ table {
     }
     th.diff-file {
         text-align: left;
-        //background-color: #EEEEEE;
-        @include background(linear-gradient(top, #FEFEFE 5%, #EEE 50%, #FEFEFE 95%));
+        background-color: $header - #111;
+        //@include background(linear-gradient(top, #BBB 5%, #CCC 50%, #BBB 95%));
         padding: 0.5em 1em;
         border-bottom: 1px solid #DDD;
         border-top: 1px solid #DDD;

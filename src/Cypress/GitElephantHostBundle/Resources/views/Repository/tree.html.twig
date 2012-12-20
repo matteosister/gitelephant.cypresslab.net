@@ -16,7 +16,7 @@
                         <tr class="git {{ treeObject.type }}" data-commitid="{{ treeObject.sha }}" data-path="{{ treeObject.fullPath }}" data-type="{{ treeObject.type }}">
                             <td>
                                 {% spaceless %}
-                                <a class="tree-object" href="{{ treeObject|link_tree_object }}">
+                                <a class="tree-object tree-object-link" href="{{ treeObject|link_tree_object }}">
                                     {%- if 'tree' == treeObject.type -%}
                                         <i class="icon-folder-close"></i>
                                     {%- elseif 'blob' == treeObject.type -%}
