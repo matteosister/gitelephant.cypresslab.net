@@ -9,9 +9,22 @@ $linksHover: #e38f21;
 
 @import "compass/css3/border-radius";
 @import "compass/css3/images";
+@import "compass/css3/box-shadow";
 
 @mixin code {
     font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+}
+
+body {
+    padding-top: 1em;
+    &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        top: -1px;
+        @include single-box-shadow();
+    }
 }
 
 body {

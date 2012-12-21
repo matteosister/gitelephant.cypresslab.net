@@ -12,7 +12,6 @@ var RepositoryView = Backbone.View.extend({
         this.commitCollection = new CommitCollection();
         this.commitCollection.bind('commitsLoaded', this.commitsLoaded, this);
         this.$el
-            //.css('overflow', 'auto')
             .addClass('actual')
             .children('section')
             .addClass('actual')
@@ -67,7 +66,6 @@ var RepositoryView = Backbone.View.extend({
                     this.$el.append(data);
                     this.$el.children('section:not(.remove)')
                         .addClass('actual');
-                    //jQuery.data(this.$el.find('section.actual'), 'path', {path: path});
                     this.$el.find('section.actual').data('path', {path: routeData.path});
                     this.finishLoading();
                     this.$el.children('section.actual')
@@ -84,6 +82,9 @@ var RepositoryView = Backbone.View.extend({
     },
     sectionExists: function(path) {
         return this.$el.find('section[data-path="' + path + '"]');
+    },
+    sectionNumber: function() {
+        return
     },
     loading: function() {
         // old section
