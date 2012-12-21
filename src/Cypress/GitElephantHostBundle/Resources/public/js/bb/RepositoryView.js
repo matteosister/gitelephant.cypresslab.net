@@ -16,7 +16,6 @@ var RepositoryView = Backbone.View.extend({
             .children('section')
             .addClass('actual')
             .css('position', 'absolute');
-        this.adjustHeight();
         this.loadCommits();
     },
     events: {
@@ -53,8 +52,7 @@ var RepositoryView = Backbone.View.extend({
                 .show()
                 .animate({
                     'left': to
-                }, 400);
-            this.adjustHeight();
+                }, this.sectionCount() == 1 ? 0 : 400);
             this.loadCommits();
             this.breadcrumbView.loadContent(routeData);
         } else {
@@ -67,7 +65,6 @@ var RepositoryView = Backbone.View.extend({
                     this.$el.children('section:not(.remove)')
                         .addClass('actual');
                     this.$el.find('section.actual').data('path', {path: routeData.path});
-                    this.finishLoading();
                     this.$el.children('section.actual')
                         .css('position', 'absolute')
                         .css('left', from)
@@ -83,8 +80,8 @@ var RepositoryView = Backbone.View.extend({
     sectionExists: function(path) {
         return this.$el.find('section[data-path="' + path + '"]');
     },
-    sectionNumber: function() {
-        return
+    sectionCount: function() {
+        return this.$el.find('section').length;
     },
     loading: function() {
         // old section
@@ -138,16 +135,6 @@ var RepositoryView = Backbone.View.extend({
     },
     removeTable: function() {
         this.$el.find('section.remove').hide();
-    },
-    adjustHeight: function() {
-        if (this.$el.find('section.actual').find('img.binary-content').length > 0) {
-            //this.$el.css('height', this.$el.find('section.actual').find('img.binary-content').height());
-        } else {
-            //this.$el.css('height', this.$el.find('section.actual').innerHeight());
-        }
-    },
-    finishLoading: function() {
-        this.adjustHeight();
     }
 });
 

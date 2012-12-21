@@ -30,20 +30,25 @@ class LoadRepositoryData extends BaseFixture
         $ge->setPath('/home/matteo/libraries/GitElephant');
         $manager->persist($ge);
 
-        $sf = new Repository();
-        $sf->setName('Symfony2');
-        $sf->setPath('/home/matteo/libraries/symfony');
-        $manager->persist($sf);
+//        $sf = new Repository();
+//        $sf->setName('Symfony2');
+//        $sf->setPath('/home/matteo/libraries/symfony');
+//        $manager->persist($sf);
 
-        $rb = new Repository();
-        $rb->setName('Ruby sample app');
-        $rb->setPath('/home/matteo/internet/ruby/tutorial/sample_app');
-        $manager->persist($rb);
+//        $rb = new Repository();
+//        $rb->setName('Ruby sample app');
+//        $rb->setPath('/home/matteo/internet/ruby/tutorial/sample_app');
+//        $manager->persist($rb);
 
-        $bower = new Repository();
-        $bower->setName('Bower');
-        $bower->setGitUrl('git://github.com/twitter/bower.git');
-        $manager->persist($bower);
+//        $bower = new Repository();
+//        $bower->setName('Bower');
+//        $bower->setGitUrl('git://github.com/twitter/bower.git');
+//        $manager->persist($bower);
+
+        $self = new Repository();
+        $self->setName('GitElephant Hosting');
+        $self->setPath(realpath(__DIR__.'/../../../../../'));
+        $manager->persist($self);
 
         $manager->flush();
     }

@@ -21,6 +21,8 @@
                                         <i class="icon-folder-close"></i>
                                     {%- elseif 'blob' == treeObject.type -%}
                                         <i class="icon-file"></i>
+                                    {%- elseif 'link' == treeObject.type -%}
+                                        <i class="icon-link"></i>
                                     {%- endif -%}
                                     {{- treeObject -}}
                                 </a>
