@@ -4,9 +4,13 @@
 
 {% block head_css %}
     {{ parent() }}
+    {#{% stylesheets filter="cssrewrite,?uglifycss" output="css/compiled/all.css"#}
+        {#"bundles/cypressgitelephanthost/css/bootstrap/bootstrap.css"#}
+        {#"bundles/cypressgitelephanthost/css/bootstrap/responsive.css"#}
+        {#"bundles/cypressgitelephanthost/compass/stylesheets/screen.css" %}#}
+        {#<link rel="stylesheet" type="text/css" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
     {% stylesheets filter="cssrewrite,?uglifycss" output="css/compiled/all.css"
-        "bundles/cypressgitelephanthost/css/bootstrap/bootstrap.css"
-        "bundles/cypressgitelephanthost/css/bootstrap/responsive.css"
         "bundles/cypressgitelephanthost/compass/stylesheets/screen.css" %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
     {% endstylesheets %}
