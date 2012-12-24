@@ -190,8 +190,26 @@ table {
 .commit-box {
     margin-bottom: 1em;
     background-color: $header;
-    @include border-radius(5px);
     padding: 5px;
+    @include border-radius(5px);
+    @include clearfix;
+    img {
+        position: absolute;
+    }
+    .content {
+        padding-left: 1em;
+        margin-left: 30px;
+        line-height: 30px;
+        font-weight: bold;
+    }
+    .date, .sha {
+        color: $greyLight;
+        font-weight: normal;
+    }
+    .sha {
+        float: right;
+        padding-right: 1em;
+    }
 }
 
 .breadcrumb {

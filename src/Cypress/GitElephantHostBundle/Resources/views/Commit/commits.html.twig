@@ -4,9 +4,7 @@
     <div class="row-fluid">
         {% include "CypressGitElephantHostBundle:Repository:tabs.html.twig" with { selected: 'commits' } %}
     </div>
-    <ul>
     {% for commit in commits %}
-        <li><a href="{{ path('commit', { slug: slug, sha: commit.sha }) }}">{{ commit.message }}</a></li>
+        {{ commit_box(commit, true) }}
     {% endfor %}
-    </ul>
 {% endblock %}

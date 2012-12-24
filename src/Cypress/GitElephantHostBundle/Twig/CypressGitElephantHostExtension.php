@@ -16,6 +16,7 @@ use GitElephant\Objects\TreeishInterface;
 use GitElephant\Objects\Diff\DiffChunkLine;
 use GitElephant\Objects\Diff\DiffChunk;
 use GitElephant\Objects\Tree;
+use GitElephant\Objects\Commit;
 
 class CypressGitElephantHostExtension extends \Twig_Extension
 {
@@ -59,7 +60,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
             'output_content' => new \Twig_Function_Method($this, 'outputContent', array('is_safe' => array('html'))),
             'output_chunk' => new \Twig_Function_Method($this, 'outputChunk', array('is_safe' => array('html'))),
             'icon_for' => new \Twig_Function_Method($this, 'iconFor', array('is_safe' => array('html'))),
-            'is_image' => new \Twig_Function_Method($this, 'isImage', array('is_safe' => array('html')))
+            'is_image' => new \Twig_Function_Method($this, 'isImage', array('is_safe' => array('html'))),
+            'commit_box' => new \Twig_Function_Method($this, 'commitBox', array('is_safe' => array('html')))
         );
     }
 
@@ -132,6 +134,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
      * is an image
      *
      * @param \GitElephant\Objects\Tree $tree tree
+     *
+     * @return bool
      */
     public function isImage(Tree $tree)
     {
@@ -168,6 +172,23 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         }
 
         return $arrOutput;
+    }
+
+    /**
+     * render a commit box
+     *
+     * @param \GitElephant\Objects\Commit $commit commit
+     * @param bool                        $link   add commit link
+     *
+     * @return mixed
+     */
+    public function commitBox(Commit $commit, $link = false)
+    {
+        return $this->container->get('templating')->render('CypressGitElephantHostBundle:Commit:box.html.twig', array(
+            'slug' => $this->container->get('cypress.git_elephant_host.git_router')->getSlug(),
+            'commit' => $commit,
+            'link' => $link
+        ));
     }
 
     /**

@@ -48,27 +48,6 @@ class Router extends Service
         $this->splitter = $splitter;
     }
 
-//    /**
-//     * @return string
-//     */
-//    public function parentUrl()
-//    {
-//        $path = $this->request->attributes->get('path');
-//        $newPath = substr($path, 0, strrpos($path, '/'));
-//        $params = array(
-//            'slug' => $this->getRepository()->getSlug()
-//        );
-//        if ('' == $newPath) {
-//            $route = 'repository';
-//        } else {
-//            $route = 'tree_object';
-//            $params['ref'] = $this->request->attributes->get('ref');
-//            $params['path'] = substr($path, 0, strrpos($path, '/'));
-//        }
-//
-//        return $this->router->generate($route, $params);
-//    }
-
     /**
      * tree object url
      *
@@ -85,5 +64,15 @@ class Router extends Service
             'ref' => $parts[0],
             'path' => $parts[1]
         ));
+    }
+
+    /**
+     * get the current route slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->getRepository()->getSlug();
     }
 }
