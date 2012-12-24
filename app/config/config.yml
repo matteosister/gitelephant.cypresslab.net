@@ -21,6 +21,7 @@ framework:
     default_locale:  "%locale%"
     trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     session:         ~
+    trusted_proxies: ~
 
 # Twig Configuration
 twig:
@@ -45,7 +46,7 @@ assetic:
         main_js:
             inputs:
                 - bundles/cypressgitelephanthost/components/jquery/jquery.js
-                - bundles/cypressgitelephanthost/bootstrap/js/bootstrap-dropdown.js
+                - bundles/cypressgitelephanthost/compass/javascripts/bootstrap-dropdown.js
             filters: [?uglifyjs]
         repository_js:
             inputs:
