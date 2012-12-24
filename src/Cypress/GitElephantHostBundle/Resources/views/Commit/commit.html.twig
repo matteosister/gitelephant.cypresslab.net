@@ -15,7 +15,6 @@
                     <th class="diff-file {{ loop.first ? 'first' : '' }}" colspan="3">{{ diffObject }}</th>
                 </tr>
                 {% for diffChunk in diffObject %}
-                    {% set content = output_chunk(diffChunk) %}
                     {% for diffChunkLine in diffChunk %}
                         {% if loop.first %}
                             <tr>
@@ -27,12 +26,11 @@
                         <tr>
                             <td class="ln">{{ diffChunkLine.originNumber }}</td>
                             <td class="ln dest">{{ diffChunkLine.destNumber }}</td>
-                            <td class="code {{ diffChunkLine.type }}">
-                                <pre class="line">{{ diffChunkLine }}</pre>
-                            </td>
-                            {#{% if loop.first %}#}
-                                {#<td rowspan="{{ diffChunk|length }}"><pre>{{ output_chunk(diffChunk) }}</pre></td>#}
-                            {#{% endif %}#}
+                            {% if loop.first %}
+                                <td class="code_table" rowspan="{{ diffChunk|length }}">
+                                    {{ code_table(diffChunk) }}
+                                </td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 {% endfor %}

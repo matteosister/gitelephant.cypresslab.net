@@ -61,7 +61,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
             'output_chunk' => new \Twig_Function_Method($this, 'outputChunk', array('is_safe' => array('html'))),
             'icon_for' => new \Twig_Function_Method($this, 'iconFor', array('is_safe' => array('html'))),
             'is_image' => new \Twig_Function_Method($this, 'isImage', array('is_safe' => array('html'))),
-            'commit_box' => new \Twig_Function_Method($this, 'commitBox', array('is_safe' => array('html')))
+            'commit_box' => new \Twig_Function_Method($this, 'commitBox', array('is_safe' => array('html'))),
+            'code_table' => new \Twig_Function_Method($this, 'codeTable', array('is_safe' => array('html')))
         );
     }
 
@@ -188,6 +189,13 @@ class CypressGitElephantHostExtension extends \Twig_Extension
             'slug' => $this->container->get('cypress.git_elephant_host.git_router')->getSlug(),
             'commit' => $commit,
             'link' => $link
+        ));
+    }
+
+    public function codeTable(DiffChunk $diffChunk)
+    {
+        return $this->container->get('templating')->render('CypressGitElephantHostBundle:Commit:code_table.html.twig', array(
+            'lines' => $diffChunk->getLines()
         ));
     }
 

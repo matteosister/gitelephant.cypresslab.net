@@ -173,6 +173,14 @@ table {
                 background-color: $added !important;
             }
         }
+        .code_table {
+            background-color: $unchanged;
+            width: 100%;
+            padding: 0;
+            table {
+                width: 100%;
+            }
+        }
     }
     th.diff-file {
         text-align: left;
