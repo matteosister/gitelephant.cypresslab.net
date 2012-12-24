@@ -29,7 +29,6 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "cypresslab/gitelephant-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
-        "cypresslab/less-elephant-bundle": "dev-master",
         "oryzone/boilerplate-bundle": "4.0.0",
         "cypresslab/compass-elephant-bundle": "dev-master",
         "friendsofsymfony/jsrouting-bundle": "dev-master",

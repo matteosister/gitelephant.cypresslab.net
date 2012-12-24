@@ -4,7 +4,7 @@ imports:
     - { resource: bundles/mongo.yml }
     - { resource: bundles/doctrine_ext.yml }
     - { resource: bundles/ornicar_gravatar.yml }
-    - { resource: bundles/less_elephant.yml }
+    #- { resource: bundles/less_elephant.yml }
     - { resource: bundles/compass_elephant.yml }
 
 framework:

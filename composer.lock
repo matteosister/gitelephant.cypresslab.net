@@ -1,5 +1,5 @@
 {
-    "hash": "40f8604ebdd4fbc7c78a6ec7d7b25e96",
+    "hash": "64e39d439fc43025ce02dd2a1511d2c1",
     "packages": [
         {
             "name": "cypresslab/compass-elephant",
@@ -97,26 +97,27 @@
         },
         {
             "name": "cypresslab/gitelephant",
-            "version": "0.9.6",
+            "version": "0.9.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matteosister/GitElephant",
-                "reference": "v0.9.6"
+                "reference": "v0.9.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/matteosister/GitElephant/archive/v0.9.6.zip",
-                "reference": "v0.9.6",
+                "url": "https://github.com/matteosister/GitElephant/archive/v0.9.7.zip",
+                "reference": "v0.9.7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "symfony/process": "2.1.*@stable"
+                "symfony/process": "2.1.*@stable",
+                "symfony/filesystem": "2.1.*@stable"
             },
             "require-dev": {
                 "phpunit/phpunit": "@stable"
             },
-            "time": "2012-12-18 21:46:23",
+            "time": "2012-12-22 23:09:19",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -124,6 +125,7 @@
                     "GitElephant": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPLv3"
             ],
@@ -183,97 +185,6 @@
             "homepage": "http://matteosister.github.com/GitElephant",
             "keywords": [
                 "git"
-            ]
-        },
-        {
-            "name": "cypresslab/less-elephant",
-            "version": "0.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/matteosister/LessElephant",
-                "reference": "v0.2.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/matteosister/LessElephant/zipball/v0.2.2",
-                "reference": "v0.2.2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/process": "<2.2.0",
-                "symfony/finder": "<2.2.0"
-            },
-            "time": "2012-09-08 15:40:19",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "LessElephant": "src/"
-                }
-            },
-            "license": [
-                "GPL3"
-            ],
-            "authors": [
-                {
-                    "name": "Matteo Giachino",
-                    "email": "matteog@gmail.com",
-                    "homepage": "https://github.com/matteosister/CypressTreeBundle/tree/develop",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A library to manage a less project with PHP",
-            "homepage": "http://matteosister.github.com/LessElephant",
-            "keywords": [
-                "css",
-                "less"
-            ]
-        },
-        {
-            "name": "cypresslab/less-elephant-bundle",
-            "version": "dev-master",
-            "target-dir": "Cypress/LessElephantBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/matteosister/LessElephantBundle.git",
-                "reference": "59117ba453481ae463935cd37f022cee3a02b9f2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/matteosister/LessElephantBundle/archive/59117ba453481ae463935cd37f022cee3a02b9f2.zip",
-                "reference": "59117ba453481ae463935cd37f022cee3a02b9f2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "cypresslab/less-elephant": "<=1.0.0"
-            },
-            "time": "2012-11-27 10:19:47",
-            "type": "symfony-bundle",
-            "installation-source": "source",
-            "autoload": {
-                "psr-0": {
-                    "Cypress\\LessElephantBundle": ""
-                }
-            },
-            "license": [
-                "GPL3"
-            ],
-            "authors": [
-                {
-                    "name": "Matteo Giachino",
-                    "email": "matteog@gmail.com",
-                    "homepage": "https://github.com/matteosister/CypressTreeBundle/tree/develop",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Integrates LessElephant into Symfony2",
-            "homepage": "https://github.com/matteosister/LessElephantBundle",
-            "keywords": [
-                "assets",
-                "css",
-                "less"
             ]
         },
         {
@@ -400,19 +311,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal",
-                "reference": "00f9575d24a15931c2ccfafd888b3d1d0bb5bd03"
+                "reference": "cb3ec49cb4401bd1c8be6ba9671f651802586eaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/dbal/archive/00f9575d24a15931c2ccfafd888b3d1d0bb5bd03.zip",
-                "reference": "00f9575d24a15931c2ccfafd888b3d1d0bb5bd03",
+                "url": "https://github.com/doctrine/dbal/archive/cb3ec49cb4401bd1c8be6ba9671f651802586eaf.zip",
+                "reference": "cb3ec49cb4401bd1c8be6ba9671f651802586eaf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
                 "doctrine/common": "2.3.*"
             },
-            "time": "2012-12-17 15:35:54",
+            "time": "2012-12-23 20:28:39",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -425,6 +336,7 @@
                     "Doctrine\\DBAL": "lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -581,38 +493,32 @@
         },
         {
             "name": "doctrine/mongodb",
-            "version": "1.0.0-BETA2",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb",
-                "reference": "1.0.0-BETA2"
+                "reference": "1.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/mongodb/archive/1.0.0-BETA2.zip",
-                "reference": "1.0.0-BETA2",
+                "url": "https://github.com/doctrine/mongodb/archive/1.0.0.zip",
+                "reference": "1.0.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "ext-mongo": ">=1.2.12,<1.3-dev",
-                "symfony/yaml": ">=2.0,<2.3-dev",
-                "symfony/console": ">=2.0,<2.3-dev",
+                "ext-mongo": ">=1.2.12,<1.4-dev",
                 "doctrine/common": ">=2.1.0,<2.5-dev"
             },
-            "time": "2012-12-05 15:45:50",
+            "time": "2012-12-19 01:44:45",
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Doctrine\\MongoDB": "lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -631,11 +537,17 @@
                     "name": "Kris Wallsmith",
                     "email": "kris.wallsmith@gmail.com",
                     "homepage": "http://kriswallsmith.net/"
+                },
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com",
+                    "homepage": "http://jmikola.net"
                 }
             ],
             "description": "Doctrine MongoDB Abstraction Layer",
             "homepage": "http://www.doctrine-project.org",
             "keywords": [
+                "database",
                 "persistence",
                 "mongodb"
             ]
@@ -788,12 +700,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/doctrine2.git",
-                "reference": "6d898753065056d178039844d80569f74b8fe6c6"
+                "reference": "019094655b6606852a3e3231de93425d9913bac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/doctrine2/archive/6d898753065056d178039844d80569f74b8fe6c6.zip",
-                "reference": "6d898753065056d178039844d80569f74b8fe6c6",
+                "url": "https://github.com/doctrine/doctrine2/archive/019094655b6606852a3e3231de93425d9913bac4.zip",
+                "reference": "019094655b6606852a3e3231de93425d9913bac4",
                 "shasum": ""
             },
             "require": {
@@ -805,7 +717,7 @@
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "time": "2012-12-16 12:00:27",
+            "time": "2012-12-24 10:18:12",
             "bin": [
                 "bin/doctrine",
                 "bin/doctrine.php"
@@ -822,6 +734,7 @@
                     "Doctrine\\ORM": "lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -859,12 +772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle",
-                "reference": "8d262cc1466ecfe98471680c1ad839ead2af7682"
+                "reference": "49449cd5ecde0254fdc554068fe8c87470b1057d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/archive/8d262cc1466ecfe98471680c1ad839ead2af7682.zip",
-                "reference": "8d262cc1466ecfe98471680c1ad839ead2af7682",
+                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/archive/49449cd5ecde0254fdc554068fe8c87470b1057d.zip",
+                "reference": "49449cd5ecde0254fdc554068fe8c87470b1057d",
                 "shasum": ""
             },
             "require": {
@@ -873,7 +786,7 @@
                 "symfony/serializer": ">=2.0,<2.3-dev",
                 "symfony/console": ">=2.0,<2.3-dev"
             },
-            "time": "2012-12-18 10:03:51",
+            "time": "2012-12-22 11:27:51",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -886,6 +799,7 @@
                     "FOS\\JsRoutingBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -980,22 +894,22 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/jdorn/sql-formatter.git",
-                "reference": "15ab7a899e33f42682f74804d340a6995711a0d4"
+                "reference": "d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jdorn/sql-formatter/archive/15ab7a899e33f42682f74804d340a6995711a0d4.zip",
-                "reference": "15ab7a899e33f42682f74804d340a6995711a0d4",
+                "url": "https://github.com/jdorn/sql-formatter/archive/d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf.zip",
+                "reference": "d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-18 21:46:03",
+            "time": "2012-12-24 01:54:21",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "installation-source": "source",
@@ -1004,6 +918,7 @@
                     "lib"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL"
             ],
@@ -1348,12 +1263,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog",
-                "reference": "0df12342ef6c5efc748b27bb9ef92e1c95631058"
+                "reference": "52b454f89041c41c548bc242482aaf9dc6fee5d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Seldaek/monolog/archive/0df12342ef6c5efc748b27bb9ef92e1c95631058.zip",
-                "reference": "0df12342ef6c5efc748b27bb9ef92e1c95631058",
+                "url": "https://github.com/Seldaek/monolog/archive/52b454f89041c41c548bc242482aaf9dc6fee5d8.zip",
+                "reference": "52b454f89041c41c548bc242482aaf9dc6fee5d8",
                 "shasum": ""
             },
             "require": {
@@ -1367,7 +1282,7 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server"
             },
-            "time": "2012-12-14 11:27:44",
+            "time": "2012-12-21 09:35:52",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1380,6 +1295,7 @@
                     "Monolog": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1936,12 +1852,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "8013469e0bac9bef1ba16d169e78fa9104505dae"
+                "reference": "8fd34e4eae26c55c7aec04b9f452e10557b8bc89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/8013469e0bac9bef1ba16d169e78fa9104505dae.zip",
-                "reference": "8013469e0bac9bef1ba16d169e78fa9104505dae",
+                "url": "https://github.com/symfony/symfony/archive/8fd34e4eae26c55c7aec04b9f452e10557b8bc89.zip",
+                "reference": "8fd34e4eae26c55c7aec04b9f452e10557b8bc89",
                 "shasum": ""
             },
             "require": {
@@ -1990,7 +1906,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-12-20 22:16:10",
+            "time": "2012-12-23 18:08:33",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1999,6 +1915,7 @@
                     "SessionHandlerInterface": "src/Symfony/Component/HttpFoundation/Resources/stubs"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2124,7 +2041,6 @@
         "doctrine/doctrine-fixtures-bundle": 20,
         "cypresslab/gitelephant-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
-        "cypresslab/less-elephant-bundle": 20,
         "cypresslab/compass-elephant-bundle": 20,
         "friendsofsymfony/jsrouting-bundle": 20,
         "ornicar/gravatar-bundle": 20,
