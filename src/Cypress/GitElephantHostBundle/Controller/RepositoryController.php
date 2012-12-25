@@ -68,7 +68,7 @@ class RepositoryController extends BaseController
 
             return new RedirectResponse($this->generateUrl('tree_object', array('slug' => $slug, 'ref' => $ref)));
         }
-        $path = '';
+        $path = null;
 
         return compact('repository', 'ref', 'path');
     }

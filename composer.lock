@@ -894,18 +894,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/jdorn/sql-formatter.git",
-                "reference": "d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf"
+                "reference": "6b3516f87d6636dcc3f847887eec82e852943247"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jdorn/sql-formatter/archive/d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf.zip",
-                "reference": "d0d9cea94cd6bdcdc3e164924e0d39e9192fe2bf",
+                "url": "https://github.com/jdorn/sql-formatter/archive/6b3516f87d6636dcc3f847887eec82e852943247.zip",
+                "reference": "6b3516f87d6636dcc3f847887eec82e852943247",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-24 01:54:21",
+            "time": "2012-12-25 00:51:26",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2096,18 +2096,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495"
+                "reference": "a65e7e4e2e5726a42a29e609fad008f8a9600594"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/f095f3a1777431412954e478f92e8a10cb7b6495.zip",
-                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495",
+                "url": "https://github.com/fabpot/Twig/archive/a65e7e4e2e5726a42a29e609fad008f8a9600594.zip",
+                "reference": "a65e7e4e2e5726a42a29e609fad008f8a9600594",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-18 10:01:32",
+            "time": "2012-12-25 10:06:30",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2120,6 +2120,7 @@
                     "Twig_": "lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3"
             ],

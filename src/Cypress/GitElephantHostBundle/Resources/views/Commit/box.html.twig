@@ -7,6 +7,6 @@
         {% else %}
             {{ commit.message }}
         {% endif %}
-        <div class="date author">{{ commit.author.name }} authored on {{ commit.datetimeAuthor.format('Y-M-d') }}</div>
+        <div class="date author"><strong>{{ commit.author.name }}</strong> authored on {{ commit.datetimeAuthor.format('F d, Y') }}</div>
     </div>
 </div>
