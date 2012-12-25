@@ -2,9 +2,20 @@
 
 {% block body_container_main %}
     <div class="row-fluid">
-        {% include "CypressGitElephantHostBundle:Repository:tabs.html.twig" with { selected: 'commits' } %}
+        {% include "CypressGitElephantHostBundle:Repository:tabs.html.twig" with {
+            selected:  'commits',
+            routeBase: 'commits',
+            route:     'commits'
+        } %}
     </div>
-    {% for commit in commits %}
+    {% set actualPage = app.request.query.get('page', 1) %}
+    {% for commit in repository.git.log(ref, null, 10, (actualPage * 10) - 10) %}
         {{ commit_box(commit, true) }}
     {% endfor %}
+    <div class="pagination">
+        <ul>
+            <li><a href="{{ path('commits', { slug: repository.slug, page: app.request.query.get('page', 1) - 1 }) }}">&larr;</a></li>
+            <li><a href="{{ path('commits', { slug: repository.slug, page: app.request.query.get('page', 1) + 1 }) }}">&rarr;</a></li>
+        </ul>
+    </div>
 {% endblock %}

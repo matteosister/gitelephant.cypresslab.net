@@ -3,7 +3,7 @@
  * User: matteo
  * Date: 07/12/12
  * Time: 10.30
- * 
+ *
  * Just for fun...
  */
 
@@ -36,22 +36,23 @@ class CommitController extends BaseController
      */
     public function commitAction($slug, $sha)
     {
-        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
-        $git = $repository->getGit($slug);
-        $commit = $git->getCommit($sha);
+        $repository = $this->getRepository($slug);
+        $commit = $repository->getGit()->getCommit($sha);
 
-        return compact('slug', 'repository', 'git', 'commit');
+        return compact('repository', 'commit');
     }
 
     /**
      * commits
      *
-     * @param string $slug slug
+     * @param \Symfony\Component\HttpFoundation\Request $request request
+     * @param string                                    $slug    slug
+     * @param string                                    $ref     reference
      *
      * @internal param string $slug slug
      *
-     * @Route("/{slug}/commits.{_format}", name="commits",
-     *   requirements={"_method"="get"},
+     * @Route("/{slug}/commits/{ref}.{_format}", name="commits",
+     *   requirements={"_method"="get", "ref" = ".+"},
      *   options={"expose"=false},
      *   defaults={"ref"="master", "_format"="html"}
      * )
@@ -59,12 +60,11 @@ class CommitController extends BaseController
      *
      * @return array
      */
-    public function commitsAction($slug)
+    public function commitsAction(Request $request, $slug, $ref = 'master')
     {
-        $repository = $this->getGit($slug);
-        $commits = $repository->getLog();
+        $repository = $this->getRepository($slug);
 
-        return compact('slug', 'commits');
+        return compact('repository', 'ref');
     }
 
     /**

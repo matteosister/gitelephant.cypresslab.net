@@ -1,4 +1,4 @@
-{% set branch_tag_selector = branch_tag_selector is defined ? branch_tag_selector : false %}
+{% set branch_tag_selector = branch_tag_selector is defined ? branch_tag_selector : true %}
 <ul class="nav nav-tabs">
     {% if branch_tag_selector %}
         <li class="active branches">
@@ -11,9 +11,9 @@
                     {% for branch in repository.git.branches %}
                         <li>
                             {% if 'master' == branch.name %}
-                                <a href="{{ path('repository', { slug: slug }) }}">{{ icon_for(branch) }} {{ branch.name }}</a>
+                                <a href="{{ path(routeBase, { slug: repository.slug }) }}">{{ icon_for(branch) }} {{ branch.name }}</a>
                             {% else %}
-                                <a href="{{ path('tree_object', { slug: slug, ref: branch.name }) }}">{{ icon_for(branch) }} {{ branch.name }}</a>
+                                <a href="{{ path(route, { slug: repository.slug, ref: branch.name }) }}">{{ icon_for(branch) }} {{ branch.name }}</a>
                             {% endif %}
                         </li>
                     {% endfor %}
@@ -21,7 +21,7 @@
                     {% if tags|length > 0 %}
                         <hr />
                         {% for tag in tags %}
-                            <li><a href="{{ path('tree_object', { slug: slug, ref: tag.name }) }}">{{ icon_for(tag) }} {{ tag.name }}</a></li>
+                            <li><a href="{{ path(route, { slug: repository.slug, ref: tag.name }) }}">{{ icon_for(tag) }} {{ tag.name }}</a></li>
                         {% endfor %}
                     {% endif %}
                 </ul>
@@ -29,9 +29,9 @@
         </li>
     {% endif %}
     <li {{ selected == 'code' ? 'class="active"' : '' }}>
-        <a href="{{ path('repository', { slug: slug }) }}">Code</a>
+        <a href="{{ path('repository', { slug: repository.slug }) }}">Code</a>
     </li>
     <li {{ selected == 'commits' ? 'class="active"' : '' }}>
-        <a href="{{ path('commits', { slug: slug }) }}">Commits</a>
+        <a href="{{ path('commits', { slug: repository.slug }) }}">Commits</a>
     </li>
 </ul>

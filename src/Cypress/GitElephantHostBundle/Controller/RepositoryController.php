@@ -70,7 +70,7 @@ class RepositoryController extends BaseController
         }
         $path = '';
 
-        return compact('repository', 'slug', 'ref', 'path');
+        return compact('repository', 'ref', 'path');
     }
 
     /**
@@ -93,7 +93,7 @@ class RepositoryController extends BaseController
         $ref = $parts[0];
         $path = $parts[1];
 
-        return compact('repository', 'slug', 'ref', 'path');
+        return compact('repository', 'ref', 'path');
     }
 
     /**

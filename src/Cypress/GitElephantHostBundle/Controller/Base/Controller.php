@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use GitElephant\Repository;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 
 
 /**
@@ -29,7 +30,7 @@ class Controller extends BaseController
     }
 
     /**
-     * @return \Doctrine\ODM\MongoDB\DocumentRepository
+     * @return EntityRepository
      */
     public function getRepositoryRepo()
     {
@@ -42,6 +43,18 @@ class Controller extends BaseController
     public function getEM()
     {
         return $this->get('doctrine.orm.entity_manager');
+    }
+
+    /**
+     * get a repository
+     *
+     * @param string $slug repository slug
+     *
+     * @return \Cypress\GitElephantHostBundle\Entity\Repository
+     */
+    public function getRepository($slug)
+    {
+        return $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
     }
 
     /**

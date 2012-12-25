@@ -28,7 +28,8 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Cypress\PygmentsBundle\CypressPygmentsBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
-            new Cypress\CompassElephantBundle\CypressCompassElephantBundle()
+            new Cypress\CompassElephantBundle\CypressCompassElephantBundle(),
+            new \Knp\Bundle\PaginatorBundle\KnpPaginatorBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
