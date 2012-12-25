@@ -143,7 +143,7 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         if (!$tree->isBinary()) {
             return false;
         }
-        $pathInfo = pathinfo($tree->getPath()->getName());
+        $pathInfo = pathinfo($tree->getSubject()->getName());
         if (!isset($pathInfo['extension'])) {
             return false;
         }
