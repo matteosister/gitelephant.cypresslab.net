@@ -1,14 +1,21 @@
-cypress_git_elephant_host:
-    resource: "@CypressGitElephantHostBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 CypressPygmentsBundle:
     resource: .
     type: pygments_bundle
+
+#hwi_oauth_redirect:
+#    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+#    prefix:   /connect
+#
+#github_login:
+#    pattern: /login/check-github
+
+cypress_git_elephant_host:
+    resource: "@CypressGitElephantHostBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
 # Internal routing configuration to handle ESI
 #_internal:

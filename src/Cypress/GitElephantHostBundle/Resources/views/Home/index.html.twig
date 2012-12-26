@@ -2,7 +2,7 @@
 
 {% block body_container_main %}
     <h1>Git Repositories</h1>
-    <ul>
+    <ul class="repository_list">
         {% for repository in repositories %}
             <li><a href="{{ path('repository', { slug: repository.slug }) }}">{{ repository }}</a></li>
         {% endfor %}

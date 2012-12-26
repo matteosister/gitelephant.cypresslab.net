@@ -10,7 +10,6 @@
 
 namespace Cypress\GitElephantHostBundle\Listener;
 
-//use Doctrine\ODM\MongoDB\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 //use Cypress\GitElephantHostBundle\Document\Repository;
 use Cypress\GitElephantHostBundle\Entity\Repository;
@@ -26,10 +25,9 @@ use JMS\DiExtraBundle\Annotation\Inject;
  * doctrine listener to clone the repository
  *
  * @DoctrineListener(
- *     events = {"prePersist"},
+ *     events = {"postPersist"},
  *     connection = "default",
- *     lazy = true,
- *     priority = 10000
+ *     lazy = true
  * )
  */
 class RepositoryClonerListener
@@ -62,16 +60,18 @@ class RepositoryClonerListener
     }
 
     /**
-     * prePersist event
+     * postPersist event
      *
      * @param \Doctrine\ORM\Event\LifecycleEventArgs $args args
      */
-    public function prePersist(LifecycleEventArgs $args)
+    public function postPersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
         if ($entity instanceof Repository) {
             if (null !== $entity->getGitUrl() && null === $entity->getPath()) {
                 $this->initRepository($entity);
+                $args->getEntityManager()->persist($entity);
+                $args->getEntityManager()->flush();
             }
         }
     }
@@ -100,6 +100,6 @@ class RepositoryClonerListener
         $repository->setPath($path);
         $git = new Git($path, $this->gitBinary);
         //$git->init();
-        $git->cloneFrom($repository->getGitUrl());
+        $git->cloneFrom($repository->getGitUrl(), '.');
     }
 }
