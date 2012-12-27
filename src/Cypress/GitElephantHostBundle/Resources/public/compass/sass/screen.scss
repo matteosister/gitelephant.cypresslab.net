@@ -35,14 +35,14 @@ a {
     }
     &.tree-object {
         i {
-            padding-right: 2px;
+            padding-right: 4px;
         }
     }
 }
 
 code, pre {
-    font-family: "Ubuntu Mono",Consolas,"Liberation Mono",Courier,monospace;
-    font-size: 1.2em;
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 1em;
 }
 
 pre {
@@ -65,13 +65,15 @@ table.highlighttable {
     .linenodiv {
         text-align: right;
     }
+    td.code {
+        width: 100%;
+    }
 }
 
 td {
     &.linenos {
         background-color: #FFF !important;
         border: none !important;
-        width: 4%;
     }
     &.code {
         background-color: #FFF !important;
@@ -84,11 +86,13 @@ tr.blob td:hover {
 }
 
 .highlight {
-    .lineno {
-        -moz-user-select: none;
-        -khtml-user-select: none;
-        user-select: none;
+    .ln {
+        height: 20px;
     }
+}
+
+.ln-number {
+    text-align: right;
 }
 
 .repository {
@@ -96,6 +100,7 @@ tr.blob td:hover {
     section {
         width: 100%;
         border: 1px solid #DDD;
+        margin-bottom: 1em;
     }
     header {
         padding: 0.5em;
@@ -224,6 +229,22 @@ table {
         padding: 0.5em 1em;
         &.first {
             border-top: none;
+        }
+    }
+    &.file {
+        pre {
+            padding: 0;
+        }
+        .ln-number {
+            padding: 0 0.5em;
+            background-color: #F8F8F8;
+            border-right: 1px solid #DDD;
+        }
+        .code {
+            padding-left: 0.5em;
+        }
+        .highlight {
+            background: none !important;
         }
     }
 }

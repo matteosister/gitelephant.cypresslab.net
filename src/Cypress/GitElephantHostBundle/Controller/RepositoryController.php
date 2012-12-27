@@ -89,7 +89,7 @@ class RepositoryController extends BaseController
     public function treeObjectAction($slug, $ref, $path)
     {
         $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
-        $parts = $this->get('ref_path.splitter')->split($repository->getGit(), $ref, $path);
+        $parts = $this->getRefPathSplitter()->split($repository->getGit(), $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
 
@@ -115,7 +115,7 @@ class RepositoryController extends BaseController
     public function treeAction($slug, $ref, $path)
     {
         $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
-        $parts = $this->get('ref_path.splitter')->split($git, $ref, $path);
+        $parts = $this->getRefPathSplitter()->split($git, $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
         $tree = $git->getTree($ref, $path);
@@ -142,7 +142,7 @@ class RepositoryController extends BaseController
     public function binaryTreeAction($slug, $ref, $path)
     {
         $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
-        $parts = $this->get('ref_path.splitter')->split($git, $ref, $path);
+        $parts = $this->getRefPathSplitter()->split($git, $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
         $tree = $git->getTree($ref, $path);
@@ -171,7 +171,7 @@ class RepositoryController extends BaseController
     public function breadcrumbAction($slug, $ref, $path)
     {
         $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
-        $parts = $this->get('ref_path.splitter')->split($repository->getGit(), $ref, $path);
+        $parts = $this->getRefPathSplitter()->split($repository->getGit(), $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
 

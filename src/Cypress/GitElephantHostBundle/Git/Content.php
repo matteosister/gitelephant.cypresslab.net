@@ -57,8 +57,21 @@ class Content extends Service
     public function outputContent(TreeObject $treeObject)
     {
         $rawContent = implode("\n", $this->getGit()->outputContent($treeObject, 'HEAD'));
+        $output = $this->pygmentize->format($rawContent, $treeObject->getName());
+        $startPos = strpos($output, '<pre>') + 5;
+        //$openingTag = substr($output, 0, $startPos);
+        $closePos = strrpos($output, '</pre>');
+        //$closingTag = substr($output, $closePos);
+        $content = substr($output, $startPos, $closePos - $startPos);
+        $arrContent = explode("\n", $content);
+        $arrOutput = array();
+        $arrNumbers = array();
+        foreach ($arrContent as $i => $line) {
+            $arrNumbers[] = '<div class="number">'.($i + 1).'</div>';
+            $arrOutput[] = '<div class="ln">'.$line.'</div>';
+        }
 
-        return $this->pygmentize->format($rawContent, $treeObject->getName());
+        return sprintf('<table class="file"><tr><td class="ln-number"><pre>%s</pre></td><td width="100%%" class="code"><div class="highlight"><pre>%s</pre></div></td></tr></table>', implode($arrNumbers), implode($arrOutput));
     }
 
     /**

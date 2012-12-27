@@ -14,6 +14,7 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use GitElephant\Repository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Cypress\GitElephantHostBundle\Git\RefPathSplitter;
 
 
 /**
@@ -65,5 +66,13 @@ class Controller extends BaseController
     public function getGit($slug)
     {
         return $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
+    }
+
+    /**
+     * @return RefPathSplitter
+     */
+    public function getRefPathSplitter()
+    {
+        return $this->get('ref_path.splitter');
     }
 }

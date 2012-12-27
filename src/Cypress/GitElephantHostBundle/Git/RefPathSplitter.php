@@ -32,7 +32,7 @@ class RefPathSplitter
     public function split(Repository $repository, $ref, $path)
     {
         if (null !== $repository->getBranchOrTag($ref)) {
-            return array($ref, $path);
+            return array($ref, $path == '' ? null : $path);
         }
         $parts = explode('/', $ref);
         $newRef = '';

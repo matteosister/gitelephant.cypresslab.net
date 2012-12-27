@@ -14,8 +14,8 @@ var RepositoryView = Backbone.View.extend({
         this.$el
             .addClass('actual')
             .children('section')
-            .addClass('actual')
-            .css('position', 'absolute');
+            .addClass('actual');
+            //.css('position', 'absolute');
         this.loadCommits();
     },
     events: {
@@ -47,7 +47,7 @@ var RepositoryView = Backbone.View.extend({
         if (newTable.length > 0) {
             newTable.removeClass('remove').addClass('actual');
             this.$el.children('section.actual')
-                .css('position', 'absolute')
+                //.css('position', 'absolute')
                 .css('left', from)
                 .show()
                 .animate({
@@ -66,7 +66,7 @@ var RepositoryView = Backbone.View.extend({
                         .addClass('actual');
                     this.$el.find('section.actual').data('path', {path: routeData.path});
                     this.$el.children('section.actual')
-                        .css('position', 'absolute')
+                        //.css('position', 'absolute')
                         .css('left', from)
                         .animate({
                             'left': to
