@@ -40,6 +40,11 @@ a {
     }
 }
 
+code, pre {
+    font-family: "Ubuntu Mono",Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 1.2em;
+}
+
 pre {
     white-space: nowrap;
     word-break: keep-all;
@@ -50,8 +55,8 @@ pre {
     margin: 0;
     border-radius: 0 !important;
     &.line {
-        padding: 0 0 0 1em;
-        height: 20px;
+        padding: 0 0 0 20px;
+        width: 10px;
     }
 }
 
@@ -157,7 +162,7 @@ table {
         }
         .code {
             &.unchanged {
-                background-color: $unchanged !important;
+                background-color: #FFF !important;
                 &:hover {
                     background-color: $codeHover !important;
                 }
@@ -169,7 +174,9 @@ table {
                     &:before {
                         content: '-';
                         position: absolute;
-                        left: 2px;
+                        left: 0;
+                        width: 20px;
+                        text-align: center;
                     }
                 }
                 background-color: $deleted !important;
@@ -184,7 +191,9 @@ table {
                     &:before {
                         content: '+';
                         position: absolute;
-                        left: 2px;
+                        left: 0;
+                        width: 20px;
+                        text-align: center;
                     }
                 }
                 background-color: $added !important;
@@ -194,9 +203,11 @@ table {
             }
         }
         .code_table {
-            background-color: $unchanged;
+            background-color: #FFF;
             width: 100%;
             padding: 0;
+            border-right: 1px solid #DDD;
+            border-bottom: 1px solid #DDD;
             table {
                 width: 100%;
             }
@@ -239,8 +250,13 @@ table {
     .sha {
         float: right;
         padding-right: 1em;
-        font-size: 0.8em;
+        font-size: 0.9em;
+        font-weight: bold;
         @include code;
+        &:before {
+            content: "sha: ";
+            color: $blue;
+        }
     }
 }
 

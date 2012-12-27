@@ -24,4 +24,6 @@ http_images_path = "/bundles/cypressgitelephanthost/compass/images"
 # and then run:
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
 
+sass_options = {:debug_info => true}
+
 require 'bootstrap-sass'
