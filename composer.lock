@@ -3,16 +3,16 @@
     "packages": [
         {
             "name": "cypresslab/compass-elephant",
-            "version": "0.2.10",
+            "version": "0.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matteosister/CompassElephant",
-                "reference": "v0.2.10"
+                "reference": "v0.2.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/matteosister/CompassElephant/archive/v0.2.10.zip",
-                "reference": "v0.2.10",
+                "url": "https://github.com/matteosister/CompassElephant/archive/v0.2.11.zip",
+                "reference": "v0.2.11",
                 "shasum": ""
             },
             "require": {
@@ -20,7 +20,7 @@
                 "symfony/process": "2.1.*",
                 "symfony/finder": "2.1.*"
             },
-            "time": "2012-12-11 14:11:27",
+            "time": "2012-12-27 06:57:18",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -28,6 +28,7 @@
                     "CompassElephant": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL3"
             ],
@@ -97,16 +98,16 @@
         },
         {
             "name": "cypresslab/gitelephant",
-            "version": "0.9.7",
+            "version": "0.9.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matteosister/GitElephant",
-                "reference": "v0.9.7"
+                "reference": "v0.9.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/matteosister/GitElephant/archive/v0.9.7.zip",
-                "reference": "v0.9.7",
+                "url": "https://github.com/matteosister/GitElephant/archive/v0.9.10.zip",
+                "reference": "v0.9.10",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +118,7 @@
             "require-dev": {
                 "phpunit/phpunit": "@stable"
             },
-            "time": "2012-12-22 23:09:19",
+            "time": "2012-12-27 22:24:09",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -971,18 +972,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/jdorn/sql-formatter.git",
-                "reference": "6b3516f87d6636dcc3f847887eec82e852943247"
+                "reference": "9aac5ea51a1c13af3e67a7d7ba7e528f94c52485"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/jdorn/sql-formatter/archive/6b3516f87d6636dcc3f847887eec82e852943247.zip",
-                "reference": "6b3516f87d6636dcc3f847887eec82e852943247",
+                "url": "https://github.com/jdorn/sql-formatter/archive/9aac5ea51a1c13af3e67a7d7ba7e528f94c52485.zip",
+                "reference": "9aac5ea51a1c13af3e67a7d7ba7e528f94c52485",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-25 00:51:26",
+            "time": "2012-12-27 16:16:30",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1752,12 +1753,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle",
-                "reference": "v2.1.4"
+                "reference": "v2.1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/v2.1.4.zip",
-                "reference": "v2.1.4",
+                "url": "https://github.com/sensio/SensioGeneratorBundle/archive/v2.1.5.zip",
+                "reference": "v2.1.5",
                 "shasum": ""
             },
             "require": {
@@ -1782,6 +1783,7 @@
                     "Sensio\\Bundle\\GeneratorBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2083,12 +2085,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "8fd34e4eae26c55c7aec04b9f452e10557b8bc89"
+                "reference": "a0ea84bbc307bc06c7198bb827a1a2b7d1915c7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/8fd34e4eae26c55c7aec04b9f452e10557b8bc89.zip",
-                "reference": "8fd34e4eae26c55c7aec04b9f452e10557b8bc89",
+                "url": "https://github.com/symfony/symfony/archive/a0ea84bbc307bc06c7198bb827a1a2b7d1915c7e.zip",
+                "reference": "a0ea84bbc307bc06c7198bb827a1a2b7d1915c7e",
                 "shasum": ""
             },
             "require": {
@@ -2137,7 +2139,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-12-23 18:08:33",
+            "time": "2012-12-27 15:10:36",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -2219,18 +2221,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "a65e7e4e2e5726a42a29e609fad008f8a9600594"
+                "reference": "1b1a6e7de018d300e6eb67727f3717c24f4540ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/a65e7e4e2e5726a42a29e609fad008f8a9600594.zip",
-                "reference": "a65e7e4e2e5726a42a29e609fad008f8a9600594",
+                "url": "https://github.com/fabpot/Twig/archive/1b1a6e7de018d300e6eb67727f3717c24f4540ba.zip",
+                "reference": "1b1a6e7de018d300e6eb67727f3717c24f4540ba",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-25 10:06:30",
+            "time": "2012-12-27 16:33:50",
             "type": "library",
             "extra": {
                 "branch-alias": {

@@ -39,6 +39,7 @@ var RepositoryView = Backbone.View.extend({
         return false;
     },
     loadContent: function(routeData) {
+        routeData.path = decodeURI(routeData.path);
         var url = Routing.generate('ajax_tree_object', routeData);
         // new section
         var newTable = this.sectionExists(routeData.path);
@@ -73,9 +74,15 @@ var RepositoryView = Backbone.View.extend({
                         }, 0);
                     this.loadCommits();
                     this.breadcrumbView.loadContent(routeData);
+                },
+                error: function() {
+                    this.removeSpinner();
                 }
             });
         }
+    },
+    addErrorSection: function() {
+
     },
     sectionExists: function(path) {
         return this.$el.find('section[data-path="' + path + '"]');

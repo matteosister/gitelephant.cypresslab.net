@@ -71,7 +71,10 @@ class Content extends Service
             $arrOutput[] = '<div class="ln">'.$line.'</div>';
         }
 
-        return sprintf('<table class="file"><tr><td class="ln-number"><pre>%s</pre></td><td width="100%%" class="code"><div class="highlight"><pre>%s</pre></div></td></tr></table>', implode($arrNumbers), implode($arrOutput));
+        return array(
+            'line_numbers' => implode($arrNumbers),
+            'content' => implode($arrOutput)
+        );
     }
 
     /**

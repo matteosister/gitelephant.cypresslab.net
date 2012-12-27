@@ -43,8 +43,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'link_tree_object' => new \Twig_Filter_Method($this, 'linkTreeObject'),
-            'breadcrumb'       => new \Twig_Filter_Method($this, 'breadcrumb')
+            'link_tree_object' => new \Twig_Filter_Method($this, 'linkTreeObject', array('is_safe' => array('all'))),
+            'breadcrumb'       => new \Twig_Filter_Method($this, 'breadcrumb', array('is_safe' => array('html')))
         );
     }
 
@@ -61,6 +61,7 @@ class CypressGitElephantHostExtension extends \Twig_Extension
             'output_chunk' => new \Twig_Function_Method($this, 'outputChunk', array('is_safe' => array('html'))),
             'icon_for' => new \Twig_Function_Method($this, 'iconFor', array('is_safe' => array('html'))),
             'is_image' => new \Twig_Function_Method($this, 'isImage', array('is_safe' => array('html'))),
+            'is_text' => new \Twig_Function_Method($this, 'isPygmentableText', array('is_safe' => array('html'))),
             'commit_box' => new \Twig_Function_Method($this, 'commitBox', array('is_safe' => array('html'))),
             'code_table' => new \Twig_Function_Method($this, 'codeTable', array('is_safe' => array('html')))
         );
@@ -97,7 +98,17 @@ class CypressGitElephantHostExtension extends \Twig_Extension
      */
     public function outputContent(TreeObject $treeObject)
     {
-        return $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject);
+        try {
+            $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Repository:_output_content.html.twig', array(
+                'output' => $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject)
+            ));
+        } catch (\Exception $e) {
+            $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Repository:_output_content.html.twig', array(
+                'link' => '(TODO) link to the file'
+            ));
+        }
+
+        return $output;
     }
 
     /**
@@ -149,6 +160,20 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         }
 
         return in_array($pathInfo['extension'], array('jpg', 'jpeg', 'png', 'gif'));
+    }
+
+    /**
+     * check if the blob is "pygmentable"
+     *
+     * @param \GitElephant\Objects\TreeObject $blob
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function isPygmentableText(TreeObject $blob)
+    {
+        if (TreeObject::TYPE_BLOB !== $blob->getType()) {
+            throw new \InvalidArgumentException('to check the pygmentize option you must pass a TreeObject');
+        }
     }
 
     /**

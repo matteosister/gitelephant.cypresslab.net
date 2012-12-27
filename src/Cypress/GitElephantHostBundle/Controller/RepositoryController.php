@@ -81,7 +81,7 @@ class RepositoryController extends BaseController
      * @param string $path actual path
      *
      * @Route("/{slug}/tree/{ref}/{path}", name="tree_object",
-     *   requirements={"ref" = ".+", "path" = ".+"}, defaults={"path" = ""})
+     *   requirements={"ref" = "\S+", "path" = ".+"}, defaults={"path" = ""})
      * @Template("CypressGitElephantHostBundle:Repository:repository.html.twig")
      *
      * @return array
@@ -105,7 +105,7 @@ class RepositoryController extends BaseController
      *
      * @Template("CypressGitElephantHostBundle:Repository:tree.html.twig")
      * @Route("/{slug}/ajax/tree/{ref}/{path}", name="ajax_tree_object",
-     *   requirements={"ref" = ".+", "path" = ".+"},
+     *   requirements={"ref" = "\S+", "path" = ".+"},
      *   options={"expose"=true},
      *   defaults={"ref"="master", "path"=""}
      * )
