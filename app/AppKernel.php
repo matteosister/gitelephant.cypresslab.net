@@ -29,8 +29,7 @@ class AppKernel extends Kernel
             new Cypress\PygmentsBundle\CypressPygmentsBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new Cypress\CompassElephantBundle\CypressCompassElephantBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            //new HWI\Bundle\OAuthBundle\HWIOAuthBundle()
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -5,12 +5,10 @@ CypressPygmentsBundle:
     resource: .
     type: pygments_bundle
 
-#hwi_oauth_redirect:
-#    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-#    prefix:   /connect
-#
-#github_login:
-#    pattern: /login/check-github
+cypress_git_elephant_host_github:
+    resource: "@CypressGitElephantHostBundle/Controller/GithubController.php"
+    type:     annotation
+    prefix:   /
 
 cypress_git_elephant_host:
     resource: "@CypressGitElephantHostBundle/Controller/"

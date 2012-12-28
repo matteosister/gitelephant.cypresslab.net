@@ -38,15 +38,6 @@ security:
             #http_basic:
             #    realm: "Secured Demo Area"
 
-#        repository_browser:
-#            oauth:
-#                resource_owners:
-#                    github:        "/login/check-github"
-#                login_path:        /login
-#                failure_path:      /login
-#
-#                oauth_user_provider:
-#                    service: hwi_oauth.abstract_resource_owner.github
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

@@ -1,5 +1,5 @@
 {
-    "hash": "9e16260886f294e57620a6b0dae66a22",
+    "hash": "d5dce99d75a1ef2c1b57a2bf5aa7a926",
     "packages": [
         {
             "name": "cypresslab/compass-elephant",
@@ -75,6 +75,7 @@
                     "Cypress\\CompassElephantBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL3"
             ],
@@ -205,6 +206,7 @@
             "require": {
                 "php": ">=5.3.2"
             },
+            "time": "2012-09-20 05:55:18",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -253,8 +255,7 @@
                 "eventmanager",
                 "annotations",
                 "persistence"
-            ],
-            "time": "2012-09-20 05:55:18"
+            ]
         },
         {
             "name": "doctrine/data-fixtures",
@@ -413,6 +414,7 @@
                     "Doctrine\\Bundle\\DoctrineBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -668,6 +670,7 @@
                     "Doctrine\\Bundle\\MongoDBBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -890,83 +893,6 @@
             ]
         },
         {
-            "name": "hwi/oauth-bundle",
-            "version": "dev-master",
-            "target-dir": "HWI/Bundle/OAuthBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hwi/HWIOAuthBundle",
-                "reference": "b75f0a696846edbc9a85cc345b3e36495ea9d69b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/hwi/HWIOAuthBundle/archive/b75f0a696846edbc9a85cc345b3e36495ea9d69b.zip",
-                "reference": "b75f0a696846edbc9a85cc345b3e36495ea9d69b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "kriswallsmith/buzz": "0.7",
-                "symfony/framework-bundle": ">=2.0,<2.3-dev",
-                "symfony/security-bundle": ">=2.0,<2.3-dev"
-            },
-            "require-dev": {
-                "doctrine/orm": "*",
-                "friendsofsymfony/user-bundle": "*",
-                "symfony/twig-bundle": "*",
-                "symfony/validator": ">=2.0,<2.2-dev"
-            },
-            "suggest": {
-                "friendsofsymfony/user-bundle": "to connect FOSUB with this bundle",
-                "symfony/twig-bundle": "to use the Twig hwi_oauth_* functions",
-                "doctrine/doctrine-bundle": "to use Doctrine user provider"
-            },
-            "time": "2012-12-13 12:15:50",
-            "type": "symfony-bundle",
-            "installation-source": "source",
-            "autoload": {
-                "psr-0": {
-                    "HWI\\Bundle\\OAuthBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Geoffrey Bachelet",
-                    "email": "geoffrey.bachelet@gmail.com",
-                    "homepage": "https://github.com/ubermuda"
-                },
-                {
-                    "name": "Alexander",
-                    "email": "alexander@hardware.info"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/hwi/HWIOAuthBundle/contributors"
-                }
-            ],
-            "description": "Support for authenticating users via oauth in Symfony2.",
-            "homepage": "http://github.com/hwi/HWIOAuthBundle",
-            "keywords": [
-                "security",
-                "oauth",
-                "oauth2",
-                "github",
-                "twitter",
-                "firewall",
-                "google",
-                "facebook",
-                "linkedin",
-                "windows live",
-                "vkontakte",
-                "oauth1",
-                "sensio connect"
-            ]
-        },
-        {
             "name": "jdorn/sql-formatter",
             "version": "dev-master",
             "source": {
@@ -1134,6 +1060,7 @@
                 "doctrine/doctrine-bundle": "*",
                 "doctrine/orm": "*"
             },
+            "time": "2012-09-21 08:56:32",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -1157,8 +1084,7 @@
             "keywords": [
                 "dependency injection",
                 "annotations"
-            ],
-            "time": "2012-09-21 08:56:32"
+            ]
         },
         {
             "name": "jms/metadata",
@@ -1240,6 +1166,7 @@
                 "symfony/form": "*",
                 "symfony/validator": "*"
             },
+            "time": "2012-09-06 16:12:23",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -1266,8 +1193,7 @@
                 "security",
                 "secure",
                 "expression"
-            ],
-            "time": "2012-09-06 16:12:23"
+            ]
         },
         {
             "name": "knplabs/knp-components",
@@ -1441,52 +1367,6 @@
                 "assets",
                 "compression",
                 "minification"
-            ]
-        },
-        {
-            "name": "kriswallsmith/buzz",
-            "version": "v0.7",
-            "source": {
-                "type": "git",
-                "url": "http://github.com/kriswallsmith/Buzz.git",
-                "reference": "v0.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/kriswallsmith/Buzz/zipball/v0.7",
-                "reference": "v0.7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "suggest": {
-                "ext-curl": "*"
-            },
-            "time": "2012-06-25 12:01:38",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "Buzz": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
-                }
-            ],
-            "description": "Lightweight HTTP client",
-            "homepage": "https://github.com/kriswallsmith/Buzz",
-            "keywords": [
-                "curl",
-                "http client"
             ]
         },
         {
@@ -2085,12 +1965,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "a0ea84bbc307bc06c7198bb827a1a2b7d1915c7e"
+                "reference": "277ababc82e4745f1c31480a82dc01c4a52d846f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/a0ea84bbc307bc06c7198bb827a1a2b7d1915c7e.zip",
-                "reference": "a0ea84bbc307bc06c7198bb827a1a2b7d1915c7e",
+                "url": "https://github.com/symfony/symfony/archive/277ababc82e4745f1c31480a82dc01c4a52d846f.zip",
+                "reference": "277ababc82e4745f1c31480a82dc01c4a52d846f",
                 "shasum": ""
             },
             "require": {
@@ -2139,7 +2019,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "1.*"
             },
-            "time": "2012-12-27 15:10:36",
+            "time": "2012-12-28 07:29:59",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -2278,7 +2158,6 @@
         "cypresslab/compass-elephant-bundle": 20,
         "friendsofsymfony/jsrouting-bundle": 20,
         "ornicar/gravatar-bundle": 20,
-        "hwi/oauth-bundle": 20,
         "liip/functional-test-bundle": 20
     }
 }

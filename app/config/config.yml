@@ -6,7 +6,6 @@ imports:
     - { resource: bundles/ornicar_gravatar.yml }
     #- { resource: bundles/less_elephant.yml }
     - { resource: bundles/compass_elephant.yml }
-    #- { resource: bundles/hwi_oauth.yml }
 
 framework:
     #esi:             ~

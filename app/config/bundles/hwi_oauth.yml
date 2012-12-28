@@ -1,9 +1,0 @@
-hwi_oauth:
-    # name of the firewall in which this bundle is active, this setting MUST be set
-    firewall_name: secured_area
-    resource_owners:
-        github:
-            type:                github
-            client_id:           ab104554bacd55533c2b
-            client_secret:       1486a0496608d32932db65cdf60f6181e1758ea6
-            scope:               ""
