@@ -24,5 +24,10 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="pygments_elephant.pygmentize" />
         </service>
+
+        <service id="cypress.git_elephant_host.github.user" class="Cypress\GitElephantHostBundle\Github\User" scope="request">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="request" />
+        </service>
     </services>
 </container>

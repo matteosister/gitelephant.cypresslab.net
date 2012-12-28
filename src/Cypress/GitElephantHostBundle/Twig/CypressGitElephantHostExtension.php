@@ -18,6 +18,9 @@ use GitElephant\Objects\Diff\DiffChunk;
 use GitElephant\Objects\Tree;
 use GitElephant\Objects\Commit;
 
+/**
+ * twig ext
+ */
 class CypressGitElephantHostExtension extends \Twig_Extension
 {
     /**
@@ -63,7 +66,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
             'is_image' => new \Twig_Function_Method($this, 'isImage', array('is_safe' => array('html'))),
             'is_text' => new \Twig_Function_Method($this, 'isPygmentableText', array('is_safe' => array('html'))),
             'commit_box' => new \Twig_Function_Method($this, 'commitBox', array('is_safe' => array('html'))),
-            'code_table' => new \Twig_Function_Method($this, 'codeTable', array('is_safe' => array('html')))
+            'code_table' => new \Twig_Function_Method($this, 'codeTable', array('is_safe' => array('html'))),
+            'user_login' => new \Twig_Function_Method($this, 'userLogin', array('is_safe' => array('html')))
         );
     }
 
@@ -99,11 +103,11 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     public function outputContent(TreeObject $treeObject)
     {
         try {
-            $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Repository:_output_content.html.twig', array(
+            $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:output_content.html.twig', array(
                 'output' => $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject)
             ));
         } catch (\Exception $e) {
-            $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Repository:_output_content.html.twig', array(
+            $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:output_content.html.twig', array(
                 'link' => '(TODO) link to the file'
             ));
         }
@@ -210,18 +214,40 @@ class CypressGitElephantHostExtension extends \Twig_Extension
      */
     public function commitBox(Commit $commit, $link = false)
     {
-        return $this->container->get('templating')->render('CypressGitElephantHostBundle:Commit:box.html.twig', array(
+        return $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:commit_box.html.twig', array(
             'slug' => $this->container->get('cypress.git_elephant_host.git_router')->getSlug(),
             'commit' => $commit,
             'link' => $link
         ));
     }
 
+    public function userLogin()
+    {
+        return $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:user_login.html.twig', array(
+            'user' => $this->getUser()
+        ));
+    }
+
     public function codeTable(DiffChunk $diffChunk)
     {
-        return $this->container->get('templating')->render('CypressGitElephantHostBundle:Commit:code_table.html.twig', array(
+        return $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:code_table.html.twig', array(
             'lines' => $diffChunk->getLines()
         ));
+    }
+
+    private function getUser()
+    {
+        return $this->container->get('cypress.git_elephant_host.github.user');
+    }
+
+    /**
+     * user repository
+     *
+     * @return \Doctrine\ORM\EntityRepository
+     */
+    private function getUserRepository()
+    {
+        return $this->container->get('doctrine.orm.entity_manager')->getRepository('Cypress\GitElephantHostBundle\Entity\User');
     }
 
     /**

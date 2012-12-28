@@ -1,0 +1,10 @@
+<ul class="nav pull-right">
+    {% if user is defined %}
+        <li class="user_login">
+            <a href="#"><img src="{{ gravatar_hash(user.getAvatarId) }}" /> {{ user.getUsername }}</a>
+        </li>
+        <li><a href="#">logout</a></li>
+    {% else %}
+        <li><a href="{{ path('github_login') }}">Login with github</a></li>
+    {% endif %}
+</ul>

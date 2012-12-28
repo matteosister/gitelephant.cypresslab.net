@@ -6,7 +6,6 @@ imports:
     - { resource: bundles/ornicar_gravatar.yml }
     #- { resource: bundles/less_elephant.yml }
     - { resource: bundles/compass_elephant.yml }
-    - { resource: bundles/cypress_git_elephant_host.yml }
 
 framework:
     #esi:             ~
@@ -93,3 +92,9 @@ jms_di_extra:
         all_bundles: false
         bundles: [CypressGitElephantHostBundle]
         directories: ["%kernel.root_dir%/../src"]
+
+cypress_git_elephant_host:
+    login_url: https://github.com/login/oauth/authorize
+    access_token_url: https://github.com/login/oauth/access_token
+    client_id: 1787baab061073db8084
+    client_secret: 8d8edbfe969165285ea3fdc2a35f0c743433f9cb

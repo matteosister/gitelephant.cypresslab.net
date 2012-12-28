@@ -1,0 +1,9 @@
+<table>
+    {% for line in lines %}
+    <tr>
+        <td class="code {{ line.type }}">
+            <pre class="line">{{ line }}</pre>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

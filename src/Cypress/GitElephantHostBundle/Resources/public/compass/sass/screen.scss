@@ -293,3 +293,14 @@ ul.nav {
         margin-right: 7px;
     }
 }
+
+.navbar li.user_login a {
+    padding-left: 35px;
+    position: relative;
+    img {
+        position: absolute;
+        left: 0;
+        top: 5px;
+        @include border-radius(4px);
+    }
+}

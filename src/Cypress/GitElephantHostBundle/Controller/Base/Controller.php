@@ -9,6 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Controller\Base;
 
+use Cypress\GitElephantHostBundle\Entity\User;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -58,6 +59,30 @@ class Controller extends BaseController
     public function getRepository($slug)
     {
         return $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+    }
+
+    /**
+     * gets the actual user
+     *
+     * @return User|void
+     */
+    public function getUser()
+    {
+        if (null === $userId = $this->getRequest()->cookies->get('user')) {
+            return null;
+        }
+
+        return $this->getUserRepository()->findOneBy(array('id' => $userId));
+    }
+
+    /**
+     * user repository
+     *
+     * @return \Doctrine\ORM\EntityRepository
+     */
+    public function getUserRepository()
+    {
+        return $this->getEM()->getRepository('Cypress\GitElephantHostBundle\Entity\User');
     }
 
     /**

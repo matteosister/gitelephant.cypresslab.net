@@ -20,3 +20,9 @@ monolog:
 
 cypress_compass_elephant:
     register_listener: false
+
+cypress_git_elephant_host:
+    login_url: https://github.com/login/oauth/authorize
+    access_token_url: https://github.com/login/oauth/access_token
+    client_id: ab104554bacd55533c2b
+    client_secret: 1486a0496608d32932db65cdf60f6181e1758ea6
