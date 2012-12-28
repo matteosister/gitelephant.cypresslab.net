@@ -2,11 +2,11 @@
     <tr>
         {% if output is defined %}
             <td class="ln-number">
-                <pre>{{ output['line_numbers'] }}</pre>
+                <pre>{{ output['line_numbers']|raw }}</pre>
             </td>
             <td width="100%%" class="code">
                 <div class="highlight">
-                    <pre>{{ output['content'] }}</pre>
+                    <pre>{{ output['content']|raw }}</pre>
                 </div>
             </td>
         {% else %}
