@@ -41,14 +41,9 @@ class User extends Api
         return $this->em->getRepository('Cypress\GitElephantHostBundle\Entity\User');
     }
 
-    /**
-     * Get User
-     *
-     * @return \Cypress\GitElephantHostBundle\Entity\User
-     */
-    public function getUser()
+    public function isLoggedIn()
     {
-        return $this->user;
+        return null !== $this->user;
     }
 
     public function getAvatarId()

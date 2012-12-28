@@ -31,6 +31,7 @@ class Api
             //var_dump($resource->$path);
             $url = $resource->$path;
         }
+
         return $url;
     }
 

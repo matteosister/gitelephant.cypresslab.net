@@ -28,7 +28,7 @@ use Buzz\Client\Curl;
 class GithubController extends BaseController
 {
     /**
-     * main page
+     * login
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/login", name="github_login")
@@ -41,6 +41,20 @@ class GithubController extends BaseController
         $loginUrl = $this->container->getParameter('cypress_git_elephant_host.login_url');
 
         return new RedirectResponse($loginUrl.'?'.http_build_query($this->buildArrayQuery($user)));
+    }
+
+    /**
+     * logout
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/logout", name="github_logout")
+     */
+    public function logoutAction()
+    {
+        $response = new RedirectResponse($this->generateUrl('homepage'));
+        $response->headers->clearCookie('user');
+
+        return $response;
     }
 
     /**
@@ -66,7 +80,7 @@ class GithubController extends BaseController
             $user->setAccessToken($accessToken);
             $this->getEM()->persist($user);
             $this->getEM()->flush();
-            $this->getSession()->set('user_id', $user->getId());
+            $this->setUserCookie($response, $user);
         }
 
         return $response;

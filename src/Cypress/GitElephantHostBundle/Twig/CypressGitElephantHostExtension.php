@@ -224,7 +224,7 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     public function userLogin()
     {
         return $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:user_login.html.twig', array(
-            'user' => $this->getUser()
+            'user' => $this->container->get('cypress.git_elephant_host.github.user')
         ));
     }
 
@@ -233,21 +233,6 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         return $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:code_table.html.twig', array(
             'lines' => $diffChunk->getLines()
         ));
-    }
-
-    private function getUser()
-    {
-        return $this->container->get('cypress.git_elephant_host.github.user');
-    }
-
-    /**
-     * user repository
-     *
-     * @return \Doctrine\ORM\EntityRepository
-     */
-    private function getUserRepository()
-    {
-        return $this->container->get('doctrine.orm.entity_manager')->getRepository('Cypress\GitElephantHostBundle\Entity\User');
     }
 
     /**
