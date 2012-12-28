@@ -22,6 +22,10 @@ class CypressGitElephantHostExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        foreach ($config as $name => $value) {
+            $container->setParameter('cypress_git_elephant_host.'.$name, $value);
+        }
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }

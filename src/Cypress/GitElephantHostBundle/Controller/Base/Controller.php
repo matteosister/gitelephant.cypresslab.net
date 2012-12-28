@@ -9,12 +9,14 @@
 
 namespace Cypress\GitElephantHostBundle\Controller\Base;
 
+use Symfony\Bridge\Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use GitElephant\Repository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Cypress\GitElephantHostBundle\Git\RefPathSplitter;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 /**
@@ -74,5 +76,21 @@ class Controller extends BaseController
     public function getRefPathSplitter()
     {
         return $this->get('ref_path.splitter');
+    }
+
+    /**
+     * @return Logger
+     */
+    public function getLogger()
+    {
+        return $this->get('logger');
+    }
+
+    /**
+     * @return Session
+     */
+    public function getSession()
+    {
+        return $this->get('session');
     }
 }

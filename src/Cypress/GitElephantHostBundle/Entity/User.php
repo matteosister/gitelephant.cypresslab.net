@@ -32,9 +32,16 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column
+     * @ORM\Column(nullable=true)
      */
     private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column
+     */
+    private $token;
 
     /**
      * @var string
@@ -58,6 +65,14 @@ class User
      * @Gedmo\Timestampable(on="update")
      */
     private $updated;
+
+    /**
+     * Class constructor
+     */
+    public function __construct()
+    {
+        $this->token = sha1(uniqid());
+    }
 
     /**
      * Id getter
@@ -87,6 +102,26 @@ class User
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * Token setter
+     *
+     * @param string $token the token variable
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
+
+    /**
+     * Token getter
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 
     /**

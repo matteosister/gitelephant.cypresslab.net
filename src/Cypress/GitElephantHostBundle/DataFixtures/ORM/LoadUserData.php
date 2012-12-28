@@ -24,10 +24,9 @@ class LoadUserData extends BaseFixture
     public function load(ObjectManager $manager)
     {
         $user = new User();
-        $user->setUsername('pippo');
 
-        $manager->persist($user);
-        $manager->flush();
+        //$manager->persist($user);
+        //$manager->flush();
     }
 
     /**
