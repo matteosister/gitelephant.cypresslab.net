@@ -9,48 +9,34 @@
 
 namespace Cypress\GitElephantHostBundle\Github;
 
+use Cypress\GitElephantHostBundle\Github\Api;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * github user
+ */
 class User extends Api
 {
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @return bool
      */
-    private $em;
-
-    /**
-     * constructor
-     *
-     * @param \Doctrine\ORM\EntityManager               $em      entity manager
-     * @param \Symfony\Component\HttpFoundation\Request $request request
-     */
-    public function __construct(EntityManager $em, Request $request)
-    {
-        $this->em = $em;
-        $this->user = $this->getUserRepository()->findOneBy(array('id' => $request->cookies->get('user')));
-    }
-
-    /**
-     * user repository
-     *
-     * @return \Doctrine\ORM\EntityRepository
-     */
-    private function getUserRepository()
-    {
-        return $this->em->getRepository('Cypress\GitElephantHostBundle\Entity\User');
-    }
-
     public function isLoggedIn()
     {
         return null !== $this->user;
     }
 
+    /**
+     * @return null|string
+     */
     public function getAvatarId()
     {
         return $this->get('current_user_url.gravatar_id');
     }
 
+    /**
+     * @return null|string
+     */
     public function getUsername()
     {
         return $this->get('current_user_url.login');

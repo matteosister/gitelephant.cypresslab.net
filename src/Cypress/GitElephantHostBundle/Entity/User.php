@@ -11,6 +11,7 @@ namespace Cypress\GitElephantHostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * A user entity
@@ -51,6 +52,20 @@ class User
     private $accessToken;
 
     /**
+     * @var array
+     *
+     * @ORM\Column(name="github_data", type="array", nullable=true)
+     */
+    private $githubData;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="github_data_refresh", type="datetime")
+     */
+    private $githubDataRefresh;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
@@ -72,6 +87,8 @@ class User
     public function __construct()
     {
         $this->token = sha1(uniqid());
+        $this->githubData = array();
+        $this->githubDataRefresh = new \DateTime();
     }
 
     /**
@@ -142,6 +159,61 @@ class User
     public function getAccessToken()
     {
         return $this->accessToken;
+    }
+
+    /**
+     * Set GithubData
+     *
+     * @param array $githubData the githubData variable
+     */
+    public function setGithubData($githubData)
+    {
+        $this->githubData = $githubData;
+        $this->githubDataRefresh = new \DateTime();
+    }
+
+    /**
+     * Get GithubData
+     *
+     * @return array
+     */
+    public function getGithubData()
+    {
+        return $this->githubData;
+    }
+
+    /**
+     * add data to github
+     *
+     * @param string $key   api path
+     * @param string $value returned value
+     *
+     * @return void
+     */
+    public function addGithubData($key, $value)
+    {
+        $this->githubData[$key] = $value;
+        $this->githubDataRefresh = new \DateTime();
+    }
+
+    /**
+     * Set GithubDataRefresh
+     *
+     * @param \DateTime $githubDataRefresh the githubDataRefresh variable
+     */
+    public function setGithubDataRefresh($githubDataRefresh)
+    {
+        $this->githubDataRefresh = $githubDataRefresh;
+    }
+
+    /**
+     * Get GithubDataRefresh
+     *
+     * @return \DateTime
+     */
+    public function getGithubDataRefresh()
+    {
+        return $this->githubDataRefresh;
     }
 
     /**
