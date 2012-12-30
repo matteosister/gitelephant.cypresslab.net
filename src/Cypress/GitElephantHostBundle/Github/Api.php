@@ -44,12 +44,13 @@ class Api
     /**
      * get a value from github, or from the db
      *
-     * @param string $what  key
-     * @param bool   $cache cache or not
+     * @param string $what   key
+     * @param bool   $cache  cache or not
+     * @param array  $params params
      *
      * @return null
      */
-    protected function get($what, $cache = true)
+    protected function get($what, $cache = true, $params = array())
     {
         $checkUpdate = new \DateTime();
         $checkUpdate->sub(new \DateInterval('P1D'));
@@ -59,8 +60,7 @@ class Api
         $paths = explode('.', $what);
         $url = null;
         foreach ($paths as $path) {
-            $resource = $this->getResource($url);
-            //var_dump($resource->$path);
+            $resource = $this->getResource($url, $params);
             $url = $resource->$path;
         }
         $this->user->addGithubData($what, $url);
@@ -70,36 +70,51 @@ class Api
         return $url;
     }
 
+    protected function call($what, $cache = true, $params = array())
+    {
+        $url = $this->get($what, false, $params);
+
+        return $this->getResource($url, $params, true);
+    }
+
+
     private function getUserGithubData($what)
     {
         return isset($this->user->getGithubData()[$what]) ? $this->user->getGithubData()[$what] : null;
     }
 
     /**
-     * @param null $url
+     * @param null  $url    url
+     * @param array $params params
+     * @param bool  $raw    raw content
      *
      * @return mixed
      */
-    private function getResource($url = null)
+    private function getResource($url = null, $params = array(), $raw = false)
     {
         $url = 'https://api.github.com'.$url;
-        $response = $this->issueRequest($url);
+        foreach ($params as $key => $value) {
+            $url = preg_replace(sprintf('/{%s}/', $key), $value, $url);
+        }
+        $url = preg_replace('/\{\?.*\}/', '', $url);
+        $response = $this->issueRequest($url, $raw);
 
         return $response;
     }
 
     /**
-     * @param string $url
+     * @param string $url url to call
+     * @param bool   $raw raw content
      *
      * @return mixed
      */
-    private function issueRequest($url)
+    private function issueRequest($url, $raw = false)
     {
         $query = sprintf('?access_token=%s', $this->user->getAccessToken());
         $browser = new Browser(new Curl());
         $response = $browser->get($url.$query);
 
-        return json_decode($response->getContent());
+        return $raw ? $response : json_decode($response->getContent());
     }
 
     /**

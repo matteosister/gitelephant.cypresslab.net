@@ -62,6 +62,16 @@ assetic:
                 - bundles/cypressgitelephanthost/js/bb/Router.js
                 - bundles/cypressgitelephanthost/js/bb/Main.js
             filters: [?uglifyjs]
+        github_repositories:
+            inputs:
+                - bundles/cypressgitelephanthost/components/underscore/underscore.js
+                - bundles/cypressgitelephanthost/components/backbone/backbone.js
+                - bundles/cypressgitelephanthost/components/spin.js/spin.js
+                - bundles/cypressgitelephanthost/js/spinner_options.js
+                - bundles/cypressgitelephanthost/js/spin.jquery.js
+                - bundles/cypressgitelephanthost/js/bb_github_repositories/GithubRepositoryModel.js
+                - bundles/cypressgitelephanthost/js/bb_github_repositories/RepositoryView.js
+                - bundles/cypressgitelephanthost/js/bb_github_repositories/ListView.js
 
 # Doctrine Configuration
 doctrine:

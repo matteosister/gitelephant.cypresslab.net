@@ -118,4 +118,12 @@ class Controller extends BaseController
     {
         return $this->get('session');
     }
+
+    /**
+     * @return \Cypress\GitElephantHostBundle\Github\User
+     */
+    public function getGihubUser()
+    {
+        return $this->get('cypress.git_elephant_host.github.user');
+    }
 }

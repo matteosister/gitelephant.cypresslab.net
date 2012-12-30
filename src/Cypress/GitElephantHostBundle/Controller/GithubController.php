@@ -13,6 +13,7 @@ use Buzz\Browser;
 use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
 use Cypress\GitElephantHostBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,26 @@ use Buzz\Client\Curl;
  */
 class GithubController extends BaseController
 {
+    /**
+     * github user repositories
+     *
+     * @return array
+     * @Route("/repositories.{_format}",
+     *   name="github_repositories",
+     *   options={"expose"=true},
+     *   defaults={"_format"="html"}
+     * )
+     * @Template
+     */
+    public function repositoriesAction()
+    {
+        if ('json' === $this->getRequest()->getRequestFormat()) {
+            return $this->getGihubUser()->getRepositories();
+        }
+
+        return array();
+    }
+
     /**
      * login
      *
