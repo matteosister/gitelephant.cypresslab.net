@@ -42,10 +42,30 @@ class GithubController extends BaseController
     public function repositoriesAction()
     {
         if ('json' === $this->getRequest()->getRequestFormat()) {
-            return $this->getGihubUser()->getRepositories();
+            $response = $this->getGihubUser()->getRepositories();
+
+            return $response;
         }
 
         return array();
+    }
+
+    /**
+     * github user repositories pagination
+     *
+     * @return array
+     * @Route("/repositories/pagination",
+     *   name="github_repositories_pagination",
+     *   options={"expose"=true}
+     * )
+     * @Template
+     */
+    public function linkPaginationAction()
+    {
+        $response = $this->getGihubUser()->getRepositories();
+        $links = $this->getLinkHeader($response);
+
+        return compact('links');
     }
 
     /**
@@ -166,5 +186,23 @@ class GithubController extends BaseController
         parse_str($response->getContent());
 
         return $access_token;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Response $response
+     *
+     * @return array
+     */
+    private function getLinkHeader(Response $response)
+    {
+        $links = array();
+        $data = $response->headers->get('link');
+        foreach (explode(',', $data) as $link) {
+            $matches = array();
+            preg_match('/<(.*)>; rel="(.*)"/', $link, $matches);
+            $links[$matches[2]] = $matches[1];
+        }
+
+        return $links;
     }
 }
