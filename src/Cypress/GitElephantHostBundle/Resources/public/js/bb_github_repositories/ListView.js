@@ -10,8 +10,10 @@ var ListView = Backbone.View.extend({
     tagName: 'div',
     id: 'github-repository-list',
     githubRepositoryCollection: new GithubRepositoryCollection(),
+    paginationView: new PaginationView(),
     render: function() {
         this.loadData();
+        this.$el.append(this.paginationView.el);
     },
     initialize: function() {
         this.githubRepositoryCollection.bind('add', this.addRepository, this);
@@ -32,7 +34,7 @@ var ListView = Backbone.View.extend({
         });
     },
     addRepository: function(model) {
-        this.$el.append(new RepositoryView({model: model}).el);
+        this.$el.prepend(new RepositoryView({model: model}).el);
     },
     addSpinner: function() {
         this.$el.css('min-height', '40px');
