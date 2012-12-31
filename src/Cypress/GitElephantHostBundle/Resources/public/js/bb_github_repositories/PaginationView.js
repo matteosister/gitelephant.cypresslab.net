@@ -11,6 +11,16 @@ var PaginationView = Backbone.View.extend({
     className: 'pagination',
     initialize: function() {
         this.render();
+        this.load();
+    },
+    load: function() {
+        $.ajax({
+            url: Routing.generate('github_repositories_pagination'),
+            context: this,
+            success: function(html) {
+                this.$el.append(html);
+            }
+        });
     },
     addSpinner: function() {
         this.$el.css('min-height', '40px');
