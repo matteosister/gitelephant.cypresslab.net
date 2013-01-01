@@ -11,9 +11,24 @@ var ListView = Backbone.View.extend({
     id: 'github-repository-list',
     githubRepositoryCollection: new GithubRepositoryCollection(),
     paginationView: new PaginationView(),
+    userModel: null,
+    apiModel: null,
     render: function() {
         this.$el.prepend(this.paginationView.el);
-        this.loadData();
+        this.loadUser();
+    },
+    loadUser: function() {
+        $.ajax({
+            url: Routing.generate('github_user'),
+            context: this,
+            success: function(data) {
+                this.userModel = new UserModel(data);
+                this.loadApi();
+            }
+        });
+    },
+    loadApi: function() {
+        this.apiModel = new ApiModel(this.userModel);
     },
     initialize: function() {
         this.githubRepositoryCollection.bind('add', this.addRepository, this);

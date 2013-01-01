@@ -29,6 +29,24 @@ use Buzz\Client\Curl;
 class GithubController extends BaseController
 {
     /**
+     * github user
+     *
+     * @return array
+     * @Route("/user.{_format}",
+     *   name="github_user",
+     *   options={"expose"=true},
+     *   defaults={"_format"="json"}
+     * )
+     * @Template
+     */
+    public function userAction()
+    {
+        $user = $this->getUser();
+
+        return compact('user');
+    }
+
+    /**
      * github user repositories
      *
      * @return array
