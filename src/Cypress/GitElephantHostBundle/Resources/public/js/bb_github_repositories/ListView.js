@@ -13,6 +13,9 @@ var ListView = Backbone.View.extend({
     paginationView: new PaginationView(),
     userModel: null,
     apiModel: null,
+    initialize: function() {
+        this.githubRepositoryCollection.bind('add', this.addRepository, this);
+    },
     render: function() {
         this.$el.prepend(this.paginationView.el);
         this.loadUser();
@@ -29,9 +32,6 @@ var ListView = Backbone.View.extend({
     },
     loadApi: function() {
         this.apiModel = new ApiModel(this.userModel);
-    },
-    initialize: function() {
-        this.githubRepositoryCollection.bind('add', this.addRepository, this);
     },
     loadData: function() {
         this.addSpinner();

@@ -18,7 +18,7 @@ var ApiModel = Backbone.Model.extend({
             url: this.generateUrl(this.baseUrl),
             context: this,
             success: function(data, textStatus, jqXHR) {
-                //console.log(jqXHR.getAllResponseHeaders());
+                console.log(jqXHR.getResponseHeader('Link'));
             }
         })
     },
