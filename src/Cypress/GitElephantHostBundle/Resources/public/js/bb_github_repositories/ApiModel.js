@@ -9,6 +9,7 @@
 var ApiModel = Backbone.Model.extend({
     baseUrl: 'https://api.github.com/',
     userModel: null,
+    callUrls: null,
     initialize: function(userModel) {
         this.userModel = userModel;
         this.loadBaseUrls();
@@ -17,10 +18,11 @@ var ApiModel = Backbone.Model.extend({
         var baseUrls = $.ajax({
             url: this.generateUrl(this.baseUrl),
             context: this,
-            success: function(data, textStatus, jqXHR) {
-                console.log(jqXHR.getResponseHeader('Link'));
+            success: function(data) {
+                this.callUrls = data;
+                this.trigger('api_loaded');
             }
-        })
+        });
     },
     generateUrl: function(url) {
         return url + '?access_token=' + this.userModel.get('access_token');

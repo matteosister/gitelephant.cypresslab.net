@@ -60,9 +60,7 @@ class GithubController extends BaseController
     public function repositoriesAction()
     {
         if ('json' === $this->getRequest()->getRequestFormat()) {
-            $response = $this->getGihubUser()->getRepositories();
-
-            return $response;
+            return $this->convertBuzzToSymfony($this->getGithubUser()->getRepositories());
         }
 
         return array();
@@ -71,19 +69,46 @@ class GithubController extends BaseController
     /**
      * github user repositories pagination
      *
+     * @param null|string $url url to call
+     *
      * @return array
-     * @Route("/repositories/pagination",
+     * @Route("/repositories/pagination/{url}",
      *   name="github_repositories_pagination",
-     *   options={"expose"=true}
+     *   options={"expose"=true},
+     *   requirements={"url"=".+"},
+     *   defaults={"url"=null}
      * )
      * @Template
      */
-    public function linkPaginationAction()
+    public function linkPaginationAction($url = null)
     {
-        $response = $this->getGihubUser()->getRepositories();
+        $response = $url == null ? $this->getGithubUser()->getRepositories() : $this->getGithubUser()->issueRequest($url, true);
         $links = $this->getLinkHeader($response);
 
         return compact('links');
+    }
+
+    /**
+     * github user repositories pagination
+     *
+     * @param string $url url to call
+     *
+     * @return array
+     * @Route("/request/{url}",
+     *   name="github_api_request",
+     *   options={"expose"=true},
+     *   requirements={"url"=".+"},
+     *   defaults={"url"=null}
+     * )
+     * @Template
+     */
+    public function apiRequestAction($url)
+    {
+        $buzzResponse = $this->getGithubUser()->issueRequest($url, true);
+
+        return new Response($buzzResponse->getContent(), 200, array(
+            'link' => $buzzResponse->getHeader('link')
+        ));
     }
 
     /**
@@ -207,12 +232,13 @@ class GithubController extends BaseController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Response $response
+     * @param \Buzz\Message\Response $buzzResponse
      *
      * @return array
      */
-    private function getLinkHeader(Response $response)
+    private function getLinkHeader(\Buzz\Message\Response $buzzResponse)
     {
+        $response = $this->convertBuzzToSymfony($buzzResponse);
         $links = array();
         $data = $response->headers->get('link');
         foreach (explode(',', $data) as $link) {
@@ -222,5 +248,19 @@ class GithubController extends BaseController
         }
 
         return $links;
+    }
+
+    /**
+     * convert a buzz response to a Symfony Response
+     *
+     * @param \Buzz\Message\Response $response
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function convertBuzzToSymfony(\Buzz\Message\Response $response)
+    {
+        return new Response($response->getContent(), 200, array(
+            'link' => $response->getHeader('link')
+        ));
     }
 }

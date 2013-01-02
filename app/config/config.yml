@@ -75,6 +75,7 @@ assetic:
                 - bundles/cypressgitelephanthost/js/bb_github_repositories/UserModel.js
                 - bundles/cypressgitelephanthost/js/bb_github_repositories/ApiModel.js
                 - bundles/cypressgitelephanthost/js/bb_github_repositories/ListView.js
+                - bundles/cypressgitelephanthost/js/bb_github_repositories/AppView.js
 
 # Doctrine Configuration
 doctrine:

@@ -44,14 +44,10 @@ class User extends Api
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function getRepositories()
     {
-        $response = $this->call('user_repositories_url', false, array('user' => $this->getUsername()));
-
-        return new \Symfony\Component\HttpFoundation\Response($response->getContent(), 200, array(
-            'link' => $response->getHeader('link')
-        ));
+        return $this->call('user_repositories_url', false, array('user' => $this->getUsername()));
     }
 }

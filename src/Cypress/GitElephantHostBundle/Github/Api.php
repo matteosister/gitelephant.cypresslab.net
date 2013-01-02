@@ -108,7 +108,7 @@ class Api
      *
      * @return mixed
      */
-    private function issueRequest($url, $raw = false)
+    public function issueRequest($url, $raw = false)
     {
         $query = sprintf('?access_token=%s', $this->user->getAccessToken());
         $browser = new Browser(new Curl());

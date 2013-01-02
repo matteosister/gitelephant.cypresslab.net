@@ -8,17 +8,16 @@
 
 var ListView = Backbone.View.extend({
     tagName: 'div',
-    id: 'github-repository-list',
-    githubRepositoryCollection: new GithubRepositoryCollection(),
-    paginationView: new PaginationView(),
+    id: 'list',
+    githubRepositoryCollection: null,
     userModel: null,
     apiModel: null,
     initialize: function() {
-        this.githubRepositoryCollection.bind('add', this.addRepository, this);
-    },
-    render: function() {
-        this.$el.prepend(this.paginationView.el);
+        this.render();
         this.loadUser();
+        this.githubRepositoryCollection = new GithubRepositoryCollection();
+        this.githubRepositoryCollection.bind('add', this.addRepository, this);
+        this.githubRepositoryCollection.bind('reset', this.resetListHtml, this);
     },
     loadUser: function() {
         $.ajax({
@@ -32,24 +31,30 @@ var ListView = Backbone.View.extend({
     },
     loadApi: function() {
         this.apiModel = new ApiModel(this.userModel);
+        this.apiModel.bind('api_loaded', this.apiLoaded, this);
+    },
+    apiLoaded: function() {
+        this.loadData();
     },
     loadData: function() {
+        this.load(Routing.generate('github_repositories', {'_format': 'json'}));
+    },
+    load: function(url) {
         this.addSpinner();
         $.ajax({
-            url: Routing.generate('github_repositories', {'_format': 'json'}),
+            url: url,
             context: this,
             success: function(data) {
                 this.removeSpinner();
-                var models = [];
-                _.each(data, function (json) {
-                    models.push(new GithubRepositoryModel(json));
-                });
-                this.githubRepositoryCollection.add(models);
+                this.githubRepositoryCollection = new GithubRepositoryCollection(data);
             }
         });
     },
     addRepository: function(model) {
         this.$el.append(new RepositoryView({model: model}).el);
+    },
+    resetListHtml: function() {
+        this.$el.html('');
     },
     addSpinner: function() {
         this.$el.css('min-height', '40px');
@@ -59,7 +64,3 @@ var ListView = Backbone.View.extend({
         this.$el.spin(false);
     }
 });
-
-var list_view = new ListView();
-$('div.container-fluid').append(list_view.el);
-list_view.render();

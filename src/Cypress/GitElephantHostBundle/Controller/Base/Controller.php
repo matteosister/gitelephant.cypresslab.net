@@ -122,7 +122,7 @@ class Controller extends BaseController
     /**
      * @return \Cypress\GitElephantHostBundle\Github\User
      */
-    public function getGihubUser()
+    public function getGithubUser()
     {
         return $this->get('cypress.git_elephant_host.github.user');
     }
