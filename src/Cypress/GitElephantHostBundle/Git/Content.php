@@ -9,20 +9,17 @@
 
 namespace Cypress\GitElephantHostBundle\Git;
 
-use Cypress\GitElephantHostBundle\Git\Base\Service;
-use Cypress\GitElephantBundle\Collection\GitElephantRepositoryCollection;
+use Cypress\GitElephantHostBundle\Git\Base\GitBaseService;
 use Symfony\Component\HttpFoundation\Request;
 use GitElephant\Objects\TreeObject;
 use PygmentsElephant\Pygmentize;
-use Symfony\Component\Filesystem\Filesystem;
 use Doctrine\Common\Persistence\ObjectManager;
-use GitElephant\Objects\Diff\DiffChunkLine;
 use GitElephant\Objects\Diff\DiffChunk;
 
 /**
  * Git Content
  */
-class Content extends Service
+class Content extends GitBaseService
 {
     const JPG = '\xFF\xD8\xFF';
     const GIF  = 'GIF';
@@ -59,9 +56,7 @@ class Content extends Service
         $rawContent = implode("\n", $this->getGit()->outputContent($treeObject, 'HEAD'));
         $output = $this->pygmentize->format($rawContent, $treeObject->getName());
         $startPos = strpos($output, '<pre>') + 5;
-        //$openingTag = substr($output, 0, $startPos);
         $closePos = strrpos($output, '</pre>');
-        //$closingTag = substr($output, $closePos);
         $content = substr($output, $startPos, $closePos - $startPos);
         $arrContent = explode("\n", $content);
         $arrOutput = array();

@@ -20,9 +20,6 @@ var ListView = Backbone.View.extend({
         this.githubRepositoryCollection.bind('add', this.addRepository, this);
         this.githubRepositoryCollection.bind('reset', this.resetListHtml, this);
     },
-    render: function() {
-        //this.$el.css('clear', 'left');
-    },
     loadUser: function() {
         $.ajax({
             url: Routing.generate('github_user'),

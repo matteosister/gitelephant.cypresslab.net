@@ -10,16 +10,15 @@
 namespace Cypress\GitElephantHostBundle\Git;
 
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Component\Routing\RouterInterface;
-use Cypress\GitElephantHostBundle\Git\Base\Service;
+use Cypress\GitElephantHostBundle\Git\Base\GitBaseService;
 use GitElephant\Objects\TreeObject;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * Git route generator
  */
-class Router extends Service
+class Router extends GitBaseService
 {
 
     /**

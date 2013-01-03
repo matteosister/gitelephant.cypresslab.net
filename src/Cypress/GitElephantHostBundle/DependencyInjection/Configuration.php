@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('repositories_dir')->isRequired()->end()
                 ->scalarNode('login_url')->end()
                 ->scalarNode('access_token_url')->end()
                 ->scalarNode('client_id')->end()

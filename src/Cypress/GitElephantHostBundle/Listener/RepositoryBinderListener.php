@@ -37,13 +37,11 @@ class RepositoryBinderListener
      */
     public function postLoad(LifecycleEventArgs $args)
     {
-        $document = $args->getEntity();
-        if ($document instanceof Repository) {
-            if (null !== $document->getPath()) {
-                $document->setGit(new Repo($document->getPath()));
+        $entity = $args->getEntity();
+        if ($entity instanceof Repository) {
+            if (null !== $entity->getPath()) {
+                $entity->setGit(new Repo($entity->getPath()));
             }
         }
     }
-
-
 }

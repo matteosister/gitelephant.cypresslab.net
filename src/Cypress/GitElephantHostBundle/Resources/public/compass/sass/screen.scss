@@ -29,6 +29,12 @@ body {
     color: $disabled;
 }
 
+.repository_list {
+    li.importing {
+        padding-left: 16px;
+    }
+}
+
 a {
     &.tree-object-link {
         white-space: nowrap;

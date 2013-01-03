@@ -33,7 +33,7 @@ class HomeController extends BaseController
      */
     public function headerAction()
     {
-        $repositories = $this->getRepositoryRepo()->findAll();
+        $repositories = $this->getRepositoryRepo()->findAll(array('imported' => true));
 
         return compact('repositories');
     }

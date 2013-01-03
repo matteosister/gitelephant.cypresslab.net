@@ -226,9 +226,14 @@ class GithubController extends BaseController
         $response = new \Buzz\Message\Response();
         $client = new Curl();
         $client->send($request, $response);
-        parse_str($response->getContent());
+        $params = explode('&', $response->getContent());
+        $arrParams = array();
+        foreach ($params as $param) {
+            $split = explode('=', $param);
+            $arrParams[$split[0]] = $split[1];
+        }
 
-        return $access_token;
+        return $arrParams['access_token'];
     }
 
     /**

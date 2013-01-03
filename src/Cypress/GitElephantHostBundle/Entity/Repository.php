@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Cypress\GitElephantHostBundle\Entity\Repository
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cypress\GitElephantHostBundle\Entity\Repository\RepositoryRepository")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="repositories")
  */

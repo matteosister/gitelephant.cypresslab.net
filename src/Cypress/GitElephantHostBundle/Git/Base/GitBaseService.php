@@ -8,13 +8,13 @@
  */
 
 namespace Cypress\GitElephantHostBundle\Git\Base;
- 
+
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use GitElephant\Repository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class Service
+class GitBaseService
 {
     /**
      * @var \Symfony\Component\HttpFoundation\Request

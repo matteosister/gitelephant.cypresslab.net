@@ -20,11 +20,12 @@ use GitElephant\GitBinary;
 use JMS\DiExtraBundle\Annotation\DoctrineListener;
 use JMS\DiExtraBundle\Annotation\InjectParams;
 use JMS\DiExtraBundle\Annotation\Inject;
+use Symfony\Component\Process\Process;
 
 /**
  * doctrine listener to clone the repository
  *
- * @DoctrineListener(
+ * DoctrineListener(
  *     events = {"postPersist"},
  *     connection = "default",
  *     lazy = true
@@ -38,25 +39,17 @@ class RepositoryClonerListener
     private $kernelRootDir;
 
     /**
-     * @var \GitElephant\GitBinary
-     */
-    private $gitBinary;
-
-    /**
      * constructor
      *
-     * @param string                 $kernelRootDir root dir
-     * @param \GitElephant\GitBinary $binary        binary
+     * @param string $kernelRootDir root dir
      *
      * @InjectParams({
-     *     "kernelRootDir" = @Inject("%kernel.root_dir%"),
-     *     "binary" = @Inject("cypress_git_elephant.git_binary")
+     *     "kernelRootDir" = @Inject("%kernel.root_dir%")
      * })
      */
-    public function __construct($kernelRootDir, GitBinary $binary)
+    public function __construct($kernelRootDir)
     {
         $this->kernelRootDir = $kernelRootDir;
-        $this->gitBinary = $binary;
     }
 
     /**
@@ -70,8 +63,6 @@ class RepositoryClonerListener
         if ($entity instanceof Repository) {
             if (null !== $entity->getGitUrl() && null === $entity->getPath()) {
                 $this->initRepository($entity);
-                $args->getEntityManager()->persist($entity);
-                $args->getEntityManager()->flush();
             }
         }
     }
@@ -81,9 +72,9 @@ class RepositoryClonerListener
      *
      * @return string
      */
-    private function getRepositoriesDir()
+    private function getRootDir()
     {
-        return realpath($this->kernelRootDir.'/../repositories');
+        return realpath($this->kernelRootDir.'/../');
     }
 
     /**
@@ -93,11 +84,12 @@ class RepositoryClonerListener
      */
     private function initRepository(Repository $repository)
     {
-        $dirName = sprintf('%s_%s', substr(sha1(uniqid()), 0, 8), $repository->getSlug());
-        $path = $this->getRepositoriesDir().'/'.$dirName;
-        $fs = new Filesystem();
-        $fs->mkdir($path);
-        $repository->setPath($path);
-        Git::createFromRemote($repository->getGitUrl(), $path, $this->gitBinary);
+        $cmd = sprintf('nohup ./app/console gitelephant:repository:import %s', $repository->getId());
+        var_dump($cmd);
+        $process = new Process($cmd, $this->getRootDir());
+        $process->run();
+        var_dump($process->getOutput());
+        var_dump($process->getErrorOutput());
+        die;
     }
 }
