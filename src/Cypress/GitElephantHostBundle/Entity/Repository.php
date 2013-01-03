@@ -53,9 +53,24 @@ class Repository
     private $slug;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $imported;
+
+    /**
      * @var \GitElephant\Repository
      */
     private $git;
+
+    /**
+     * constructor
+     */
+    public function __construct()
+    {
+        $this->imported = false;
+    }
 
     /**
      * toString
@@ -159,6 +174,26 @@ class Repository
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Imported setter
+     *
+     * @param boolean $imported the imported variable
+     */
+    public function setImported($imported)
+    {
+        $this->imported = $imported;
+    }
+
+    /**
+     * Imported getter
+     *
+     * @return boolean
+     */
+    public function getImported()
+    {
+        return $this->imported;
     }
 
     /**

@@ -28,25 +28,12 @@ class LoadRepositoryData extends BaseFixture
         $ge = new Repository();
         $ge->setName('GitElephant');
         $ge->setPath('/home/matteo/libraries/GitElephant');
+        $ge->setImported(true);
         $manager->persist($ge);
-
-//        $sf = new Repository();
-//        $sf->setName('Symfony2');
-//        $sf->setPath('/home/matteo/libraries/symfony');
-//        $manager->persist($sf);
-
-//        $rb = new Repository();
-//        $rb->setName('Ruby sample app');
-//        $rb->setPath('/home/matteo/internet/ruby/tutorial/sample_app');
-//        $manager->persist($rb);
-
-//        $bower = new Repository();
-//        $bower->setName('Bower');
-//        $bower->setGitUrl('git://github.com/twitter/bower.git');
-//        $manager->persist($bower);
 
         $self = new Repository();
         $self->setName('GitElephant Hosting');
+        $self->setImported(true);
         $self->setPath(realpath(__DIR__.'/../../../../../'));
         $manager->persist($self);
 

@@ -99,8 +99,5 @@ class RepositoryClonerListener
         $fs->mkdir($path);
         $repository->setPath($path);
         Git::createFromRemote($repository->getGitUrl(), $path, $this->gitBinary);
-//        $git = new Git($path, $this->gitBinary);
-//        //$git->init();
-//        $git->cloneFrom($repository->getGitUrl(), '.');
     }
 }
