@@ -313,6 +313,9 @@ ul.nav {
     .pagination {
         min-height: 35px;
         width: 100%;
+        .spinner {
+            float: left;
+        }
     }
 }
 

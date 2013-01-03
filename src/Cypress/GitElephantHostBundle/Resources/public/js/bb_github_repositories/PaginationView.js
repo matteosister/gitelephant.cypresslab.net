@@ -13,9 +13,16 @@ var PaginationView = Backbone.View.extend({
         "click a": "clickLink"
     },
     clickLink: function(evt) {
-        this.$el.html('');
+        var url =  $(evt.target).attr('href');
+        if ('#' == url) {
+            return false;
+        }
+        this.$el.find('li').addClass('disabled');
+        this.$el.find('ul').animate({
+            opacity: 0.5
+        });
         this.addSpinner();
-        this.trigger('change_page', $(evt.target).attr('href'));
+        this.trigger('change_page', url);
         return false;
     },
     initialize: function() {
@@ -36,7 +43,7 @@ var PaginationView = Backbone.View.extend({
         });
     },
     addSpinner: function() {
-        this.$el.spin(spinnerOptsSmall);
+        this.$el.spin(spinnerOptsPagination);
     },
     removeSpinner: function() {
         this.$el.spin(false);

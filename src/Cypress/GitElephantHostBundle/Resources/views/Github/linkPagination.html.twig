@@ -1,5 +1,9 @@
 <ul>
     {% for label, link in order_github_pagination_links(links) %}
-        <li><a href="{{ link }}">{{ label }}</a></li>
+        {% if link is not null %}
+            <li><a href="{{ link }}">{{ label }}</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">{{ label }}</a></li>
+        {% endif %}
     {% endfor %}
 </ul>

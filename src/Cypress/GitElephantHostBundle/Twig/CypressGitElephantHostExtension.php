@@ -254,6 +254,12 @@ class CypressGitElephantHostExtension extends \Twig_Extension
      */
     public function orderGithubPaginationLinks(array $links)
     {
+        $fields = array('first', 'prev', 'next', 'last');
+        foreach ($fields as $field) {
+            if (!isset($links[$field])) {
+                $links[$field] = null;
+            }
+        }
         uksort($links, function($a, $b) {
             if ('first' == $a) {
                 return -1;
