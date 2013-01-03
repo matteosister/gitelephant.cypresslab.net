@@ -305,3 +305,25 @@ ul.nav {
         @include border-radius(4px);
     }
 }
+
+#github-repository-list {
+    .github-repo {
+        margin-bottom: 0.5em;
+    }
+    .pagination {
+        min-height: 35px;
+        width: 100%;
+    }
+}
+
+table#list {
+    width: 100%;
+    td {
+        &.name {
+            width: 30%;
+        }
+        &.description {
+            width: 70%;
+        }
+    }
+}

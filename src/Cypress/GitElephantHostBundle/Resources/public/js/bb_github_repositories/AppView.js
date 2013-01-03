@@ -13,10 +13,11 @@ var AppView = Backbone.View.extend({
     listView: null,
     initialize: function() {
         this.render();
+        console.log(this.$el);
+        this.paginationView = new PaginationView();
+        this.$el.append(this.paginationView.el);
         this.listView = new ListView();
         this.$el.append(this.listView.el);
-        this.paginationView = new PaginationView();
-        this.$el.prepend(this.paginationView.el);
         this.paginationView.bind('change_page', this.changePage, this);
     },
     changePage: function(url) {

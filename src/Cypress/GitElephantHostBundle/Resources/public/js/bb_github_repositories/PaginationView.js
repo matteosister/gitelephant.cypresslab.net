@@ -13,6 +13,8 @@ var PaginationView = Backbone.View.extend({
         "click a": "clickLink"
     },
     clickLink: function(evt) {
+        this.$el.html('');
+        this.addSpinner();
         this.trigger('change_page', $(evt.target).attr('href'));
         return false;
     },
@@ -28,12 +30,12 @@ var PaginationView = Backbone.View.extend({
             url: callUrl,
             context: this,
             success: function(html) {
+                this.removeSpinner();
                 this.$el.html(html);
             }
         });
     },
     addSpinner: function() {
-        this.$el.css('min-height', '40px');
         this.$el.spin(spinnerOptsSmall);
     },
     removeSpinner: function() {

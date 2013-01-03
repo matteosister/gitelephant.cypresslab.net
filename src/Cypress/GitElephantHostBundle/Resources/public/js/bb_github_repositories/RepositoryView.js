@@ -8,14 +8,14 @@
 
 
 var RepositoryView = Backbone.View.extend({
-    tagName: 'div',
+    tagName: 'tr',
     className: 'github-repo',
-    template: _.template('<strong><%= model.get("name") %></strong> <%= model.get("description") %>'),
     initialize: function() {
         this.render();
     },
     render: function() {
-        this.$el.html(this.template({ model: this.model}));
+        var template = _.template($('#repository_view_tpl').html(), { model: this.model });
+        this.$el.html(template);
         this.$el.fadeIn();
     }
 });

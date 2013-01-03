@@ -80,7 +80,9 @@ class Api
 
     private function getUserGithubData($what)
     {
-        return isset($this->user->getGithubData()[$what]) ? $this->user->getGithubData()[$what] : null;
+        $data = $this->user->getGithubData();
+
+        return isset($data[$what]) ? $data[$what] : null;
     }
 
     /**

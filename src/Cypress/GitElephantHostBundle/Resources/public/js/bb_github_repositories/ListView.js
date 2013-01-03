@@ -7,8 +7,9 @@
  */
 
 var ListView = Backbone.View.extend({
-    tagName: 'div',
+    tagName: 'table',
     id: 'list',
+    className: 'table table-striped table-hover',
     githubRepositoryCollection: null,
     userModel: null,
     apiModel: null,
@@ -18,6 +19,9 @@ var ListView = Backbone.View.extend({
         this.githubRepositoryCollection = new GithubRepositoryCollection();
         this.githubRepositoryCollection.bind('add', this.addRepository, this);
         this.githubRepositoryCollection.bind('reset', this.resetListHtml, this);
+    },
+    render: function() {
+        //this.$el.css('clear', 'left');
     },
     loadUser: function() {
         $.ajax({
@@ -44,9 +48,11 @@ var ListView = Backbone.View.extend({
         $.ajax({
             url: url,
             context: this,
+            dataType: 'json',
             success: function(data) {
                 this.removeSpinner();
-                this.githubRepositoryCollection = new GithubRepositoryCollection(data);
+                this.githubRepositoryCollection.reset();
+                this.githubRepositoryCollection.add(data);
             }
         });
     },

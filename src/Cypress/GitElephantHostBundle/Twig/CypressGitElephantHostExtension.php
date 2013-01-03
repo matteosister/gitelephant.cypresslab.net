@@ -67,7 +67,8 @@ class CypressGitElephantHostExtension extends \Twig_Extension
             'is_text' => new \Twig_Function_Method($this, 'isPygmentableText', array('is_safe' => array('html'))),
             'commit_box' => new \Twig_Function_Method($this, 'commitBox', array('is_safe' => array('html'))),
             'code_table' => new \Twig_Function_Method($this, 'codeTable', array('is_safe' => array('html'))),
-            'user_login' => new \Twig_Function_Method($this, 'userLogin', array('is_safe' => array('html')))
+            'user_login' => new \Twig_Function_Method($this, 'userLogin', array('is_safe' => array('html'))),
+            'order_github_pagination_links' => new \Twig_Function_Method($this, 'orderGithubPaginationLinks', array('is_safe' => array('all')))
         );
     }
 
@@ -221,6 +222,11 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         ));
     }
 
+    /**
+     * output user login box
+     *
+     * @return mixed
+     */
     public function userLogin()
     {
         return $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:user_login.html.twig', array(
@@ -228,11 +234,44 @@ class CypressGitElephantHostExtension extends \Twig_Extension
         ));
     }
 
+    /**
+     * output code table
+     *
+     * @param \GitElephant\Objects\Diff\DiffChunk $diffChunk diffChunk object
+     *
+     * @return mixed
+     */
     public function codeTable(DiffChunk $diffChunk)
     {
         return $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:code_table.html.twig', array(
             'lines' => $diffChunk->getLines()
         ));
+    }
+
+    /**
+     * @param array $links
+     * @return array
+     */
+    public function orderGithubPaginationLinks(array $links)
+    {
+        uksort($links, function($a, $b) {
+            if ('first' == $a) {
+                return -1;
+            }
+            if ('first' == $b) {
+                return 1;
+            }
+            if ('last' == $a) {
+                return 1;
+            }
+            if ('last' == $b) {
+                return -1;
+            }
+
+            return 'next' === $a ? 1 : -1;
+        });
+
+        return $links;
     }
 
     /**

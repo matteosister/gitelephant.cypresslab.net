@@ -6,3 +6,12 @@
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
+
+{% block head_js %}
+    {{ parent() }}
+    <script type="text/template" id="repository_view_tpl">
+        <td><a class="btn btn-primary">clone</a></td>
+        <td class="name"><strong><%= model.get("name") %></strong></td>
+        <td class="description"><%= model.get("description") %></td>
+    </script>
+{% endblock %}
