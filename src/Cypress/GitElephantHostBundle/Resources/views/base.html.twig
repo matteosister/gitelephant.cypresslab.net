@@ -28,3 +28,7 @@
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
+
+{% block body_js_analytics %}
+    {% include "GoogleBundle:Analytics:async.html.twig" %}
+{% endblock %}
