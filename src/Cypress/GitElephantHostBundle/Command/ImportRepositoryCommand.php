@@ -49,9 +49,7 @@ class ImportRepositoryCommand extends ContainerAwareCommand
         $fs = new Filesystem();
         $fs->mkdir($path);
         try {
-            $repo = new Git($path);
-            $repo->init();
-            $repo->cloneFrom($repository->getGitUrl(), '.');
+            Git::createFromRemote($repository->getGitUrl(), $path, $this->getContainer()->get('cypress_git_elephant.git_binary'));
         } catch (\Exception $e) {
             $output->writeln('Error during clone, git reports: '.$e->getMessage());
 
