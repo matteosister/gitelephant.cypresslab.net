@@ -57,7 +57,7 @@ class Cloner
      */
     public function initRepository(Repository $repository)
     {
-        $cmd = sprintf('php ../app/console gitelephant:repository:import %s', $repository->getId());
+        $cmd = sprintf('./../app/console gitelephant:repository:import %s', $repository->getId());
         $this->logger->info(sprintf('executing "%s"', $cmd));
         $process = new Process($cmd, $this->repositoriesDir);
         $process->run();

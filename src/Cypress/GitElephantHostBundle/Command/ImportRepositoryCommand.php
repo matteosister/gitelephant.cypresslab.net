@@ -49,7 +49,9 @@ class ImportRepositoryCommand extends ContainerAwareCommand
         $fs = new Filesystem();
         $fs->mkdir($path);
         try {
-            Git::createFromRemote($repository->getGitUrl(), $path);
+            $repo = new Git($path);
+            $repo->init();
+            $repo->cloneFrom($repository->getGitUrl(), '.');
         } catch (\Exception $e) {
             $output->writeln('Error during clone, git reports: '.$e->getMessage());
 
