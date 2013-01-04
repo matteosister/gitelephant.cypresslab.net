@@ -43,7 +43,7 @@ class ImportRepositoryCommand extends ContainerAwareCommand
             $output->writeln('<error>Unable to find a repository to process</error>');
             die;
         }
-        $repositoriesDir = $this->getContainer()->getParameter('cypress_git_elephant_host.repositories_dir');
+        $repositoriesDir = realpath($this->getContainer()->getParameter('cypress_git_elephant_host.repositories_dir'));
         $dirName = sprintf('%s_%s', substr(sha1(uniqid()), 0, 8), $repository->getSlug());
         $path = $repositoriesDir.'/'.$dirName;
         $fs = new Filesystem();
@@ -52,7 +52,6 @@ class ImportRepositoryCommand extends ContainerAwareCommand
             Git::createFromRemote($repository->getGitUrl(), $path);
         } catch (\Exception $e) {
             $output->writeln('Error during clone, git reports: '.$e->getMessage());
-            $fs->remove($path);
 
             return;
         }

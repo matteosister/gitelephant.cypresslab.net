@@ -10,6 +10,7 @@
 namespace Cypress\GitElephantHostBundle\Controller\Base;
 
 use Cypress\GitElephantHostBundle\Entity\User;
+use Cypress\GitElephantHostBundle\Git\Cloner;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -125,5 +126,13 @@ class Controller extends BaseController
     public function getGithubUser()
     {
         return $this->get('cypress.git_elephant_host.github.user');
+    }
+
+    /**
+     * @return Cloner
+     */
+    public function getCloner()
+    {
+        return $this->get('cypress.git_elephant_host_bundle.git.cloner');
     }
 }

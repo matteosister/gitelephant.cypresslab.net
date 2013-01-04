@@ -43,6 +43,7 @@ class RepositoryController extends BaseController
                 $repository = $form->getData();
                 $this->getEM()->persist($repository);
                 $this->getEM()->flush();
+                $this->getCloner()->initRepository($repository);
             }
         }
 

@@ -14,6 +14,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 //use Cypress\GitElephantHostBundle\Document\Repository;
 use Cypress\GitElephantHostBundle\Entity\Repository;
 use GitElephant\Repository as Repo;
+use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Filesystem\Filesystem;
 use GitElephant\Repository as Git;
 use GitElephant\GitBinary;
@@ -26,7 +27,7 @@ use Symfony\Component\Process\Process;
  * doctrine listener to clone the repository
  *
  * DoctrineListener(
- *     events = {"postPersist"},
+ *     events = {"onFlush"},
  *     connection = "default",
  *     lazy = true
  * )
@@ -39,17 +40,25 @@ class RepositoryClonerListener
     private $kernelRootDir;
 
     /**
+     * @var \Symfony\Bridge\Monolog\Logger
+     */
+    private $logger;
+
+    /**
      * constructor
      *
-     * @param string $kernelRootDir root dir
+     * @param string                         $kernelRootDir root dir
+     * @param \Symfony\Bridge\Monolog\Logger $logger        logger
      *
      * @InjectParams({
-     *     "kernelRootDir" = @Inject("%kernel.root_dir%")
+     *     "kernelRootDir" = @Inject("%kernel.root_dir%"),
+     *     "logger" = @Inject("logger")
      * })
      */
-    public function __construct($kernelRootDir)
+    public function __construct($kernelRootDir, Logger $logger)
     {
         $this->kernelRootDir = $kernelRootDir;
+        $this->logger = $logger;
     }
 
     /**
@@ -85,11 +94,13 @@ class RepositoryClonerListener
     private function initRepository(Repository $repository)
     {
         $cmd = sprintf('nohup ./app/console gitelephant:repository:import %s', $repository->getId());
-        var_dump($cmd);
+        $this->logger->info(sprintf('executing "%s"', $cmd));
         $process = new Process($cmd, $this->getRootDir());
         $process->run();
-        var_dump($process->getOutput());
-        var_dump($process->getErrorOutput());
-        die;
+        if ($process->isSuccessful()) {
+            $this->logger->info($process->getOutput());
+        } else {
+            $this->logger->err($process->getErrorOutput());
+        }
     }
 }
