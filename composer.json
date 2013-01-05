@@ -35,8 +35,7 @@
         "ornicar/gravatar-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "v2.2",
         "kriswallsmith/buzz": "dev-master",
-        "jms/serializer-bundle": "0.9.0",
-        "antimattr/google-bundle": "dev-master"
+        "jms/serializer-bundle": "0.9.0"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.9",

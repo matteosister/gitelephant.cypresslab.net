@@ -30,8 +30,7 @@ class AppKernel extends Kernel
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new Cypress\CompassElephantBundle\CypressCompassElephantBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle($this),
-            new AntiMattr\GoogleBundle\GoogleBundle()
+            new JMS\SerializerBundle\JMSSerializerBundle($this)
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
