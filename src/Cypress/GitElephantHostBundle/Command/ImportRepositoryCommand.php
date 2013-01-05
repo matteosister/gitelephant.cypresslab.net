@@ -9,7 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Command;
 
-use Cypress\GitElephantHostBundle\Command\Base\BaseCommand;
+use Cypress\GitElephantHostBundle\Command\Base\CommandBase;
 use Cypress\GitElephantHostBundle\Entity\Repository\RepositoryRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
@@ -22,7 +22,7 @@ use GitElephant\Repository as Git;
 /**
  * import a repository
  */
-class ImportRepositoryCommand extends BaseCommand
+class ImportRepositoryCommand extends CommandBase
 {
     protected function configure()
     {

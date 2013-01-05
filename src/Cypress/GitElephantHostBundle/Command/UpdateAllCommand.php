@@ -9,7 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Command;
 
-use Cypress\GitElephantHostBundle\Command\Base\BaseCommand;
+use Cypress\GitElephantHostBundle\Command\Base\CommandBase;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * update all repositories
  */
-class UpdateAllCommand extends BaseCommand
+class UpdateAllCommand extends CommandBase
 {
     protected function configure()
     {

@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 /**
  * base command
  */
-class BaseCommand extends ContainerAwareCommand
+class CommandBase extends ContainerAwareCommand
 {
     /**
      * @return RepositoryRepository
