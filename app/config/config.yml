@@ -120,3 +120,12 @@ cypress_git_elephant_host:
     client_id: 1787baab061073db8084
     client_secret: 8d8edbfe969165285ea3fdc2a35f0c743433f9cb
     repositories_dir: %kernel.root_dir%/../repositories
+
+google:
+    analytics:
+        trackers:
+            default:
+                name:      google_analytics
+                accountId: UA-33181125-1
+                domain:    .cypresslab.net
+                trackPageLoadTime: true
