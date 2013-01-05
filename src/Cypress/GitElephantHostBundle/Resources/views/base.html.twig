@@ -30,5 +30,7 @@
 {% endblock %}
 
 {% block body_js_analytics %}
-    {% include "GoogleBundle:Analytics:async.html.twig" %}
+    {% if app.environment == 'prod' and app.request.host == 'gitelephant.cypresslab.net' %}
+        {% include "GoogleBundle:Analytics:async.html.twig" %}
+    {% endif %}
 {% endblock %}

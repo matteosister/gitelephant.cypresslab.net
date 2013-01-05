@@ -8,7 +8,9 @@
 
 var AppRouter = Backbone.Router.extend({
     initialize: function() {
-        this.bind('all', this._trackPageView);
+        if (typeof _gaq != 'undefined') {
+            this.bind('all', this._trackPageView);
+        }
     },
     routes: {
         ":slug/tree/:ref/*path": "treeObject",
@@ -20,7 +22,7 @@ var AppRouter = Backbone.Router.extend({
     },
     _trackPageView: function() {
         var url = Backbone.history.getFragment();
-        _gaq.push(['_trackPageview', "/" + url])
+        _gaq.push(['_trackPageview', "/" + url]);
     }
 });
 
