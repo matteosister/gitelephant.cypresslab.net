@@ -9,10 +9,10 @@
 
 namespace Cypress\GitElephantHostBundle\Command;
 
+use Cypress\GitElephantHostBundle\Command\Base\BaseCommand;
 use Cypress\GitElephantHostBundle\Entity\Repository\RepositoryRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,7 +22,7 @@ use GitElephant\Repository as Git;
 /**
  * import a repository
  */
-class ImportRepositoryCommand extends ContainerAwareCommand
+class ImportRepositoryCommand extends BaseCommand
 {
     protected function configure()
     {
@@ -59,21 +59,5 @@ class ImportRepositoryCommand extends ContainerAwareCommand
         $repository->setImported(true);
         $this->getEM()->persist($repository);
         $this->getEM()->flush();
-    }
-
-    /**
-     * @return RepositoryRepository
-     */
-    private function getRepoRepository()
-    {
-        return $this->getContainer()->get('doctrine.orm.entity_manager')->getRepository('Cypress\GitElephantHostBundle\Entity\Repository');
-    }
-
-    /**
-     * @return EntityManager
-     */
-    private function getEM()
-    {
-        return $this->getContainer()->get('doctrine.orm.entity_manager');
     }
 }
