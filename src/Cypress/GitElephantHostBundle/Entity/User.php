@@ -226,6 +226,26 @@ class User
     }
 
     /**
+     * Set Repositories
+     *
+     * @param \Doctrine\Common\Collections\ArrayCollection $repositories the repositories variable
+     */
+    public function setRepositories($repositories)
+    {
+        $this->repositories = $repositories;
+    }
+
+    /**
+     * Get Repositories
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getRepositories()
+    {
+        return $this->repositories;
+    }
+
+    /**
      * Created setter
      *
      * @param \DateTime $created the created variable

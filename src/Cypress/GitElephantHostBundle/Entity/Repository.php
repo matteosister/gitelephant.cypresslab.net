@@ -4,6 +4,8 @@ namespace Cypress\GitElephantHostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\SerializerBundle\Annotation\ExclusionPolicy;
+use JMS\SerializerBundle\Annotation\Expose;
 
 /**
  * Cypress\GitElephantHostBundle\Entity\Repository
@@ -11,6 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity(repositoryClass="Cypress\GitElephantHostBundle\Entity\Repository\RepositoryRepository")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="repositories")
+ * @ExclusionPolicy("all")
  */
 class Repository
 {
@@ -27,6 +30,7 @@ class Repository
      * @var string
      *
      * @ORM\Column
+     * @Expose
      */
     private $name;
 
@@ -34,6 +38,7 @@ class Repository
      * @var string
      *
      * @ORM\Column(nullable=true)
+     * @Expose
      */
     private $path;
 
@@ -41,6 +46,7 @@ class Repository
      * @var string
      *
      * @ORM\Column(nullable=true)
+     * @Expose
      */
     private $gitUrl;
 
@@ -49,6 +55,7 @@ class Repository
      *
      * @ORM\Column
      * @Gedmo\Slug(fields={"name"})
+     * @Expose
      */
     private $slug;
 
@@ -56,6 +63,7 @@ class Repository
      * @var bool
      *
      * @ORM\Column(type="boolean")
+     * @Expose
      */
     private $imported;
 
@@ -201,6 +209,26 @@ class Repository
     public function getImported()
     {
         return $this->imported;
+    }
+
+    /**
+     * Set User
+     *
+     * @param \Cypress\GitElephantHostBundle\Entity\User $user the user variable
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get User
+     *
+     * @return \Cypress\GitElephantHostBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**
