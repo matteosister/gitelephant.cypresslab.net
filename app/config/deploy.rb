@@ -6,6 +6,7 @@ set :app_path,    "app"
 set :repository,  "cypressgit:gitelephant_host"
 set :scm,         :git
 set :git_enable_submodules, 1
+set :branch,      "master"
 
 set :deploy_via,  :rsync_with_remote_cache
 
