@@ -60,6 +60,13 @@ class Repository
     private $imported;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Cypress\GitElephantHostBundle\Entity\User", inversedBy="repositories")
+     */
+    private $user;
+
+    /**
      * @var \GitElephant\Repository
      */
     private $git;

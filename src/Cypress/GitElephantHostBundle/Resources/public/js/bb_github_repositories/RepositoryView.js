@@ -10,6 +10,9 @@
 var RepositoryView = Backbone.View.extend({
     tagName: 'tr',
     className: 'github-repo',
+    events: {
+        "click a.clone-repo": "cloneRepo"
+    },
     initialize: function() {
         this.render();
     },
@@ -17,5 +20,16 @@ var RepositoryView = Backbone.View.extend({
         var template = _.template($('#repository_view_tpl').html(), { model: this.model });
         this.$el.html(template);
         this.$el.fadeIn();
+    },
+    cloneRepo: function(evt) {
+        $.post(
+            $(evt.target).attr('href'),
+            this.model.toJSON(),
+            function(responseText) {
+                console.log(responseText);
+            },
+            'html'
+        );
+        return false;
     }
 });

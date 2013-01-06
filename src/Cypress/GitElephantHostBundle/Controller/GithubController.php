@@ -11,8 +11,10 @@ namespace Cypress\GitElephantHostBundle\Controller;
 
 use Buzz\Browser;
 use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
+use Cypress\GitElephantHostBundle\Entity\Repository;
 use Cypress\GitElephantHostBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -86,6 +88,24 @@ class GithubController extends BaseController
         $links = $this->getLinkHeader($response);
 
         return compact('links');
+    }
+
+    /**
+     * clone a github repository
+     *
+     * @return Response
+     * @Route("/repositories/clone",
+     *   name="gihub_clone_repository",
+     *   options={"expose"=true}
+     * )
+     * @Method({"POST"})
+     * @Template
+     */
+    public function cloneRepositoryAction()
+    {
+        //$r = new Repository();
+
+        return new Response($this->getRequest()->getContent());
     }
 
     /**

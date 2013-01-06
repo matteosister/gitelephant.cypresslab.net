@@ -9,6 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -66,6 +67,13 @@ class User
     private $githubDataRefresh;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Cypress\GitElephantHostBundle\Entity\Repository", mappedBy="user")
+     */
+    private $repositories;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
@@ -89,6 +97,7 @@ class User
         $this->token = sha1(uniqid());
         $this->githubData = array();
         $this->githubDataRefresh = new \DateTime();
+        $this->repositories = new ArrayCollection();
     }
 
     /**
