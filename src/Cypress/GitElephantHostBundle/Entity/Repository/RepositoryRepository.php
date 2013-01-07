@@ -29,7 +29,7 @@ class RepositoryRepository extends EntityRepository
         return $query->getResult();
     }
 
-    public function getImportedForUser(User $user)
+    public function getImportedForUser(User $user = null)
     {
         if (null === $user) {
             return array();
