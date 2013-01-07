@@ -11,8 +11,10 @@ namespace Cypress\GitElephantHostBundle\Controller;
 
 use Buzz\Browser;
 use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
+use Cypress\GitElephantHostBundle\Entity\Repository;
 use Cypress\GitElephantHostBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -59,8 +61,28 @@ class GithubController extends BaseController
      */
     public function repositoriesAction()
     {
+        if (!$this->isLoggedIn()) {
+            return new RedirectResponse($this->generateUrl('homepage'));
+        }
         if ('json' === $this->getRequest()->getRequestFormat()) {
-            return $this->convertBuzzToSymfony($this->getGithubUser()->getRepositories());
+            $ownedRepositories = $this->getUserRepository()->getImportedForUser($this->getUser());
+            $githubRepositories = json_decode($this->getGithubUser()->getRepositories()->getContent(), true);
+            $customRepositories = array();
+            foreach ($githubRepositories as $repo) {
+                $ownedRepos = array_filter($ownedRepositories, function(Repository $r) use ($repo) {
+                    return $r->getName() === $repo['full_name'];
+                });
+                if (isset($ownedRepos[0])) {
+                    $owned = $ownedRepos[0];
+                } else {
+                    $owned = null;
+                }
+                $repo['imported'] = $owned !== null;
+                $repo['slug'] = $owned !== null ?  $owned->getSlug() : null;
+                $customRepositories[] = $repo;
+            }
+
+            return $this->convertBuzzToSymfony($this->getGithubUser()->getRepositories(), json_encode($customRepositories));
         }
 
         return array();
@@ -86,6 +108,33 @@ class GithubController extends BaseController
         $links = $this->getLinkHeader($response);
 
         return compact('links');
+    }
+
+    /**
+     * clone a github repository
+     *
+     * @return Response
+     * @Route("/repositories/clone",
+     *   name="gihub_clone_repository",
+     *   options={"expose"=true}
+     * )
+     * @Method({"POST"})
+     * @Template
+     */
+    public function cloneRepositoryAction()
+    {
+        if (!$this->isLoggedIn()) {
+            return new RedirectResponse($this->generateUrl('homepage'));
+        }
+        $repository = new Repository();
+        $repository->setName($this->getRequest()->request->get('full_name'));
+        $repository->setGitUrl($this->getRequest()->request->get('git_url'));
+        $repository->setUser($this->getUser());
+        $this->getEM()->persist($repository);
+        $this->getEM()->flush();
+        $this->getCloner()->initRepository($repository);
+
+        return compact('repository');
     }
 
     /**
@@ -258,13 +307,14 @@ class GithubController extends BaseController
     /**
      * convert a buzz response to a Symfony Response
      *
-     * @param \Buzz\Message\Response $response
+     * @param \Buzz\Message\Response $response original response
+     * @param null                   $content  new content
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function convertBuzzToSymfony(\Buzz\Message\Response $response)
+    public function convertBuzzToSymfony(\Buzz\Message\Response $response, $content = null)
     {
-        return new Response($response->getContent(), 200, array(
+        return new Response(null === $content ? $response->getContent() : $content, 200, array(
             'link' => $response->getHeader('link')
         ));
     }

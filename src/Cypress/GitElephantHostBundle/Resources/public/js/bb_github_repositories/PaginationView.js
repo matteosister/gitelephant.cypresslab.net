@@ -13,6 +13,9 @@ var PaginationView = Backbone.View.extend({
         "click a": "clickLink"
     },
     clickLink: function(evt) {
+        if ($(evt.target).parent('li').hasClass('disabled')) {
+            return false;
+        }
         var url =  $(evt.target).attr('href');
         if ('#' == url) {
             return false;

@@ -22,6 +22,9 @@ var AppView = Backbone.View.extend({
     changePage: function(url) {
         this.paginationView.load(url);
         this.listView.load(url);
+    },
+    render: function() {
+        this.$el.prepend('<h1>Import your github repositories</h1>');
     }
 });
 

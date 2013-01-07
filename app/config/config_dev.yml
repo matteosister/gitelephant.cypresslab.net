@@ -17,7 +17,7 @@ monolog:
             level: debug
         firephp:
             type:  firephp
-            level: error
+            level: info
 
 assetic:
     use_controller: true

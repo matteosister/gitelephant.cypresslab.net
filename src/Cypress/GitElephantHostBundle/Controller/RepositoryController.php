@@ -55,7 +55,7 @@ class RepositoryController extends BaseController
      *
      * @param string $slug slug
      *
-     * @Route("/{slug}", name="repository")
+     * @Route("/{slug}", name="repository", options={"expose"=true})
      * @Template()
      *
      * @return array

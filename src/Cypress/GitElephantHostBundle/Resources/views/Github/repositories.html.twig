@@ -10,7 +10,13 @@
 {% block head_js %}
     {{ parent() }}
     <script type="text/template" id="repository_view_tpl">
-        <td><a class="btn btn-primary">clone</a></td>
+        <td>
+            <% if (model.get("imported")) { %>
+            <a class="btn btn-info" href="<%= Routing.generate('repository', { slug: model.get('slug') }) %>">view</a>
+            <% } else { %>
+            <a class="btn btn-primary clone-repo" href="<%= Routing.generate('gihub_clone_repository') %>">clone</a>
+            <% } %>
+        </td>
         <td class="name"><strong><%= model.get("name") %></strong></td>
         <td class="description"><%= model.get("description") %></td>
     </script>
