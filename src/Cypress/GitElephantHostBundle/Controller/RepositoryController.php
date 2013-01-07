@@ -63,6 +63,9 @@ class RepositoryController extends BaseController
     public function repositoryAction($slug)
     {
         $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+        if (null === $repository) {
+            return new RedirectResponse($this->generateUrl('homepage'));
+        }
         $ref = 'master';
         if (null === $repository->getGit()->getBranchOrTag($ref)) {
             $ref = $repository->getGit()->getMainBranch()->getName();
@@ -90,6 +93,9 @@ class RepositoryController extends BaseController
     public function treeObjectAction($slug, $ref, $path)
     {
         $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+        if (null === $repository) {
+            return new RedirectResponse($this->generateUrl('homepage'));
+        }
         $parts = $this->getRefPathSplitter()->split($repository->getGit(), $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
