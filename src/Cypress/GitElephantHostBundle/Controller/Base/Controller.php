@@ -9,6 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Controller\Base;
 
+use Cypress\GitElephantHostBundle\Entity\Repository\RepositoryRepository;
 use Cypress\GitElephantHostBundle\Entity\Repository\UserRepository;
 use Cypress\GitElephantHostBundle\Entity\User;
 use Cypress\GitElephantHostBundle\Git\Cloner;
@@ -36,7 +37,7 @@ class Controller extends BaseController
     }
 
     /**
-     * @return EntityRepository
+     * @return RepositoryRepository
      */
     public function getRepositoryRepo()
     {

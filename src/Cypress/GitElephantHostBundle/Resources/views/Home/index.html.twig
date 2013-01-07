@@ -1,7 +1,7 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
 
 {% block body_container_main %}
-    <h1>Git Repositories</h1>
+    <h1>Public Git Repositories</h1>
     <ul class="repository_list">
         {% for repository in repositories %}
             {% if repository.imported %}
@@ -11,6 +11,14 @@
             {% endif %}
         {% endfor %}
     </ul>
+    {% if userRepositories %}
+        <h1>Your Github Repositories</h1>
+        <ul>
+        {% for userRepository in userRepositories %}
+            <li><a href="{{ path('repository', { slug: userRepository.slug }) }}">{{ userRepository }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
 
 {% block body_js %}

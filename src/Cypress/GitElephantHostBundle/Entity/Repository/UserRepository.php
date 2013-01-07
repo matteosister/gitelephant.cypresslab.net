@@ -17,16 +17,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-    public function getImportedForUser(User $user)
-    {
-        $dql = '
-            SELECT r FROM Cypress\GitElephantHostBundle\Entity\Repository r
-            WHERE r.imported = :imported AND r.user = :user
-        ';
-        $query = $this->_em->createQuery($dql);
-        $query->setParameter('imported', true);
-        $query->setParameter('user', $user);
 
-        return $query->getResult();
-    }
 }
