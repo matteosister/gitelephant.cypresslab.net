@@ -61,6 +61,9 @@ class GithubController extends BaseController
      */
     public function repositoriesAction()
     {
+        if (!$this->isLoggedIn()) {
+            return new RedirectResponse($this->generateUrl('homepage'));
+        }
         if ('json' === $this->getRequest()->getRequestFormat()) {
             $ownedRepositories = $this->getUser()->getRepositories()->toArray();
             $githubRepositories = json_decode($this->getGithubUser()->getRepositories()->getContent(), true);
@@ -120,6 +123,9 @@ class GithubController extends BaseController
      */
     public function cloneRepositoryAction()
     {
+        if (!$this->isLoggedIn()) {
+            return new RedirectResponse($this->generateUrl('homepage'));
+        }
         $repository = new Repository();
         $repository->setName($this->getRequest()->request->get('full_name'));
         $repository->setGitUrl($this->getRequest()->request->get('git_url'));

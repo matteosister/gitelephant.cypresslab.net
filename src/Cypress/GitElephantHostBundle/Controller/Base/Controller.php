@@ -77,6 +77,14 @@ class Controller extends BaseController
     }
 
     /**
+     * @return bool
+     */
+    public function isLoggedIn()
+    {
+        return $this->getUser() !== null;
+    }
+
+    /**
      * user repository
      *
      * @return \Doctrine\ORM\EntityRepository
