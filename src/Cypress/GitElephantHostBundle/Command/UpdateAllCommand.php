@@ -31,6 +31,8 @@ class UpdateAllCommand extends CommandBase
     {
         $repos = $this->getRepoRepository()->findAll();
         foreach ($repos as $repo) {
+            $output->writeln(sprintf('Updating <info>%s</info> repository', $repo->getName()));
+            $repo->getGit()->updateAllBranches();
         }
     }
 }

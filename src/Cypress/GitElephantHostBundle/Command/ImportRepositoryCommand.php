@@ -49,13 +49,13 @@ class ImportRepositoryCommand extends CommandBase
         $fs = new Filesystem();
         $fs->mkdir($path);
         try {
-            Git::createFromRemote($repository->getGitUrl(), $path, $this->getContainer()->get('cypress_git_elephant.git_binary'));
+            $git = Git::createFromRemote($repository->getGitUrl(), $path, $this->getContainer()->get('cypress_git_elephant.git_binary'));
         } catch (\Exception $e) {
             $output->writeln('Error during clone, git reports: '.$e->getMessage());
 
             return;
         }
-        $repository->setPath($path);
+        $repository->setPath($git->getPath());
         $repository->setImported(true);
         $this->getEM()->persist($repository);
         $this->getEM()->flush();

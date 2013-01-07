@@ -9,6 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -16,7 +17,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * A user entity
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cypress\GitElephantHostBundle\Entity\Repository\UserRepository")
  * @ORM\Table(name="user")
  */
 class User
@@ -66,6 +67,13 @@ class User
     private $githubDataRefresh;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Cypress\GitElephantHostBundle\Entity\Repository", mappedBy="user")
+     */
+    private $repositories;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
@@ -89,6 +97,7 @@ class User
         $this->token = sha1(uniqid());
         $this->githubData = array();
         $this->githubDataRefresh = new \DateTime();
+        $this->repositories = new ArrayCollection();
     }
 
     /**
@@ -214,6 +223,26 @@ class User
     public function getGithubDataRefresh()
     {
         return $this->githubDataRefresh;
+    }
+
+    /**
+     * Set Repositories
+     *
+     * @param \Doctrine\Common\Collections\ArrayCollection $repositories the repositories variable
+     */
+    public function setRepositories($repositories)
+    {
+        $this->repositories = $repositories;
+    }
+
+    /**
+     * Get Repositories
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getRepositories()
+    {
+        return $this->repositories;
     }
 
     /**
