@@ -46,7 +46,7 @@ class Cloner
      */
     public function __construct($repositoriesDir, Logger $logger)
     {
-        $this->repositoriesDir = $repositoriesDir;
+        $this->repositoriesDir = realpath($repositoriesDir);
         $this->logger = $logger;
     }
 
@@ -57,8 +57,8 @@ class Cloner
      */
     public function initRepository(Repository $repository)
     {
-        //$cmd = sprintf('nohup ./../app/console gitelephant:repository:import %s > /dev/null 2> /dev/null &', $repository->getId());
-        $cmd = sprintf('./../app/console -e=prod gitelephant:repository:import %s', $repository->getId());
+        $cmd = sprintf('nohup ./../app/console gitelephant:repository:import %s > /dev/null 2> /dev/null &', $repository->getId());
+        //$cmd = sprintf('./../app/console -e=prod gitelephant:repository:import %s', $repository->getId());
         $this->logger->info(sprintf('executing "%s"', $cmd));
         $process = new Process($cmd, $this->repositoriesDir);
         $process->run();
