@@ -22,6 +22,11 @@ var RepositoryView = Backbone.View.extend({
         this.$el.fadeIn();
     },
     cloneRepo: function(evt) {
+        if (this.$el.find('a').hasClass('disabled')) {
+            return false;
+        }
+        this.$el.find('a').addClass('disabled');
+        this.$el.find('a').removeClass('btn-primary');
         $.post(
             $(evt.target).attr('href'),
             this.model.toJSON(),

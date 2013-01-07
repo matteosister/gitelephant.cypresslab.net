@@ -57,10 +57,12 @@ class Cloner
      */
     public function initRepository(Repository $repository)
     {
-        $cmd = sprintf('nohup ./../app/console gitelephant:repository:import %s > /dev/null 2> /dev/null &', $repository->getId());
+        //$cmd = sprintf('nohup ./../app/console gitelephant:repository:import %s > /dev/null 2> /dev/null &', $repository->getId());
+        $cmd = sprintf('./../app/console gitelephant:repository:import %s', $repository->getId());
         $this->logger->info(sprintf('executing "%s"', $cmd));
         $process = new Process($cmd, $this->repositoriesDir);
         $process->run();
+        $this->logger->info($process->getOutput());
         if (!$process->isSuccessful()) {
             $this->logger->err($process->getErrorOutput());
         }

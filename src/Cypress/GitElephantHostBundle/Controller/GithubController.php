@@ -65,7 +65,7 @@ class GithubController extends BaseController
             return new RedirectResponse($this->generateUrl('homepage'));
         }
         if ('json' === $this->getRequest()->getRequestFormat()) {
-            $ownedRepositories = $this->getUser()->getRepositories()->toArray();
+            $ownedRepositories = $this->getUserRepository()->getImportedForUser($this->getUser());
             $githubRepositories = json_decode($this->getGithubUser()->getRepositories()->getContent(), true);
             $customRepositories = array();
             foreach ($githubRepositories as $repo) {

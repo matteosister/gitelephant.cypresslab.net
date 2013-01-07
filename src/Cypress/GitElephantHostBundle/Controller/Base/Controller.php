@@ -9,6 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Controller\Base;
 
+use Cypress\GitElephantHostBundle\Entity\Repository\UserRepository;
 use Cypress\GitElephantHostBundle\Entity\User;
 use Cypress\GitElephantHostBundle\Git\Cloner;
 use Symfony\Bridge\Monolog\Logger;
@@ -87,7 +88,7 @@ class Controller extends BaseController
     /**
      * user repository
      *
-     * @return \Doctrine\ORM\EntityRepository
+     * @return UserRepository
      */
     public function getUserRepository()
     {
