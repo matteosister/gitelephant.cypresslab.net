@@ -31,6 +31,9 @@ class RepositoryRepository extends EntityRepository
 
     public function getImportedForUser(User $user)
     {
+        if (null === $user) {
+            return array();
+        }
         $dql = '
             SELECT r FROM Cypress\GitElephantHostBundle\Entity\Repository r
             WHERE r.imported = :imported AND r.user = :user
