@@ -12,9 +12,9 @@
     <script type="text/template" id="repository_view_tpl">
         <td>
             <% if (model.get("imported")) { %>
-            <a class="btn btn-info" href="<%= Routing.generate('repository', { slug: model.get('slug') }) %>">view</a>
+            <a class="btn btn-mini btn-info" href="<%= Routing.generate('repository', { slug: model.get('slug') }) %>">view</a>
             <% } else { %>
-            <a class="btn btn-primary clone-repo" href="<%= Routing.generate('gihub_clone_repository') %>">clone</a>
+            <a class="btn btn-mini btn-primary clone-repo" href="<%= Routing.generate('gihub_clone_repository') %>">clone</a>
             <% } %>
         </td>
         <td class="name"><strong><%= model.get("name") %></strong></td>

@@ -17,11 +17,14 @@ var AppView = Backbone.View.extend({
         this.$el.append(this.paginationView.el);
         this.listView = new ListView();
         this.$el.append(this.listView.el);
-        this.paginationView.bind('change_page', this.changePage, this);
+        this.paginationView.bind('changePage', this.changePage, this);
+        this.listView.bind('repositoriesLoaded', this.repositoriesLoaded, this);
     },
     changePage: function(url) {
-        this.paginationView.load(url);
         this.listView.load(url);
+    },
+    repositoriesLoaded: function() {
+        this.paginationView.load();
     },
     render: function() {
         this.$el.prepend('<h1>Import your github repositories</h1>');
