@@ -9,7 +9,7 @@
 var ListView = Backbone.View.extend({
     tagName: 'table',
     id: 'list',
-    className: 'table table-striped table-hover',
+    className: 'table table-striped table-hover table-condensed',
     githubRepositoryCollection: null,
     userModel: null,
     apiModel: null,
@@ -50,6 +50,7 @@ var ListView = Backbone.View.extend({
                 this.removeSpinner();
                 this.githubRepositoryCollection.reset();
                 this.githubRepositoryCollection.add(data);
+                this.trigger('repositoriesLoaded');
             }
         });
     },

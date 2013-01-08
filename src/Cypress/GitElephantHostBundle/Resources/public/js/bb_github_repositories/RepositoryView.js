@@ -27,11 +27,12 @@ var RepositoryView = Backbone.View.extend({
         }
         this.$el.find('a').addClass('disabled');
         this.$el.find('a').removeClass('btn-primary');
+        this.$el.find('a').html('cloning');
         $.post(
             $(evt.target).attr('href'),
             this.model.toJSON(),
             function(responseText) {
-                console.log(responseText);
+                //console.log(responseText);
             },
             'html'
         );

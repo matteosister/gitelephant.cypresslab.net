@@ -9,6 +9,7 @@
 var PaginationView = Backbone.View.extend({
     tagName: 'div',
     className: 'pagination',
+    lastUrl: null,
     events: {
         "click a": "clickLink"
     },
@@ -25,16 +26,17 @@ var PaginationView = Backbone.View.extend({
             opacity: 0.5
         });
         this.addSpinner();
-        this.trigger('change_page', url);
+        this.lastUrl = url;
+        this.trigger('changePage', url);
         return false;
     },
     initialize: function() {
         this.render();
-        this.load();
     },
     load: function(url) {
+        this.addSpinner();
         var callUrl = Routing.generate('github_repositories_pagination', {
-            url: 1 == arguments.length ? url : null
+            url: this.lastUrl !== null ? this.lastUrl : url
         });
         $.ajax({
             url: callUrl,

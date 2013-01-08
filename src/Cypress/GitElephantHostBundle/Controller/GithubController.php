@@ -69,16 +69,18 @@ class GithubController extends BaseController
             $githubRepositories = json_decode($this->getGithubUser()->getRepositories()->getContent(), true);
             $customRepositories = array();
             foreach ($githubRepositories as $repo) {
-                $ownedRepos = array_filter($ownedRepositories, function(Repository $r) use ($repo) {
-                    return $r->getName() === $repo['full_name'];
-                });
-                if (isset($ownedRepos[0])) {
-                    $owned = $ownedRepos[0];
-                } else {
-                    $owned = null;
+                $repo['imported'] = false;
+                $repo['slug'] = null;
+                $ownedRepositoriesName = array_map(function(Repository $r) {
+                    return $r->getName();
+                }, $ownedRepositories);
+                if (in_array($repo['full_name'], $ownedRepositoriesName)) {
+                    $ownedRepository = $this->getRepositoryRepo()->findOneBy(array('name' => $repo['full_name']));
+                    if (null !== $ownedRepository) {
+                        $repo['imported'] = true;
+                        $repo['slug'] = $ownedRepository->getSlug();
+                    }
                 }
-                $repo['imported'] = $owned !== null;
-                $repo['slug'] = $owned !== null ?  $owned->getSlug() : null;
                 $customRepositories[] = $repo;
             }
 
