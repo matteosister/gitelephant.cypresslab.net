@@ -35,7 +35,12 @@ class RepositoryController extends BaseController
      */
     public function newAction(Request $request)
     {
-        $form = $this->createForm('repository', new Repository());
+        if (null === $this->getUser()) {
+            return new RedirectResponse($this->generateUrl('homepage'));
+        }
+        $repository = new Repository();
+        $repository->setUser($this->getUser());
+        $form = $this->createForm('repository', $repository);
         $formView = $form->createView();
         if ($request->isMethod('post')) {
             $form->bind($request);
@@ -44,6 +49,9 @@ class RepositoryController extends BaseController
                 $this->getEM()->persist($repository);
                 $this->getEM()->flush();
                 $this->getCloner()->initRepository($repository);
+                $this->getSession()->getFlashBag()->add('repository', 'The repository is being imported right now...hold on...');
+
+                return new RedirectResponse($this->generateUrl('homepage'));
             }
         }
 

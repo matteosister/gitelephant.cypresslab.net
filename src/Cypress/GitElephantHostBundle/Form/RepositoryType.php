@@ -9,9 +9,12 @@
 
 namespace Cypress\GitElephantHostBundle\Form;
 
+use Cypress\GitElephantHostBundle\Github\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use JMS\DiExtraBundle\Annotation\FormType;
+use JMS\DiExtraBundle\Annotation\Inject;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * repository type
@@ -29,9 +32,30 @@ class RepositoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('gitUrl');
+            ->add('name', null, array(
+                'attr' => array(
+                    'placeholder' => 'Repository name',
+                    'class' => 'input-xlarge'
+                )
+            ))
+            ->add('gitUrl', null, array(
+                'label' => 'Repository url',
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'Repository url',
+                    'class' => 'input-xxlarge'
+                )
+            ));
     }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        parent::setDefaultOptions($resolver);
+        $resolver->setDefaults(array(
+            'data_class' => 'Cypress\GitElephantHostBundle\Entity\Repository'
+        ));
+    }
+
 
     /**
      * Returns the name of this type.

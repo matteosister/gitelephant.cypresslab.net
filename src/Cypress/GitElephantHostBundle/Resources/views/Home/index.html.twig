@@ -1,7 +1,10 @@
 {% extends "CypressGitElephantHostBundle::base.html.twig" %}
 
 {% block body_container_main %}
-    <h1>Public Git Repositories</h1>
+    {% for flash_message in app.session.flashBag.get('repository', {}) %}
+        <div class="alert alert-success">{{ flash_message }}</div>
+    {% endfor %}
+    <h3>Public Git Repositories</h3>
     <ul class="repository_list">
         {% for repository in repositories %}
             {% if repository.imported %}
@@ -12,7 +15,7 @@
         {% endfor %}
     </ul>
     {% if userRepositories %}
-        <h1>Your Github Repositories</h1>
+        <h3>Your Imported Repositories</h3>
         <ul>
         {% for userRepository in userRepositories %}
             <li><a href="{{ path('repository', { slug: userRepository.slug }) }}">{{ userRepository }}</a></li>

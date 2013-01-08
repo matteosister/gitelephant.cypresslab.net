@@ -16,8 +16,10 @@
                     {% endif %}
                 </ul>
             </li>
-            {#<li><a href="{{ path('new_repository') }}">New repository</a></li>#}
+            {% if user.isLoggedIn %}
+                <li><a href="{{ path('new_repository') }}">New repository</a></li>
+            {% endif %}
         </ul>
-        {#{{ user_login() }}#}
+        {{ user_login() }}
     </div>
 </div>

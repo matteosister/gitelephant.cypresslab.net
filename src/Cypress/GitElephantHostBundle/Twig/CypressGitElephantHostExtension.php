@@ -73,6 +73,16 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     }
 
     /**
+     * @return array
+     */
+    public function getGlobals()
+    {
+        return array(
+            'user' => $this->container->get('cypress.git_elephant_host.github.user')
+        );
+    }
+
+    /**
      * Generates an url from a treeObject
      *
      * @param \GitElephant\Objects\TreeObject $treeObject
