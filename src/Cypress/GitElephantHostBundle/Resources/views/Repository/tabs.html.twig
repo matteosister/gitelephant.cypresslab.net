@@ -34,4 +34,7 @@
     <li {{ selected == 'commits' ? 'class="active"' : '' }}>
         <a href="{{ path('commits', { slug: repository.slug }) }}">Commits</a>
     </li>
+    <li class="pull-right">
+        <span class="badge">{{ repository.git.countCommits(ref) }} commits</span>
+    </li>
 </ul>
