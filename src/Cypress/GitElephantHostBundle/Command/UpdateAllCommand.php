@@ -13,6 +13,7 @@ use Cypress\GitElephantHostBundle\Command\Base\CommandBase;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\Process;
 
 /**
  * update all repositories
@@ -29,10 +30,16 @@ class UpdateAllCommand extends CommandBase
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $repos = $this->getRepoRepository()->findAll();
+        $repos = $this->getRepoRepository()->getActive();
         foreach ($repos as $repo) {
-            $output->writeln(sprintf('Updating <info>%s</info> repository', $repo->getName()));
-            $repo->getGit()->updateAllBranches();
+            $output->write(sprintf('Updating <comment>%s</comment> repository...', $repo->getName()));
+            $p = new Process('git pull', $repo->getPath());
+            $p->run();
+            if ($p->isSuccessful()) {
+                $output->write("<info>done</info>\n");
+            } else {
+                $output->writeln(sprintf('<error>%s</error>', $p->getErrorOutput()));
+            }
         }
     }
 }
