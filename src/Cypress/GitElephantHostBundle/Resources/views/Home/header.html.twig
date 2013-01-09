@@ -8,18 +8,12 @@
                     {% for repository in repositories %}
                         <li><a href="{{ path('repository', { slug: repository.slug }) }}">{{ repository }}</a></li>
                     {% endfor %}
-                    {% if userRepositories %}
-                        <li class="divider"></li>
-                        {% for userRepository in userRepositories %}
-                            <li><a href="{{ path('repository', { slug: userRepository.slug }) }}">{{ userRepository }}</a></li>
-                        {% endfor %}
-                    {% endif %}
                 </ul>
             </li>
             {% if user.isLoggedIn %}
                 <li><a href="{{ path('new_repository') }}">New repository</a></li>
             {% endif %}
         </ul>
-        {{ user_login() }}
+        {#{{ user_login() }}#}
     </div>
 </div>
