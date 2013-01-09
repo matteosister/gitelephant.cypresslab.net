@@ -4,7 +4,7 @@
     {% for flash_message in app.session.flashBag.get('repository', {}) %}
         <div class="alert alert-success">{{ flash_message }}</div>
     {% endfor %}
-    <h3>Public Git Repositories</h3>
+    <h3>Git Repositories</h3>
     <ul class="repository_list">
         {% for repository in repositories %}
             {% if repository.imported %}
@@ -14,14 +14,6 @@
             {% endif %}
         {% endfor %}
     </ul>
-    {% if userRepositories %}
-        <h3>Your Imported Repositories</h3>
-        <ul>
-        {% for userRepository in userRepositories %}
-            <li><a href="{{ path('repository', { slug: userRepository.slug }) }}">{{ userRepository }}</a></li>
-        {% endfor %}
-        </ul>
-    {% endif %}
 {% endblock %}
 
 {% block body_js %}

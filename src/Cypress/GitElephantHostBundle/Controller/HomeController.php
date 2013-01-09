@@ -22,7 +22,6 @@ class HomeController extends BaseController
     public function indexAction()
     {
         $repositories = $this->getRepositoryRepo()->getPublics();
-        $userRepositories = $this->getRepositoryRepo()->getImportedForUser($this->getUser());
 
         return compact('repositories', 'userRepositories');
     }
@@ -35,7 +34,6 @@ class HomeController extends BaseController
     public function headerAction()
     {
         $repositories = $this->getRepositoryRepo()->getPublics();
-        $userRepositories = $this->getRepositoryRepo()->getImportedForUser($this->getUser());
 
         return compact('repositories', 'userRepositories');
     }
