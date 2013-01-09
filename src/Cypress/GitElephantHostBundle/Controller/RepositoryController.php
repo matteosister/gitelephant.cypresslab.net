@@ -17,6 +17,7 @@ use Cypress\GitElephantHostBundle\Entity\Repository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Repository controller
@@ -48,14 +49,26 @@ class RepositoryController extends BaseController
                 $repository = $form->getData();
                 $this->getEM()->persist($repository);
                 $this->getEM()->flush();
-                $this->getCloner()->initRepository($repository);
                 $this->getSession()->getFlashBag()->add('repository', 'The repository is being imported right now...hold on...');
 
-                return new RedirectResponse($this->generateUrl('homepage'));
+                return new RedirectResponse($this->generateUrl('clone_repository', array('slug' => $repository->getSlug())));
             }
         }
 
         return compact('formView');
+    }
+
+    /**
+     * Clone Repository
+     *
+     * @param string $slug repository id
+     *
+     * @Route("/clone/{slug}", name="clone_repository")
+     *
+     */
+    public function cloneAction($slug)
+    {
+        $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
     }
 
     /**
