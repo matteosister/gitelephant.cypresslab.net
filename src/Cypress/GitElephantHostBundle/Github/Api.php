@@ -70,7 +70,7 @@ class Api
         return $url;
     }
 
-    protected function call($what, $cache = true, $params = array())
+    protected function call($what, $cache = true, $params = array(), $getParams = array())
     {
         $url = $this->get($what, false, $params);
 
@@ -86,35 +86,43 @@ class Api
     }
 
     /**
-     * @param null  $url    url
-     * @param array $params params
-     * @param bool  $raw    raw content
+     * @param null  $url       url
+     * @param array $params    params
+     * @param bool  $raw       raw content
+     * @param array $getParams get params
      *
      * @return mixed
      */
-    private function getResource($url = null, $params = array(), $raw = false)
+    private function getResource($url = null, $params = array(), $raw = false, $getParams = array())
     {
         $url = 'https://api.github.com'.$url;
         foreach ($params as $key => $value) {
             $url = preg_replace(sprintf('/{%s}/', $key), $value, $url);
         }
         $url = preg_replace('/\{\?.*\}/', '', $url);
-        $response = $this->issueRequest($url, $raw);
+        $response = $this->issueRequest($url, $raw, $getParams);
 
         return $response;
     }
 
     /**
-     * @param string $url url to call
-     * @param bool   $raw raw content
+     * @param string $url       url to call
+     * @param bool   $raw       raw content
+     * @param array  $getParams get params
      *
      * @return mixed
      */
-    public function issueRequest($url, $raw = false)
+    public function issueRequest($url, $raw = false, $getParams = array())
     {
-        $query = sprintf('?access_token=%s', $this->user->getAccessToken());
+        $query = array_merge(
+            array(
+                'access_token' => $this->user->getAccessToken(),
+                'per_page'     => 15
+            ),
+            $getParams
+        );
         $browser = new Browser(new Curl());
-        $response = $browser->get($url.$query);
+        $response = $browser->get($url.'?'.http_build_query($query));
 
         return $raw ? $response : json_decode($response->getContent());
     }

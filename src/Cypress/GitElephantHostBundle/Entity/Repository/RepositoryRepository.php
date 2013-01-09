@@ -59,6 +59,28 @@ class RepositoryRepository extends EntityRepository
     }
 
     /**
+     * per utente
+     *
+     * @param \Cypress\GitElephantHostBundle\Entity\User $user
+     *
+     * @return array
+     */
+    public function getForUser(User $user = null)
+    {
+        if (null === $user) {
+            return array();
+        }
+        $dql = '
+            SELECT r FROM Cypress\GitElephantHostBundle\Entity\Repository r
+            WHERE r.user = :user
+        ';
+        $query = $this->_em->createQuery($dql);
+        $query->setParameter('user', $user);
+
+        return $query->getResult();
+    }
+
+    /**
      * repo attive che possono essere "usate"
      *
      * @return array

@@ -41,6 +41,7 @@ var ListView = Backbone.View.extend({
         this.load(Routing.generate('github_repositories', {'_format': 'json'}));
     },
     load: function(url) {
+        if (typeof(url) === 'undefined') { url = Routing.generate('github_repositories', {'_format': 'json'}) }
         this.addSpinner();
         $.ajax({
             url: url,

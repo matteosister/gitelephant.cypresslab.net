@@ -65,8 +65,12 @@ class GithubController extends BaseController
             return new RedirectResponse($this->generateUrl('homepage'));
         }
         if ('json' === $this->getRequest()->getRequestFormat()) {
-            $ownedRepositories = $this->getRepositoryRepo()->getImportedForUser($this->getUser());
-            $githubRepositories = json_decode($this->getGithubUser()->getRepositories()->getContent(), true);
+            $ownedRepositories = $this->getRepositoryRepo()->getForUser($this->getUser());
+            if (null !== $url = $this->getRequest()->get('url', null)) {
+                $githubRepositories = json_decode($this->getGithubUser()->issueRequest($url, true)->getContent(), true);
+            } else {
+                $githubRepositories = json_decode($this->getGithubUser()->getRepositories()->getContent(), true);
+            }
             $customRepositories = array();
             foreach ($githubRepositories as $repo) {
                 $repo['imported'] = false;
@@ -134,7 +138,6 @@ class GithubController extends BaseController
         $repository->setUser($this->getUser());
         $this->getEM()->persist($repository);
         $this->getEM()->flush();
-        $this->getCloner()->initRepository($repository);
 
         return compact('repository');
     }

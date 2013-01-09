@@ -14,7 +14,7 @@
             <% if (model.get("imported")) { %>
             <a class="btn btn-mini btn-info" href="<%= Routing.generate('repository', { slug: model.get('slug') }) %>">view</a>
             <% } else { %>
-            <a class="btn btn-mini btn-primary clone-repo" href="<%= Routing.generate('gihub_clone_repository') %>">clone</a>
+            <a class="btn btn-mini btn-primary clone-repo" href="<%= Routing.generate('gihub_clone_repository') %>">import</a>
             <% } %>
         </td>
         <td class="name"><strong><%= model.get("name") %></strong></td>

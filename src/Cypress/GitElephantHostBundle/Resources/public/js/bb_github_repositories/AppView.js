@@ -21,7 +21,7 @@ var AppView = Backbone.View.extend({
         this.listView.bind('repositoriesLoaded', this.repositoriesLoaded, this);
     },
     changePage: function(url) {
-        this.listView.load(url);
+        this.listView.load(Routing.generate('github_repositories', {_format: 'json', url: url}));
     },
     repositoriesLoaded: function() {
         this.paginationView.load();

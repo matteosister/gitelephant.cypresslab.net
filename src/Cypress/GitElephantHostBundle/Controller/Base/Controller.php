@@ -12,6 +12,7 @@ namespace Cypress\GitElephantHostBundle\Controller\Base;
 use Cypress\GitElephantHostBundle\Entity\Repository\RepositoryRepository;
 use Cypress\GitElephantHostBundle\Entity\Repository\UserRepository;
 use Cypress\GitElephantHostBundle\Entity\User;
+use Cypress\GitElephantHostBundle\Entity\Repository as Repo;
 use Cypress\GitElephantHostBundle\Git\Cloner;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
@@ -150,5 +151,12 @@ class Controller extends BaseController
     public function getCloner()
     {
         return $this->get('cypress.git_elephant_host_bundle.git.cloner');
+    }
+
+    public function checkRepositoryNotImported(Repo $repository)
+    {
+        if ($repository->getImported()) {
+            return;
+        }
     }
 }
