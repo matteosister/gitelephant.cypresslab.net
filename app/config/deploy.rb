@@ -21,7 +21,7 @@ role :web,        domain                         # Your HTTP server, Apache/etc
 role :app,        domain                         # This may be the same as your `Web` server
 role :db,         domain, :primary => true       # This is where Symfony2 migrations will run
 
-set  :use_sudo,      false
+set  :use_sudo,      true
 set  :keep_releases,  3
 
 set  :dump_assetic_assets, true
@@ -37,13 +37,6 @@ before "symfony:assets:install", "cypress:bower"
 after "cypress:bower", "cypress:compass_compile"
 
 namespace :cypress do
-  desc "permissions sul server"
-  task :permissions do
-    run "cd #{latest_release} && chmod 777 app/cache -R"
-  end
-end
-
-namespace :cypress do
   desc "bower sul server"
   task :bower do
     capifony_pretty_print "--> Installing bower dependencies"
@@ -56,6 +49,15 @@ namespace :cypress do
   task :compass_compile do
     capifony_pretty_print "--> Compiling compass"
     run "cd #{latest_release} && #{php_bin} #{symfony_console} --env=#{symfony_env_prod} cypress:compass:compile"
+
+    capifony_puts_ok
+  end
+
+  desc "permissions sul server"
+  task :permissions do
+    capifony_pretty_print "--> resetting permissions"
+    run "cd #{latest_release} && chmod 777 app/cache -R"
+    run "cd #{latest_release} && chown www-data:www-data . -R"
 
     capifony_puts_ok
   end
