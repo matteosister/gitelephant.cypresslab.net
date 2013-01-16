@@ -29,7 +29,7 @@ class LoadRepositoryData extends BaseFixture
         $ge->setName('GitElephant');
         $ge->setPath('/home/matteo/libraries/GitElephant');
         $ge->setImported(true);
-        $manager->persist($ge);
+        //$manager->persist($ge);
 
         $self = new Repository();
         $self->setName('GitElephant Hosting');

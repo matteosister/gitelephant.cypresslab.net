@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: bundles/mongo.yml }
+    #- { resource: bundles/mongo.yml }
     - { resource: bundles/doctrine_ext.yml }
     - { resource: bundles/ornicar_gravatar.yml }
     #- { resource: bundles/less_elephant.yml }

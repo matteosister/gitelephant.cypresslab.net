@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Cypress\GitElephantHostBundle\CypressGitElephantHostBundle(),
-            new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
+            //new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Cypress\GitElephantBundle\CypressGitElephantBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
