@@ -112,6 +112,13 @@ tr.blob td:hover {
         padding: 0.5em;
         background-color: #EFEFEF;
         line-height: 30px;
+        .author {
+            color: $greyLight;
+        }
+        img {
+            float: left;
+            margin-right: 1em;
+        }
     }
     .content {
         overflow: auto;
@@ -266,7 +273,7 @@ table {
     }
     .content {
         padding-left: 1em;
-        margin-left: 30px;
+        margin-left: 60px;
         line-height: 30px;
         font-weight: bold;
     }

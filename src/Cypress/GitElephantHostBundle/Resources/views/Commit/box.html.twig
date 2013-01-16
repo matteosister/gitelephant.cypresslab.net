@@ -1,5 +1,5 @@
 <div class="commit-box">
-    <img src="{{ gravatar(commit.author.email) }}" title="{{ commit.author.name }}" />
+    <img src="{{ gravatar(commit.author.email, 60) }}" title="{{ commit.author.name }}" />
     <div class="content">
         <div class="sha visible-desktop">{{ commit }}</div>
         {% if link %}
