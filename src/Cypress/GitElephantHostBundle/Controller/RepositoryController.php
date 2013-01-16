@@ -68,7 +68,7 @@ class RepositoryController extends BaseController
      */
     public function cloneAction($slug)
     {
-        $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+        //$repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
     }
 
     /**
@@ -83,7 +83,7 @@ class RepositoryController extends BaseController
      */
     public function repositoryAction($slug)
     {
-        $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
         if (null === $repository) {
             return new RedirectResponse($this->generateUrl('homepage'));
         }
@@ -113,7 +113,7 @@ class RepositoryController extends BaseController
      */
     public function treeObjectAction($slug, $ref, $path)
     {
-        $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
         if (null === $repository) {
             return new RedirectResponse($this->generateUrl('homepage'));
         }
@@ -198,7 +198,7 @@ class RepositoryController extends BaseController
      */
     public function breadcrumbAction($slug, $ref, $path)
     {
-        $repository = $this->getRepositoryRepo()->findOneBySlug($slug);
+        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
         $parts = $this->getRefPathSplitter()->split($repository->getGit(), $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
