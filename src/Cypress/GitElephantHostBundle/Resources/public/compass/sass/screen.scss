@@ -6,6 +6,7 @@
 
 body {
     padding-top: 1em;
+    font-family: "Ubuntu", "Helvetica Neue",Helvetica,Arial,sans-serif;
     &:before {
         content: "";
         position: absolute;
@@ -36,6 +37,10 @@ body {
 }
 
 a {
+    color: $links;
+    &:hover {
+        color: $linksHover;
+    }
     &.tree-object-link {
         white-space: nowrap;
     }
@@ -292,7 +297,7 @@ table {
         @include code;
         &:before {
             content: "sha: ";
-            color: $blue;
+            color: $links;
         }
     }
 }

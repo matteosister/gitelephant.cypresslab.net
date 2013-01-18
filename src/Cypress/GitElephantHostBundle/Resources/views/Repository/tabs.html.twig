@@ -35,6 +35,7 @@
         <a href="{{ path('commits', { slug: repository.slug }) }}">Commits</a>
     </li>
     <li class="pull-right">
-        <span class="badge">{{ repository.git.countCommits(ref|default('master')) }} commits</span>
+        {% set countCommits = repository.git.countCommits(ref|default('master')) %}
+        <span class="badge">{{ countCommits >= 1000 ? '>' ~ countCommits : countCommits }} commits</span>
     </li>
 </ul>
