@@ -14,14 +14,14 @@ Vagrant::Config.run do |config|
         # devbox_config.vm.forward_port 80, 8888
         # devbox_config.vm.forward_port 3306, 8889
   		
-        devbox_config.vm.share_folder("www", "/var/www", "../web", :nfs => true, :extra => 'dmode=777,fmode=777')
+        devbox_config.vm.share_folder("www", "/var/www", ".", :nfs => true, :extra => 'dmode=777,fmode=777')
 
   		devbox_config.vm.provision :shell, :inline => "echo \"Europe/Paris\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
 
         devbox_config.vm.provision :puppet do |puppet|
-            puppet.manifests_path = "puppet/manifests"
+            puppet.manifests_path = "vagrant/puppet/manifests"
             puppet.manifest_file  = "base.pp"
-            puppet.module_path = "puppet/modules"
+            puppet.module_path = "vagrant/puppet/modules"
             # puppet.options = "--verbose --debug"
             # puppet.options = "--verbose"
         end

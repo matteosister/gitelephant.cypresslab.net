@@ -8,7 +8,7 @@
         {% if tree.binary and is_image(tree) %}
             <img class="binary-content" src="{{ path('ajax_binary_tree_object', { slug: slug, ref: ref, path: path }) }}" />
         {% elseif tree.blob %}
-            {{ output_content(tree.blob)|raw }}
+            {{ output_content(tree.blob, ref)|raw }}
         {% else %}
             <table class="table table-condensed {{ tree.blob ? 'content' : 'table-striped tree' }}">
                 {% for treeObject in tree %}

@@ -9,6 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Entity\Repository;
 
+use Cypress\GitElephantHostBundle\Entity\Repository;
 use Cypress\GitElephantHostBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
@@ -72,5 +73,18 @@ class RepositoryRepository extends EntityRepository
         $query->setParameter('imported', true);
 
         return $query->getResult();
+    }
+
+    /**
+     * override
+     *
+     * @param array $criteria criteria
+     * @param array $orderBy  order
+     *
+     * @return Repository
+     */
+    public function findOneBy(array $criteria, array $orderBy = null)
+    {
+        return parent::findOneBy($criteria, $orderBy);
     }
 }
