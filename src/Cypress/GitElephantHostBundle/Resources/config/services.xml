@@ -23,6 +23,7 @@
             <!--<argument type="service" id="doctrine_mongodb.odm.document_manager" />-->
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="pygments_elephant.pygmentize" />
+            <argument type="service" id="logger" />
         </service>
 
         <service id="cypress.git_elephant_host.github.user" class="Cypress\GitElephantHostBundle\Github\User" scope="request">

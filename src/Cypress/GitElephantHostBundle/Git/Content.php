@@ -10,6 +10,7 @@
 namespace Cypress\GitElephantHostBundle\Git;
 
 use Cypress\GitElephantHostBundle\Git\Base\GitBaseService;
+use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\HttpFoundation\Request;
 use GitElephant\Objects\TreeObject;
 use PygmentsElephant\Pygmentize;
@@ -31,34 +32,39 @@ class Content extends GitBaseService
     private $pygmentize;
 
     /**
+     * @var \Symfony\Bridge\Monolog\Logger
+     */
+    private $logger;
+
+    /**
      * Class constructor
      *
      * @param Request       $request       request
      * @param ObjectManager $objectManager document manager
      * @param Pygmentize    $pygmentize    pygmentize
      */
-    public function __construct(Request $request, ObjectManager $objectManager, Pygmentize $pygmentize)
+    public function __construct(Request $request, ObjectManager $objectManager, Pygmentize $pygmentize, Logger $logger)
     {
         $this->request = $request;
         $this->objectManager = $objectManager;
         $this->pygmentize = $pygmentize;
+        $this->logger = $logger;
     }
 
     /**
-     * output git treeobject content
+     * output git TreeObject content
      *
-     * @param \GitElephant\Objects\TreeObject $treeObject
+     * @param \GitElephant\Objects\TreeObject $treeObject tree object
+     * @param string                          $ref        reference
      *
      * @return string
      */
-    public function outputContent(TreeObject $treeObject)
+    public function outputContent(TreeObject $treeObject, $ref = 'HEAD')
     {
-        $rawContent = implode("\n", $this->getGit()->outputContent($treeObject, 'HEAD'));
-        $output = $this->pygmentize->format($rawContent, $treeObject->getName());
-        $startPos = strpos($output, '<pre>') + 5;
-        $closePos = strrpos($output, '</pre>');
-        $content = substr($output, $startPos, $closePos - $startPos);
-        $arrContent = explode("\n", $content);
+        $output = $this->pygmentize->format($this->getGit()->outputRawContent($treeObject, $ref), $treeObject->getName());
+        $this->logger->info($output);
+        $content = trim(strip_tags($output));
+        $arrContent = preg_split('/\n/', $content);
         $arrOutput = array();
         $arrNumbers = array();
         foreach ($arrContent as $i => $line) {
