@@ -52,7 +52,7 @@ class Content extends GitBaseService
     }
 
     /**
-     * output git TreeObject content
+     * output git Treeobject content
      *
      * @param \GitElephant\Objects\TreeObject $treeObject tree object
      * @param string                          $ref        reference
@@ -63,8 +63,9 @@ class Content extends GitBaseService
     {
         $output = $this->pygmentize->format($this->getGit()->outputRawContent($treeObject, $ref), $treeObject->getName());
         $this->logger->info($output);
-        $content = trim(strip_tags($output));
-        $arrContent = preg_split('/\n/', $content);
+        $matches = array();
+        preg_match("'<div class=\"highlight\"><pre>(.*)\n</pre></div>'si", $output, $matches);
+        $arrContent = preg_split('/\n/', $matches[1]);
         $arrOutput = array();
         $arrNumbers = array();
         foreach ($arrContent as $i => $line) {
