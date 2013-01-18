@@ -3,7 +3,7 @@
     <div class="content">
         <div class="sha visible-desktop">{{ commit }}</div>
         {% if link %}
-            <a href="{{ path('commit', { slug: slug, sha: commit.sha }) }}">{{ commit.message }}</a>
+            <a class="commit-message" href="{{ path('commit', { slug: slug, sha: commit.sha }) }}">{{ commit.message }}</a>
         {% else %}
             {{ commit.message }}
         {% endif %}

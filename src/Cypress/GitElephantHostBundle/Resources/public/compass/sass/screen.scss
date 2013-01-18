@@ -6,7 +6,7 @@
 
 body {
     padding-top: 1em;
-    font-family: "Ubuntu", "Helvetica Neue",Helvetica,Arial,sans-serif;
+    //font-family: "Ubuntu", "Helvetica Neue",Helvetica,Arial,sans-serif;
     &:before {
         content: "";
         position: absolute;
@@ -21,6 +21,10 @@ body {
     margin-bottom: 2em;
 }
 
+.navbar .brand {
+    color: $links;
+}
+
 #container {
     width: 80%;
     margin: 1em auto;
@@ -31,9 +35,31 @@ body {
 }
 
 .repository_list {
+    list-style-type: none;
+    margin: 0;
     li.importing {
         padding-left: 16px;
     }
+    a {
+        position: relative;
+        padding-left: 25px;
+        i {
+            position: absolute;
+            left: 0;
+            top: 1px;
+            @include transition-property(left);
+            @include transition-duration(0.4s);
+        }
+        &:hover {
+            i {
+                left: 8px;
+            }
+        }
+    }
+}
+
+.nav-tabs > li > a {
+    color: $alternate;
 }
 
 a {
@@ -49,6 +75,10 @@ a {
             padding-right: 4px;
         }
     }
+}
+
+.commit-message {
+    color: $alternate;
 }
 
 code, pre {
@@ -117,6 +147,7 @@ tr.blob td:hover {
         padding: 0.5em;
         background-color: #EFEFEF;
         line-height: 30px;
+        border-bottom: 1px solid #DDDDDD;
         .author {
             color: $greyLight;
         }
@@ -257,12 +288,20 @@ table {
             padding: 0;
         }
         .ln-number {
-            padding: 0 0.5em;
+            //padding: 0 0.5em;
             background-color: #F8F8F8;
             border-right: 1px solid #DDD;
+            .number {
+                padding: 0 0.5em;
+            }
         }
         .code {
-            padding-left: 0.5em;
+            .ln {
+                padding-left: 0.4em;
+                &:nth-child(even) {
+                    background-color: #FAFAFA;
+                }
+            }
         }
         .highlight {
             background: none !important;
@@ -272,7 +311,7 @@ table {
 
 .commit-box {
     margin-bottom: 1em;
-    background-color: $header;
+    background-color: #EFEFEF;
     padding: 5px;
     @include border-radius(5px);
     @include clearfix;

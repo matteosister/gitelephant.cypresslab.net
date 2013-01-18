@@ -4,16 +4,39 @@
     {% for flash_message in app.session.flashBag.get('repository', {}) %}
         <div class="alert alert-success">{{ flash_message }}</div>
     {% endfor %}
-    <h3>Git Repositories</h3>
-    <ul class="repository_list">
-        {% for repository in repositories %}
-            {% if repository.imported %}
-            <li><a href="{{ path('repository', { slug: repository.slug }) }}">{{ repository }}</a></li>
-            {% else %}
-            <li class="importing">{{ repository }} (importing)</li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <div class="row-fluid">
+        <div class="span4">
+            <h3>Hey there!</h3>
+            <img class="pull-right" src="{{ asset('bundles/cypressgitelephanthost/images/git.png') }}" />
+            <p><i class="icon-heart"></i> Thank you for visiting my demo site for GitElephant</p>
+            <p>This website is powered by <a href="http://symfony.com">Symfony2</a>,
+                <a href="http://twitter.github.com/bootstrap/">bootstrap</a>,
+                <a href="https://github.com/matteosister/GitElephantBundle">GitElephantBundle</a>,
+                <a href="https://github.com/matteosister/GitElephant">GitElephant</a>,
+                <a href="http://compass-style.org/">compass</a> and some other nice libraries...</p>
+            <p>If you think you can contribute to GitElephant
+                <a href="https://github.com/matteosister/GitElephant">fork the repository on github</a></p>
+            <p><strong>Happy git to everybody!</strong></p>
+            <p>Click on a repository to start browsing.</p>
+            <p class="muted"><small>Just for fun...</small></p>
+        </div>
+        <div class="span3">
+            <h3>Git Repositories</h3>
+            <ul class="repository_list">
+                {% for repository in repositories %}
+                    {% if repository.imported %}
+                    <li>
+                        <a href="{{ path('repository', { slug: repository.slug }) }}">
+                            <i class="icon-chevron-right"></i> {{ repository }}
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="importing">{{ repository }} (importing)</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
 
 {% block body_js %}
