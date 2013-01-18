@@ -39,9 +39,10 @@ class Content extends GitBaseService
     /**
      * Class constructor
      *
-     * @param Request       $request       request
-     * @param ObjectManager $objectManager document manager
-     * @param Pygmentize    $pygmentize    pygmentize
+     * @param Request                        $request       request
+     * @param ObjectManager                  $objectManager document manager
+     * @param Pygmentize                     $pygmentize    pygmentize
+     * @param \Symfony\Bridge\Monolog\Logger $logger        logger
      */
     public function __construct(Request $request, ObjectManager $objectManager, Pygmentize $pygmentize, Logger $logger)
     {
