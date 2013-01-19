@@ -178,6 +178,7 @@ tr.blob td:hover {
         border-top: 1px solid #DDD;
         background-color: #EEE;
         padding: 1em;
+        overflow: auto;
         a {
             color: $links;
         }
