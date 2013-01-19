@@ -3,7 +3,7 @@
         <li class="active">{{ repository }}</li>
     {% else %}
         <li><a  class="bc" href="{{ ref == 'master' ? path('repository', {slug: repository.slug}) : path('tree_object', {slug: repository.slug, ref: ref}) }}">{{ repository }}</a>
-            {% if path|breadcrumb|length > 0 %} <span class="divider">&diams;</span>{% endif %}</li>
+            {% if path|breadcrumb|length > 0 %} <span class="divider">/</span>{% endif %}</li>
     {% endif %}
     {% for slice in path|breadcrumb %}
         {% if loop.last %}
@@ -12,7 +12,7 @@
             <li><a class="bc" href="{{ path('tree_object', {
                 slug: repository.slug,
                 ref: ref,
-                path: slice.path }) }}">{{ slice.label }}</a> <span class="divider">&diams;</span></li>
+                path: slice.path }) }}">{{ slice.label }}</a> <span class="divider">/</span></li>
         {% endif %}
     {% endfor %}
 </ul>
