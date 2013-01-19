@@ -4,17 +4,17 @@
     {% for flash_message in app.session.flashBag.get('repository', {}) %}
         <div class="alert alert-success">{{ flash_message }}</div>
     {% endfor %}
-    <div class="row-fluid">
+    <div class="row-fluid homepage">
         <div class="span4">
             <h3>Hey there!</h3>
-            <img class="pull-right" src="{{ asset('bundles/cypressgitelephanthost/images/git.png') }}" />
+            <img class="pull-right hidden-phone" src="{{ asset('bundles/cypressgitelephanthost/images/git.png') }}" />
             <p><i class="icon-heart"></i> Thank you for visiting my demo site for GitElephant</p>
             <p>This website is powered by <a href="http://symfony.com">Symfony2</a>,
+                <a href="http://backbonejs.org/">backbone.js</a>,
                 <a href="http://twitter.github.com/bootstrap/">bootstrap</a>,
-                <a href="https://github.com/matteosister/GitElephantBundle">GitElephantBundle</a>,
-                <a href="https://github.com/matteosister/GitElephant">GitElephant</a>,
-                <a href="http://compass-style.org/">compass</a> and some other nice libraries...</p>
-            <p>If you think you can contribute to GitElephant
+                <a href="http://compass-style.org/">compass</a>,
+                <a href="https://github.com/matteosister/GitElephant">GitElephant</a> and some other nice libraries.
+                If you want to contribute to GitElephant you are one click away, just
                 <a href="https://github.com/matteosister/GitElephant">fork the repository on github</a></p>
             <p><strong>Happy git to everybody!</strong></p>
             <p>Click on a repository to start browsing.</p>
