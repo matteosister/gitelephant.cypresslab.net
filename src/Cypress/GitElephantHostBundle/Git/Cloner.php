@@ -26,7 +26,7 @@ class Cloner
     /**
      * @var string
      */
-    private $repositoriesDir;
+    private $kernelDir;
 
     /**
      * @var \Symfony\Bridge\Monolog\Logger
@@ -36,17 +36,17 @@ class Cloner
     /**
      * constructor
      *
-     * @param string                         $repositoriesDir root dir
-     * @param \Symfony\Bridge\Monolog\Logger $logger          logger
+     * @param string                         $kernelDir kernel dir
+     * @param \Symfony\Bridge\Monolog\Logger $logger    logger
      *
      * @InjectParams({
-     *     "repositoriesDir" = @Inject("%cypress_git_elephant_host.repositories_dir%"),
+     *     "kernelDir" = @Inject("%kernel.root_dir%"),
      *     "logger" = @Inject("logger")
      * })
      */
-    public function __construct($repositoriesDir, Logger $logger)
+    public function __construct($kernelDir, Logger $logger)
     {
-        $this->repositoriesDir = realpath($repositoriesDir);
+        $this->kernelDir = realpath($kernelDir);
         $this->logger = $logger;
     }
 
@@ -57,13 +57,15 @@ class Cloner
      */
     public function initRepository(Repository $repository)
     {
-        $cmd = sprintf('nohup ./../app/console -e=prod gitelephant:repository:import %s > /dev/null 2> /dev/null &', $repository->getId());
+        $cmd = sprintf('nohup ./app/console -e=prod gitelephant:repository:import %s > /dev/null 2> /dev/null &', $repository->getId());
+        //$cmd = sprintf('./app/console -e=prod gitelephant:repository:import %s', $repository->getId());
         $this->logger->info(sprintf('executing "%s"', $cmd));
-        $process = new Process($cmd, $this->repositoriesDir);
+        $process = new Process($cmd, realpath($this->kernelDir.'/../'));
         $process->run();
         $this->logger->info($process->getOutput());
         if (!$process->isSuccessful()) {
             $this->logger->err($process->getErrorOutput());
+            throw new \RuntimeException($process->getErrorOutput());
         }
     }
 }
