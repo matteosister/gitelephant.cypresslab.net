@@ -108,14 +108,15 @@ class CypressGitElephantHostExtension extends \Twig_Extension
      * output a tree object content
      *
      * @param \GitElephant\Objects\TreeObject $treeObject tree object
+     * @param string                          $ref        reference
      *
      * @return mixed
      */
-    public function outputContent(TreeObject $treeObject)
+    public function outputContent(TreeObject $treeObject, $ref)
     {
         try {
             $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:output_content.html.twig', array(
-                'output' => $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject)
+                'output' => $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject, $ref)
             ));
         } catch (\Exception $e) {
             $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:output_content.html.twig', array(

@@ -35,4 +35,10 @@
             </table>
         {% endif %}
     </div>
+    {% if readme and path is null%}
+    <div class="readme">
+        {{ readme|markdown }}
+    </div>
+    {% endif %}
 </section>
+<br class="clearfix" />

@@ -141,13 +141,11 @@ tr.blob td:hover {
     section {
         width: 100%;
         border: 1px solid #DDD;
-        margin-bottom: 1em;
     }
     header {
         padding: 0.5em;
         background-color: #EFEFEF;
         line-height: 30px;
-        border-bottom: 1px solid #DDDDDD;
         .author {
             color: $greyLight;
         }
@@ -174,6 +172,14 @@ tr.blob td:hover {
             &.first {
                 margin-top: 0;
             }
+        }
+    }
+    .readme {
+        border-top: 1px solid #DDD;
+        background-color: #EEE;
+        padding: 1em;
+        a {
+            color: $links;
         }
     }
 }
