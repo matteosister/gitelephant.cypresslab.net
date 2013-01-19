@@ -21,7 +21,7 @@ class HomeController extends BaseController
      */
     public function indexAction()
     {
-        $repositories = $this->getRepositoryRepo()->getPublics();
+        $repositories = $this->getRepositoryRepo()->findAll();
 
         return compact('repositories', 'userRepositories');
     }

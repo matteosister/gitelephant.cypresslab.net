@@ -40,7 +40,7 @@ class RepositoryController extends BaseController
             return new RedirectResponse($this->generateUrl('homepage'));
         }
         $repository = new Repository();
-        $repository->setUser($this->getUser());
+        //$repository->setUser($this->getUser());
         $form = $this->createForm('repository', $repository);
         $formView = $form->createView();
         if ($request->isMethod('post')) {
@@ -63,12 +63,16 @@ class RepositoryController extends BaseController
      *
      * @param string $slug repository id
      *
-     * @Route("/clone/{slug}", name="clone_repository")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      *
+     * @Route("/clone/{slug}", name="clone_repository")
      */
     public function cloneAction($slug)
     {
-        //$repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+        $this->getCloner()->initRepository($repository);
+
+        return new RedirectResponse($this->generateUrl('homepage'));
     }
 
     /**
