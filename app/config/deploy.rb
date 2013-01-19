@@ -32,7 +32,7 @@ set :update_vendors,    true
 set :use_composer, true
 
 after "deploy", "deploy:cleanup"
-before "deploy:cleanup", "cypress:permissions"
+after "symfony:project:clear_controllers", "cypress:permissions"
 before "symfony:assets:install", "cypress:bower"
 after "cypress:bower", "cypress:compass_compile"
 
