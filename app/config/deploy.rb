@@ -3,7 +3,7 @@ set :domain,      "root@cypress"
 set :deploy_to,   "/var/www/ge"
 set :app_path,    "app"
 
-set :repository,  "cypressgit:gitelephant_host"
+set :repository,  "git@gitlab.cypresslab.net:matteosister/gitelephant_host.git"
 set :scm,         :git
 set :git_enable_submodules, 1
 set :branch,      "master"
