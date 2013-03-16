@@ -3,7 +3,7 @@
 	url = git@github.com:matteosister/GitElephantBundle.git
 [submodule "subs/PygmentsElephant"]
 	path = subs/PygmentsElephant
-	url = cypressgit:PygmentsElephant
+	url = git@gitlab.cypresslab.net:matteosister/pygmentselephant.git
 [submodule "subs/GitElephant"]
 	path = subs/GitElephant
 	url = git@github.com:matteosister/GitElephant.git
