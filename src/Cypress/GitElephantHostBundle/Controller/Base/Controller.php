@@ -20,6 +20,7 @@ use GitElephant\Repository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Cypress\GitElephantHostBundle\Git\RefPathSplitter;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
@@ -61,7 +62,12 @@ class Controller extends BaseController
      */
     public function getRepository($slug)
     {
-        return $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+        if (null === $repository) {
+            throw new \Exception('pagina non trovata');
+        }
+
+        return $repository;
     }
 
     /**
@@ -103,7 +109,7 @@ class Controller extends BaseController
      */
     public function getGit($slug)
     {
-        return $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
+        return $this->getRepository($slug)->getGit();
     }
 
     /**

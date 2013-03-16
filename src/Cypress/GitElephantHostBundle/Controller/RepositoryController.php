@@ -69,7 +69,7 @@ class RepositoryController extends BaseController
      */
     public function cloneAction($slug)
     {
-        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+        $repository = $this->getRepository($slug);
         $this->getCloner()->initRepository($repository);
 
         return new RedirectResponse($this->generateUrl('homepage'));
@@ -87,10 +87,7 @@ class RepositoryController extends BaseController
      */
     public function repositoryAction($slug)
     {
-        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
-        if (null === $repository) {
-            return new RedirectResponse($this->generateUrl('homepage'));
-        }
+        $repository = $this->getRepository($slug);
         $ref = 'master';
         if (null === $repository->getGit()->getBranchOrTag($ref)) {
             $ref = $repository->getGit()->getMainBranch()->getName();
@@ -117,10 +114,7 @@ class RepositoryController extends BaseController
      */
     public function treeObjectAction($slug, $ref, $path)
     {
-        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
-        if (null === $repository) {
-            return new RedirectResponse($this->generateUrl('homepage'));
-        }
+        $repository = $this->getRepository($slug);
         $parts = $this->getRefPathSplitter()->split($repository->getGit(), $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
@@ -146,7 +140,7 @@ class RepositoryController extends BaseController
      */
     public function treeAction($slug, $ref, $path)
     {
-        $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
+        $git = $this->getGit($slug);
         $parts = $this->getRefPathSplitter()->split($git, $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
@@ -178,7 +172,7 @@ class RepositoryController extends BaseController
      */
     public function binaryTreeAction($slug, $ref, $path)
     {
-        $git = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug))->getGit();
+        $git = $this->getGit($slug);
         $parts = $this->getRefPathSplitter()->split($git, $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
@@ -207,7 +201,7 @@ class RepositoryController extends BaseController
      */
     public function breadcrumbAction($slug, $ref, $path)
     {
-        $repository = $this->getRepositoryRepo()->findOneBy(array('slug' => $slug));
+        $repository = $this->getRepository($slug);
         $parts = $this->getRefPathSplitter()->split($repository->getGit(), $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
