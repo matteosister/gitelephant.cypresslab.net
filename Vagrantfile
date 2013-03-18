@@ -18,7 +18,7 @@ Vagrant::Config.run do |config|
     #config.vm.synced_folder ".", "/var/www/gitelephant_host.lo", :nfs => true
 
     config.vm.provision :chef_solo do |chef|
-        chef.cookbooks_path = ["cookbooks", "vagrant-symfony2/my-cookbooks", "vagrant/mdxp"]
+        chef.cookbooks_path = ["cookbooks", "vagrant/vagrant-symfony2/my-cookbooks", "vagrant/mdxp"]
         chef.add_recipe "nginx"
         chef.add_recipe "apt"
         chef.add_recipe "build-essential"
