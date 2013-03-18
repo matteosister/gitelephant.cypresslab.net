@@ -31,3 +31,6 @@
 [submodule "app/puppet/modules/apt"]
 	path = app/puppet/modules/apt
 	url = git://github.com/jfryman/puppet-apt.git
+[submodule "vagrant/mdxp"]
+	path = vagrant/mdxp
+	url = git://github.com/mdxp/cookbooks.git

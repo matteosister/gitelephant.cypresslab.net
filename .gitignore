@@ -15,4 +15,5 @@ src/Cypress/GitElephantHostBundle/Resources/public/css/bootstrap/bootstrap.css
 repositories/*
 .rsync_cache
 src/Cypress/GitElephantHostBundle/Resources/public/compass/stylesheets
-.vagrant
+.vagrant*
+tmp
