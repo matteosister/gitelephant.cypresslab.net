@@ -13,24 +13,9 @@
 [submodule "subs/CompassElephant"]
 	path = subs/CompassElephant
 	url = git@github.com:matteosister/CompassElephant.git
-[submodule "vagrant"]
-	path = vagrant
-	url = git@github.com:matteosister/vagrant-php54.git
-[submodule "app/puppet/modules/symfony2"]
-	path = app/puppet/modules/symfony2
-	url = git://github.com/dietervds/puppet-symfony2.git
-[submodule "app/puppet/modules/apache"]
-	path = app/puppet/modules/apache
-	url = git://github.com/puppetlabs/puppetlabs-apache.git
-[submodule "app/puppet/modules/stdlib"]
-	path = app/puppet/modules/stdlib
-	url = git://github.com/puppetlabs/puppetlabs-stdlib.git
-[submodule "app/puppet/modules/firewall"]
-	path = app/puppet/modules/firewall
-	url = git://github.com/puppetlabs/puppetlabs-firewall.git
-[submodule "app/puppet/modules/apt"]
-	path = app/puppet/modules/apt
-	url = git://github.com/jfryman/puppet-apt.git
 [submodule "vagrant/mdxp"]
 	path = vagrant/mdxp
 	url = git://github.com/mdxp/cookbooks.git
+[submodule "vagrant/vagrant-symfony2"]
+	path = vagrant/vagrant-symfony2
+	url = git://github.com/proudlygeek/vagrant-symfony2.git
