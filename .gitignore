@@ -17,3 +17,4 @@ repositories/*
 src/Cypress/GitElephantHostBundle/Resources/public/compass/stylesheets
 .vagrant*
 tmp
+cookbooks
