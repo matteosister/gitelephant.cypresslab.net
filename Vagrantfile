@@ -37,7 +37,7 @@ Vagrant::Config.run do |config|
             app: {
                 name: "gitelephant_host",
                 web_dir: "/var/www/gitelephant_host.lo",
-                dev: true
+                dev: false
             },
             nginx: {
                 user: "vagrant"
