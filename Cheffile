@@ -18,3 +18,5 @@ cookbook 'php-fpm',
 cookbook 'composer',
   :git => 'git://github.com/zircote/chef-composer.git'
 cookbook 'build-essential'
+#cookbook 'php-extra',
+#  :git => 'git://github.com/inviqa/chef-php-extra'

@@ -2,8 +2,6 @@
 # vi: set ft=ruby :
 
 Vagrant::Config.run do |config|
-    #config.vm.box = "precise64"
-    #config.vm.box_url = "http://files.vagrantup.com/precise64.box"
     config.vm.box = "quantal64"
     config.vm.box_url = "https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box"
 
@@ -18,7 +16,7 @@ Vagrant::Config.run do |config|
     #config.vm.synced_folder ".", "/var/www/gitelephant_host.lo", :nfs => true
 
     config.vm.provision :chef_solo do |chef|
-        chef.cookbooks_path = ["cookbooks", "vagrant/vagrant-symfony2/my-cookbooks", "vagrant/mdxp"]
+        chef.cookbooks_path = ["cookbooks", "vagrant/vagrant-symfony2/my-cookbooks", "vagrant/mdxp", "vagrant/php-extra"]
         chef.add_recipe "nginx"
         chef.add_recipe "apt"
         chef.add_recipe "build-essential"
@@ -27,6 +25,7 @@ Vagrant::Config.run do |config|
         chef.add_recipe "php"
         chef.add_recipe "php::module_mysql"
         chef.add_recipe "php::module_apc"
+        chef.add_recipe "chef-php-extra::xdebug"
         chef.add_recipe "composer"
         chef.add_recipe "mysql"
         chef.add_recipe "mysql::server"
