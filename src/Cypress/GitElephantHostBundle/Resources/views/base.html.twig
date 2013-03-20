@@ -13,7 +13,7 @@
 
 {% block body_container %}
     <div class="container-fluid">
-        {% render "CypressGitElephantHostBundle:Home:header" with { standalone: true } %}
+        {{ render(controller('CypressGitElephantHostBundle:Home:header')) }}
         {% block body_container_main %}{% endblock %}
     </div>
 {% endblock %}

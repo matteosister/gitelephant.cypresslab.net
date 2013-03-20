@@ -9,10 +9,10 @@
         } %}
     </div>
     <div class="bc">
-        {% render "CypressGitElephantHostBundle:Repository:breadcrumb" with {slug: repository.slug, ref: ref, path: path} %}
+        {{ render(controller('CypressGitElephantHostBundle:Repository:breadcrumb', {slug: repository.slug, ref: ref, path: path})) }}
     </div>
     <div class="repository row-fluid" data-slug="{{ repository.slug }}" data-ref="{{ ref }}">
-        {% render "CypressGitElephantHostBundle:Repository:tree" with {slug: repository.slug, ref: ref, path: path} %}
+        {{ render(controller('CypressGitElephantHostBundle:Repository:tree', {slug: repository.slug, ref: ref, path: path})) }}
     </div>
 {% endblock %}
 
