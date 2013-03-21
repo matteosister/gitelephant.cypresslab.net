@@ -20,6 +20,10 @@ monolog:
 
 cypress_compass_elephant:
     register_listener: false
+    compass_projects:
+        main:
+            path: %kernel.root_dir%/../src/Cypress/GitElephantHostBundle/Resources/public/compass
+            config_file: config_prod.rb
 
 cypress_git_elephant_host:
     login_url: https://github.com/login/oauth/authorize
