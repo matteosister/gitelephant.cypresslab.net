@@ -1,5 +1,5 @@
 set :application, "GitElephantHost"
-set :domain,      "root@cypress"
+set :domain,      "ovh"
 set :deploy_to,   "/var/www/ge"
 set :app_path,    "app"
 
@@ -12,7 +12,7 @@ set :deploy_via,  :rsync_with_remote_cache
 
 #ssh_options[:port] = "22123"
 ssh_options[:forward_agent] = true
-set :user, "www-data"
+set :user, "matteo"
 
 set :model_manager, "doctrine"
 # Or: `propel`
@@ -21,7 +21,7 @@ role :web,        domain                         # Your HTTP server, Apache/etc
 role :app,        domain                         # This may be the same as your `Web` server
 role :db,         domain, :primary => true       # This is where Symfony2 migrations will run
 
-set  :use_sudo,      true
+set  :use_sudo,      false
 set  :keep_releases,  3
 
 set  :dump_assetic_assets, true
@@ -32,7 +32,7 @@ set :update_vendors,    true
 set :use_composer, true
 
 after "deploy", "deploy:cleanup"
-after "symfony:project:clear_controllers", "cypress:permissions"
+#after "symfony:project:clear_controllers", "cypress:permissions"
 before "symfony:assets:install", "cypress:bower"
 after "cypress:bower", "cypress:compass_compile"
 
