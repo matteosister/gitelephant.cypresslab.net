@@ -87,20 +87,28 @@ class CommitController extends BaseController
      */
     public function commitInfoAction(Request $request, $slug, $ref)
     {
-        //sleep(10);
+        $response = new Response();
+        if ($response->isNotModified($this->getRequest())) {
+            return $response;
+        }
         $output = array();
         $git = $this->getGit($slug);
         $data = json_decode($request->getContent());
         foreach ($data as $i => $commit) {
             $log = $git->getLog($ref, $commit->path, 1);
             $lastCommit = $log[0];
+            $output[$i]['author_email'] = $lastCommit->getAuthor()->getEmail();
+            $output[$i]['author_name'] = $lastCommit->getAuthor()->getName();
             $output[$i]['sha'] = $lastCommit->getSha();
             $output[$i]['path'] = $commit->path;
             $output[$i]['message'] = $lastCommit->getMessage()->toString();
             $output[$i]['url'] = $this->generateUrl('commit', array('slug' => $slug, 'sha' => $lastCommit->getSha()));
         }
-        $r = new Response(json_encode($output));
+        $response = new Response(json_encode($output));
+        $response->setPublic();
+        $response->setMaxAge(60*60);
+        $response->setSharedMaxAge(60*60);
 
-        return $r;
+        return $response;
     }
 }

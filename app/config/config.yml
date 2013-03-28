@@ -43,6 +43,7 @@ assetic:
             inputs:
                 - bundles/cypressgitelephanthost/components/jquery/jquery.js
                 - bundles/cypressgitelephanthost/compass/javascripts/bootstrap-dropdown.js
+                - bundles/cypressgitelephanthost/js/md5.js
             filters: [?uglifyjs]
         home_js:
             inputs:

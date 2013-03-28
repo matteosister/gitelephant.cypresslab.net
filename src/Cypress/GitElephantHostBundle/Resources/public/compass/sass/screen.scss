@@ -163,6 +163,9 @@ tr.blob td:hover {
     }
     td.commit {
         width: 80%;
+        img {
+            margin-right: 0.5em;
+        }
         a {
             color: #999;
         }

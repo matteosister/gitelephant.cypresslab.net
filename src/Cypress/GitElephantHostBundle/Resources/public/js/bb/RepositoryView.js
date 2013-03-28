@@ -25,7 +25,9 @@ var RepositoryView = Backbone.View.extend({
         this.getSpinnerCommitsDomObject().spin(false);
         _.each(this.$el.find('section.actual').find('tr:not(.back)'), function(elm) {
             var commit = this.commitCollection.getCommit($(elm).data().path);
-            $(elm).find('td:nth(1)').html('<a href="' + commit.get('url') + '">' + commit.get('message') + '</a>');
+            $(elm).find('td:nth(1)').html('<a href="' + commit.get('url') + '" title="' + commit.get('author_name') + '">' +
+                '<img src="http://www.gravatar.com/avatar/' + md5(commit.get('author_email')) + '?s=20&d=mm" />' +
+                commit.get('message') + '</a>');
         }, this);
     },
     loadRoute: function(evt, forward) {

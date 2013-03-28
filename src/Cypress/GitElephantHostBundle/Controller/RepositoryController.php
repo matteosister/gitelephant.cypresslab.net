@@ -81,12 +81,15 @@ class RepositoryController extends BaseController
      * @param string $slug slug
      *
      * @Route("/{slug}", name="repository", options={"expose"=true})
-     * @Template()
      *
      * @return array
      */
     public function repositoryAction($slug)
     {
+        $response = new Response();
+        if ($response->isNotModified($this->getRequest())) {
+            return $response;
+        }
         $repository = $this->getRepository($slug);
         $ref = 'master';
         if (null === $repository->getGit()->getBranchOrTag($ref)) {
@@ -95,8 +98,12 @@ class RepositoryController extends BaseController
             return new RedirectResponse($this->generateUrl('tree_object', array('slug' => $slug, 'ref' => $ref)));
         }
         $path = null;
+        $response = $this->render('CypressGitElephantHostBundle:Repository:repository.html.twig',
+            compact('repository', 'ref', 'path'));
+        $response->setMaxAge(60*60);
+        $response->setSharedMaxAge(60*60);
 
-        return compact('repository', 'ref', 'path');
+        return $response;
     }
 
     /**
@@ -114,12 +121,20 @@ class RepositoryController extends BaseController
      */
     public function treeObjectAction($slug, $ref, $path)
     {
+        $response = new Response();
+        if ($response->isNotModified($this->getRequest())) {
+            return $response;
+        }
         $repository = $this->getRepository($slug);
         $parts = $this->getRefPathSplitter()->split($repository->getGit(), $ref, $path);
         $ref = $parts[0];
         $path = $parts[1];
+        $response = $this->render('CypressGitElephantHostBundle:Repository:repository.html.twig',
+            compact('repository', 'ref', 'path'));
+        $response->setMaxAge(60*60);
+        $response->setSharedMaxAge(60*60);
 
-        return compact('repository', 'ref', 'path');
+        return $response;
     }
 
     /**
