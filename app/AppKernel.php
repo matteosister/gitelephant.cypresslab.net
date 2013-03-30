@@ -31,7 +31,8 @@ class AppKernel extends Kernel
             new Cypress\CompassElephantBundle\CypressCompassElephantBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
-            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle()
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
