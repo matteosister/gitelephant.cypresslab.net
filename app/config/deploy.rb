@@ -31,7 +31,7 @@ set :shared_children,   [app_path + "/logs", web_path + "/uploads", "repositorie
 set :update_vendors,    true
 set :use_composer, true
 #set :composer_options,  "--no-scripts --prefer-source --optimize-autoloader" # --prefer-dist --verbose
-set :vendors_mode,      "install"
+#set :vendors_mode,      "install"
 
 after "deploy", "deploy:cleanup"
 #after "symfony:project:clear_controllers", "cypress:permissions"
