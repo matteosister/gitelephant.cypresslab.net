@@ -3,7 +3,7 @@ set :domain,      "ovh"
 set :deploy_to,   "/var/www/ge"
 set :app_path,    "app"
 
-set :repository,  "git@gitlab.cypresslab.net:gitelephant_host.git"
+set :repository,  "git@gitlab.cypresslab.net:gitelephant-host.git"
 set :scm,         :git
 set :git_enable_submodules, 1
 set :branch,      "master"
