@@ -32,7 +32,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
-            new Knp\Bundle\TimeBundle\KnpTimeBundle()
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new BCC\ResqueBundle\BCCResqueBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

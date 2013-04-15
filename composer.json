@@ -37,7 +37,8 @@
         "kriswallsmith/buzz": "dev-master",
         "jms/serializer-bundle": "0.9.0",
         "knplabs/knp-markdown-bundle": "1.2.*@dev",
-        "knplabs/knp-time-bundle": "1.1.*"
+        "knplabs/knp-time-bundle": "1.1.*",
+        "bcc/resque-bundle": "1.1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",

@@ -10,6 +10,10 @@ cypress_git_elephant_host_github:
     type:     annotation
     prefix:   /
 
+BCCResqueBundle:
+    resource: "@BCCResqueBundle/Resources/config/routing.xml"
+    prefix:   /resque
+
 cypress_git_elephant_host:
     resource: "@CypressGitElephantHostBundle/Controller/"
     type:     annotation
