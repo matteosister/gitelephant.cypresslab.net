@@ -38,7 +38,7 @@ class RepositoryController extends BaseController
     public function newAction(Request $request)
     {
         if (null === $this->getUser()) {
-            return new RedirectResponse($this->generateUrl('homepage'));
+            //return new RedirectResponse($this->generateUrl('homepage'));
         }
         $repository = new Repository();
         //$repository->setUser($this->getUser());
