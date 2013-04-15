@@ -18,6 +18,7 @@
                 <a href="https://github.com/matteosister/GitElephant">fork the repository on github</a></p>
             <p><strong>Happy git to everybody!</strong></p>
             <p>Click on a repository to start browsing.</p>
+            <p><strong><a href="{{ path('new_repository') }}">or import one from a public url</a></strong></p>
             <p class="muted"><small>Just for fun...</small></p>
         </div>
         <div class="span3">
@@ -28,6 +29,9 @@
                     <li>
                         <a href="{{ path('repository', { slug: repository.slug }) }}">
                             <i class="icon-chevron-right"></i> {{ repository }}
+                            {% if not repository.default %}
+                                <span class="muted">- imported {{ time_diff(repository.created) }}</span>
+                            {% endif %}
                         </a>
                     </li>
                     {% else %}

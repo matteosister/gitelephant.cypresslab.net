@@ -1,7 +1,7 @@
 <ul class="nav pull-right">
     {% if user.loggedIn %}
         <li class="user_login">
-            <a href="{# path('github_repositories') #}#">
+            <a href="{{ path('github_repositories') }}#">
                 <img src="{{ gravatar_hash(user.getAvatarId) }}" /> {{ user.getUsername }}
             </a>
         </li>

@@ -5,6 +5,11 @@ CypressPygmentsBundle:
     resource: .
     type: pygments_bundle
 
+cypress_git_elephant_host:
+    resource: "@CypressGitElephantHostBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 cypress_git_elephant_host_github:
     resource: "@CypressGitElephantHostBundle/Controller/GithubController.php"
     type:     annotation
@@ -13,11 +18,6 @@ cypress_git_elephant_host_github:
 BCCResqueBundle:
     resource: "@BCCResqueBundle/Resources/config/routing.xml"
     prefix:   /resque
-
-cypress_git_elephant_host:
-    resource: "@CypressGitElephantHostBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
 # Internal routing configuration to handle ESI
 #_internal:

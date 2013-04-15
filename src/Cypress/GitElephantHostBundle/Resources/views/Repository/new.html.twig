@@ -6,6 +6,9 @@
     <form action="" method="post" class="form-horizontal">
         <fieldset>
             <legend>New Repository</legend>
+            <p>repos are imported with an async process by <a href="https://github.com/chrisboulton/php-resque">php-resque</a></p>
+            <p>If your repository is not too big it should pop up in a few seconds, otherwise come back later...it should be there</p>
+            <p><i class="icon-remove"></i>old repos are automatically removed. Feel free to import them back if you wish!</p>
             {{ form_errors(formView) }}
 
             {{ form_row(formView.name) }}

@@ -98,6 +98,20 @@ class RepositoryRepository extends EntityRepository
     }
 
     /**
+     * @return array
+     */
+    public function getOrdered()
+    {
+        $dql = '
+            SELECT r FROM Cypress\GitElephantHostBundle\Entity\Repository r
+            ORDER BY r.created DESC
+        ';
+        $query = $this->_em->createQuery($dql);
+
+        return $query->getResult();
+    }
+
+    /**
      * override
      *
      * @param array $criteria criteria

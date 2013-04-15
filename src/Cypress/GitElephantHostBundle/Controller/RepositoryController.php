@@ -9,6 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Controller;
 
+use Cypress\GitElephantHostBundle\Jobs\ImportRepo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
@@ -29,7 +30,7 @@ class RepositoryController extends BaseController
      *
      * @param \Symfony\Component\HttpFoundation\Request $request request
      *
-     * @Route("/new", name="new_repository")
+     * @Route("/import", name="new_repository")
      * @Template()
      *
      * @return array
@@ -70,7 +71,11 @@ class RepositoryController extends BaseController
     public function cloneAction($slug)
     {
         $repository = $this->getRepository($slug);
-        $this->getCloner()->initRepository($repository);
+        /*$this->getCloner()->initRepository($repository);*/
+        $job = new ImportRepo();
+        $job->args = array('id' => $repository->getId());
+        $resque = $this->get('bcc_resque.resque');
+        $resque->enqueue($job);
 
         return new RedirectResponse($this->generateUrl('homepage'));
     }

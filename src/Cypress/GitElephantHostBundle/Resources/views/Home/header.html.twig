@@ -6,11 +6,18 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Repositories<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     {% for repository in repositories %}
-                        <li><a href="{{ path('repository', { slug: repository.slug }) }}">{{ repository }}</a></li>
+                        <li>
+                            <a href="{{ path('repository', { slug: repository.slug }) }}">
+                                {{ repository }}
+                                {% if not repository.default %}
+                                    <span class="muted">{{ time_diff(repository.created) }}</span>
+                                {% endif %}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             </li>
-            {#<li><a href="{{ path('new_repository') }}">New repository</a></li>#}
+            <li><a href="{{ path('new_repository') }}"><strong>Import a repository!</strong></a></li>
         </ul>
         {#{{ user_login() }}#}
     </div>

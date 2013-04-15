@@ -21,7 +21,7 @@ class HomeController extends BaseController
      */
     public function indexAction()
     {
-        $repositories = $this->getRepositoryRepo()->findAll();
+        $repositories = $this->getRepositoryRepo()->getOrdered();
 
         return compact('repositories', 'userRepositories');
     }
@@ -33,7 +33,7 @@ class HomeController extends BaseController
      */
     public function headerAction()
     {
-        $repositories = $this->getRepositoryRepo()->getPublics();
+        $repositories = $this->getRepositoryRepo()->getOrdered();
 
         return compact('repositories', 'userRepositories');
     }

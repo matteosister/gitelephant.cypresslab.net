@@ -80,11 +80,35 @@ class Repository
     private $git;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", name="default_repository")
+     */
+    private $default;
+
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @var datetime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
+
+    /**
      * constructor
      */
     public function __construct()
     {
         $this->imported = false;
+        $this->default = false;
     }
 
     /**
@@ -249,5 +273,65 @@ class Repository
     public function getGit()
     {
         return $this->git;
+    }
+
+    /**
+     * Set Created
+     *
+     * @param \Cypress\GitElephantHostBundle\Entity\datetime $created the created variable
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * Get Created
+     *
+     * @return \Cypress\GitElephantHostBundle\Entity\datetime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set Updated
+     *
+     * @param \Cypress\GitElephantHostBundle\Entity\datetime $updated the updated variable
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * Get Updated
+     *
+     * @return \Cypress\GitElephantHostBundle\Entity\datetime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set Default
+     *
+     * @param boolean $default the default variable
+     */
+    public function setDefault($default)
+    {
+        $this->default = $default;
+    }
+
+    /**
+     * Get Default
+     *
+     * @return boolean
+     */
+    public function getDefault()
+    {
+        return $this->default;
     }
 }
