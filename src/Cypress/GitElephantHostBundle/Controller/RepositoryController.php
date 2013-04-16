@@ -165,10 +165,16 @@ class RepositoryController extends BaseController
         $ref = $parts[0];
         $path = $parts[1];
         $tree = $git->getTree($ref, $path);
+        $readme = null;
         try {
             $readme = $git->getTree('master', 'README.md')->getBinaryData();
         } catch (\Exception $e) {
-            $readme = null;
+        }
+        if (null === $readme) {
+            try {
+                $readme = $git->getTree('master', 'README.markdown')->getBinaryData();
+            } catch (\Exception $e) {
+            }
         }
 
         return compact('git', 'tree', 'ref', 'path', 'slug', 'readme');
