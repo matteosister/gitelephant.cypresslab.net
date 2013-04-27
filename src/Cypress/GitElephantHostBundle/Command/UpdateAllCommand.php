@@ -32,7 +32,7 @@ class UpdateAllCommand extends CommandBase
     {
         $repos = $this->getRepoRepository()->getActive();
         foreach ($repos as $repo) {
-            $output->write(sprintf('Updating <comment>%s</comment> repository...', $repo->getName()));
+            $output->write(sprintf('Updating <comment>%s</comment> repository (%s) ...', $repo->getName(), $repo->getPath()));
             $p = new Process('git pull', $repo->getPath());
             $p->run();
             if ($p->isSuccessful()) {

@@ -98,6 +98,29 @@ class RepositoryRepository extends EntityRepository
     }
 
     /**
+     * repo non importate correttamente
+     *
+     * @param \DateTime $since
+     *
+     * @return array
+     */
+    public function getToBeCleaned(\DateTime $since)
+    {
+        $dql = '
+            SELECT r FROM Cypress\GitElephantHostBundle\Entity\Repository r
+            WHERE r.imported = :imported
+            AND r.default = :default_repo
+            AND r.created < :created
+        ';
+        $query = $this->_em->createQuery($dql);
+        $query->setParameter('imported', false);
+        $query->setParameter('default_repo', false);
+        $query->setParameter('created', $since);
+
+        return $query->getResult();
+    }
+
+    /**
      * @return array
      */
     public function getOrdered()

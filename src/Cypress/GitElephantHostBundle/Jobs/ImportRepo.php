@@ -40,7 +40,7 @@ class ImportRepo extends ContainerAwareJob
         $repository->setImported(true);
         $this->getEM()->persist($repository);
         $this->getEM()->flush();
-        $this->mailConferma($repository);
+        //$this->mailConferma($repository);
     }
 
     private function mailConferma(Repository $r)
