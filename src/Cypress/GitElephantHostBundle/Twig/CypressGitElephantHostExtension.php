@@ -119,6 +119,7 @@ class CypressGitElephantHostExtension extends \Twig_Extension
                 'output' => $this->container->get('cypress.git_elephant_host.git_content')->outputContent($treeObject, $ref)
             ));
         } catch (\Exception $e) {
+            var_dump($e->getMessage());
             $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:output_content.html.twig', array(
                 'link' => '(TODO) link to the file'
             ));

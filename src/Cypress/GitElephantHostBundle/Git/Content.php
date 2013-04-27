@@ -13,7 +13,7 @@ use Cypress\GitElephantHostBundle\Git\Base\GitBaseService;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\HttpFoundation\Request;
 use GitElephant\Objects\TreeObject;
-use PygmentsElephant\Pygmentize;
+use Cypress\PygmentsElephantBundle\PygmentsElephant\Pygmentize;
 use Doctrine\Common\Persistence\ObjectManager;
 use GitElephant\Objects\Diff\DiffChunk;
 

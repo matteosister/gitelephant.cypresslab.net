@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "943b766da944ac783dbf0e845e054944",
+    "hash": "9fde8fc369c776a4e2a507221f705572",
     "packages": [
         {
             "name": "bcc/resque-bundle",

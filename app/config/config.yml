@@ -118,3 +118,7 @@ cypress_git_elephant_host:
     client_id: 1787baab061073db8084
     client_secret: 8d8edbfe969165285ea3fdc2a35f0c743433f9cb
     repositories_dir: %kernel.root_dir%/../repositories
+
+cypress_pygments_elephant:
+    file_types:
+        twig: html+jinja

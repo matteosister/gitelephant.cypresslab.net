@@ -26,7 +26,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Oryzone\Bundle\BoilerplateBundle\OryzoneBoilerplateBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Cypress\PygmentsBundle\CypressPygmentsBundle(),
+            new Cypress\PygmentsElephantBundle\CypressPygmentsElephantBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new Cypress\CompassElephantBundle\CypressCompassElephantBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),

@@ -22,7 +22,7 @@
             <argument type="service" id="request" />
             <!--<argument type="service" id="doctrine_mongodb.odm.document_manager" />-->
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="pygments_elephant.pygmentize" />
+            <argument type="service" id="cypress.pygments_elephant.pygmentize" />
             <argument type="service" id="logger" />
         </service>
 

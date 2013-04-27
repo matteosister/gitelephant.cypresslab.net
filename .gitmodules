@@ -19,3 +19,6 @@
 [submodule "vagrant/vagrant-symfony2"]
 	path = vagrant/vagrant-symfony2
 	url = git://github.com/proudlygeek/vagrant-symfony2.git
+[submodule "subs/Cypress/PygmentsElephantBundle"]
+	path = subs/Cypress/PygmentsElephantBundle
+	url = git@github.com:matteosister/PygmentsElephantBundle.git

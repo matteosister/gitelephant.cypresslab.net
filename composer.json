@@ -5,8 +5,8 @@
         "psr-0": {
             "": "src/",
             "Cypress\\GitElephantBundle": "subs/",
+            "Cypress\\PygmentsElephantBundle": "subs/",
             "GitElephant": "subs/GitElephant/src",
-            "PygmentsElephant": "subs/PygmentsElephant/src",
             "Cypress\\CompassElephantBundle": "subs/",
             "CompassElephant": "subs/CompassElephant/src"
         }
