@@ -33,7 +33,8 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
-            new BCC\ResqueBundle\BCCResqueBundle()
+            new BCC\ResqueBundle\BCCResqueBundle(),
+            new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

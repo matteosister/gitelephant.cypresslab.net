@@ -24,3 +24,7 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+ewz_recaptcha:
+    public_key:   6LeAluASAAAAAD630GgPCeiGC451tX3jz1rWmkBj
+    private_key:  6LeAluASAAAAAJUli3fz0fQygFsK2k5JQINlt-ie

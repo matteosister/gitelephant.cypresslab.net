@@ -12,3 +12,10 @@
 {% block form_row %}
     <div class="control-group">{{ parent() }}</div>
 {% endblock %}
+
+{% block _repository_recaptcha_widget %}
+    <div class="controls">
+        {{ form_widget(form) }}
+        <strong>sorry for this...too much spam! :(</strong>
+    </div>
+{% endblock %}

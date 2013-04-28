@@ -122,3 +122,9 @@ cypress_git_elephant_host:
 cypress_pygments_elephant:
     file_types:
         twig: html+jinja
+
+ewz_recaptcha:
+    public_key:   6Lc4leASAAAAABanO2ogn8e4XvO2RS-MzZX5vrb6
+    private_key:  6Lc4leASAAAAAGQ4T27L3eJSogmZ-_gbP5QaOnZ_
+    secure:       false
+    locale_key:   kernel.default_locale

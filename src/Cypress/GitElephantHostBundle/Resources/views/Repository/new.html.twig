@@ -3,18 +3,18 @@
 {% form_theme formView 'CypressGitElephantHostBundle:Form:bootstrap.html.twig' %}
 
 {% block body_container_main %}
-    <form action="" method="post" class="form-horizontal">
+    <form action="" method="post" class="form-horizontal" novalidate>
         <fieldset>
             <legend>New Repository</legend>
             <p>repos are imported with an async process by <a href="https://github.com/chrisboulton/php-resque">php-resque</a></p>
             <p>If your repository is not too big it should pop up in a few seconds, otherwise come back later...it should be there</p>
             <p><i class="icon-remove"></i>old repos are automatically removed. Feel free to import them back if you wish!</p>
+            {{ form_row(formView._token) }}
             {{ form_errors(formView) }}
 
             {{ form_row(formView.name) }}
             {{ form_row(formView.gitUrl) }}
-
-            {{ form_rest(formView) }}
+            {{ form_row(formView.recaptcha) }}
             <div class="controls"><input type="submit" class="btn" value="Submit" /></div>
         </fieldset>
     </form>

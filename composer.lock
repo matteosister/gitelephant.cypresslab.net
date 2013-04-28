@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9fde8fc369c776a4e2a507221f705572",
+    "hash": "7043c33a116505dd17835ccf95920224",
     "packages": [
         {
             "name": "bcc/resque-bundle",
@@ -1258,6 +1258,48 @@
                 "orm"
             ],
             "time": "2013-03-24 20:43:58"
+        },
+        {
+            "name": "excelwebzone/recaptcha-bundle",
+            "version": "dev-master",
+            "target-dir": "EWZ/Bundle/RecaptchaBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/excelwebzone/EWZRecaptchaBundle.git",
+                "reference": "1fd90d8148449eff76dd0deb42e889204df1c7c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/excelwebzone/EWZRecaptchaBundle/zipball/1fd90d8148449eff76dd0deb42e889204df1c7c5",
+                "reference": "1fd90d8148449eff76dd0deb42e889204df1c7c5",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "2.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "EWZ\\Bundle\\RecaptchaBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael H. Arieli",
+                    "email": "excelwebzone@gmail.com",
+                    "homepage": "http://excelwebzone.com/"
+                }
+            ],
+            "description": "This bundle provides easy reCAPTCHA form field integration",
+            "homepage": "https://github.com/excelwebzone/EWZRecaptchaBundle",
+            "keywords": [
+                "recaptcha"
+            ],
+            "time": "2013-03-14 13:51:58"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
@@ -3473,6 +3515,7 @@
         "ornicar/gravatar-bundle": 20,
         "kriswallsmith/buzz": 20,
         "knplabs/knp-markdown-bundle": 20,
+        "excelwebzone/recaptcha-bundle": 20,
         "liip/functional-test-bundle": 20
     },
     "platform": {

@@ -10,6 +10,7 @@
 namespace Cypress\GitElephantHostBundle\Form;
 
 use Cypress\GitElephantHostBundle\Github\User;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\True;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use JMS\DiExtraBundle\Annotation\FormType;
@@ -45,9 +46,23 @@ class RepositoryType extends AbstractType
                     'placeholder' => 'Repository url',
                     'class' => 'input-xxlarge'
                 )
+            ))
+            ->add('recaptcha', 'ewz_recaptcha', array(
+                'attr' => array(
+                    'options' => array(
+                        'theme' => 'clean'
+                    )
+                ),
+                'mapped' => false,
+                'constraints' => array(
+                    new True()
+                )
             ));
     }
 
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         parent::setDefaultOptions($resolver);
