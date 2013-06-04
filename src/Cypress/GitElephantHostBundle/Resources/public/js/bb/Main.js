@@ -56,7 +56,7 @@ var loadTreeObjectMain = function() {
     //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 
-var app_router = new AppRouter;
+var app_router = new AppRouter({ repositoryView: repository_view });
 app_router.on('route:treeObject', loadTreeObject);
 app_router.on('route:treeObjectController', loadTreeObject);
 app_router.on('route:treeObjectMain', loadTreeObjectMain);
