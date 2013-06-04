@@ -9,7 +9,7 @@
 
 namespace Cypress\GitElephantHostBundle\Twig;
 
-use GitElephant\Objects\TreeObject;
+use GitElephant\Objects\Object;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use GitElephant\Repository;
 use GitElephant\Objects\TreeishInterface;
@@ -85,13 +85,13 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     /**
      * Generates an url from a treeObject
      *
-     * @param \GitElephant\Objects\TreeObject $treeObject
+     * @param \GitElephant\Objects\Object $object
      *
      * @return mixed
      */
-    public function linkTreeObject(TreeObject $treeObject)
+    public function linkTreeObject(Object $object)
     {
-        return $this->container->get('cypress.git_elephant_host.git_router')->treeObjectUrl($treeObject);
+        return $this->container->get('cypress.git_elephant_host.git_router')->treeObjectUrl($object);
     }
 
     /**
@@ -107,12 +107,12 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     /**
      * output a tree object content
      *
-     * @param \GitElephant\Objects\TreeObject $treeObject tree object
-     * @param string                          $ref        reference
+     * @param \GitElephant\Objects\Object $treeObject tree object
+     * @param string                      $ref        reference
      *
      * @return mixed
      */
-    public function outputContent(TreeObject $treeObject, $ref)
+    public function outputContent(Object $treeObject, $ref)
     {
         try {
             $output = $this->container->get('templating')->render('CypressGitElephantHostBundle:Twig:output_content.html.twig', array(
@@ -182,14 +182,14 @@ class CypressGitElephantHostExtension extends \Twig_Extension
     /**
      * check if the blob is "pygmentable"
      *
-     * @param \GitElephant\Objects\TreeObject $blob
+     * @param \GitElephant\Objects\Object $blob
      *
      * @throws \InvalidArgumentException
      */
-    public function isPygmentableText(TreeObject $blob)
+    public function isPygmentableText(Object $blob)
     {
-        if (TreeObject::TYPE_BLOB !== $blob->getType()) {
-            throw new \InvalidArgumentException('to check the pygmentize option you must pass a TreeObject');
+        if (Object::TYPE_BLOB !== $blob->getType()) {
+            throw new \InvalidArgumentException('to check the pygmentize option you must pass a Object');
         }
     }
 

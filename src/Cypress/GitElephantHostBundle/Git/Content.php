@@ -10,9 +10,9 @@
 namespace Cypress\GitElephantHostBundle\Git;
 
 use Cypress\GitElephantHostBundle\Git\Base\GitBaseService;
+use GitElephant\Objects\Object;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\HttpFoundation\Request;
-use GitElephant\Objects\TreeObject;
 use Cypress\PygmentsElephantBundle\PygmentsElephant\Pygmentize;
 use Doctrine\Common\Persistence\ObjectManager;
 use GitElephant\Objects\Diff\DiffChunk;
@@ -55,14 +55,14 @@ class Content extends GitBaseService
     /**
      * output git Treeobject content
      *
-     * @param \GitElephant\Objects\TreeObject $treeObject tree object
-     * @param string                          $ref        reference
+     * @param \GitElephant\Objects\Object $treeObject tree object
+     * @param string                      $ref        reference
      *
      * @return string
      */
-    public function outputContent(TreeObject $treeObject, $ref = 'HEAD')
+    public function outputContent(Object $object, $ref = 'HEAD')
     {
-        $output = $this->pygmentize->format($this->getGit()->outputRawContent($treeObject, $ref), $treeObject->getName());
+        $output = $this->pygmentize->format($this->getGit()->outputRawContent($object, $ref), $object->getName());
         $this->logger->info($output);
         $matches = array();
         preg_match("'<div class=\"highlight\"><pre>(.*)\n</pre></div>'si", $output, $matches);

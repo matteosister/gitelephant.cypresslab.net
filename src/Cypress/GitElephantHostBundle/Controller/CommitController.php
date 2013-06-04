@@ -9,13 +9,14 @@
 
 namespace Cypress\GitElephantHostBundle\Controller;
 
+use GitElephant\Objects\Branch;
+use GitElephant\Objects\Tree;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cypress\GitElephantHostBundle\Controller\Base\Controller as BaseController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use GitElephant\Objects\TreeObject;
 
 /**
  * commit controller
@@ -77,23 +78,42 @@ class CommitController extends BaseController
      *
      * @internal param string $slug slug
      *
-     * @Route("/{slug}/ajax/{ref}/commits.{_format}", name="commits_info",
-     *   requirements={"_method"="post", "ref" = ".+"},
+     * @Route("/{slug}/ajax/tree/{ref}/{path}.{_format}", name="commits_info",
+     *   requirements={"_method"="get", "ref" = "\S+", "path" = ".+"},
      *   options={"expose"=true},
-     *   defaults={"ref"="master", "_format"="json"}
+     *   defaults={"ref"="master", "_format"="json", "path"=""}
      * )
      *
      * @return array
      */
-    public function commitInfoAction(Request $request, $slug, $ref)
+    public function commitInfoAction(Request $request, $slug, $ref, $path)
     {
         $response = new Response();
         if ($response->isNotModified($this->getRequest())) {
-            return $response;
+            //return $response;
         }
         $output = array();
         $git = $this->getGit($slug);
-        $data = json_decode($request->getContent());
+        $parts = $this->getRefPathSplitter()->split($git, $ref, $path);
+        $ref = $parts[0];
+        $path = $parts[1];
+        $branch = Branch::checkout($git, $ref);
+        $tree = $git->getTree($branch, $path);
+        foreach ($tree as $i => $node) {
+            $log = $git->getLog($branch, $node->getFullPath(), 1);
+            $lastCommit = $log[0];
+            $output[$i]['author_email'] = $lastCommit->getAuthor()->getEmail();
+            $output[$i]['author_name'] = $lastCommit->getAuthor()->getName();
+            $output[$i]['sha'] = $lastCommit->getSha();
+            $output[$i]['path'] = $node->getFullPath();
+            $output[$i]['message'] = $lastCommit->getMessage()->toString();
+            $output[$i]['url'] = $this->generateUrl('commit', array('slug' => $slug, 'sha' => $lastCommit->getSha()));
+        }
+
+
+        //die;
+
+        /*$data = json_decode($request->getContent());
         foreach ($data as $i => $commit) {
             $log = $git->getLog($ref, $commit->path, 1);
             $lastCommit = $log[0];
@@ -103,7 +123,7 @@ class CommitController extends BaseController
             $output[$i]['path'] = $commit->path;
             $output[$i]['message'] = $lastCommit->getMessage()->toString();
             $output[$i]['url'] = $this->generateUrl('commit', array('slug' => $slug, 'sha' => $lastCommit->getSha()));
-        }
+        }*/
         $response = new Response(json_encode($output));
         $response->setPublic();
         $response->setMaxAge(60*60);
