@@ -7,7 +7,11 @@
  */
 
 var BreadcrumbView = Backbone.View.extend({
+    path: '/',
     initialize: function() {
+        if (this.$el.children('ul').length > 0) {
+            this.path = this.$el.children('ul').data().path
+        }
         this.$el
             .find('ul.breadcrumb')
             .addClass('actual');
@@ -20,6 +24,8 @@ var BreadcrumbView = Backbone.View.extend({
         return false;
     },
     loadContent: function(routeData) {
+        //console.log(routeData.path);
+        this.path = routeData.path;
         var existentBreadcrumb = this.findByPath(routeData.path);
         if (existentBreadcrumb.length == 0) {
             this.ajaxRequest(routeData);
@@ -51,5 +57,8 @@ var BreadcrumbView = Backbone.View.extend({
     },
     findByPath: function(path) {
         return this.$el.find('ul[data-path="' + path + '"]');
+    },
+    getPath: function() {
+        return this.path;
     }
 });

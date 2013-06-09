@@ -42,15 +42,14 @@ var CommitCollection = Backbone.Collection.extend({
             context: this,
             url: url,
             dataType: 'json',
-            type: 'POST',
-            data : JSON.stringify(commitsObjects),
+            //data : JSON.stringify(commitsObjects),
             contentType : 'application/json',
             success: function(commits) {
                 _.each(commits, function(commit) {
                     var commitModel = new CommitModel(commit);
                     this.add(commitModel);
                 }, this);
-                this.trigger('commitsLoaded');
+                this.trigger('commitsLoaded', commits);
             }
         });
     }

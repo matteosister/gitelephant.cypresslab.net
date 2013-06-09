@@ -1,4 +1,4 @@
-<section data-path="{{ path }}">
+<section data-path="{{ path|default('/') }}">
     <header><img src="{{ gravatar(tree.getLastCommitAuthor(ref).email, 60) }}" title="{{ tree.getLastCommitAuthor(ref).name }}" />
         <a class="commit-message" href="{{ path('commit', { slug: slug, sha: tree.getLastCommit(ref).sha }) }}">{{ tree.getLastCommitMessage(ref) }}</a>
         {% set commit = tree.getLastCommit(ref) %}

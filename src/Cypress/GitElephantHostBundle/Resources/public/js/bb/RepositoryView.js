@@ -7,6 +7,7 @@
  */
 
 var RepositoryView = Backbone.View.extend({
+    isForward: false,
     initialize: function() {
         this.breadcrumbView = new BreadcrumbView({ el: $('div.bc') });
         this.commitCollection = new CommitCollection();
@@ -36,11 +37,12 @@ var RepositoryView = Backbone.View.extend({
         } else {
             this.isForward = forward
         }
-        this.loading();
+        //this.loading();
         app_router.navigate($(evt.target).attr('href'), true);
         return false;
     },
     loadContent: function(routeData) {
+        this.loading();
         routeData.path = decodeURI(routeData.path);
         var url = Routing.generate('ajax_tree_object', routeData);
         // new section
@@ -84,7 +86,6 @@ var RepositoryView = Backbone.View.extend({
         }
     },
     addErrorSection: function() {
-
     },
     sectionExists: function(path) {
         return this.$el.find('section[data-path="' + path + '"]');

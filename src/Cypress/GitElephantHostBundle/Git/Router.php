@@ -9,10 +9,10 @@
 
 namespace Cypress\GitElephantHostBundle\Git;
 
+use GitElephant\Objects\Object;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Cypress\GitElephantHostBundle\Git\Base\GitBaseService;
-use GitElephant\Objects\TreeObject;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
@@ -50,13 +50,13 @@ class Router extends GitBaseService
     /**
      * tree object url
      *
-     * @param \GitElephant\Objects\TreeObject $treeObject
+     * @param \GitElephant\Objects\Object $object
      *
      * @return string
      */
-    public function treeObjectUrl(TreeObject $treeObject)
+    public function treeObjectUrl(Object $object)
     {
-        $parts = $this->splitter->split($this->getRepository()->getGit(), $this->request->attributes->get('ref'), $treeObject->getFullPath());
+        $parts = $this->splitter->split($this->getRepository()->getGit(), $this->request->attributes->get('ref'), $object->getFullPath());
 
         return $this->router->generate('tree_object', array(
             'slug' => $this->getRepository()->getSlug(),

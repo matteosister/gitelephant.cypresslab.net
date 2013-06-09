@@ -38,6 +38,8 @@ assetic:
         cssrewrite: ~
         uglifyjs: ~
         uglifycss: ~
+        coffee:
+          apply_to: \.coffee$
     assets:
         main_js:
             inputs:
@@ -61,7 +63,8 @@ assetic:
                 - bundles/cypressgitelephanthost/js/spin.jquery.js
                 - bundles/cypressgitelephanthost/js/bb/CommitModel.js
                 - bundles/cypressgitelephanthost/js/bb/CommitCollection.js
-                - bundles/cypressgitelephanthost/js/bb/RepositoryView.js
+                #- bundles/cypressgitelephanthost/js/bb/RepositoryView.js
+                - bundles/cypressgitelephanthost/js/bb/RepositoryView.coffee
                 - bundles/cypressgitelephanthost/js/bb/BreadcrumbView.js
                 - bundles/cypressgitelephanthost/js/bb/Router.js
                 - bundles/cypressgitelephanthost/js/bb/Main.js
