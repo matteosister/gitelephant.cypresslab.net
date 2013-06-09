@@ -101,12 +101,18 @@ class window.RepositoryView extends Backbone.View
       data = $(this).data()
       commits.push data  unless "content" is data.type
 
-    return  if 0 is commits.length
-    url = Routing.generate("commits_info",
-      slug: @$el.data().slug
-      path: @breadcrumbView.getPath()
-      ref: @$el.data().ref
-    )
+    return if 0 is commits.length
+    if @breadcrumbView.getPath() is '/'
+      url = Routing.generate("commits_root_info",
+        slug: @$el.data().slug
+        ref: @$el.data().ref
+      )
+    else
+      url = Routing.generate("commits_info",
+        slug: @$el.data().slug
+        path: @breadcrumbView.getPath()
+        ref: @$el.data().ref
+      )
     if @commitCollection.addCommits(url, commits)
       @getSpinnerCommitsDomObject().spin spinnerOptsSmall
     else
