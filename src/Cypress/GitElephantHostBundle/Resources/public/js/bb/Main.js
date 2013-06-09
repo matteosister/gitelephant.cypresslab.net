@@ -33,15 +33,14 @@ var manageArguments = function(args) {
 };
 
 var loadTreeObject = function() {
+    //console.log(app_router);
     var data = manageArguments(arguments);
     repository_view.loadContent(data);
-    //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 var loadMain = function() {
     var data = manageArguments(arguments);
-    data.path = '';
+    data.path = '/';
     repository_view.loadContent(data);
-    //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 var loadTreeObjectMain = function() {
     i = 0;
@@ -56,7 +55,7 @@ var loadTreeObjectMain = function() {
     //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 
-var app_router = new AppRouter;
+var app_router = new AppRouter({ repositoryView: repository_view });
 app_router.on('route:treeObject', loadTreeObject);
 app_router.on('route:treeObjectController', loadTreeObject);
 app_router.on('route:treeObjectMain', loadTreeObjectMain);

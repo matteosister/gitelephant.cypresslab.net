@@ -52,6 +52,8 @@ class window.RepositoryView extends Backbone.View
       @breadcrumbView.loadContent routeData
       @loadCommits()
     else
+      if '//' is url.substr(url.length - 2, 2)
+        url = url.substr 0, url.length - 2
       $.ajax
         url: url
         context: this
