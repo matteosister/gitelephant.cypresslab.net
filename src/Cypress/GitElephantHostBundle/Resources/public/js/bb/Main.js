@@ -33,15 +33,14 @@ var manageArguments = function(args) {
 };
 
 var loadTreeObject = function() {
+    //console.log(app_router);
     var data = manageArguments(arguments);
     repository_view.loadContent(data);
-    //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 var loadMain = function() {
     var data = manageArguments(arguments);
-    data.path = '';
+    data.path = '/';
     repository_view.loadContent(data);
-    //breadcrumb_view.loadContent(Routing.generate('ajax_breadcrumb', data));
 };
 var loadTreeObjectMain = function() {
     i = 0;

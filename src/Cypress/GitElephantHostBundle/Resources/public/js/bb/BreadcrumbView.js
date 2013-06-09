@@ -24,6 +24,7 @@ var BreadcrumbView = Backbone.View.extend({
         return false;
     },
     loadContent: function(routeData) {
+        //console.log(routeData.path);
         this.path = routeData.path;
         var existentBreadcrumb = this.findByPath(routeData.path);
         if (existentBreadcrumb.length == 0) {

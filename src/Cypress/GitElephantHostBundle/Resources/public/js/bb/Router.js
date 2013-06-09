@@ -7,15 +7,15 @@
  */
 
 var AppRouter = Backbone.Router.extend({
-    previousFragment: null,
+    previousFragment: '',
     initialize: function(data) {
-        console.log(data.repositoryView);
         if (typeof _gaq != 'undefined') {
             this.bind('all', this._trackPageView);
         };
         this.on('route', function(route, params) {
-            console.log(route);
-            //this.previousFragment = Backbone.history.getFragment();
+            var forward = this.previousFragment.length < Backbone.history.getFragment().length;
+            //console.log(forward);
+            this.previousFragment = Backbone.history.getFragment();
         });
     },
     routes: {
