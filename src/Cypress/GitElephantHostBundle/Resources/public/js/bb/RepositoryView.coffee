@@ -22,7 +22,7 @@ class window.RepositoryView extends Backbone.View
     @getSpinnerCommitsDomObject().spin false
     _.each @$el.find("section.actual").find("tr:not(.back)"), ((elm) ->
       commit = @commitCollection.getCommit($(elm).data().path)
-      $(elm).find("td:nth(1)").html "<a href=\"" + commit.get("url") + "\" title=\"" + commit.get("author_name") + "\">" + "<img src=\"http://www.gravatar.com/avatar/" + md5(commit.get("author_email")) + "?s=20&d=mm\" />" + commit.get("message") + "</a>"
+      $(elm).find("td:nth(1)").html "<a href=\"" + commit.get("url") + "\" title=\"" + commit.get("author_name") + "\" rel=\"nofollow\">" + "<img src=\"http://www.gravatar.com/avatar/" + md5(commit.get("author_email")) + "?s=20&d=mm\" />" + commit.get("message") + "</a>"
     ), this
 
   loadRoute: (evt, forward) ->

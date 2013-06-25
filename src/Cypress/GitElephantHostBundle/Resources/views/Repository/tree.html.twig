@@ -1,6 +1,6 @@
 <section data-path="{{ path|default('/') }}">
     <header><img src="{{ gravatar(tree.getLastCommitAuthor(ref).email, 60) }}" title="{{ tree.getLastCommitAuthor(ref).name }}" />
-        <a class="commit-message" href="{{ path('commit', { slug: slug, sha: tree.getLastCommit(ref).sha }) }}">{{ tree.getLastCommitMessage(ref) }}</a>
+        <a class="commit-message" href="{{ path('commit', { slug: slug, sha: tree.getLastCommit(ref).sha }) }}" rel="nofollow">{{ tree.getLastCommitMessage(ref) }}</a>
         {% set commit = tree.getLastCommit(ref) %}
         <div class="date author"><strong>{{ commit.author.name }}</strong> authored {{ time_diff(commit.datetimeAuthor) }}</div>
     </header>
@@ -18,7 +18,7 @@
                             {% if 'commit' == treeObject.type %}
                                 <i class="icon-share-alt"></i> {{ treeObject -}}
                             {% else %}
-                            <a class="tree-object tree-object-link" href="{{ treeObject|link_tree_object }}">
+                            <a class="tree-object tree-object-link" href="{{ treeObject|link_tree_object }}" rel="nofollow">
                                 {%- if 'tree' == treeObject.type -%}
                                     <i class="icon-folder-close"></i>
                                 {%- elseif 'blob' == treeObject.type -%}
