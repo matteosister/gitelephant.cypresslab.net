@@ -37,7 +37,7 @@ class AppKernel extends Kernel
             new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle()
         );
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        if (in_array($this->getEnvironment(), array('dev', 'test', 'vagrant'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
