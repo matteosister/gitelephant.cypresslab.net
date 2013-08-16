@@ -24,7 +24,7 @@ package { [
     'vim',
     'curl',
     'git-core',
-    'easy_install'
+    'python-setuptools'
   ]:
   ensure  => 'installed',
 }
