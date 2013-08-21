@@ -1,5 +1,0 @@
-locale-gen
-compass
-bootstrap-sass
-easy_install (python-setuptools)
-pygments
