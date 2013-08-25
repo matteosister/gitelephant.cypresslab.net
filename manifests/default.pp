@@ -81,7 +81,7 @@ class { 'composer':
 
 puphpet::ini { 'php':
   value   => [
-    'date.timezone = "America/Chicago"'
+    'date.timezone = "Europe/Rome"'
   ],
   ini     => '/etc/php5/conf.d/zzz_php.ini',
   notify  => Service['apache'],
