@@ -12,7 +12,8 @@ set :deploy_via,  :rsync_with_remote_cache
 
 #ssh_options[:port] = "22123"
 ssh_options[:forward_agent] = true
-#set :user, "www-data"
+ssh_options[:keys] = %w(/home/matteo/.ssh/id_rsa)
+set :user, "www-data"
 
 set :model_manager, "doctrine"
 # Or: `propel`
