@@ -39,7 +39,7 @@
         "kriswallsmith/buzz": "dev-master",
         "jms/serializer-bundle": "0.9.0",
         "knplabs/knp-markdown-bundle": "1.2.*@dev",
-        "knplabs/knp-time-bundle": "dev-composer-framework-version",
+        "knplabs/knp-time-bundle": "dev-master",
         "bcc/resque-bundle": "1.1.*",
         "excelwebzone/recaptcha-bundle": "dev-master"
     },
