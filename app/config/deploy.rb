@@ -36,7 +36,7 @@ set :use_composer, true
 
 after "deploy", "deploy:cleanup"
 #after "symfony:project:clear_controllers", "cypress:permissions"
-before "symfony:assets:install", "cypress:bower"
+before "symfony:assetic:dump", "cypress:bower"
 after "cypress:bower", "cypress:compass_compile"
 
 namespace :cypress do
