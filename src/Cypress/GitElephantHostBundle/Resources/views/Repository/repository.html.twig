@@ -25,7 +25,6 @@
 {% endblock %}
 
 {% block body_js %}
-    test
     {{ parent() }}
     {% javascripts '@repository_js' %}
         <script src="{{ asset_url }}"></script>

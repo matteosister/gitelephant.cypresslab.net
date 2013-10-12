@@ -23,7 +23,7 @@ role :app,        domain                         # This may be the same as your 
 role :db,         domain, :primary => true       # This is where Symfony2 migrations will run
 
 set  :use_sudo,      false
-set  :keep_releases,  3
+set  :keep_releases,  2
 
 set  :dump_assetic_assets, true
 
@@ -67,4 +67,4 @@ namespace :cypress do
 end
 
 # Be more verbose by uncommenting the following line
-logger.level = Logger::MAX_LEVEL
+#logger.level = Logger::MAX_LEVEL
