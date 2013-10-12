@@ -13,7 +13,7 @@ set :branch,      "master"
 #ssh_options[:port] = "22123"
 ssh_options[:forward_agent] = true
 ssh_options[:keys] = %w(/home/matteo/.ssh/id_rsa)
-set :user, "matteo"
+set :user, "www-data"
 
 set :model_manager, "doctrine"
 # Or: `propel`
