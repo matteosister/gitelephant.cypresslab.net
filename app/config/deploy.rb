@@ -8,12 +8,12 @@ set :scm,         :git
 set :git_enable_submodules, 1
 set :branch,      "master"
 
-set :deploy_via,  :rsync_with_remote_cache
+#set :deploy_via,  :rsync_with_remote_cache
 
 #ssh_options[:port] = "22123"
 ssh_options[:forward_agent] = true
 ssh_options[:keys] = %w(/home/matteo/.ssh/id_rsa)
-set :user, "www-data"
+set :user, "matteo"
 
 set :model_manager, "doctrine"
 # Or: `propel`
