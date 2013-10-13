@@ -1,5 +1,5 @@
 {
-    "name": "gitelephant-host-website",
+    "name": "gitelephant_host_website",
     "description": "Website of GitElephant host - gitelephant.cypresslab.net",
     "autoload": {
         "psr-0": {
