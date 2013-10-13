@@ -2,7 +2,7 @@
 
 {% block body_js %}
     {{ parent() }}
-    {% javascripts '@github_repositories' %}
+    {% javascripts '@github_repositories' output='js/compiled/github_repository.js' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

@@ -47,6 +47,7 @@ assetic:
                 - bundles/cypressgitelephanthost/compass/javascripts/bootstrap-dropdown.js
                 - bundles/cypressgitelephanthost/js/md5.js
             filters: [?uglifyjs]
+
         home_js:
             inputs:
                 - bundles/cypressgitelephanthost/components/spin.js/spin.js
@@ -54,6 +55,7 @@ assetic:
                 - bundles/cypressgitelephanthost/js/spin.jquery.js
                 - bundles/cypressgitelephanthost/js/homepage.js
             filters: [?uglifyjs]
+
         repository_js:
             inputs:
                 - bundles/cypressgitelephanthost/components/underscore/underscore.js
@@ -69,6 +71,7 @@ assetic:
                 - bundles/cypressgitelephanthost/js/bb/Router.js
                 - bundles/cypressgitelephanthost/js/bb/Main.js
             filters: [?uglifyjs]
+
         github_repositories:
             inputs:
                 - bundles/cypressgitelephanthost/components/underscore/underscore.js

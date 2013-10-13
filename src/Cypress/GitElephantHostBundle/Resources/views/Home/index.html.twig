@@ -45,7 +45,7 @@
 
 {% block body_js %}
     {{ parent() }}
-    {% javascripts '@home_js' %}
+    {% javascripts '@home_js' output='js/compiled/home.js' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
