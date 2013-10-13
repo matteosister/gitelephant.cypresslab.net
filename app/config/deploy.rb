@@ -33,7 +33,7 @@ set :update_vendors,    true
 set :use_composer, true
 set :composer_options,  "--prefer-source --optimize-autoloader --no-progress --no-dev" # --prefer-dist --verbose
 set :vendors_mode,      "reinstall"
-set :copy_vendors,      false
+set :copy_vendors,      true
 
 after "deploy", "deploy:cleanup"
 #after "symfony:project:clear_controllers", "cypress:permissions"
